@@ -1,0 +1,5 @@
+[submodule "taco-runner"]
+	path = taco-runner
+	url = git@github.com:circlekeurope/taco-runner.git
+	branch = master
+	ignore = all
