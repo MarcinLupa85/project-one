@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+}
+
+group 'com.circlek'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    seleniumVersion = '3.141.59'
+}
+
+test {
+    /*example usage:
+    gradle clean test -Pgroups=csr -Pdriver_type=remote_firefox -i*/
+    environment 'test_env', 'prep'
+    environment 'driver_type', project.hasProperty('driver_type') ? project.driver_type : 'chrome'
+}
+
+tasks.withType(Test) {
+    outputs.upToDateWhen { false }
+    systemProperty 'build_tag', project.hasProperty('\"build_tag\"') ? project.build_tag : null
+
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+        excludeGroups project.hasProperty('excluded_groups') ? project.excluded_groups : ''
+        outputDirectory = file("./report")
+        reports.junitXml.enabled = false
+        reports.html.enabled = false
+    }
+}
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: "$seleniumVersion"
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: "$seleniumVersion"
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: "$seleniumVersion"
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: "$seleniumVersion"
+    compile group: 'org.testng', name: 'testng', version: '7.0.0'
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.4'
+    compile group: 'io.codearte.jfairy', name: 'jfairy', version: '0.5.3'
+    compile group: 'org.assertj', name: 'assertj-core', version: '3.13.2'
+}
