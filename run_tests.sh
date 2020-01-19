@@ -8,8 +8,7 @@ gradle clean test -i -Pdriver_type="$browser" -Pbuild_tag=$tag
 echo "END"
 
 if [[ -f /.dockerenv ]]; then
-    useradd -ms /bin/bash jenkins;
-    chown -R jenkins:jenkins gradleCache
-    chown -R jenkins:jenkins report
-    chown -R jenkins:jenkins build
+    chown -R $USER_ID:$GROUP_ID gradleCache
+    chown -R $USER_ID:$GROUP_ID report
+    chown -R $USER_ID:$GROUP_ID build
 fi
