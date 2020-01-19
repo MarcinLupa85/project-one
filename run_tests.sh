@@ -8,7 +8,8 @@ gradle clean test -i -Pdriver_type="$browser" -Pbuild_tag=$tag
 echo "END"
 
 if [[ -f /.dockerenv ]]; then
-    chown -R $USER_ID:$GROUP_ID gradleCache
-    chown -R $USER_ID:$GROUP_ID report
-    chown -R $USER_ID:$GROUP_ID build
+    echo "CHANGING ACCESS MODIFIERS"
+    chmod -R 777 gradleCache
+    chmod -R 777 report
+    chmod -R 777 build
 fi
