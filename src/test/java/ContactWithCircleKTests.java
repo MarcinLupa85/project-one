@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ContactWithCircleKTests extends TestsBase {
-    private HomePageOperations homePageOperations;
+    /*private HomePageOperations homePageOperations;
 
     @BeforeClass
     private void initOperations() {
@@ -15,8 +15,8 @@ public class ContactWithCircleKTests extends TestsBase {
 
     @Test
     public void testOpenContactSection() {
-        homePageOperations.openContactSection();
+        //homePageOperations.openContactSection();
         assertThat(driver.getCurrentUrl()).contains("/kontakt");
-    }
+    }*/
 
 }

@@ -14,9 +14,14 @@ public class HomePageOperations {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void openContactSection() {
-        homePageObject.getContactLink().click();
-        waitUtils.waitForUrlToContains("/kontakt");
+    public void openEaseePurchaseFlow() {
+        homePageObject.getPurchaseFlowEaseeLink().click();
+        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+    }
+
+    public void openMennekesPurchaseFlow() {
+        homePageObject.getPurchaseFlowMennekesLink().click();
+        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
 }

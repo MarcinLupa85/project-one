@@ -6,14 +6,27 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePageObject {
+
+    private TopMenuObject topMenuObject;
+
     public HomePageObject(WebDriver driver) {
+        topMenuObject =  new TopMenuObject(driver);
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "a[href='/kontakt'].nav-link")
-    private WebElement contactLink;
+    //czy trzeba scrollowac strone w dol, zeby wykonac .click() na elemencie ktorego nie widac na ekranie?
+    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=1'].buttons-wrapper__btn btn btn-primary")
+    private WebElement purchaseFlowEaseeLink;
 
-    public WebElement getContactLink() {
-        return contactLink;
+    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=0'].buttons-wrapper__btn btn btn-primary")
+    private WebElement purchaseFlowMennekesLink;
+
+
+
+    public WebElement getPurchaseFlowEaseeLink() {
+        return purchaseFlowEaseeLink;
+    }
+    public WebElement getPurchaseFlowMennekesLink() {
+        return purchaseFlowMennekesLink;
     }
 }
