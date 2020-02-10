@@ -5,45 +5,36 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
 public class CustomizationPageObject
 {
-
     public CustomizationPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
-    }
-
-    public WebElement getEaseeNumberSelector() {
-        return easeeNumberSelector;
     }
 
     @FindBy(css = "li#id1 app-number-selector")
     private WebElement easeeNumberSelector;
 
-    public List<WebElement> getNumberOfZero() {
-        return numberOfZero;
-    }
-
-
     @FindBy(css = "#id1 app-number-selector")
     private WebElement selectContainer;
 
+    //    public List<WebElement> getNumberOfZero() {
+//        return numberOfZero;
+//    }
 
-    @FindBy(css = ".selector-dropdown > .ng-star-inserted:first-child")
-    private List<WebElement> numberOfZero;
-
-    @FindBy(css = ".selector-dropdown > .ng-star-inserted:nth-child(2)")
-    private List<WebElement> numberOfOne;
-
-    @FindBy(css = ".selector-dropdown > .ng-star-inserted:nth-child(3)")
-    private List<WebElement> numberOfTwo;
-
-    @FindBy(css = ".selector-dropdown > .ng-star-inserted:nth-child(4)")
-    private List<WebElement> numberOfThree;
-
-    @FindBy(css = ".selector-dropdown > .ng-star-inserted:nth-child(5)")
-    private List<WebElement> numberOfFour;
+//    @FindBy(css = ".selector-dropdown > .ng-star-inserted:first-child")
+//    private List<WebElement> numberOfZero;
+//
+//    @FindBy(css = ".selector-dropdown > .ng-star-inserted:nth-child(2)")
+//    private List<WebElement> numberOfOne;
+//
+//    @FindBy(css = ".selector-dropdown > .ng-star-inserted:nth-child(3)")
+//    private List<WebElement> numberOfTwo;
+//
+//    @FindBy(css = ".selector-dropdown > .ng-star-inserted:nth-child(4)")
+//    private List<WebElement> numberOfThree;
+//
+//    @FindBy(css = ".selector-dropdown > .ng-star-inserted:nth-child(5)")
+//    private List<WebElement> numberOfFour;
 
     @FindBy(css = "li#id2 app-number-selector")
     private WebElement cableNumberSelector;
@@ -65,7 +56,6 @@ public class CustomizationPageObject
 
     @FindBy(css = "li#id1 .option.ng-star-inserted:nth-child(5)")
     private WebElement easeeBlueColorSelector;
-
 
     @FindBy(css = "li#id2 .selector")
     private WebElement cableType;
@@ -100,5 +90,85 @@ public class CustomizationPageObject
     @FindBy(css = "button[type=\"submit\"]")
     private WebElement nextButton;
 
+
+    public WebElement getEaseeNumberSelector() {
+        return easeeNumberSelector;
+    }
+
+    public WebElement getSelectContainer() {
+        return selectContainer;
+    }
+
+    public WebElement getCableNumberSelector() {
+        return cableNumberSelector;
+    }
+
+    public WebElement getMennekesNumberSelector() {
+        return mennekesNumberSelector;
+    }
+
+    public WebElement getEaseeGreyColorSelector() {
+        return easeeGreyColorSelector;
+    }
+
+    public WebElement getEaseeBlackColorSelector() {
+        return easeeBlackColorSelector;
+    }
+
+    public WebElement getEaseeWhiteColorSelector() {
+        return easeeWhiteColorSelector;
+    }
+
+    public WebElement getEaseeRedColorSelector() {
+        return easeeRedColorSelector;
+    }
+
+    public WebElement getEaseeBlueColorSelector() {
+        return easeeBlueColorSelector;
+    }
+
+    public WebElement getCableType() {
+        return cableType;
+    }
+
+    public WebElement getMennekesPower() {
+        return mennekesPower;
+    }
+
+    public WebElement getChargerCompatibilityLink() {
+        return chargerCompatibilityLink;
+    }
+
+    public WebElement getMennekesPdfLink() {
+        return mennekesPdfLink;
+    }
+
+    public WebElement getCableCompatibilityLink() {
+        return cableCompatibilityLink;
+    }
+
+    public WebElement getEaseePdfLink() {
+        return easeePdfLink;
+    }
+
+    public WebElement getAboutAbonamentLink() {
+        return aboutAbonamentLink;
+    }
+
+    public WebElement getExtraCheckbox() {
+        return extraCheckbox;
+    }
+
+    public WebElement getExtraTCLink() {
+        return extraTCLink;
+    }
+
+    public WebElement getBackButton() {
+        return backButton;
+    }
+
+    public WebElement getNextButton() {
+        return nextButton;
+    }
 
 }

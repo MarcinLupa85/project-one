@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.CustomizationPageObject;
-import pageobjects.HomePageObject;
 import utils.WaitUtils;
 
 import java.util.List;
@@ -19,6 +18,15 @@ public class CustomizationPageOperations {
         waitUtils = new WaitUtils(driver);
     }
 
+    public void clickNextButton() {
+        customizationPageObject.getNextButton().click();
+        waitUtils.waitForUrlToContains("circlekid");
+    }
+
+    public void clickBackButton() {
+        customizationPageObject.getBackButton().click();
+        waitUtils.waitForUrlToContains("/hjemmelading");
+    }
 
     private void selectEaseeAmount (Integer value) {
         WebElement selectContainer = customizationPageObject.getEaseeNumberSelector();
@@ -33,20 +41,8 @@ public class CustomizationPageOperations {
 
     }
 
-
-    public WebElement selectMennekesAmount() {
-        return purchaseFlowEaseeLink;
+    public void tickExtraCheckbox() {
+        customizationPageObject.getExtraCheckbox().click();
     }
 
-    public WebElement tickExtraCheckbox() {
-        return purchaseFlowEaseeLink;
-    }
-
-    public WebElement tickExtraCheckbox() {
-        return purchaseFlowEaseeLink;
-    }
-
-    public WebElement tickExtraCheckbox() {
-        return purchaseFlowEaseeLink;
-    }
 }

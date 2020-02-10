@@ -25,9 +25,6 @@ public class TopMenuObject {
     @FindBy(css = "a[href='/home'].navbar-brand")
     private WebElement homeLink;
 
-    @FindBy(css = "a[href='/ladeapp'].nav-link")
-    private WebElement joinUsLink;
-
     @FindBy(css = "a[href='/ladestasjoner'].nav-link")
     private WebElement otgLink;
 
@@ -50,8 +47,8 @@ public class TopMenuObject {
     @FindBy(css = "a[href='/nyheter/1'].nav-link")
     private WebElement newsLink;
 
-//    @FindBy(css = "a[href='/ladeapp'].nav-link")
-//    private WebElement joinUsLink;
+    @FindBy(css = "a[href='/ladeapp'].nav-link")
+    private WebElement joinUsLink;
 
 
     public WebElement getContactLink() {
