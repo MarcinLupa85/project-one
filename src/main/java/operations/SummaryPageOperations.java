@@ -17,7 +17,9 @@ public class SummaryPageOperations {
     }
 
     public void tickTcCheckbox() {
-        summaryPageObject.getTcCheckbox().click();
+        WebElement tcCheckbox = summaryPageObject.getTcCheckbox();
+        waitUtils.bringElementToViewport(tcCheckbox);
+        tcCheckbox.click();
     }
 
     public void clickNext() {

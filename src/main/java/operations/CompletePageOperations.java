@@ -16,10 +16,10 @@ public class CompletePageOperations {
         waitUtils = new WaitUtils(driver);
     }
 
-    public boolean verifyEmail(){
-
-        if ( addressPageObject.)
-    }
+//    public boolean verifyEmail(){
+//
+//        if ( addressPageObject.)
+//    }
 
     public void clickBack() {
         completePageObject.getBackButton().click();

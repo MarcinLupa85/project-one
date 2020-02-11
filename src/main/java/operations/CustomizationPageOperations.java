@@ -19,7 +19,9 @@ public class CustomizationPageOperations {
     }
 
     public void clickNextButton() {
-        customizationPageObject.getNextButton().click();
+        WebElement nextButton = customizationPageObject.getNextButton();
+        waitUtils.bringElementToViewport(nextButton);
+        nextButton.click();
         waitUtils.waitForUrlToContains("circlekid");
     }
 

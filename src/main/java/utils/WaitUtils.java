@@ -1,14 +1,11 @@
 package utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class WaitUtils {
 
@@ -45,4 +42,31 @@ public class WaitUtils {
     public void waitForPresentOf(By locator) {
         this.waitForPresentOf(locator, defaultMaxTimeoutForAllWaits);
     }
+
+
+    public void waitForVisiblityOf(WebElement element) {
+        this.waitForVisiblityOf(element, defaultMaxTimeoutForAllWaits);
+    }
+
+    public void waitForVisiblityOf(WebElement element, int maxTimeInSeconds) {
+        new WebDriverWait(driver, maxTimeInSeconds)
+                .until(visibilityOf(element));
+    }
+
+    public void waitForClickabiltyOf(WebElement element, int maxTimeInSeconds) {
+        new WebDriverWait(driver, maxTimeInSeconds)
+                .until(elementToBeClickable(element));
+    }
+
+    public void waitForClickabiltyOf(WebElement element) {
+        this.waitForClickabiltyOf(element, defaultMaxTimeoutForAllWaits);
+    }
+
+    public void bringElementToViewport(WebElement element) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView()", element);
+        jsExecutor.executeScript("window.scrollBy(0, -123);");
+
+    }
+
 }

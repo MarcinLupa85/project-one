@@ -1,6 +1,7 @@
 package operations;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageobjects.HomePageObject;
 import utils.WaitUtils;
 
@@ -15,7 +16,9 @@ public class HomePageOperations {
     }
 
     public void openEaseePurchaseFlow() {
-        homePageObject.getPurchaseFlowEaseeLink().click();
+        WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
+        waitUtils.bringElementToViewport(easeeLink);
+        easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
