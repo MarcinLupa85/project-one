@@ -68,4 +68,19 @@ public class TopMenuOperations {
         topMenuObject.getJoinUsLink().click();
         waitUtils.waitForUrlToContains("/ladeapp");
     }
+
+    public void openFacebookPage() {
+        topMenuObject.getFacebookLink().click();
+        waitUtils.waitForUrlToContains("facebook.com/circleknorge/");
+    }
+
+    public void openInstagramPage() {
+        topMenuObject.getInstagramLink().click();
+        waitUtils.waitForUrlToContains("instagram.com/circleknorge/");
+    }
+
+    public void openYoutubePage() {
+        topMenuObject.getYoutubeLink().click();
+        waitUtils.waitForUrlToContains("youtube.com/playlist?list=PLOt-ClfT-VEgU-nxudMqsINMByvW94ala");
+    }
 }

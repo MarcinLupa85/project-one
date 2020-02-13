@@ -50,6 +50,14 @@ public class TopMenuObject {
     @FindBy(css = "a[href='/ladeapp'].nav-link")
     private WebElement joinUsLink;
 
+    @FindBy(css = "a[href='https://www.facebook.com/circleknorge/']")
+    private WebElement facebookLink;
+
+    @FindBy(css = "a[href='https://www.instagram.com/circleknorge/']")
+    private WebElement instagramLink;
+
+    @FindBy(css = "a[href='https://www.youtube.com/playlist?list=PLOt-ClfT-VEgU-nxudMqsINMByvW94ala']")
+    private WebElement youtubeLink;
 
     public WebElement getContactLink() {
         return contactLink;
@@ -87,5 +95,13 @@ public class TopMenuObject {
     public WebElement getHomeLink() {
         return homeLink;
     }
-
+    public WebElement getFacebookLink() {
+        return facebookLink;
+    }
+    public WebElement getInstagramLink() {
+        return instagramLink;
+    }
+    public WebElement getYoutubeLink() {
+        return youtubeLink;
+    }
 }
