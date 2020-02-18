@@ -25,6 +25,8 @@ public class EaseePurchaseWithExtraTest extends TestsBase {
             completePageOperations = new CompletePageOperations(driver);
         }
 
+
+
         @Test
         public void testEaseePurchaseFlowWithExtra() {
             homePageOperations.openEaseePurchaseFlow();
