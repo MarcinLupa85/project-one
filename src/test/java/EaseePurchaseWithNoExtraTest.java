@@ -38,7 +38,7 @@ public class EaseePurchaseWithNoExtraTest extends TestsBase {
         addressPageOperations.fillBillingAddress("Test Addresse 582");
         addressPageOperations.fillBillingCity("Test Billing City");
         addressPageOperations.fillBillingZipCode("72433");
-        addressPageOperations.clickNext();
+        addressPageOperations.clickNext(); //TODO: zmienić na DriverUtils.clicknext
         assertThat(driver.getCurrentUrl().contains("hjemmelading-bestill/confirm-order"));
         summaryPageOperations.tickTcCheckbox();
         summaryPageOperations.clickNext();
