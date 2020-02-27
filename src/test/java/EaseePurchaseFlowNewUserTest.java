@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class EaseePurchaseWithNoExtraTest extends TestsBase {
+public class EaseePurchaseFlowNewUserTest extends TestsBase {
 
      private HomePageOperations homePageOperations;
      private CustomizationPageOperations customizationPageOperations;
@@ -34,7 +34,27 @@ public class EaseePurchaseWithNoExtraTest extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("circlekid-core"));
         ckidPageOperations.logInWithCredentials("michal.sepczuk+1@edge1s.com","Emobility1");
         assertThat(driver.getCurrentUrl().contains("house-order/delivery-order"));
-        //pytanie: czy powinienem tworzyć metody tak by zwracały obiekt PageOperations, tak aby można było chainować metody na tej samej stronie?
+        addressPageOperations.fillBillingAddress("Test Addresse 582");
+        addressPageOperations.fillBillingCity("Test Billing City");
+        addressPageOperations.fillBillingZipCode("72433");
+        addressPageOperations.clickNext(); //TODO: zmienić na DriverUtils.clicknext
+        assertThat(driver.getCurrentUrl().contains("hjemmelading-bestill/confirm-order"));
+        summaryPageOperations.tickTcCheckbox();
+        summaryPageOperations.clickNext();
+        assertThat(driver.getCurrentUrl().contains("hjemmelading-bestill/complete"));
+        completePageOperations.clickBack();
+        assertThat(driver.getCurrentUrl().contains("/home"));
+    }
+
+
+    @Test
+    public void testEaseePurchaseFlowWithExtra() {
+        homePageOperations.openEaseePurchaseFlow();
+        assertThat(driver.getCurrentUrl()).contains("/hjemmelading-bestill/customize-order");
+        customizationPageOperations.clickNextButton();
+        assertThat(driver.getCurrentUrl().contains("circlekid-core"));
+        ckidPageOperations.logInWithCredentials("michal.sepczuk+1@edge1s.com","Emobility1");
+        assertThat(driver.getCurrentUrl().contains("house-order/delivery-order"));
         addressPageOperations.fillBillingAddress("Test Addresse 582");
         addressPageOperations.fillBillingCity("Test Billing City");
         addressPageOperations.fillBillingZipCode("72433");

@@ -12,7 +12,7 @@ public class CompletePageObject {
 
     }
 
-    @FindBy(css = ".congratulations-section__body--email")
+    @FindBy(css = "span.congratulations-section__body--email")
     private WebElement emailText;
 
     @FindBy(css = "a[href=\"/home\"]")

@@ -20,11 +20,17 @@ public class HomePageObject {
     @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=0'].buttons-wrapper__btn")
     private WebElement purchaseFlowMennekesLink;
 
+    @FindBy(css = "li a.menu-element__hyperlink--user strong")
+    private WebElement usernameText;
 
     public WebElement getPurchaseFlowEaseeLink() {
         return purchaseFlowEaseeLink;
     }
     public WebElement getPurchaseFlowMennekesLink() {
         return purchaseFlowMennekesLink;
+    }
+
+    public WebElement getUsernameText() {
+        return usernameText;
     }
 }

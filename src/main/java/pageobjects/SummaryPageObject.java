@@ -47,6 +47,9 @@ public class SummaryPageObject {
     @FindBy(css = "button[type=submit]")
     private WebElement finishOrderButton;
 
+    @FindBy(css = "p.extra-discount")
+    private WebElement extraDiscountText;
+
     public WebElement getFinishOrderButton() {
         return finishOrderButton;
     }
@@ -95,4 +98,7 @@ public class SummaryPageObject {
         return fastInstallationCheckbox;
     }
 
+    public WebElement getExtraDiscountText() {
+        return extraDiscountText;
+    }
 }

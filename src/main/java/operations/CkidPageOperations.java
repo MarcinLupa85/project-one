@@ -23,24 +23,30 @@ public class CkidPageOperations {
 
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getLoginLink());
-
-//        WebElement loginLink = ckidPageObject.getLoginLink();
-//        waitUtils.waitForVisiblityOf(loginLink);
-//        waitUtils.waitForClickabiltyOf(loginLink);
-//        loginLink.click();
-
-
-
         waitUtils.waitForPresentOf(By.cssSelector("input[type=email]"));
-
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);
         ckidPageObject.getLoginButton().click();
-//
-//
-//        driver.findElement(By.cssSelector("input[type=email]")).sendKeys(username);
-//        driver.findElement(By.cssSelector("input[type=password]")).sendKeys(password);
-//        driver.findElement(By.cssSelector("button#login-submit-button")).click();
+    }
+
+
+    public void registerNewUser(String phoneNumber, String username, String password) {
+
+        waitUtils.waitForPresentOf(By.cssSelector("input#edit-phone-number"));
+        ckidPageObject.getCountryCodeInput().sendKeys("48");
+        ckidPageObject.getPhoneNumberInput().sendKeys(phoneNumber);
+        ckidPageObject.getSendCodeButton().click();
+        waitUtils.waitForPresentOf(By.cssSelector("input#validation-code-input"));
+        ckidPageObject.getSmsCodeInput().sendKeys("000000");
+        waitUtils.waitForPresentOf(By.cssSelector("input[type=email"));
+        ckidPageObject.getEmailInput().sendKeys(username);
+        ckidPageObject.getPasswordInput().sendKeys(password);
+        ckidPageObject.getFirstNameInput().sendKeys("Michal");
+        ckidPageObject.getLastNameInput().sendKeys("Sepczuk");
+        ckidPageObject.getCountrySelect().selectByValue("string:NORWAY");
+        waitUtils.waitForPresentOf(By.cssSelector("input[type=checkbox]"));
+        ckidPageObject.getTcCheckbox().click();
+        ckidPageObject.getRegisterButton().click();
     }
 
 }

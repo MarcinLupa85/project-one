@@ -4,12 +4,43 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class CkidPageObject {
 
     public CkidPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(css = "input#edit-phone-number-country-code")
+    private WebElement countryCodeInput;
+
+    @FindBy(css = "input#edit-phone-number")
+    private WebElement phoneNumberInput;
+
+    @FindBy(css = "button#submit-registration-step-one")
+    private WebElement sendCodeButton;
+
+    @FindBy(css = "input#validation-code-input")
+    private WebElement smsCodeInput;
+
+    @FindBy(css = "button#verify-validation-code")
+    private WebElement verifyCodeButton;
+
+    @FindBy(css = "input#input-account-creation-first-name-input")
+    private WebElement firstNameInput;
+
+    @FindBy(css = "input#input-account-creation-last-name-input")
+    private WebElement lastNameInput;
+
+    @FindBy(css = "select#edit-region-select")
+    private WebElement countryDropdown;
+
+    @FindBy(css = "input[type=checkbox")
+    private WebElement tcCheckbox;
+
+    @FindBy(css = "button[translate=registration.submitBt]")
+    private WebElement registerButton;
 
     @FindBy(css = "a[href=\"#/login\"]")
     private WebElement loginLink;
@@ -40,4 +71,47 @@ public class CkidPageObject {
         return loginButton;
     }
 
+    public WebElement getCountryCodeInput() {
+        return countryCodeInput;
+    }
+
+    public WebElement getPhoneNumberInput() {
+        return phoneNumberInput;
+    }
+
+    public WebElement getSendCodeButton() {
+        return sendCodeButton;
+    }
+
+    public WebElement getSmsCodeInput() {
+        return smsCodeInput;
+    }
+
+    public WebElement getVerifyCodeButton() {
+        return verifyCodeButton;
+    }
+
+    public WebElement getFirstNameInput() {
+        return firstNameInput;
+    }
+
+    public WebElement getLastNameInput() {
+        return lastNameInput;
+    }
+
+    public WebElement getCountryDropdown() {
+        return countryDropdown;
+    }
+
+    public Select getCountrySelect() {
+        return new Select(countryDropdown);
+    }
+
+    public WebElement getTcCheckbox() {
+        return tcCheckbox;
+    }
+
+    public WebElement getRegisterButton() {
+        return registerButton;
+    }
 }
