@@ -29,7 +29,6 @@ public class HomePageObject {
     public WebElement getPurchaseFlowMennekesLink() {
         return purchaseFlowMennekesLink;
     }
-
     public WebElement getUsernameText() {
         return usernameText;
     }

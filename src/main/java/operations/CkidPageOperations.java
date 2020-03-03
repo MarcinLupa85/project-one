@@ -38,6 +38,7 @@ public class CkidPageOperations {
         ckidPageObject.getSendCodeButton().click();
         waitUtils.waitForPresentOf(By.cssSelector("input#validation-code-input"));
         ckidPageObject.getSmsCodeInput().sendKeys("000000");
+        ckidPageObject.getVerifyCodeButton().click();
         waitUtils.waitForPresentOf(By.cssSelector("input[type=email"));
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);

@@ -2,9 +2,7 @@ package utils;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class WaitUtils {
@@ -61,6 +59,33 @@ public class WaitUtils {
     public void waitForClickabiltyOf(WebElement element) {
         this.waitForClickabiltyOf(element, defaultMaxTimeoutForAllWaits);
     }
+
+    public WebElement waitForElement(WebElement element) {
+        long startTime = System.currentTimeMillis();
+        long timeOutInSeconds = defaultMaxTimeoutForAllWaits;
+        while (true) {
+            try {
+                if (element.isDisplayed()) {
+                    return element;
+                } else if (isTimeout(startTime, timeOutInSeconds)) {
+                    throw new TimeoutException(
+                            "Cannot locate element by this strategy: " + element + " waited for "
+                                    + timeOutInSeconds + " seconds with 500ms interval");
+                }
+            } catch (Exception e) {
+                if (isTimeout(startTime, timeOutInSeconds)) {
+                    throw new TimeoutException(
+                            "Cannot locate element by this strategy: " + element + " waited for "
+                                    + timeOutInSeconds + " seconds with 500ms interval");
+                }
+            }
+        }
+    }
+
+    private boolean isTimeout(long startTime, long timeOutInSeconds) {
+        return (System.currentTimeMillis() / 1000 - (startTime / 1000)) >= timeOutInSeconds;
+    }
+
 
     public void bringElementToViewport(WebElement element) {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
