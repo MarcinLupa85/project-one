@@ -57,12 +57,12 @@ public class EaseePurchaseFlowNewUserTest extends TestsBase {
 
     @Test
     public void testEaseePurchaseFlowWithNoExtra() {
-        easeePurchaseFlowNewUser("575437500", "michal.sepczuk+new+noextra@edge1s.com", false);
+        easeePurchaseFlowNewUser("575437500", "michal.sepczuk+noextra@edge1s.com", false);
     }
 
     @Test
     public void testEaseePurchaseFlowWithExtra() {
-        easeePurchaseFlowNewUser("575437500", "michal.sepczuk+new+extra@edge1s.com",true);
+        easeePurchaseFlowNewUser("575437500", "michal.sepczuk+extra@edge1s.com",true);
     }
 
 }

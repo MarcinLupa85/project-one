@@ -29,7 +29,6 @@ public class CkidPageOperations {
         ckidPageObject.getLoginButton().click();
     }
 
-
     public void registerNewUser(String phoneNumber, String username, String password) {
 
         waitUtils.waitForPresentOf(By.cssSelector("input#edit-phone-number"));
@@ -46,8 +45,11 @@ public class CkidPageOperations {
         ckidPageObject.getLastNameInput().sendKeys("Sepczuk");
         ckidPageObject.getCountrySelect().selectByValue("string:NORWAY");
         waitUtils.waitForPresentOf(By.cssSelector("input[type=checkbox]"));
-        ckidPageObject.getTcCheckbox().click();
-        ckidPageObject.getRegisterButton().click();
+        ckidPageObject.getCkidTcCheckbox().click();
+        ckidPageObject.getEvTcCheckbox().click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getRegisterButton());
+//        ckidPageObject.getRegisterButton().click();
     }
 
 }

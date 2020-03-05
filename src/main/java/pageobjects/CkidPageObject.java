@@ -36,10 +36,13 @@ public class CkidPageObject {
     @FindBy(css = "select#edit-region-select")
     private WebElement countryDropdown;
 
-    @FindBy(css = "input[type=checkbox")
-    private WebElement tcCheckbox;
+    @FindBy(css = "div[id=accepted-tc-4f2461a0-acff-4a6f-832a-a795b9357532] span")
+    private WebElement CkidTcCheckbox;
 
-    @FindBy(css = "button[translate=registration.submitBt]")
+    @FindBy(css = "div[id=accepted-tc-e82a3da0-0d33-46e2-9c4c-7a0ac7d86dd9] span")
+    private WebElement EvTcCheckbox;
+
+    @FindBy(css = "button[translate=\"registration.submitBtn\"]")
     private WebElement registerButton;
 
     @FindBy(css = "a[href=\"#/login\"]")
@@ -107,10 +110,13 @@ public class CkidPageObject {
         return new Select(countryDropdown);
     }
 
-    public WebElement getTcCheckbox() {
-        return tcCheckbox;
+    public WebElement getCkidTcCheckbox() {
+        return CkidTcCheckbox;
     }
 
+    public WebElement getEvTcCheckbox() {
+        return EvTcCheckbox;
+    }
     public WebElement getRegisterButton() {
         return registerButton;
     }
