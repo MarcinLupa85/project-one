@@ -9,7 +9,6 @@
 
     <test name="sampleTests">
         <classes>
-            <class name="TestTest"/>
             <class name="ContactWithCircleKTests"/>
         </classes>
     </test>

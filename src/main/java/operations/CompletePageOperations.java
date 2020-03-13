@@ -1,6 +1,7 @@
 package operations;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageobjects.AddressPageObject;
 import pageobjects.CompletePageObject;
 import utils.WaitUtils;
@@ -16,9 +17,10 @@ public class CompletePageOperations {
         waitUtils = new WaitUtils(driver);
     }
 
-    public boolean verifyEmail(){
-
-        if ( addressPageObject.)
+    public String getEmail(){
+        WebElement email = completePageObject.getEmailText();
+        waitUtils.waitForVisiblityOf(email);
+        return email.getText();
     }
 
     public void clickBack() {

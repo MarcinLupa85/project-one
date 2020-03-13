@@ -1,14 +1,11 @@
 package utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
+import static java.lang.Thread.sleep;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class WaitUtils {
 
@@ -45,4 +42,63 @@ public class WaitUtils {
     public void waitForPresentOf(By locator) {
         this.waitForPresentOf(locator, defaultMaxTimeoutForAllWaits);
     }
+
+
+    public void waitForVisiblityOf(WebElement element) {
+        this.waitForVisiblityOf(element, defaultMaxTimeoutForAllWaits);
+    }
+
+    public void waitForVisiblityOf(WebElement element, int maxTimeInSeconds) {
+        new WebDriverWait(driver, maxTimeInSeconds)
+                .until(visibilityOf(element));
+    }
+
+    public void waitForClickabiltyOf(WebElement element, int maxTimeInSeconds) {
+        new WebDriverWait(driver, maxTimeInSeconds)
+                .until(elementToBeClickable(element));
+    }
+
+    public void waitForClickabiltyOf(WebElement element) {
+        this.waitForClickabiltyOf(element, defaultMaxTimeoutForAllWaits);
+    }
+
+    public WebElement waitForElement(WebElement element) {
+        long startTime = System.currentTimeMillis();
+        long timeOutInSeconds = defaultMaxTimeoutForAllWaits;
+        while (true) {
+            try {
+                if (element.isDisplayed()) {
+                    return element;
+                } else if (isTimeout(startTime, timeOutInSeconds)) {
+                    throw new TimeoutException(
+                            "Cannot locate element by this strategy: " + element + " waited for "
+                                    + timeOutInSeconds + " seconds with 500ms interval");
+                }
+            } catch (Exception e) {
+                if (isTimeout(startTime, timeOutInSeconds)) {
+                    throw new TimeoutException(
+                            "Cannot locate element by this strategy: " + element + " waited for "
+                                    + timeOutInSeconds + " seconds with 500ms interval");
+                }
+            }
+        }
+    }
+
+    private boolean isTimeout(long startTime, long timeOutInSeconds) {
+        return (System.currentTimeMillis() / 1000 - (startTime / 1000)) >= timeOutInSeconds;
+    }
+
+
+    public void bringElementToViewport(WebElement element) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        try {
+            sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        jsExecutor.executeScript("arguments[0].scrollIntoView()", element);
+        jsExecutor.executeScript("window.scrollBy(0, -123);");
+
+    }
+
 }

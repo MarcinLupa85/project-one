@@ -14,19 +14,22 @@ public class HomePageObject {
         PageFactory.initElements(driver, this);
     }
 
-    //czy trzeba scrollowac strone w dol, zeby wykonac .click() na elemencie ktorego nie widac na ekranie?
-    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=1'].buttons-wrapper__btn btn btn-primary")
+    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=1']")
     private WebElement purchaseFlowEaseeLink;
 
-    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=0'].buttons-wrapper__btn btn btn-primary")
+    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=0'].buttons-wrapper__btn")
     private WebElement purchaseFlowMennekesLink;
 
-
+    @FindBy(css = "li a.menu-element__hyperlink--user strong")
+    private WebElement usernameText;
 
     public WebElement getPurchaseFlowEaseeLink() {
         return purchaseFlowEaseeLink;
     }
     public WebElement getPurchaseFlowMennekesLink() {
         return purchaseFlowMennekesLink;
+    }
+    public WebElement getUsernameText() {
+        return usernameText;
     }
 }

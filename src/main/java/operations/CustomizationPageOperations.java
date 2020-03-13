@@ -19,7 +19,9 @@ public class CustomizationPageOperations {
     }
 
     public void clickNextButton() {
-        customizationPageObject.getNextButton().click();
+        WebElement nextButton = customizationPageObject.getNextButton();
+        waitUtils.bringElementToViewport(nextButton);
+        nextButton.click();
         waitUtils.waitForUrlToContains("circlekid");
     }
 
@@ -27,7 +29,7 @@ public class CustomizationPageOperations {
         customizationPageObject.getBackButton().click();
         waitUtils.waitForUrlToContains("/hjemmelading");
     }
-
+//TODO change metod to be more universal (mennekes, cables) using ENUM
     private void selectEaseeAmount (Integer value) {
         WebElement selectContainer = customizationPageObject.getEaseeNumberSelector();
         selectContainer.click();

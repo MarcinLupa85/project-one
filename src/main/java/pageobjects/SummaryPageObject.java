@@ -38,14 +38,17 @@ public class SummaryPageObject {
     @FindBy(css = "a[rel=\"event:terms\"]")
     private WebElement tcLink;
 
-    @FindBy(css = "div.acceptance:first-child input")
+    @FindBy(css = "div.acceptance:first-child span")
     private WebElement tcCheckbox;
 
-    @FindBy(css = "div.acceptance:nth-child(2) input")
+    @FindBy(css = "div.acceptance:nth-child(2) span")
     private WebElement fastInstallationCheckbox;
 
     @FindBy(css = "button[type=submit]")
     private WebElement finishOrderButton;
+
+    @FindBy(css = "p.extra-discount")
+    private WebElement extraDiscountText;
 
     public WebElement getFinishOrderButton() {
         return finishOrderButton;
@@ -95,4 +98,7 @@ public class SummaryPageObject {
         return fastInstallationCheckbox;
     }
 
+    public WebElement getExtraDiscountText() {
+        return extraDiscountText;
+    }
 }

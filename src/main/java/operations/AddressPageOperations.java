@@ -17,30 +17,37 @@ public class AddressPageOperations {
     }
 
     public void fillBillingAddress(String address) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getBillingAddressInput());
         addressPageObject.getBillingAddressInput().sendKeys(address);
     }
 
     public void fillBillingZipCode(String zipCode) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getBillingZipCodeInput());
         addressPageObject.getBillingZipCodeInput().sendKeys(zipCode);
     }
 
     public void fillBillingCity(String city) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getBillingCityInput());
         addressPageObject.getBillingCityInput().sendKeys(city);
     }
 
     public void fillInstallationAddress(String address) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getInstallationAddressInput());
         addressPageObject.getInstallationAddressInput().sendKeys(address);
     }
 
     public void fillInstallationZipCode(String zipCode) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getInstallationZipCodeInput());
         addressPageObject.getInstallationZipCodeInput().sendKeys(zipCode);
     }
 
     public void fillInstallationCity(String city) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getInstallationCityInput());
         addressPageObject.getInstallationCityInput().sendKeys(city);
     }
 
     public void fillComment(String comment) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getInstallationCityInput());
         addressPageObject.getInstallationCityInput().sendKeys(comment);
     }
 
