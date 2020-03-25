@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ContactPageObject {
+public class BusinessPageObject {
 
     private TopMenuObject topMenuObject;
 
-    public ContactPageObject(WebDriver driver) {
+    public BusinessPageObject(WebDriver driver) {
         topMenuObject =  new TopMenuObject(driver);
         PageFactory.initElements(driver, this);
     }
@@ -23,10 +23,10 @@ public class ContactPageObject {
     @FindBy(css = "input#phone")
     private WebElement telephoneNumberInput;
 
-    @FindBy(css = "input[id=\"00N5800000DlrUQ\"]")
+    @FindBy(css = "input#00N5800000DlrUQ")
     private WebElement companyNameInput;
 
-    @FindBy(css = "textarea#description")
+    @FindBy(css = "input#description")
     private WebElement commentInput;
 
     @FindBy(css = "div.message a[href=\"/home\"]")

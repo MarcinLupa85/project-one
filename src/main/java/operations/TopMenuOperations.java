@@ -20,6 +20,7 @@ public class TopMenuOperations {
     }
 
     public void openContactPage() {
+        waitUtils.waitForElement(topMenuObject.getContactLink());
         topMenuObject.getContactLink().click();
         waitUtils.waitForUrlToContains("/kontakt");
     }

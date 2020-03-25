@@ -8,7 +8,6 @@ import utils.WaitUtils;
 
 public class TopMenuObject {
 
-
     public TopMenuObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
