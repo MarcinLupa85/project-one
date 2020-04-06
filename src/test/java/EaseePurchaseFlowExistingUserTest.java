@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.testng.Assert.*;
 
-
 public class EaseePurchaseFlowExistingUserTest extends TestsBase {
 
     private HomePageOperations homePageOperations;

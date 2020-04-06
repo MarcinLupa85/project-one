@@ -1,6 +1,5 @@
 package config;
 
-
 public class DriverTypes {
 
     public static final String CHROME = "chrome";
