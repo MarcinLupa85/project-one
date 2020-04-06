@@ -1,5 +1,6 @@
 package config;
 
+
 import enums.OsFamily;
 import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -42,7 +43,7 @@ public class CapabilitiesProvider {
             default:
                 driverBinName = "";
                 break;
-        };
+        }
 
 
 

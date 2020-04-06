@@ -1,87 +1,87 @@
 package operations;
 
 import org.openqa.selenium.WebDriver;
-import pageobjects.TopMenuObject;
+import pageobjects.NavbarObject;
 import utils.WaitUtils;
 
-public class TopMenuOperations {
+public class NavbarOperations {
 
-    private TopMenuObject topMenuObject;
+    private NavbarObject navbarObject;
     private WaitUtils waitUtils;
 
-    public TopMenuOperations(WebDriver driver) {
-        topMenuObject = new TopMenuObject(driver);
+    public NavbarOperations(WebDriver driver) {
+        navbarObject = new NavbarObject(driver);
         waitUtils = new WaitUtils(driver);
     }
 
     public void openAboutUsPage() {
-        topMenuObject.getAboutUsLink().click();
+        navbarObject.getAboutUsLink().click();
         waitUtils.waitForUrlToContains("/team");
     }
 
     public void openContactPage() {
-        waitUtils.waitForElement(topMenuObject.getContactLink());
-        topMenuObject.getContactLink().click();
+        waitUtils.waitForElement(navbarObject.getContactLink());
+        navbarObject.getContactLink().click();
         waitUtils.waitForUrlToContains("/kontakt");
     }
 
     public void openFaqPage() {
-        topMenuObject.getFaqLink().click();
+        navbarObject.getFaqLink().click();
         waitUtils.waitForUrlToContains("/spørsmål-og-svar");
     }
 
     public void openOtgPage() {
-        topMenuObject.getOtgLink().click();
+        navbarObject.getOtgLink().click();
         waitUtils.waitForUrlToContains("/ladestasjoner");
     }
 
     public void openHousePage() {
-        topMenuObject.getHouseLink().click();
+        navbarObject.getHouseLink().click();
         waitUtils.waitForUrlToContains("/hjemmelading");
     }
 
     public void openApartmentPage() {
-        topMenuObject.getApartmentLink().click();
+        navbarObject.getApartmentLink().click();
         waitUtils.waitForUrlToContains("/sameie-borettslag");
     }
 
     public void openUtbyggerPage() {
-        topMenuObject.getUtbyggerLink().click();
+        navbarObject.getUtbyggerLink().click();
         waitUtils.waitForUrlToContains("/utbygger");
     }
 
     public void openBusinessPage() {
-        topMenuObject.getBusinessLink().click();
+        navbarObject.getBusinessLink().click();
         waitUtils.waitForUrlToContains("/bedrift");
     }
 
     public void openStationMapPage() {
-        topMenuObject.getStationMapLink().click();
+        navbarObject.getStationMapLink().click();
         waitUtils.waitForUrlToContains("/ladekart");
     }
 
     public void openNewsPage() {
-        topMenuObject.getNewsLink().click();
+        navbarObject.getNewsLink().click();
         waitUtils.waitForUrlToContains("/nyheter/1");
     }
 
     public void openJoinUsPage() {
-        topMenuObject.getJoinUsLink().click();
+        navbarObject.getJoinUsLink().click();
         waitUtils.waitForUrlToContains("/ladeapp");
     }
 
     public void openFacebookPage() {
-        topMenuObject.getFacebookLink().click();
+        navbarObject.getFacebookLink().click();
         waitUtils.waitForUrlToContains("facebook.com/circleknorge/");
     }
 
     public void openInstagramPage() {
-        topMenuObject.getInstagramLink().click();
+        navbarObject.getInstagramLink().click();
         waitUtils.waitForUrlToContains("instagram.com/circleknorge/");
     }
 
     public void openYoutubePage() {
-        topMenuObject.getYoutubeLink().click();
+        navbarObject.getYoutubeLink().click();
         waitUtils.waitForUrlToContains("youtube.com/playlist?list=PLOt-ClfT-VEgU-nxudMqsINMByvW94ala");
     }
 }

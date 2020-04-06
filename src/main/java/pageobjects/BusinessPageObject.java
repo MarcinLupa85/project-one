@@ -1,5 +1,6 @@
 package pageobjects;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,10 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BusinessPageObject {
 
-    private TopMenuObject topMenuObject;
+    private NavbarObject navbarObject;
 
     public BusinessPageObject(WebDriver driver) {
-        topMenuObject =  new TopMenuObject(driver);
+        navbarObject =  new NavbarObject(driver);
         PageFactory.initElements(driver, this);
     }
 

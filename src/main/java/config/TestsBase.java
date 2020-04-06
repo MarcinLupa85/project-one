@@ -9,6 +9,7 @@ import utils.WaitUtils;
 
 import static config.Constants.BASE_URL;
 
+
 public abstract class TestsBase {
 
     public WebDriver driver;
