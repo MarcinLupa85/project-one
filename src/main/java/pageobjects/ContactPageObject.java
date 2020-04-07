@@ -32,6 +32,12 @@ public class ContactPageObject {
     @FindBy(css = "div.message a[href=\"/home\"]")
     private WebElement backButton;
 
+    @FindBy(css = "button[type='submit']")
+    private WebElement submitButton;
+
+    @FindBy(css = "button[class='btn btn-sm btn-primary']")
+    private WebElement cookieOkButton;
+
     public WebElement getFullNameInput() {
         return fullNameInput;
     }
@@ -54,5 +60,13 @@ public class ContactPageObject {
 
     public WebElement getBackButton() {
         return backButton;
+    }
+
+    public WebElement submitButton() {
+        return submitButton;
+    }
+
+    public WebElement cookieOkButton() {
+        return cookieOkButton;
     }
 }

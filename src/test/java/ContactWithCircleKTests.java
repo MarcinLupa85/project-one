@@ -28,6 +28,7 @@ public class ContactWithCircleKTests extends TestsBase {
     public void testSendGeneralContactForm() {
         navbarOperations.openContactPage();
         contactPageOperations.fillForm("Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment");
+        contactPageOperations.clickCookieOkButton();
         contactPageOperations.clickSend();
         gmailPageOperations.openLatestMail();
         String[] data = new String[] {"Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment"};
