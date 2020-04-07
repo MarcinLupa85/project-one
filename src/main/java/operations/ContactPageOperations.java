@@ -26,9 +26,6 @@ public class ContactPageOperations {
         formUtils.fillField(contactPageObject.getCompanyNameInput(), company);
         formUtils.fillField(contactPageObject.getCommentInput(), comment);
     }
-    public void clickCookieOkButton() {
-        contactPageObject.cookieOkButton().click();
-    }
 
     public void clickSend() {
         contactPageObject.submitButton().click();

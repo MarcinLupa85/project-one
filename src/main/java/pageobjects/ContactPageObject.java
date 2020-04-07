@@ -35,9 +35,6 @@ public class ContactPageObject {
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
-    @FindBy(css = "button[class='btn btn-sm btn-primary']")
-    private WebElement cookieOkButton;
-
     public WebElement getFullNameInput() {
         return fullNameInput;
     }
@@ -66,7 +63,5 @@ public class ContactPageObject {
         return submitButton;
     }
 
-    public WebElement cookieOkButton() {
-        return cookieOkButton;
-    }
+
 }

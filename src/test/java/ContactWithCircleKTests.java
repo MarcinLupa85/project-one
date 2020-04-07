@@ -1,8 +1,6 @@
 import config.TestsBase;
-import operations.ContactPageOperations;
-import operations.HomePageOperations;
-import operations.GmailPageOperations;
-import operations.NavbarOperations;
+import operations.*;
+import pageobjects.CookiePanelObject;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -11,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ContactWithCircleKTests extends TestsBase {
     private HomePageOperations homePageOperations;
     private NavbarOperations navbarOperations;
+    private CookiePanelOperations cookiePanelOperations;
     private ContactPageOperations contactPageOperations;
     private GmailPageOperations gmailPageOperations;
    // private BusinessPageOperations businessPageOperations;
@@ -28,7 +27,7 @@ public class ContactWithCircleKTests extends TestsBase {
     public void testSendGeneralContactForm() {
         navbarOperations.openContactPage();
         contactPageOperations.fillForm("Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment");
-        contactPageOperations.clickCookieOkButton();
+        cookiePanelOperations.clickCookieOkButton();
         contactPageOperations.clickSend();
         gmailPageOperations.openLatestMail();
         String[] data = new String[] {"Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment"};
