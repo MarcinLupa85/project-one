@@ -23,14 +23,17 @@ public class BusinessPageObject {
     @FindBy(css = "input#phone")
     private WebElement telephoneNumberInput;
 
-    @FindBy(css = "input#00N5800000DlrUQ")
+    @FindBy(css = "#\\30 0N5800000DlrUQ")
     private WebElement companyNameInput;
 
-    @FindBy(css = "input#description")
+    @FindBy(css = "#description")
     private WebElement commentInput;
 
     @FindBy(css = "div.message a[href=\"/home\"]")
     private WebElement backButton;
+
+    @FindBy (css = "button[type='submit']")
+    private WebElement submitButton;
 
     public WebElement getFullNameInput() {
         return fullNameInput;
@@ -55,4 +58,6 @@ public class BusinessPageObject {
     public WebElement getBackButton() {
         return backButton;
     }
+
+    public WebElement submitButton() { return submitButton; }
 }

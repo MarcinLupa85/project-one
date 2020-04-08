@@ -9,14 +9,20 @@ public class CookiePanelObject{
     private CookiePanelObject cookiePanelObject;
 
     public CookiePanelObject(WebDriver driver) {
-        cookiePanelObject =  new CookiePanelObject(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(css = "button[class='btn btn-sm btn-primary']")
     private WebElement cookieOkButton;
 
+    @FindBy(css = "button[class='btn-close']")
+    private WebElement cookieCloseButton;
+
     public WebElement cookieOkButton() {
         return cookieOkButton;
+    }
+
+    public WebElement cookieCloseButton(){
+        return cookieCloseButton;
     }
 }
