@@ -14,6 +14,7 @@ public class ContactWithCircleKTests extends TestsBase {
     private GmailPageOperations gmailPageOperations;
     private BusinessPageOperations businessPageOperations;
     private ApartmentPageOperations apartmentPageOperations;
+    private UtbyggerPageOperations utbyggerPageOperations;
 
     @BeforeMethod
     private void initOperations() {
@@ -24,6 +25,7 @@ public class ContactWithCircleKTests extends TestsBase {
         businessPageOperations =  new BusinessPageOperations(driver);
         gmailPageOperations = new GmailPageOperations(driver);
         apartmentPageOperations = new ApartmentPageOperations(driver);
+        utbyggerPageOperations = new UtbyggerPageOperations(driver);
     }
 
     @Test
@@ -62,9 +64,18 @@ public class ContactWithCircleKTests extends TestsBase {
     public void testSendApartmentContactForm() {
         navbarOperations.openNavbarDropdown();
         navbarOperations.openApartmentPage();
-        apartmentPageOperations.fillContactForm("Test", "Automation", "evtestautomation@gmail.com", "123873456", "Company name", "123","1234", "Test comment");
+        apartmentPageOperations.fillContactForm("Test", "Automation", "evtestautomation@gmail.com", "123873456", "Company name", "123","1234", "Test description");
         cookiePanelOperations.clickCookieOkButton();
         apartmentPageOperations.clickSendContactForm();
+    }
+
+    @Test
+    public void testSendUtbyggerContactForm() {
+        navbarOperations.openNavbarDropdown();
+        navbarOperations.openUtbyggerPage();
+        utbyggerPageOperations.fillForm("Test", "Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test Project", "123", "Test description" );
+        cookiePanelOperations.clickCookieOkButton();
+        utbyggerPageOperations.clickSendForm();
     }
 
 }
