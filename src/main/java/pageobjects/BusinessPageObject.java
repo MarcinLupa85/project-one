@@ -35,9 +35,7 @@ public class BusinessPageObject {
     @FindBy (css = "button[type='submit']")
     private WebElement submitButton;
 
-    public WebElement getFullNameInput() {
-        return fullNameInput;
-    }
+    public WebElement getFullNameInput() { return fullNameInput; }
 
     public WebElement getEmailInput() {
         return emailInput;

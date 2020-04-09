@@ -30,10 +30,13 @@ public class NavbarObject {
     @FindBy(css = "a[href='/hjemmelading'].nav-link")
     private WebElement houseLink;
 
+    @FindBy(css = "[class='nav-link dropdown-hover menu-element__hyperlink--user dropdown-toggle']")
+    private WebElement navbarDropdown;
+
     @FindBy(css = "a[href='/sameie-borettslag'].nav-link")
     private WebElement apartmentLink;
 
-    //czy openUtbyggerPage() zadziala, jesli ten element jest na poczatku niewidoczny?
+    //czy openUtbyggerPage() zadziala, jesli ten element jest na poczatku niewidoczny? - nope
     @FindBy(css = "a[href='/utbygger'].nav-link")
     private WebElement utbyggerLink;
 
@@ -73,9 +76,8 @@ public class NavbarObject {
     public WebElement getHouseLink() {
         return houseLink;
     }
-    public WebElement getApartmentLink() {
-        return apartmentLink;
-    }
+    public WebElement getNavbarDropdown() {return navbarDropdown; }
+    public WebElement getApartmentLink() { return apartmentLink; }
     public WebElement getUtbyggerLink() {
         return utbyggerLink;
     }

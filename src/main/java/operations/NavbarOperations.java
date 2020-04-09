@@ -40,6 +40,10 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/hjemmelading");
     }
 
+    public void openNavbarDropdown() {
+        navbarObject.getNavbarDropdown().click();
+    }
+
     public void openApartmentPage() {
         navbarObject.getApartmentLink().click();
         waitUtils.waitForUrlToContains("/sameie-borettslag");
