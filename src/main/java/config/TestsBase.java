@@ -23,7 +23,7 @@ public abstract class TestsBase {
         driver.manage().window().maximize();
         driver.navigate().to(BASE_URL);
         waitUtils.waitUntilOnUrl(10, BASE_URL);
-        waitUtils.waitForPresentOf(By.cssSelector("app-image.banner-image-desktop"));
+        waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
     }
 
     @AfterMethod(alwaysRun = true)

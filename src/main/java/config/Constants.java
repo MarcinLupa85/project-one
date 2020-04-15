@@ -9,7 +9,7 @@ public class Constants {
 
     public static final String TEST_HUB_URL = "http://test_hub:4444/wd/hub";
     public static final String DEBUG_HUB_URL = "http://localhost:4444/wd/hub";
-    public static final String BASE_URL = "https://emobility-test-stable.test.gneis.io/home";
+    public static final String BASE_URL = "https://emobility-test-unstable.test.gneis.io/home";
     public static final String DRIVER_TYPE = Optional.ofNullable(System.getenv("driver_type")).orElse("remote_chrome");
     public static final String LINUX_DRIVER_BINARY_NAME = "chromedriver_linux";
     public static final String MAC_DRIVER_BINARY_NAME = "chromedriver_mac";
