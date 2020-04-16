@@ -37,8 +37,6 @@ public class HomePageOperations {
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
-
-
     public void logOut() {
         WebElement username = homePageObject.getUsernameText();
         waitUtils.waitForVisiblityOf(username);

@@ -14,19 +14,19 @@ public class ContactPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "input#name")
+    @FindBy(css = "[id='name']")
     private WebElement fullNameInput;
 
-    @FindBy(css = "input#email")
+    @FindBy(css = "[id='email']")
     private WebElement emailInput;
 
-    @FindBy(css = "input#phone")
+    @FindBy(css = "[id='phone']")
     private WebElement telephoneNumberInput;
 
-    @FindBy(css = "input[id=\"00N5800000DlrUQ\"]")
+    @FindBy(css = "[id='00N5800000DlrUQ']")
     private WebElement companyNameInput;
 
-    @FindBy(css = "textarea#description")
+    @FindBy(css = "[id='description']")
     private WebElement commentInput;
 
     @FindBy(css = "div.message a[href=\"/home\"]")
@@ -35,33 +35,17 @@ public class ContactPageObject {
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
-    public WebElement getFullNameInput() {
-        return fullNameInput;
-    }
+    public WebElement getFullNameInput() { return fullNameInput; }
 
-    public WebElement getEmailInput() {
-        return emailInput;
-    }
+    public WebElement getEmailInput() { return emailInput; }
 
-    public WebElement getTelephoneNumberInput() {
-        return telephoneNumberInput;
-    }
+    public WebElement getTelephoneNumberInput() { return telephoneNumberInput; }
 
-    public WebElement getCompanyNameInput() {
-        return companyNameInput;
-    }
+    public WebElement getCompanyNameInput() { return companyNameInput; }
 
-    public WebElement getCommentInput() {
-        return commentInput;
-    }
+    public WebElement getCommentInput() { return commentInput; }
 
-    public WebElement getBackButton() {
-        return backButton;
-    }
+    public WebElement getBackButton() { return backButton; }
 
-    public WebElement submitButton() {
-        return submitButton;
-    }
-
-
+    public WebElement submitButton() { return submitButton; }
 }

@@ -40,7 +40,6 @@ public class CustomizationPageOperations {
                 .findFirst()
                 .get()
                 .click();
-
     }
 
     public void tickExtraCheckbox() {

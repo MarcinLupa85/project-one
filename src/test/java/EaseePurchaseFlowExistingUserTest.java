@@ -1,8 +1,6 @@
 import config.TestsBase;
 import operations.*;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,13 +34,13 @@ public class EaseePurchaseFlowExistingUserTest extends TestsBase {
         addressPageOperations.fillBillingAddress("Test Addresse 582");
         addressPageOperations.fillBillingCity("Test Billing City");
         addressPageOperations.fillBillingZipCode("72433");
-        addressPageOperations.clickNext(); //TODO: zmienić na DriverUtils.clicknext
+        addressPageOperations.clickNext(); //TODO: change to DriverUtils.clicknext
         if (extraDiscount) {
             assertTrue(summaryPageOperations.hasExtraDiscount());
         } else {
             assertFalse(summaryPageOperations.hasExtraDiscount());
         }
-        summaryPageOperations.tickTcCheckbox();
+        summaryPageOperations.tickTermsAndConditionsCheckbox();
         summaryPageOperations.clickNext();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();

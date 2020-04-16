@@ -49,8 +49,8 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/sameie-borettslag");
     }
 
-    public void openUtbyggerPage() {
-        navbarObject.getUtbyggerLink().click();
+    public void openDeveloperPage() {
+        navbarObject.getDeveloperLink().click();
         waitUtils.waitForUrlToContains("/utbygger");
     }
 

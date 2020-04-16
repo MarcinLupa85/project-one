@@ -2,7 +2,6 @@ import config.TestsBase;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageobjects.ApartmentPageObject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +13,7 @@ public class ContactWithCircleKTests extends TestsBase {
     private GmailPageOperations gmailPageOperations;
     private BusinessPageOperations businessPageOperations;
     private ApartmentPageOperations apartmentPageOperations;
-    private UtbyggerPageOperations utbyggerPageOperations;
+    private DeveloperPageOperations developerPageOperations;
     private ReportProblemPageOperations reportProblemPageOperations;
 
     @BeforeMethod
@@ -26,7 +25,7 @@ public class ContactWithCircleKTests extends TestsBase {
         businessPageOperations =  new BusinessPageOperations(driver);
         gmailPageOperations = new GmailPageOperations(driver);
         apartmentPageOperations = new ApartmentPageOperations(driver);
-        utbyggerPageOperations = new UtbyggerPageOperations(driver);
+        developerPageOperations = new DeveloperPageOperations(driver);
         reportProblemPageOperations = new ReportProblemPageOperations(driver);
     }
 
@@ -74,10 +73,10 @@ public class ContactWithCircleKTests extends TestsBase {
     @Test
     public void testSendUtbyggerContactForm() {
         navbarOperations.openNavbarDropdown();
-        navbarOperations.openUtbyggerPage();
-        utbyggerPageOperations.fillForm("Test", "Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test Project", "123", "Test description" );
+        navbarOperations.openDeveloperPage();
+        developerPageOperations.fillForm("Test", "Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test Project", "123", "Test description" );
         cookiePanelOperations.clickCookieOkButton();
-        utbyggerPageOperations.clickSendForm();
+        developerPageOperations.clickSendForm();
     }
 
     @Test

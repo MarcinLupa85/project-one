@@ -14,12 +14,7 @@ public class DriverUtils {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void clickNext(WebElement element, String redirectionUrl) {
-        element.click();
-        waitUtils.waitForUrlToContains(redirectionUrl);
-    }
-
-    public void clickBack(WebElement element, String redirectionUrl) {
+    public void clickAndWait(WebElement element, String redirectionUrl) {
         element.click();
         waitUtils.waitForUrlToContains(redirectionUrl);
     }

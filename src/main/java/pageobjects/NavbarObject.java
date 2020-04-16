@@ -36,9 +36,8 @@ public class NavbarObject {
     @FindBy(css = "a[href='/sameie-borettslag'].nav-link")
     private WebElement apartmentLink;
 
-    //czy openUtbyggerPage() zadziala, jesli ten element jest na poczatku niewidoczny? - nope
     @FindBy(css = "a[href='/utbygger'].nav-link")
-    private WebElement utbyggerLink;
+    private WebElement developerLink;
 
     @FindBy(css = "a[href='/bedrift'].nav-link")
     private WebElement businessLink;
@@ -76,14 +75,12 @@ public class NavbarObject {
     public WebElement getHouseLink() {
         return houseLink;
     }
-    public WebElement getNavbarDropdown() {return navbarDropdown; }
+    public WebElement getNavbarDropdown() { return navbarDropdown; }
     public WebElement getApartmentLink() { return apartmentLink; }
-    public WebElement getUtbyggerLink() {
-        return utbyggerLink;
+    public WebElement getDeveloperLink() {
+        return developerLink;
     }
-    public WebElement getBusinessLink() {
-        return businessLink;
-    }
+    public WebElement getBusinessLink() { return businessLink; }
     public WebElement getStationMapLink() {
         return stationMapLink;
     }

@@ -5,26 +5,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UtbyggerPageObject {
-    private UtbyggerPageObject utbyggerPageObject;
+public class DeveloperPageObject {
+    private DeveloperPageObject developerPageObject;
 
-    public UtbyggerPageObject(WebDriver driver) {
+    public DeveloperPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "input#first_name")
+    @FindBy(css = "[id='first_name']")
     private WebElement firstName;
 
-    @FindBy(css = "input#last_name")
+    @FindBy(css = "[id='last_name']")
     private WebElement lastName;
 
-    @FindBy(css = "input#email")
+    @FindBy(css = "[id='email']")
     private WebElement email;
 
-    @FindBy(css = "input#mobile")
+    @FindBy(css = "[id='mobile']")
     private WebElement mobile;
 
-    @FindBy(css = "input#company")
+    @FindBy(css = "[id='company']")
     private WebElement comapany;
 
     @FindBy(css = "[id='00N580000082RAX']")
@@ -33,7 +33,7 @@ public class UtbyggerPageObject {
     @FindBy(css = "[id='00N1x000001qwx1']")
     private WebElement parkingPlaces;
 
-    @FindBy(css = "#description")
+    @FindBy(css = "[id='description']")
     private WebElement description;
 
     @FindBy (css = "button[type='submit']")

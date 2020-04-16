@@ -10,7 +10,6 @@ public class CookiePanelOperations {
         cookiePanelObject = new CookiePanelObject(driver);
     }
 
-
     public void clickCookieOkButton() {
         cookiePanelObject.cookieOkButton().click();
     }

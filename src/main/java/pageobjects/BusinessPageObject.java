@@ -14,19 +14,19 @@ public class BusinessPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "input#name")
+    @FindBy(css = "[id='name']")
     private WebElement fullNameInput;
 
-    @FindBy(css = "input#email")
+    @FindBy(css = "[id='email']")
     private WebElement emailInput;
 
-    @FindBy(css = "input#phone")
+    @FindBy(css = "[id='phone']")
     private WebElement telephoneNumberInput;
 
     @FindBy(css = "#\\30 0N5800000DlrUQ")
     private WebElement companyNameInput;
 
-    @FindBy(css = "#description")
+    @FindBy(css = "[id='description']")
     private WebElement commentInput;
 
     @FindBy(css = "div.message a[href=\"/home\"]")

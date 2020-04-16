@@ -16,10 +16,6 @@ public class ApartmentPageOperations {
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
     }
-    
-    public void fillCostForm(int units, int number){
-
-    }
 
     public void fillContactForm(String firstName, String lastName, String email, String mobile, String company, String parkingPlaces,String zipCode, String description){
         waitUtils.bringElementToViewport(apartmentPageObject.getFirstName());

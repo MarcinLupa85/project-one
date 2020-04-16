@@ -19,10 +19,10 @@ public class SummaryPageOperations {
         driverUtils = new DriverUtils(driver);
     }
 
-    public void tickTcCheckbox() {
-        WebElement tcCheckbox = summaryPageObject.getTcCheckbox();
-        waitUtils.bringElementToViewport(tcCheckbox);
-        tcCheckbox.click();
+    public void tickTermsAndConditionsCheckbox() {
+        WebElement termsAndConditionsCheckbox = summaryPageObject.getTcCheckbox();
+        waitUtils.bringElementToViewport(termsAndConditionsCheckbox);
+        termsAndConditionsCheckbox.click();
     }
 
     public void clickNext() {
