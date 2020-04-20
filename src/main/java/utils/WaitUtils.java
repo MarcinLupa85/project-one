@@ -1,8 +1,12 @@
 package utils;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -53,15 +57,6 @@ public class WaitUtils {
                 .until(visibilityOf(element));
     }
 
-    public void waitForClickabiltyOf(WebElement element, int maxTimeInSeconds) {
-        new WebDriverWait(driver, maxTimeInSeconds)
-                .until(elementToBeClickable(element));
-    }
-
-    public void waitForClickabiltyOf(WebElement element) {
-        this.waitForClickabiltyOf(element, defaultMaxTimeoutForAllWaits);
-    }
-
     public WebElement waitForElement(WebElement element) {
         long startTime = System.currentTimeMillis();
         long timeOutInSeconds = defaultMaxTimeoutForAllWaits;
@@ -88,17 +83,10 @@ public class WaitUtils {
         return (System.currentTimeMillis() / 1000 - (startTime / 1000)) >= timeOutInSeconds;
     }
 
-
     public void bringElementToViewport(WebElement element) {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        try {
-            sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         jsExecutor.executeScript("arguments[0].scrollIntoView()", element);
         jsExecutor.executeScript("window.scrollBy(0, -123);");
-
     }
 
 }

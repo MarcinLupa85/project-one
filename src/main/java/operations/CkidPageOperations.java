@@ -36,6 +36,7 @@ public class CkidPageOperations {
         ckidPageObject.getPhoneNumberInput().sendKeys(phoneNumber);
         ckidPageObject.getSendCodeButton().click();
         waitUtils.waitForPresentOf(By.cssSelector("input#validation-code-input"));
+        // universal SMS code for test CKID environments
         ckidPageObject.getSmsCodeInput().sendKeys("000000");
         ckidPageObject.getVerifyCodeButton().click();
         waitUtils.waitForPresentOf(By.cssSelector("input[type=email"));
@@ -47,9 +48,9 @@ public class CkidPageOperations {
         waitUtils.waitForPresentOf(By.cssSelector("input[type=checkbox]"));
         ckidPageObject.getCkidTcCheckbox().click();
         ckidPageObject.getEvTcCheckbox().click();
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getRegisterButton());
-//        ckidPageObject.getRegisterButton().click();
+        //JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        //jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getRegisterButton());
+        ckidPageObject.getRegisterButton().click();
     }
 
 }
