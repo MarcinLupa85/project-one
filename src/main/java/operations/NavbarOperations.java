@@ -14,30 +14,10 @@ public class NavbarOperations {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void openAboutUsPage() {
-        navbarObject.getAboutUsLink().click();
-        waitUtils.waitForUrlToContains("/team");
-    }
-
     public void openContactPage() {
         waitUtils.waitForElement(navbarObject.getContactLink());
         navbarObject.getContactLink().click();
         waitUtils.waitForUrlToContains("/kontakt");
-    }
-
-    public void openFaqPage() {
-        navbarObject.getFaqLink().click();
-        waitUtils.waitForUrlToContains("/spørsmål-og-svar");
-    }
-
-    public void openOtgPage() {
-        navbarObject.getOtgLink().click();
-        waitUtils.waitForUrlToContains("/ladestasjoner");
-    }
-
-    public void openHousePage() {
-        navbarObject.getHouseLink().click();
-        waitUtils.waitForUrlToContains("/hjemmelading");
     }
 
     public void openNavbarDropdown() {
@@ -59,33 +39,4 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/bedrift");
     }
 
-    public void openStationMapPage() {
-        navbarObject.getStationMapLink().click();
-        waitUtils.waitForUrlToContains("/ladekart");
-    }
-
-    public void openNewsPage() {
-        navbarObject.getNewsLink().click();
-        waitUtils.waitForUrlToContains("/nyheter/1");
-    }
-
-    public void openJoinUsPage() {
-        navbarObject.getJoinUsLink().click();
-        waitUtils.waitForUrlToContains("/ladeapp");
-    }
-
-    public void openFacebookPage() {
-        navbarObject.getFacebookLink().click();
-        waitUtils.waitForUrlToContains("facebook.com/circleknorge/");
-    }
-
-    public void openInstagramPage() {
-        navbarObject.getInstagramLink().click();
-        waitUtils.waitForUrlToContains("instagram.com/circleknorge/");
-    }
-
-    public void openYoutubePage() {
-        navbarObject.getYoutubeLink().click();
-        waitUtils.waitForUrlToContains("youtube.com/playlist?list=PLOt-ClfT-VEgU-nxudMqsINMByvW94ala");
-    }
 }
