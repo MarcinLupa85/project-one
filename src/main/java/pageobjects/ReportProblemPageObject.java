@@ -27,8 +27,6 @@ public class ReportProblemPageObject {
     @FindBy(css = "select[id*='00N1x000002heGE']")
     private WebElement carMake;
 
-    //@FindBy(css = "#\\30 0N1x000002heGE > option:nth-child(2)")    private WebElement carMakeBMW;
-
     @FindBy(css = "#\\30 0N1x000002heKR")
     private WebElement carModel;
 
@@ -53,8 +51,6 @@ public class ReportProblemPageObject {
     public WebElement getChargersNumber() { return chargersNumber; }
 
     public WebElement getCarMake() { return carMake; }
-
-    //public WebElement getCarMakeBMW() { return carMakeBMW; }
 
     public WebElement getCarModel() { return carModel; }
 

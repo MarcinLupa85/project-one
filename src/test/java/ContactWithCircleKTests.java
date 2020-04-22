@@ -10,7 +10,6 @@ public class ContactWithCircleKTests extends TestsBase {
     private NavbarOperations navbarOperations;
     private CookiePanelOperations cookiePanelOperations;
     private ContactPageOperations contactPageOperations;
-    private GmailPageOperations gmailPageOperations;
     private BusinessPageOperations businessPageOperations;
     private ApartmentPageOperations apartmentPageOperations;
     private DeveloperPageOperations developerPageOperations;
@@ -23,7 +22,6 @@ public class ContactWithCircleKTests extends TestsBase {
         contactPageOperations =  new ContactPageOperations(driver);
         cookiePanelOperations = new CookiePanelOperations(driver);
         businessPageOperations =  new BusinessPageOperations(driver);
-        gmailPageOperations = new GmailPageOperations(driver);
         apartmentPageOperations = new ApartmentPageOperations(driver);
         developerPageOperations = new DeveloperPageOperations(driver);
         reportProblemPageOperations = new ReportProblemPageOperations(driver);
@@ -35,14 +33,6 @@ public class ContactWithCircleKTests extends TestsBase {
         contactPageOperations.fillForm("Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment");
         cookiePanelOperations.clickCookieOkButton();
         contactPageOperations.clickSend();
-        /*gmailPageOperations.openLatestMail();
-        String[] data = new String[] {"Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment"};
-        String emailData = gmailPageOperations.getContactFormData();
-        for (String s : data)
-        {
-            assertThat(emailData.contains(s));
-        }
-        gmailPageOperations.deleteMail();*/
     }
 
     @Test
@@ -51,14 +41,6 @@ public class ContactWithCircleKTests extends TestsBase {
         businessPageOperations.fillForm("Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment");
         cookiePanelOperations.clickCookieOkButton();
         contactPageOperations.clickSend();
-        /*gmailPageOperations.openLatestMail();
-        String[] data = new String[] {"Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment"};
-        String emailData = gmailPageOperations.getContactFormData();
-        for (String s : data)
-        {
-            assertThat(emailData.contains(s));
-        }
-        gmailPageOperations.deleteMail();*/
     }
 
     @Test
