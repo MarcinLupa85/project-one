@@ -46,22 +46,19 @@ public class EaseePurchaseFlowNewUserTest extends TestsBase {
         completePageOperations.clickBack();
         assertThat(driver.getCurrentUrl().contains("/home"));
         ckidDashboardPageOperations.deleteAccount();
-
     }
-
 
     @Test
     public void testEaseePurchaseFlowWithNoExtra() {
-        homePageOperations.openEaseePurchaseFlow();
-        purchaseFlowNewUser("575437499", "michal.sepczuk+noextra@edge1s.com", false);
+        homePageOperations.openEaseePurchaseFlowNoExtra();
+        purchaseFlowNewUser("575437499", "testEaseePurchaseFlowWithNoExtra@mailinator.com", false);
     }
 
     @Test
     public void testEaseePurchaseFlowWithExtra() {
-        homePageOperations.openEaseePurchaseFlow();
+        homePageOperations.openEaseePurchaseFlowWithExtra();
         purchaseFlowNewUser("575437499", "michal.sepczuk+extra@edge1s.com",true);
     }
-
 
     @Test
     public void testCablePurchaseFlowWithNoExtra() {

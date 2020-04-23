@@ -4,7 +4,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.testng.Assert.*;
 
 public class EaseePurchaseFlowExistingUserTest extends TestsBase {
@@ -27,7 +26,6 @@ public class EaseePurchaseFlowExistingUserTest extends TestsBase {
         completePageOperations = new CompletePageOperations(driver);
     }
 
-
     public void purchaseFlowExistingUser(String username, boolean extraDiscount) {
         customizationPageOperations.clickNextButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
@@ -46,19 +44,17 @@ public class EaseePurchaseFlowExistingUserTest extends TestsBase {
         completePageOperations.clickBack();
         homePageOperations.logOut();
         assertThat(driver.getCurrentUrl().contains("/home"));
-
     }
-
 
     @Test
     public void testEaseePurchaseFlowWithNoExtra() {
-        homePageOperations.openEaseePurchaseFlow();
-        purchaseFlowExistingUser("michal.sepczuk+6@edge1s.com", false);
+        homePageOperations.openEaseePurchaseFlowNoExtra();
+        purchaseFlowExistingUser("testEaseePurchaseFlowWithNoExtra@mailinator.com", false);
     }
 
     @Test
     public void testEaseePurchaseFlowWithExtra() {
-        homePageOperations.openEaseePurchaseFlow();
+        homePageOperations.openEaseePurchaseFlowWithExtra();
         purchaseFlowExistingUser("michal.sepczuk+1@edge1s.com", true);
     }
 

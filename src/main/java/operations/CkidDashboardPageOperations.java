@@ -21,7 +21,8 @@ public class CkidDashboardPageOperations {
 
     public void deleteAccount() {
         driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
-        waitUtils.waitForElement(ckidDashboardPageObject.getEditAccountButton()).click();
+        waitUtils.bringElementToViewport(ckidDashboardPageObject.getEditAccountButton());
+        ckidDashboardPageObject.getEditAccountButton().click();
         waitUtils.waitForElement(ckidDashboardPageObject.getDeleteAccountButton()).click();
         waitUtils.waitForElement(ckidDashboardPageObject.getValidationPhraseInput()).sendKeys("ZAMKNIJ MOJE KONTO");
         waitUtils.waitForElement(ckidDashboardPageObject.getDeleteAccountConfirmationButton()).click();

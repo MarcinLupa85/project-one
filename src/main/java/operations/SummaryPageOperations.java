@@ -30,7 +30,7 @@ public class SummaryPageOperations {
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/complete");
     }
 
-    public boolean hasExtraDiscount(){
+    public boolean hasExtraDiscount(){ ;
         return driverUtils.isElementPresent(By.cssSelector("p.extra-discount"));
     }
 

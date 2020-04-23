@@ -36,13 +36,13 @@ public class CkidPageObject {
     @FindBy(css = "select#edit-region-select")
     private WebElement countryDropdown;
 
-    @FindBy(css = "input.accept-tc-checkbox")
+    @FindBy(css = "div[id=accepted-tc-4f2461a0-acff-4a6f-832a-a795b9357532] span")
     private WebElement CkidTcCheckbox;
 
     @FindBy(css = "div[id=accepted-tc-e82a3da0-0d33-46e2-9c4c-7a0ac7d86dd9] span")
     private WebElement EvTcCheckbox;
 
-    @FindBy(css = "button.btn.order-button")
+    @FindBy(css = "#main-view > div > div > div > div > form > fieldset > div:nth-child(10) > div > button")
     private WebElement registerButton;
 
     @FindBy(css = "a[href=\"#/login\"]")
@@ -109,9 +109,7 @@ public class CkidPageObject {
 
     public WebElement getCkidTcCheckbox() { return CkidTcCheckbox; }
 
-    public WebElement getEvTcCheckbox() {
-        return EvTcCheckbox;
-    }
+    public WebElement getEvTcCheckbox() { return EvTcCheckbox; }
 
     public WebElement getRegisterButton() { return registerButton; }
 }
