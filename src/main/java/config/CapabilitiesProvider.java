@@ -42,7 +42,7 @@ public class CapabilitiesProvider {
             default:
                 driverBinName = "";
                 break;
-        };
+        }
 
 
 
