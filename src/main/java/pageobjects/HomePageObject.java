@@ -23,6 +23,10 @@ public class HomePageObject {
     @FindBy(css = "li a.menu-element__hyperlink--user strong")
     private WebElement usernameText;
 
+    @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar'].btn")
+    private WebElement readMoreFaqButton;
+
+
     public WebElement getPurchaseFlowEaseeLink() {
         return purchaseFlowEaseeLink;
     }
@@ -32,4 +36,5 @@ public class HomePageObject {
     public WebElement getUsernameText() {
         return usernameText;
     }
+    public WebElement getReadMoreFaqButton() { return  readMoreFaqButton; }
 }
