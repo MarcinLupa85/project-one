@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 public class FaqTests extends TestsBase {
     private HomePageOperations homePageOperations;
+    private OnTheGoPageOperations onTheGoPageOperations;
     private HousePageOperations housePageOperations;
     private ApartmentPageOperations apartmentPageOperations;
     private NavbarOperations navbarOperations;
@@ -13,6 +14,7 @@ public class FaqTests extends TestsBase {
     @BeforeMethod
     private void initOperations() {
         homePageOperations = new HomePageOperations(driver);
+        onTheGoPageOperations = new OnTheGoPageOperations(driver);
         housePageOperations = new HousePageOperations(driver);
         apartmentPageOperations = new ApartmentPageOperations(driver);
         navbarOperations = new NavbarOperations(driver);
@@ -20,14 +22,19 @@ public class FaqTests extends TestsBase {
     }
 
     @Test
-    public void housePageGoToFaqTest() {
-        navbarOperations.openHousePage();
-        housePageOperations.goToFaq();
+    public void homePageGoToFaqTest() {
+        homePageOperations.goToFaq();
     }
 
     @Test
-    public void homePageGoToFaqTest() {
-        homePageOperations.goToFaq();
+    public void onTheGoPageGoToFaqTest() {
+        navbarOperations.openOnTheGoPage();
+        onTheGoPageOperations.goToFaq();
+    }
+    @Test
+    public void housePageGoToFaqTest() {
+        navbarOperations.openHousePage();
+        housePageOperations.goToFaq();
     }
 
     @Test

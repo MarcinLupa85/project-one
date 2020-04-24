@@ -12,6 +12,9 @@ public class NavbarObject {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(css = "a[href='/ladestasjoner'].nav-link")
+    private WebElement onTheGoLink;
+
     @FindBy(css = "a[href='/hjemmelading'].nav-link")
     private WebElement houseLink;
 
@@ -30,6 +33,7 @@ public class NavbarObject {
     @FindBy(css = "a[href='/bedrift'].nav-link")
     private WebElement businessLink;
 
+    public WebElement getOnTheGoLink() { return onTheGoLink; }
     public WebElement getHouseLink() { return houseLink; }
     public WebElement getContactLink() { return contactLink; }
     public WebElement getNavbarDropdown() { return navbarDropdown; }

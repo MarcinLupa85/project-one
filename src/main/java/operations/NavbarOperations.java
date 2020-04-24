@@ -14,6 +14,11 @@ public class NavbarOperations {
         waitUtils = new WaitUtils(driver);
     }
 
+    public void openOnTheGoPage() {
+        navbarObject.getOnTheGoLink().click();
+        waitUtils.waitForUrlToContains("ladestasjoner");
+    }
+
     public void openHousePage() {
         navbarObject.getHouseLink().click();
         waitUtils.waitForUrlToContains("/hjemmelading");
