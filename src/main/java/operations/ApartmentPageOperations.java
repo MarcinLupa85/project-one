@@ -5,9 +5,8 @@ import org.openqa.selenium.WebElement;
 import pageobjects.ApartmentPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.testng.Assert.*;
+
 
 public class ApartmentPageOperations {
 
