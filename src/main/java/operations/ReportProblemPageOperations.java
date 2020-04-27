@@ -1,6 +1,5 @@
 package operations;
 
-import config.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import pageobjects.ReportProblemPageObject;
@@ -27,6 +26,7 @@ public class ReportProblemPageOperations {
     }
 
     public void fillReportForm(String fullNameInput, String emailInput, String telephoneNumberInput, String chargersNumber,String carModel, String description){
+        waitUtils.waitForElement(reportProblemPageObject.getFullNameInput());
         waitUtils.bringElementToViewport(reportProblemPageObject.getFullNameInput());
         formUtils.fillField(reportProblemPageObject.getFullNameInput(), fullNameInput);
         formUtils.fillField(reportProblemPageObject.getEmailInput(), emailInput);
