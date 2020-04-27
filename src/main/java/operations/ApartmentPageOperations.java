@@ -1,20 +1,25 @@
 package operations;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageobjects.ApartmentPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class ApartmentPageOperations {
 
     private ApartmentPageObject apartmentPageObject;
     private WaitUtils waitUtils;
     private FormUtils formUtils;
+    private WebDriver driver;
 
     public ApartmentPageOperations(WebDriver driver) {
         apartmentPageObject = new ApartmentPageObject(driver);
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
+        this.driver = driver;
     }
 
     public void fillContactForm(String firstName, String lastName, String email, String mobile, String company, String parkingPlaces,String zipCode, String description){
@@ -31,5 +36,14 @@ public class ApartmentPageOperations {
     public void clickSendContactForm() {
         waitUtils.waitForVisiblityOf(apartmentPageObject.getContactSubmitButton());
         apartmentPageObject.getContactSubmitButton().click();
+    }
+
+    public void goToFaq() {
+        WebElement readMoreFaqButton = apartmentPageObject.getReadMoreFaqButton();
+        waitUtils.waitForVisiblityOf(readMoreFaqButton);
+        waitUtils.bringElementToViewport(readMoreFaqButton);
+        readMoreFaqButton.click();
+        waitUtils.waitForUrlToContains("/apartment",2);
+        assertThat(driver.getCurrentUrl()).contains("/apartment");
     }
 }

@@ -12,18 +12,6 @@ public class ApartmentPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "input#parkingUnits")
-    private WebElement parkingUnits;
-
-    @FindBy(css = "input#chargersNumber")
-    private WebElement chargersNumber;
-
-    @FindBy(id = "parkingType")
-    private WebElement parkingType;
-
-    @FindBy(css = "button[class='btn btn-primary']")
-    private WebElement costSubmitButton;
-
     @FindBy(css = "input#first_name")
     private WebElement firstName;
 
@@ -51,13 +39,8 @@ public class ApartmentPageObject {
     @FindBy(css = "button.contact-branded-button")
     private WebElement contactSubmitButton;
 
-    public WebElement getParkingUnits() { return parkingUnits; }
-
-    public WebElement getChargersNumber() { return chargersNumber; }
-
-    public WebElement getParkingType() { return  parkingType; }
-
-    public WebElement getCostSubmitButton() { return costSubmitButton; }
+    @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar/apartment'].btn-primary")
+    private WebElement readMoreFaqButton;
 
     public WebElement getFirstName() { return firstName; }
 
@@ -76,4 +59,6 @@ public class ApartmentPageObject {
     public WebElement getDescription() { return description; }
 
     public WebElement getContactSubmitButton() { return contactSubmitButton; }
+
+    public WebElement getReadMoreFaqButton() { return readMoreFaqButton; }
 }

@@ -7,6 +7,7 @@ import pageobjects.HomePageObject;
 import utils.WaitUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.testng.Assert.assertTrue;
 
 public class HomePageOperations {
 
@@ -62,7 +63,8 @@ public class HomePageOperations {
         waitUtils.waitForVisiblityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        assertThat(driver.getCurrentUrl().contains("/on-the-go"));
+        waitUtils.waitForUrlToContains("/on-the-go",2);
+        assertThat(driver.getCurrentUrl()).contains("/on-the-go");
     }
 
 }
