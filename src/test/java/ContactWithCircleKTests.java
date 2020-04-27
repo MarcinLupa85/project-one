@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ContactWithCircleKTests extends TestsBase {
-    private HomePageOperations homePageOperations;
     private NavbarOperations navbarOperations;
     private CookiePanelOperations cookiePanelOperations;
     private ContactPageOperations contactPageOperations;
