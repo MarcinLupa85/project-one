@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import pageobjects.HomePageObject;
 import utils.WaitUtils;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class HomePageOperations {
 
     private HomePageObject homePageObject;
@@ -56,4 +58,12 @@ public class HomePageOperations {
         waitUtils.waitForUrlToContains("/home");
     }
 
+    public void goToFaq() {
+        WebElement readMoreFaqButton = homePageObject.getReadMoreFaqButton();
+        waitUtils.waitForVisiblityOf(readMoreFaqButton);
+        waitUtils.bringElementToViewport(readMoreFaqButton);
+        readMoreFaqButton.click();
+        waitUtils.waitForUrlToContains("/on-the-go",2);
+        assertThat(driver.getCurrentUrl()).contains("/on-the-go");
+    }
 }
