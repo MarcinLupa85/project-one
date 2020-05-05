@@ -12,28 +12,28 @@ public class ApartmentPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "input#first_name")
+    @FindBy(id = "first_name")
     private WebElement firstName;
 
-    @FindBy(css = "input#last_name")
+    @FindBy(id = "last_name")
     private WebElement lastName;
 
-    @FindBy(css = "input#email")
+    @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(css = "input#mobile")
+    @FindBy(id = "mobile")
     private WebElement mobile;
 
-    @FindBy(css = "input#company")
+    @FindBy(id = "company")
     private WebElement comapany;
 
     @FindBy(css = "[id='00N1x000001qwx1']")
     private WebElement parkingPlaces;
 
-    @FindBy(css = "input#zip")
+    @FindBy(id = "zip")
     private WebElement zipCode;
 
-    @FindBy(css = "#description")
+    @FindBy(id = "description")
     private WebElement description;
 
     @FindBy(css = "button.contact-branded-button")

@@ -28,16 +28,13 @@ public class ContactWithCircleKTests extends TestsBase {
     public void testSendGeneralContactForm() {
         navbarOperations.openContactPage();
         contactPageOperations.fillForm("Test Automation", "testSendGeneralContactForm@mailinator.com", "123873456", "Company name", "Test comment");
-        cookiePanelOperations.clickCookieOkButton();
         contactPageOperations.clickSend();
     }
 
     @Test
     public void testSendBusinessContactForm() {
-
         navbarOperations.openBusinessPage();
         businessPageOperations.fillForm("Test Automation", "testSendBusinessContactForm@mailinator.com", "123873456", "Company name", "Test comment");
-        cookiePanelOperations.clickCookieOkButton();
         contactPageOperations.clickSend();
     }
 
@@ -46,7 +43,6 @@ public class ContactWithCircleKTests extends TestsBase {
         navbarOperations.openNavbarDropdown();
         navbarOperations.openApartmentPage();
         apartmentPageOperations.fillContactForm("Test", "Automation", "testSendApartmentContactForm@mailinator.com", "123873456", "Company name", "123","1234", "Test description");
-        cookiePanelOperations.clickCookieOkButton();
         apartmentPageOperations.clickSendContactForm();
     }
 
@@ -55,7 +51,6 @@ public class ContactWithCircleKTests extends TestsBase {
         navbarOperations.openNavbarDropdown();
         navbarOperations.openDeveloperPage();
         developerPageOperations.fillForm("Test", "Automation", "testSendDeveloperContactForm@mailinator.com", "123873456", "Company name", "Test Project", "123", "Test description" );
-        cookiePanelOperations.clickCookieOkButton();
         developerPageOperations.clickSendForm();
     }
 
@@ -64,7 +59,6 @@ public class ContactWithCircleKTests extends TestsBase {
         reportProblemPageOperations.goToReportProblemPage();
         reportProblemPageOperations.fillReportForm("Test Automation", "testSendReportProblemForm@mailinator.com", "123873456", "123", "Test model", "Test description");
         reportProblemPageOperations.chooseCarMake();
-        cookiePanelOperations.clickCookieOkButton();
         reportProblemPageOperations.clickSend();
     }
 

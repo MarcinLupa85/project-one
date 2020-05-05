@@ -1,9 +1,8 @@
 package config;
 
+import operations.CookiePanelOperations;
 import org.openqa.selenium.*;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import utils.WaitUtils;
 
@@ -14,6 +13,7 @@ public abstract class TestsBase {
 
     public WebDriver driver;
     private WaitUtils waitUtils;
+    private CookiePanelOperations cookiePanelOperations;
 
 
     @BeforeMethod(alwaysRun = true)
@@ -24,6 +24,9 @@ public abstract class TestsBase {
         driver.navigate().to(BASE_URL);
         waitUtils.waitUntilOnUrl(10, BASE_URL);
         waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
+        cookiePanelOperations = new CookiePanelOperations(driver);
+        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
+        cookiePanelOperations.clickCookieOkButton();
     }
 
     @AfterMethod(alwaysRun = true)

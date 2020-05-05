@@ -12,19 +12,19 @@ public class DeveloperPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "[id='first_name']")
+    @FindBy(id = "first_name")
     private WebElement firstName;
 
-    @FindBy(css = "[id='last_name']")
+    @FindBy(id = "last_name")
     private WebElement lastName;
 
-    @FindBy(css = "[id='email']")
+    @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(css = "[id='mobile']")
+    @FindBy(id = "[mobile")
     private WebElement mobile;
 
-    @FindBy(css = "[id='company']")
+    @FindBy(id = "company")
     private WebElement comapany;
 
     @FindBy(css = "[id='00N580000082RAX']")
@@ -33,7 +33,7 @@ public class DeveloperPageObject {
     @FindBy(css = "[id='00N1x000001qwx1']")
     private WebElement parkingPlaces;
 
-    @FindBy(css = "[id='description']")
+    @FindBy(id = "description")
     private WebElement description;
 
     @FindBy (css = "button[type='submit']")
