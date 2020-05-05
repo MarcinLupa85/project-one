@@ -10,7 +10,7 @@ public class MailinatorPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "#addOverlay")
+    @FindBy(id = "addOverlay")
     private WebElement enterMailName;
 
     @FindBy(css = "input[class='flat']")

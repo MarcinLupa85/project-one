@@ -21,7 +21,7 @@ public class DeveloperPageObject {
     @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(id = "[mobile")
+    @FindBy(id = "mobile")
     private WebElement mobile;
 
     @FindBy(id = "company")
