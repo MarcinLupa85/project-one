@@ -12,7 +12,7 @@ public class MailinatorPageOperations {
     private WebDriver webDriver;
     private FormUtils formUtils;
     private WaitUtils waitUtils;
-    long timeNow = System.currentTimeMillis();
+    private long timeNow = System.currentTimeMillis();
 
     public long getTimeNow() {
         return timeNow;
@@ -34,6 +34,5 @@ public class MailinatorPageOperations {
         waitUtils.waitForElement(mailinatorPageObject.getMailCheckbox());
         mailinatorPageObject.getMailCheckbox().click();
     }
-
 
 }
