@@ -12,7 +12,7 @@ public class CookiePanelObject{
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "button[class='btn btn-sm btn-primary']")
+    @FindBy(id = "CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")
     private WebElement cookieOkButton;
 
     @FindBy(css = "button[class='btn-close']")

@@ -12,13 +12,13 @@ public class ReportProblemPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "[id='name']")
+    @FindBy(id = "name")
     private WebElement fullNameInput;
 
-    @FindBy(css = "[id='email']")
+    @FindBy(id = "email")
     private WebElement emailInput;
 
-    @FindBy(css = "[id='phone']")
+    @FindBy(id = "phone")
     private WebElement telephoneNumberInput;
 
     @FindBy(css = "[id='00N1x000002heFL']")
@@ -30,7 +30,7 @@ public class ReportProblemPageObject {
     @FindBy(css = "#\\30 0N1x000002heKR")
     private WebElement carModel;
 
-    @FindBy(css = "[id=description]")
+    @FindBy(id = "description")
     private WebElement description;
 
     @FindBy(css = "button[type='submit']")

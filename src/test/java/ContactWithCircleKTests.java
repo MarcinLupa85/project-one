@@ -3,8 +3,6 @@ import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class ContactWithCircleKTests extends TestsBase {
     private NavbarOperations navbarOperations;
     private CookiePanelOperations cookiePanelOperations;
@@ -14,9 +12,9 @@ public class ContactWithCircleKTests extends TestsBase {
     private DeveloperPageOperations developerPageOperations;
     private ReportProblemPageOperations reportProblemPageOperations;
 
+
     @BeforeMethod
     private void initOperations() {
-
         navbarOperations = new NavbarOperations(driver);
         contactPageOperations =  new ContactPageOperations(driver);
         cookiePanelOperations = new CookiePanelOperations(driver);
@@ -29,16 +27,14 @@ public class ContactWithCircleKTests extends TestsBase {
     @Test
     public void testSendGeneralContactForm() {
         navbarOperations.openContactPage();
-        contactPageOperations.fillForm("Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment");
-        cookiePanelOperations.clickCookieOkButton();
+        contactPageOperations.fillForm("Test Automation", "testSendGeneralContactForm@mailinator.com", "123873456", "Company name", "Test comment");
         contactPageOperations.clickSend();
     }
 
     @Test
     public void testSendBusinessContactForm() {
         navbarOperations.openBusinessPage();
-        businessPageOperations.fillForm("Test Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test comment");
-        cookiePanelOperations.clickCookieOkButton();
+        businessPageOperations.fillForm("Test Automation", "testSendBusinessContactForm@mailinator.com", "123873456", "Company name", "Test comment");
         contactPageOperations.clickSend();
     }
 
@@ -46,26 +42,23 @@ public class ContactWithCircleKTests extends TestsBase {
     public void testSendApartmentContactForm() {
         navbarOperations.openNavbarDropdown();
         navbarOperations.openApartmentPage();
-        apartmentPageOperations.fillContactForm("Test", "Automation", "evtestautomation@gmail.com", "123873456", "Company name", "123","1234", "Test description");
-        cookiePanelOperations.clickCookieOkButton();
+        apartmentPageOperations.fillContactForm("Test", "Automation", "testSendApartmentContactForm@mailinator.com", "123873456", "Company name", "123","1234", "Test description");
         apartmentPageOperations.clickSendContactForm();
     }
 
     @Test
-    public void testSendUtbyggerContactForm() {
+    public void testSendDeveloperContactForm() {
         navbarOperations.openNavbarDropdown();
         navbarOperations.openDeveloperPage();
-        developerPageOperations.fillForm("Test", "Automation", "evtestautomation@gmail.com", "123873456", "Company name", "Test Project", "123", "Test description" );
-        cookiePanelOperations.clickCookieOkButton();
+        developerPageOperations.fillForm("Test", "Automation", "testSendDeveloperContactForm@mailinator.com", "123873456", "Company name", "Test Project", "123", "Test description" );
         developerPageOperations.clickSendForm();
     }
 
     @Test
     public void testSendReportProblemForm(){
         reportProblemPageOperations.goToReportProblemPage();
-        reportProblemPageOperations.fillReportForm("Test Automation", "evtestautomation@gmail.com", "123873456", "123", "Test model", "Test description");
+        reportProblemPageOperations.fillReportForm("Test Automation", "testSendReportProblemForm@mailinator.com", "123873456", "123", "Test model", "Test description");
         reportProblemPageOperations.chooseCarMake();
-        cookiePanelOperations.clickCookieOkButton();
         reportProblemPageOperations.clickSend();
     }
 
