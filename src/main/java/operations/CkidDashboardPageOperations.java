@@ -1,11 +1,10 @@
 package operations;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pageobjects.CkidDashboardPageObject;
 import utils.WaitUtils;
+
+import static config.Constants.BASE_URL;
 
 public class CkidDashboardPageOperations {
 
@@ -26,6 +25,7 @@ public class CkidDashboardPageOperations {
         waitUtils.waitForElement(ckidDashboardPageObject.getDeleteAccountButton()).click();
         waitUtils.waitForElement(ckidDashboardPageObject.getValidationPhraseInput()).sendKeys("CLOSE MY ACCOUNT");
         waitUtils.waitForElement(ckidDashboardPageObject.getDeleteAccountConfirmationButton()).click();
+        driver.navigate().to(BASE_URL);
     }
 
 }
