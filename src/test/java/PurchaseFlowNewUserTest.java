@@ -61,33 +61,50 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithNoExtra() {
         homePageOperations.openEaseePurchaseFlowNoExtra();
         phoneNumber = "575437400";
-        userName = "testeaseenoextra@mailinator.com";
+        userName = "testeaseenoextra" + mailinatorPageOperations.getTimeNow() + "@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
     }
 
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        purchaseFlowNewUser("575437401", "testeaseewithextra@mailinator.com",true);
+        phoneNumber = "575437399";
+        userName = "testeaseewithextra" + mailinatorPageOperations.getTimeNow() + "@mailinator.com";
+        extraDiscount = true;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
     }
 
     @Test
     public void testCablePurchaseFlowWithNoExtra() {
         homePageOperations.openCablePurchaseFlow();
-        purchaseFlowNewUser("575437402", "testcablenoextra@mailinator.com", false);
+        phoneNumber = "575437402";
+        userName = "testcablenoextra" + mailinatorPageOperations.getTimeNow() + "@mailinator.com";
+        extraDiscount = false;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
     }
 
     @Test
     public void testMennekesPurchaseFlowWithNoExtra() {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
-        purchaseFlowNewUser("575437404", "testmennekesnoextra@mailinator.com", false);
+        phoneNumber = "575437404";
+        userName = "testmennekesnoextra" + mailinatorPageOperations.getTimeNow() + "@mailinator.com";
+        extraDiscount = false;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
     }
 
     @Test
     public void testMennekesPurchaseFlowWithExtra() {
         homePageOperations.openMennekesPurchaseFlowWithExtra();
-        purchaseFlowNewUser("575437405", "testmennekeswithextra@mailinator.com",true);
+        phoneNumber = "575437405";
+        userName = "testmennekeswithextra" + mailinatorPageOperations.getTimeNow() + "@mailinator.com";
+        extraDiscount = true;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
     }
 
 }
