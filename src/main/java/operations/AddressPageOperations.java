@@ -57,7 +57,7 @@ public class AddressPageOperations {
 
     public void clickNext() {
         addressPageObject.getNextButton().click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/confirm-order");
+        waitUtils.waitForUrlToContains("/house-order/confirm-order");
     }
 
     public void clickBack() {

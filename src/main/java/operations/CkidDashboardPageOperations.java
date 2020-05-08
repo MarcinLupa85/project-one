@@ -24,7 +24,7 @@ public class CkidDashboardPageOperations {
         waitUtils.bringElementToViewport(ckidDashboardPageObject.getEditAccountButton());
         ckidDashboardPageObject.getEditAccountButton().click();
         waitUtils.waitForElement(ckidDashboardPageObject.getDeleteAccountButton()).click();
-        waitUtils.waitForElement(ckidDashboardPageObject.getValidationPhraseInput()).sendKeys("ZAMKNIJ MOJE KONTO");
+        waitUtils.waitForElement(ckidDashboardPageObject.getValidationPhraseInput()).sendKeys("CLOSE MY ACCOUNT");
         waitUtils.waitForElement(ckidDashboardPageObject.getDeleteAccountConfirmationButton()).click();
     }
 

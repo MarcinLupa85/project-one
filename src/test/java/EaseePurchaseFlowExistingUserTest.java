@@ -72,13 +72,13 @@ public class EaseePurchaseFlowExistingUserTest extends TestsBase {
 
     @Test
     public void testMennekesPurchaseFlowWithNoExtra() {
-        homePageOperations.openMennekesPurchaseFlow();
+        homePageOperations.openMennekesPurchaseFlowNoExtra();
         purchaseFlowExistingUser("michal.sepczuk+6@edge1s.com", false);
     }
 
     @Test
     public void testMennekesPurchaseFlowWithExtra() {
-        homePageOperations.openMennekesPurchaseFlow();
+        homePageOperations.openMennekesPurchaseFlowNoExtra();
         purchaseFlowExistingUser("michal.sepczuk+1@edge1s.com", true);
     }
 

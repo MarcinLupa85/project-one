@@ -25,22 +25,34 @@ public class HomePageOperations {
     public void openEaseePurchaseFlowNoExtra() {
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
         waitUtils.bringElementToViewport(easeeLink);
+        waitUtils.waitForVisiblityOf(easeeLink);
         easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
     public void openEaseePurchaseFlowWithExtra() {
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
+        waitUtils.waitForVisiblityOf(easeeLink);
         waitUtils.bringElementToViewport(easeeLink);
         easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
         customizationPageOperations.tickExtraCheckbox();
     }
 
-    public void openMennekesPurchaseFlow() {
+    public void openMennekesPurchaseFlowNoExtra() {
         WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
+        waitUtils.waitForVisiblityOf(mennekesLink);
         waitUtils.bringElementToViewport(mennekesLink);
         mennekesLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+    }
+
+    public void openMennekesPurchaseFlowWithExtra() {
+        WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
+        waitUtils.waitForVisiblityOf(mennekesLink);
+        waitUtils.bringElementToViewport(mennekesLink);
+        mennekesLink.click();
+        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+        customizationPageOperations.tickExtraCheckbox();
     }
 
     public void openCablePurchaseFlow() {

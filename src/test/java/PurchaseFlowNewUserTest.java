@@ -1,24 +1,28 @@
 import config.TestsBase;
 import operations.*;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.testng.Assert.*;
 
-public class EaseePurchaseFlowNewUserTest extends TestsBase {
-
-     private HomePageOperations homePageOperations;
-     private CustomizationPageOperations customizationPageOperations;
-     private CkidPageOperations ckidPageOperations;
-     private AddressPageOperations addressPageOperations;
-     private SummaryPageOperations summaryPageOperations;
-     private CompletePageOperations completePageOperations;
-     private CkidDashboardPageOperations ckidDashboardPageOperations;
+public class PurchaseFlowNewUserTest extends TestsBase {
+    private MailinatorPageOperations mailinatorPageOperations;
+    private HomePageOperations homePageOperations;
+    private CustomizationPageOperations customizationPageOperations;
+    private CkidPageOperations ckidPageOperations;
+    private AddressPageOperations addressPageOperations;
+    private SummaryPageOperations summaryPageOperations;
+    private CompletePageOperations completePageOperations;
+    private CkidDashboardPageOperations ckidDashboardPageOperations;
+    private String phoneNumber, userName;
+    private Boolean extraDiscount;
 
 
     @BeforeMethod
     private void initOperations() {
+        mailinatorPageOperations = new MailinatorPageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -29,6 +33,7 @@ public class EaseePurchaseFlowNewUserTest extends TestsBase {
     }
 
     public void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) {
+        long getTimeNow = mailinatorPageOperations.getTimeNow();
         customizationPageOperations.clickNextButton();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
@@ -45,43 +50,44 @@ public class EaseePurchaseFlowNewUserTest extends TestsBase {
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
         assertThat(driver.getCurrentUrl().contains("/home"));
+    }
+
+    @AfterMethod(alwaysRun = true)
+    private void cleanUp() {
         ckidDashboardPageOperations.deleteAccount();
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() {
         homePageOperations.openEaseePurchaseFlowNoExtra();
-        purchaseFlowNewUser("575437499", "testEaseePurchaseFlowWithNoExtra@mailinator.com", false);
+        phoneNumber = "575437400";
+        userName = "testeaseenoextra@mailinator.com";
+        extraDiscount = false;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        purchaseFlowNewUser("575437499", "michal.sepczuk+extra@edge1s.com",true);
+        purchaseFlowNewUser("575437401", "testeaseewithextra@mailinator.com",true);
     }
 
     @Test
     public void testCablePurchaseFlowWithNoExtra() {
         homePageOperations.openCablePurchaseFlow();
-        purchaseFlowNewUser("575437500", "michal.sepczuk+noextra@edge1s.com", false);
-    }
-
-    @Test
-    public void testCablePurchaseFlowWithExtra() {
-        homePageOperations.openCablePurchaseFlow();
-        purchaseFlowNewUser("575437500", "michal.sepczuk+extra@edge1s.com",true);
+        purchaseFlowNewUser("575437402", "testcablenoextra@mailinator.com", false);
     }
 
     @Test
     public void testMennekesPurchaseFlowWithNoExtra() {
-        homePageOperations.openMennekesPurchaseFlow();
-        purchaseFlowNewUser("575437500", "michal.sepczuk+noextra@edge1s.com", false);
+        homePageOperations.openMennekesPurchaseFlowNoExtra();
+        purchaseFlowNewUser("575437404", "testmennekesnoextra@mailinator.com", false);
     }
 
     @Test
     public void testMennekesPurchaseFlowWithExtra() {
-        homePageOperations.openMennekesPurchaseFlow();
-        purchaseFlowNewUser("575437500", "michal.sepczuk+extra@edge1s.com",true);
+        homePageOperations.openMennekesPurchaseFlowWithExtra();
+        purchaseFlowNewUser("575437405", "testmennekeswithextra@mailinator.com",true);
     }
 
 }

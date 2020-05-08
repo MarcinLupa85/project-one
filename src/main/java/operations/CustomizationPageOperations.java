@@ -20,7 +20,7 @@ public class CustomizationPageOperations {
 
     public void clickNextButton() {
         WebElement nextButton = customizationPageObject.getNextButton();
-        waitUtils.bringElementToViewport(nextButton);
+        waitUtils.waitForVisiblityOf(nextButton);
         nextButton.click();
         waitUtils.waitForUrlToContains("circlekid");
     }
@@ -43,6 +43,7 @@ public class CustomizationPageOperations {
     }
 
     public void tickExtraCheckbox() {
+        customizationPageObject.getInstalllationCheckbox().click();
         customizationPageObject.getExtraCheckbox().click();
     }
 
