@@ -24,8 +24,8 @@ public class HomePageOperations {
 
     public void openEaseePurchaseFlowNoExtra() {
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
-        waitUtils.bringElementToViewport(easeeLink);
         waitUtils.waitForVisiblityOf(easeeLink);
+        waitUtils.bringElementToViewport(easeeLink);
         easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
