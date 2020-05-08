@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
-public class EaseePurchaseFlowExistingUserTest extends TestsBase {
-
+public class PurchaseFlowExistingUserTest extends TestsBase {
+    private MailinatorPageOperations mailinatorPageOperations;
     private HomePageOperations homePageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
@@ -18,6 +18,7 @@ public class EaseePurchaseFlowExistingUserTest extends TestsBase {
 
     @BeforeMethod
     private void initOperations() {
+        mailinatorPageOperations = new MailinatorPageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -49,37 +50,36 @@ public class EaseePurchaseFlowExistingUserTest extends TestsBase {
     @Test
     public void testEaseePurchaseFlowWithNoExtra() {
         homePageOperations.openEaseePurchaseFlowNoExtra();
-        purchaseFlowExistingUser("testEaseePurchaseFlowWithNoExtra@mailinator.com", false);
+        purchaseFlowExistingUser("testeaseenoextra@mailinator.com", false);
+        mailinatorPageOperations.checkMailinator("testeaseenoextra@mailinator.com");
     }
 
     @Test
     public void testEaseePurchaseFlowWithExtra() {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        purchaseFlowExistingUser("michal.sepczuk+1@edge1s.com", true);
+        purchaseFlowExistingUser("testeaseewithextra@mailinator.com", true);
+        mailinatorPageOperations.checkMailinator("testeaseewithextra@mailinator.com");
     }
 
     @Test
     public void testCablePurchaseFlowWithNoExtra() {
         homePageOperations.openCablePurchaseFlow();
-        purchaseFlowExistingUser("michal.sepczuk+6@edge1s.com", false);
-    }
-
-    @Test
-    public void testCablePurchaseFlowWithExtra() {
-        homePageOperations.openCablePurchaseFlow();
-        purchaseFlowExistingUser("michal.sepczuk+1@edge1s.com", true);
+        purchaseFlowExistingUser("testcablenoextra@mailinator.com", false);
+        mailinatorPageOperations.checkMailinator("testcablenoextra@mailinator.com");
     }
 
     @Test
     public void testMennekesPurchaseFlowWithNoExtra() {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
-        purchaseFlowExistingUser("michal.sepczuk+6@edge1s.com", false);
+        purchaseFlowExistingUser("testmennekesnoextra@mailinator.com", false);
+        mailinatorPageOperations.checkMailinator("testmennekesnoextra@mailinator.com");
     }
 
     @Test
     public void testMennekesPurchaseFlowWithExtra() {
-        homePageOperations.openMennekesPurchaseFlowNoExtra();
-        purchaseFlowExistingUser("michal.sepczuk+1@edge1s.com", true);
+        homePageOperations.openEaseePurchaseFlowWithExtra();
+        purchaseFlowExistingUser("testmennekeswithextra@mailinator.com", true);
+        mailinatorPageOperations.checkMailinator("testmennekeswithextra@mailinator.com");
     }
 
 }
