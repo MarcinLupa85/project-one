@@ -6,23 +6,23 @@ import org.openqa.selenium.WebElement;
 import pageobjects.CustomizationPageObject;
 import utils.WaitUtils;
 
-import java.util.List;
-
 public class CustomizationPageOperations {
 
     private CustomizationPageObject customizationPageObject;
     private WaitUtils waitUtils;
+    WebDriver driver;
 
     public CustomizationPageOperations(WebDriver driver) {
         customizationPageObject = new CustomizationPageObject(driver);
         waitUtils = new WaitUtils(driver);
+        this.driver = driver;
     }
 
-    public void clickNextButton() {
-        WebElement nextButton = customizationPageObject.getNextButton();
-        waitUtils.waitForVisiblityOf(nextButton);
-        nextButton.click();
-        waitUtils.waitForUrlToContains("circlekid");
+    public void clickSubmitButton() {
+        WebElement submitButton = customizationPageObject.getSubmitButton();
+        waitUtils.waitForVisiblityOf(submitButton);
+        submitButton.click();
+        waitUtils.waitForPresentOf(By.id("submit-registration-step-one"));
     }
 
     public void clickBackButton() {

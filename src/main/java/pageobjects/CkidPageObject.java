@@ -18,7 +18,7 @@ public class CkidPageObject {
     @FindBy(css = "[id='edit-phone-number']")
     private WebElement phoneNumberInput;
 
-    @FindBy(css = "button[id='submit-registration-step-one']")
+    @FindBy(id = "submit-registration-step-one")
     private WebElement sendCodeButton;
 
     @FindBy(css = "[id='validation-code-input']")

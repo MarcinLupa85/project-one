@@ -1,8 +1,12 @@
 import config.TestsBase;
 import operations.*;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeoutException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
@@ -30,8 +34,8 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         ckidDashboardPageOperations = new CkidDashboardPageOperations(driver);
     }
 
-    public void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) {
-        customizationPageOperations.clickNextButton();
+    private void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) {
+        customizationPageOperations.clickSubmitButton();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
         addressPageOperations.fillBillingCity("Test Billing City");
@@ -49,56 +53,61 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
-    @AfterMethod(alwaysRun = true)
-    private void cleanUp() {
-        ckidDashboardPageOperations.deleteAccount();
+    @AfterMethod
+    private void cleanUp(ITestResult result) {
+        if (result.isSuccess()) {
+            ckidDashboardPageOperations.deleteAccount();
+        } else {
+            driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
+        }
     }
 
-    @Test(alwaysRun = true)
-    public void testEaseePurchaseFlowWithNoExtra() {
-        homePageOperations.openEaseePurchaseFlowNoExtra();
-        phoneNumber = "575437300";
-        userName = "newuser.easeenoextra@mailinator.com";
-        extraDiscount = false;
-        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
-        mailinatorPageOperations.checkMailinator(userName);
-    }
 
     @Test(alwaysRun = true)
-    public void testEaseePurchaseFlowWithExtra() {
+    public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        phoneNumber = "575437399";
-        userName = "newuser.testeaseewithextra@mailinator.com";
+        phoneNumber = "575437398";
+        userName = "newuser.easeewithextra@mailinator.com";
         extraDiscount = true;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);
     }
 
+
+    @Test(alwaysRun = true)
+    public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
+        homePageOperations.openEaseePurchaseFlowNoExtra();
+        phoneNumber = "575437666";
+        userName = "newuser.easeenoextra@mailinator.com";
+        extraDiscount = false;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
+    }
     @Test
     public void testCablePurchaseFlowWithNoExtra() {
         homePageOperations.openCablePurchaseFlow();
-        phoneNumber = "575437302";
-        userName = "newuser.testcablenoextra@mailinator.com";
+        phoneNumber = "575437306";
+        userName = "newuser.cablenoextra@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);
     }
 
     @Test
-    public void testMennekesPurchaseFlowWithNoExtra() {
+    public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
         phoneNumber = "575437304";
-        userName = "newuser.testmennekesnoextra@mailinator.com";
+        userName = "newuser.mennekesnoextra@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);
     }
 
     @Test
-    public void testMennekesPurchaseFlowWithExtra() {
+    public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithExtra();
         phoneNumber = "575437305";
-        userName = "newuser.testmennekeswithextra@mailinator.com";
+        userName = "newuser.mennekeswithextra@mailinator.com";
         extraDiscount = true;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);

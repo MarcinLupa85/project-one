@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import pageobjects.HomePageObject;
 import utils.WaitUtils;
 
+import java.util.concurrent.TimeoutException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HomePageOperations {
@@ -22,14 +24,16 @@ public class HomePageOperations {
         customizationPageOperations = new CustomizationPageOperations(driver);
     }
 
-    public void openEaseePurchaseFlowNoExtra() {
+    public void openEaseePurchaseFlowNoExtra() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
         waitUtils.waitForVisiblityOf(easeeLink);
         waitUtils.bringElementToViewport(easeeLink);
         easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
-    public void openEaseePurchaseFlowWithExtra() {
+    public void openEaseePurchaseFlowWithExtra() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
         waitUtils.waitForVisiblityOf(easeeLink);
         waitUtils.bringElementToViewport(easeeLink);
@@ -38,7 +42,8 @@ public class HomePageOperations {
         customizationPageOperations.tickExtraCheckbox();
     }
 
-    public void openMennekesPurchaseFlowNoExtra() {
+    public void openMennekesPurchaseFlowNoExtra() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
         WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
         waitUtils.waitForVisiblityOf(mennekesLink);
         waitUtils.bringElementToViewport(mennekesLink);
@@ -46,7 +51,8 @@ public class HomePageOperations {
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
-    public void openMennekesPurchaseFlowWithExtra() {
+    public void openMennekesPurchaseFlowWithExtra() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
         WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
         waitUtils.waitForVisiblityOf(mennekesLink);
         waitUtils.bringElementToViewport(mennekesLink);

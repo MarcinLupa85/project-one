@@ -24,7 +24,7 @@ public class CustomizationPageObject
     private WebElement backButton;
 
     @FindBy(css = "button[type='submit']")
-    private WebElement nextButton;
+    private WebElement submitButton;
 
     public WebElement getEaseeNumberSelector() { return easeeNumberSelector; }
 
@@ -36,6 +36,6 @@ public class CustomizationPageObject
         return backButton;
     }
 
-    public WebElement getNextButton() { return nextButton; }
+    public WebElement getSubmitButton() { return submitButton; }
 
 }
