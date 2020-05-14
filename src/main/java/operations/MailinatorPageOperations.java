@@ -12,11 +12,6 @@ public class MailinatorPageOperations {
     private WebDriver webDriver;
     private FormUtils formUtils;
     private WaitUtils waitUtils;
-    private long timeNow = System.currentTimeMillis();
-
-    public long getTimeNow() {
-        return timeNow;
-    }
 
     public MailinatorPageOperations(WebDriver driver) {
         mailinatorPageObject = new MailinatorPageObject(driver);
@@ -33,6 +28,7 @@ public class MailinatorPageOperations {
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForElement(mailinatorPageObject.getMailCheckbox());
         mailinatorPageObject.getMailCheckbox().click();
+        mailinatorPageObject.getDeleteButton().click();
     }
 
 }

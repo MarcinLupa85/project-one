@@ -11,13 +11,13 @@ public class AddressPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "input#billing_address_address")
+    @FindBy(id = "billingAddress")
     private WebElement billingAddressInput;
 
-    @FindBy(css = "input#billing_address_zip_code")
+    @FindBy(id = "billingZip")
     private WebElement billingZipCodeInput;
 
-    @FindBy(css = "input#billing_address_city")
+    @FindBy(id = "billingCity")
     private WebElement billingCityInput;
 
     @FindBy(css = "input#installation_address_address")

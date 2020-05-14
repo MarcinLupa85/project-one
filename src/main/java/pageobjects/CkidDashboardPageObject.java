@@ -12,7 +12,7 @@ public class CkidDashboardPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "#user-dashboard > div:nth-child(3) > div > div:nth-child(4) > button")
+    @FindBy(css = "section#user-dashboard [ui-sref='dashboard.myAccount']")
     private WebElement editAccountButton;
 
     @FindBy(css = "button[ng-click=\"deleteAccount()\"]")

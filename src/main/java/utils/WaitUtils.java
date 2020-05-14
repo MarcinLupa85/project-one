@@ -1,14 +1,10 @@
 package utils;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.*;
 
-import static java.lang.Thread.sleep;
+import java.sql.Timestamp;
+import java.time.Duration;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class WaitUtils {
@@ -29,6 +25,24 @@ public class WaitUtils {
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(WebDriverException.class)
                 .until(urlContains(url));
+    }
+
+    public void waitForDocumentReadyState() throws java.util.concurrent.TimeoutException {
+        Timestamp timestampWithTimeoutAdded = new Timestamp(System.currentTimeMillis() + 30000);
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        String documentState = (String) jse.executeScript("return document.readyState");
+        while (new Timestamp(System.currentTimeMillis()).before(timestampWithTimeoutAdded)) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (documentState.equals("complete")) {
+                return;
+            }
+        }
+        throw new java.util.concurrent.TimeoutException();
     }
 
     public void waitUntilOnUrl(int timeoutInSeconds, String url) {
