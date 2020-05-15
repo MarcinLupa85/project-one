@@ -1,8 +1,6 @@
 package operations;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pageobjects.AddressPageObject;
 import utils.WaitUtils;
 
@@ -57,7 +55,7 @@ public class AddressPageOperations {
 
     public void clickNext() {
         addressPageObject.getNextButton().click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/confirm-order");
+        waitUtils.waitForUrlToContains("/house-order/confirm-order");
     }
 
     public void clickBack() {

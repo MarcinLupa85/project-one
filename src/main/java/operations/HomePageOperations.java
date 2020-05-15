@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import pageobjects.HomePageObject;
 import utils.WaitUtils;
 
+import java.util.concurrent.TimeoutException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HomePageOperations {
@@ -22,25 +24,41 @@ public class HomePageOperations {
         customizationPageOperations = new CustomizationPageOperations(driver);
     }
 
-    public void openEaseePurchaseFlowNoExtra() {
+    public void openEaseePurchaseFlowNoExtra() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
+        waitUtils.waitForVisiblityOf(easeeLink);
         waitUtils.bringElementToViewport(easeeLink);
         easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
-    public void openEaseePurchaseFlowWithExtra() {
+    public void openEaseePurchaseFlowWithExtra() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
+        waitUtils.waitForVisiblityOf(easeeLink);
         waitUtils.bringElementToViewport(easeeLink);
         easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
         customizationPageOperations.tickExtraCheckbox();
     }
 
-    public void openMennekesPurchaseFlow() {
+    public void openMennekesPurchaseFlowNoExtra() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
         WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
+        waitUtils.waitForVisiblityOf(mennekesLink);
         waitUtils.bringElementToViewport(mennekesLink);
         mennekesLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+    }
+
+    public void openMennekesPurchaseFlowWithExtra() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
+        waitUtils.waitForVisiblityOf(mennekesLink);
+        waitUtils.bringElementToViewport(mennekesLink);
+        mennekesLink.click();
+        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+        customizationPageOperations.tickExtraCheckbox();
     }
 
     public void openCablePurchaseFlow() {

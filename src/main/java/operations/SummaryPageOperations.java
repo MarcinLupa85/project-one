@@ -27,12 +27,11 @@ public class SummaryPageOperations {
 
     public void clickNext() {
         summaryPageObject.getFinishOrderButton().click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/complete");
+        waitUtils.waitForUrlToContains("/house-order/complete");
     }
 
-    public boolean hasExtraDiscount(){ ;
-        return driverUtils.isElementPresent(By.cssSelector("p.extra-discount"));
+    public boolean hasExtraDiscount(){
+        return driverUtils.isElementPresent(By.xpath(".//h4[contains(text(), 'EXTRA Club medlemsrabatt')]"));
     }
-
 
 }

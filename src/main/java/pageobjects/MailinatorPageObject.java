@@ -16,7 +16,12 @@ public class MailinatorPageObject {
     @FindBy(css = "input[class='flat']")
     private WebElement mailCheckbox;
 
+    @FindBy(css = "button[title='Delete Emails']")
+    private WebElement deleteButton;
+
     public WebElement getEnterMailName() { return enterMailName; }
 
     public WebElement getMailCheckbox() { return mailCheckbox; }
+
+    public WebElement getDeleteButton() { return deleteButton; }
 }

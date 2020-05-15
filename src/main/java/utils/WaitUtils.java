@@ -36,7 +36,7 @@ public class WaitUtils {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            
+
             String documentState = (String) jse.executeScript("return document.readyState");
             if (documentState.equals("complete")) {
                 return;

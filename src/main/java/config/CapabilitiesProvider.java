@@ -54,6 +54,7 @@ public class CapabilitiesProvider {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         chromeOptions.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
+        chromeOptions.addArguments("--lang=en");
         return chromeOptions;
     }
 

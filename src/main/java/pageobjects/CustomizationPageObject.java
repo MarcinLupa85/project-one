@@ -14,16 +14,21 @@ public class CustomizationPageObject
     @FindBy(css = "li#id1 app-number-selector")
     private WebElement easeeNumberSelector;
 
-    @FindBy(css = ".radio-circle")
+    @FindBy(css = "label.custom-control-center")
+    private WebElement installlationCheckbox;
+
+    @FindBy(css= "label[for='join-extra']")
     private WebElement extraCheckbox;
 
     @FindBy(css = "a[href=\"/hjemmelading\"]")
     private WebElement backButton;
 
-    @FindBy(css = "button[type=\"submit\"]")
-    private WebElement nextButton;
+    @FindBy(css = "button[type='submit']")
+    private WebElement submitButton;
 
     public WebElement getEaseeNumberSelector() { return easeeNumberSelector; }
+
+    public WebElement getInstalllationCheckbox() {return installlationCheckbox; }
 
     public WebElement getExtraCheckbox() { return extraCheckbox; }
 
@@ -31,6 +36,6 @@ public class CustomizationPageObject
         return backButton;
     }
 
-    public WebElement getNextButton() { return nextButton; }
+    public WebElement getSubmitButton() { return submitButton; }
 
 }

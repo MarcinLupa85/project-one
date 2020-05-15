@@ -17,7 +17,7 @@ public class HomePageObject {
     @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=1']")
     private WebElement purchaseFlowEaseeLink;
 
-    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=0'].buttons-wrapper__btn")
+    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=0']")
     private WebElement purchaseFlowMennekesLink;
 
     @FindBy(css = "li a.menu-element__hyperlink--user strong")
@@ -27,9 +27,7 @@ public class HomePageObject {
     private WebElement readMoreFaqButton;
 
 
-    public WebElement getPurchaseFlowEaseeLink() {
-        return purchaseFlowEaseeLink;
-    }
+    public WebElement getPurchaseFlowEaseeLink() { return purchaseFlowEaseeLink; }
     public WebElement getPurchaseFlowMennekesLink() {
         return purchaseFlowMennekesLink;
     }
