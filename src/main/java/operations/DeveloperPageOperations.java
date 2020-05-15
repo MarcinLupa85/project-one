@@ -18,6 +18,7 @@ public class DeveloperPageOperations {
     }
 
     public void fillForm(String firstName, String lastName, String email, String mobile, String company, String project, String parkingPlaces, String description){
+        waitUtils.waitForElement(developerPageObject.getFirstName());
         waitUtils.bringElementToViewport(developerPageObject.getFirstName());
         formUtils.fillField(developerPageObject.getFirstName(), firstName);
         formUtils.fillField(developerPageObject.getLastName(), lastName);

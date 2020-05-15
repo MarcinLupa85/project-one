@@ -18,6 +18,7 @@ public class BusinessPageOperations {
         }
 
     public void fillForm(String name, String email, String number, String company, String comment) {
+        waitUtils.waitForElement(businessPageObject.getFullNameInput());
         waitUtils.bringElementToViewport(businessPageObject.getFullNameInput());
         formUtils.fillField(businessPageObject.getFullNameInput(), name);
         formUtils.fillField(businessPageObject.getEmailInput(), email);
