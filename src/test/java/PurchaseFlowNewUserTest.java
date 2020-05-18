@@ -71,7 +71,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator(userName);
     }
 
-
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowNoExtra();
@@ -81,7 +80,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);
     }
-    @Test
+    @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() {
         homePageOperations.openCablePurchaseFlow();
         phoneNumber = "575437306";
@@ -91,7 +90,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator(userName);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
         phoneNumber = "575437304";
@@ -101,7 +100,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator(userName);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithExtra();
         phoneNumber = "575437305";
@@ -111,7 +110,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator(userName);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
         phoneNumber = "575437307";
@@ -121,7 +120,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator(userName);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
         phoneNumber = "575437308";
