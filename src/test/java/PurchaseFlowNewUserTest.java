@@ -124,7 +124,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
         phoneNumber = "575437308";
-        userName = "newuser.easeeinstallation@mailinator.com";
+        userName = "newuser.mennekesinstallation@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);
