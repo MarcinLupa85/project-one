@@ -3,6 +3,8 @@ package config;
 import operations.CookiePanelOperations;
 import org.openqa.selenium.*;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -27,6 +29,7 @@ public abstract class TestsBase {
         waitUtils.waitUntilOnUrl(10, BASE_URL);
         waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
         cookiePanelOperations = new CookiePanelOperations(driver);
+        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyUnderlay"));
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
         cookiePanelOperations.clickCookieOkButton();
     }

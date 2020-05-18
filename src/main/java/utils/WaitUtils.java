@@ -30,7 +30,6 @@ public class WaitUtils {
     public void waitForDocumentReadyState() throws java.util.concurrent.TimeoutException {
         Timestamp timestampWithTimeoutAdded = new Timestamp(System.currentTimeMillis() + 30000);
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        String documentState = (String) jse.executeScript("return document.readyState");
         while (new Timestamp(System.currentTimeMillis()).before(timestampWithTimeoutAdded)) {
             try {
                 Thread.sleep(500);
@@ -38,6 +37,7 @@ public class WaitUtils {
                 e.printStackTrace();
             }
 
+            String documentState = (String) jse.executeScript("return document.readyState");
             if (documentState.equals("complete")) {
                 return;
             }

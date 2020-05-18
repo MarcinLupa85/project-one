@@ -1,7 +1,9 @@
 import config.TestsBase;
 import operations.*;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import static config.Constants.BASE_URL;
 
 public class ContactWithCircleKTests extends TestsBase {
     private NavbarOperations navbarOperations;
@@ -22,6 +24,12 @@ public class ContactWithCircleKTests extends TestsBase {
         apartmentPageOperations = new ApartmentPageOperations(driver);
         developerPageOperations = new DeveloperPageOperations(driver);
         reportProblemPageOperations = new ReportProblemPageOperations(driver);
+    }
+
+    @AfterMethod
+    private void goBack() {
+        driver.navigate().to(BASE_URL);
+        driver.navigate().refresh();
     }
 
     @Test

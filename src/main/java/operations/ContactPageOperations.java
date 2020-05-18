@@ -19,6 +19,7 @@ public class ContactPageOperations {
     }
 
     public void fillForm (String name, String email, String number, String company, String comment) {
+        waitUtils.waitForElement(contactPageObject.getFullNameInput());
         waitUtils.bringElementToViewport(contactPageObject.getFullNameInput());
         formUtils.fillField(contactPageObject.getFullNameInput(), name);
         formUtils.fillField(contactPageObject.getEmailInput(), email);
