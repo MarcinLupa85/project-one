@@ -57,8 +57,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private void cleanUp(ITestResult result) {
         if (result.isSuccess()) {
             ckidDashboardPageOperations.deleteAccount();
-        } else {
-            driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
         }
     }
 
@@ -109,6 +107,26 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         phoneNumber = "575437305";
         userName = "newuser.mennekeswithextra@mailinator.com";
         extraDiscount = true;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
+    }
+
+    @Test
+    public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
+        homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
+        phoneNumber = "575437307";
+        userName = "newuser.easeeinstallation@mailinator.com";
+        extraDiscount = false;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
+    }
+
+    @Test
+    public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
+        homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
+        phoneNumber = "575437308";
+        userName = "newuser.easeeinstallation@mailinator.com";
+        extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);
     }
