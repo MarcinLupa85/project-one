@@ -47,4 +47,8 @@ public class CustomizationPageOperations {
         customizationPageObject.getExtraCheckbox().click();
     }
 
+    public void tickInstallationCheckbox() {
+        customizationPageObject.getInstalllationCheckbox().click();
+    }
+
 }

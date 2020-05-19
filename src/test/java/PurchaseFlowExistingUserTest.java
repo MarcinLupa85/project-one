@@ -97,4 +97,18 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator("mennekeswithextra@mailinator.com");
     }
 
+    @Test(alwaysRun = true)
+    public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
+        homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
+        purchaseFlowExistingUser("easeeinstallation@mailinator.com", false);
+        mailinatorPageOperations.checkMailinator("mennekeswithextra@mailinator.com");
+    }
+
+    @Test(alwaysRun = true)
+    public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
+        homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
+        purchaseFlowExistingUser("mennekesinstallation@mailinator.com", false);
+        mailinatorPageOperations.checkMailinator("mennekeswithextra@mailinator.com");
+    }
+
 }

@@ -42,6 +42,16 @@ public class HomePageOperations {
         customizationPageOperations.tickExtraCheckbox();
     }
 
+    public void openEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
+        waitUtils.waitForVisiblityOf(easeeLink);
+        waitUtils.bringElementToViewport(easeeLink);
+        easeeLink.click();
+        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+        customizationPageOperations.tickInstallationCheckbox();
+    }
+
     public void openMennekesPurchaseFlowNoExtra() throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
         WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
@@ -59,6 +69,16 @@ public class HomePageOperations {
         mennekesLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
         customizationPageOperations.tickExtraCheckbox();
+    }
+
+    public void openMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
+        waitUtils.waitForVisiblityOf(mennekesLink);
+        waitUtils.bringElementToViewport(mennekesLink);
+        mennekesLink.click();
+        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+        customizationPageOperations.tickInstallationCheckbox();
     }
 
     public void openCablePurchaseFlow() {

@@ -57,8 +57,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private void cleanUp(ITestResult result) {
         if (result.isSuccess()) {
             ckidDashboardPageOperations.deleteAccount();
-        } else {
-            driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
         }
     }
 
@@ -73,7 +71,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator(userName);
     }
 
-
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowNoExtra();
@@ -83,7 +80,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);
     }
-    @Test
+    @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() {
         homePageOperations.openCablePurchaseFlow();
         phoneNumber = "575437306";
@@ -93,7 +90,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator(userName);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
         phoneNumber = "575437304";
@@ -103,12 +100,32 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailinator(userName);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithExtra();
         phoneNumber = "575437305";
         userName = "newuser.mennekeswithextra@mailinator.com";
         extraDiscount = true;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
+    }
+
+    @Test(alwaysRun = true)
+    public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
+        homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
+        phoneNumber = "575437307";
+        userName = "newuser.easeeinstallation@mailinator.com";
+        extraDiscount = false;
+        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        mailinatorPageOperations.checkMailinator(userName);
+    }
+
+    @Test(alwaysRun = true)
+    public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
+        homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
+        phoneNumber = "575437308";
+        userName = "newuser.mennekesinstallation@mailinator.com";
+        extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailinator(userName);
     }
