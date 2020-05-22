@@ -49,4 +49,9 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/bedrift");
     }
 
+    public void openArticlesPage() {
+        navbarObject.getArticlesLink().click();
+        waitUtils.waitForUrlToContains("/nyheter/1");
+    }
+
 }
