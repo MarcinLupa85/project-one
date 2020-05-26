@@ -12,13 +12,18 @@ public class ArticlesPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "div[class='category']")
+    @FindBy(css = "div.article__category")
     private List<WebElement> categoryName;
 
-    @FindBy(css = "div[class='title']")
+    @FindBy(css = "article__title")
     private List<WebElement> titleName;
+
+    @FindBy(css = "div.article__body")
+    private List<WebElement> articleBody;
 
     public List<WebElement> getCategoryName() { return categoryName; }
 
     public List<WebElement>  getTitleName() { return titleName; }
+
+    public List<WebElement> getArticleBody() { return articleBody; }
 }

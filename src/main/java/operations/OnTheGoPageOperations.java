@@ -6,6 +6,9 @@ import pageobjects.HousePageObject;
 import pageobjects.OnTheGoPageObject;
 import utils.WaitUtils;
 
+import java.util.List;
+import java.util.concurrent.TimeoutException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnTheGoPageOperations {
@@ -26,5 +29,12 @@ public class OnTheGoPageOperations {
         readMoreFaqButton.click();
         waitUtils.waitForUrlToContains("/on-the-go",2);
         assertThat(driver.getCurrentUrl()).contains("/on-the-go");
+    }
+
+    public void compareTitles(List<String> titles) throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        List<WebElement> compareTitles = onTheGoPageObject.getArticleBody();
+        boolean isEqual = titles.equals(compareTitles);
+        System.out.println(compareTitles);
     }
 }
