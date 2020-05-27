@@ -22,7 +22,7 @@ public class ArticlesTest extends TestsBase {
 
 
     @Test
-    public void goToArticlesTest() {
+    public void goToArticlesTest() throws TimeoutException {
         navbarOperations.openArticlesPage();
     }
 

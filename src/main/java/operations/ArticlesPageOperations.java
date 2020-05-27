@@ -27,6 +27,7 @@ public class ArticlesPageOperations {
                 .map(webElement -> webElement.findElement(By.className("article__title")).getText())
                 .limit(3)
                 .collect(Collectors.toList());
+        System.out.println(listThreeOnTheGoArticles);
         return listThreeOnTheGoArticles;
     }
 

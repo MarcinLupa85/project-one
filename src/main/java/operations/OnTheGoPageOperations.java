@@ -2,17 +2,15 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pageobjects.HousePageObject;
 import pageobjects.OnTheGoPageObject;
 import utils.WaitUtils;
-
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-
+import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnTheGoPageOperations {
-    OnTheGoPageObject onTheGoPageObject;
+    private OnTheGoPageObject onTheGoPageObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
 
@@ -33,8 +31,9 @@ public class OnTheGoPageOperations {
 
     public void compareTitles(List<String> titles) throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
-        List<WebElement> compareTitles = onTheGoPageObject.getArticleBody();
-        boolean isEqual = titles.equals(compareTitles);
+        List<String> compareTitles = onTheGoPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
+        assertThat(titles).hasSameSizeAs(compareTitles);
+        titles.forEach(title -> assertThat(compareTitles).contains(title));
         System.out.println(compareTitles);
     }
 }
