@@ -23,12 +23,12 @@ public class ArticlesTest extends TestsBase {
 
     @Test
     public void goToArticlesTest() throws TimeoutException {
-        navbarOperations.openArticlesPage();
+        navbarOperations.openAndVerifyArticlesPage();
     }
 
     @Test
     public void checkOnTheGoArticlesTest() throws TimeoutException {
-        navbarOperations.openArticlesPage();
+        navbarOperations.openAndVerifyArticlesPage();
         List<String> titles = articlesPageOperations.listThreeOnTheGoArticles();
         navbarOperations.openOnTheGoPage();
         onTheGoPageOperations.compareTitles(titles);

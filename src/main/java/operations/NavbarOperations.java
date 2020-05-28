@@ -56,7 +56,7 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/bedrift");
     }
 
-    public void openArticlesPage() throws TimeoutException {
+    public void openAndVerifyArticlesPage() throws TimeoutException {
         navbarObject.getArticlesLink().click();
         waitUtils.waitForUrlToContains("/nyheter/1");
         waitUtils.waitForDocumentReadyState();
