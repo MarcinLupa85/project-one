@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class DeveloperPageObject {
     private DeveloperPageObject developerPageObject;
 
@@ -39,6 +41,9 @@ public class DeveloperPageObject {
     @FindBy (css = "button[type='submit']")
     private WebElement submitButton;
 
+    @FindBy(css = "h4.article__title")
+    private List<WebElement> articleBody;
+
     public WebElement getFirstName() { return firstName; }
 
     public WebElement getLastName() { return lastName; }
@@ -56,4 +61,6 @@ public class DeveloperPageObject {
     public WebElement getDescription() { return  description; }
 
     public WebElement getSubmitButton() { return  submitButton; }
+
+    public List<WebElement> getArticleBody() { return articleBody; }
 }

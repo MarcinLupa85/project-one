@@ -1,9 +1,16 @@
 package operations;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageobjects.DeveloperPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
+
+import java.util.List;
+import java.util.concurrent.TimeoutException;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class DeveloperPageOperations {
 
@@ -32,6 +39,13 @@ public class DeveloperPageOperations {
     public void clickSendForm() {
         waitUtils.waitForVisiblityOf(developerPageObject.getSubmitButton());
         developerPageObject.getSubmitButton().click();
+    }
+
+    public void compareTitles(List<String> apartmentTitles) throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        List<String> compareTitles = developerPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
+        assertThat(apartmentTitles).hasSameSizeAs(compareTitles);
+        apartmentTitles.forEach(title -> assertThat(compareTitles).contains(title));
     }
 
 }
