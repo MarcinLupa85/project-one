@@ -5,6 +5,10 @@ import org.openqa.selenium.WebElement;
 import pageobjects.HousePageObject;
 import utils.WaitUtils;
 
+import java.util.List;
+import java.util.concurrent.TimeoutException;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HousePageOperations {
@@ -26,4 +30,13 @@ public class HousePageOperations {
         waitUtils.waitForUrlToContains("/house",2);
         assertThat(driver.getCurrentUrl()).contains("/house");
     }
+
+    public void compareTitles(List<String> titles) throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        List<String> compareTitles = housePageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
+        assertThat(titles).hasSameSizeAs(compareTitles);
+        titles.forEach(title -> assertThat(compareTitles).contains(title));
+    }
+
+
 }

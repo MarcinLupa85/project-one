@@ -34,6 +34,5 @@ public class OnTheGoPageOperations {
         List<String> compareTitles = onTheGoPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
         assertThat(titles).hasSameSizeAs(compareTitles);
         titles.forEach(title -> assertThat(compareTitles).contains(title));
-        System.out.println(compareTitles);
     }
 }
