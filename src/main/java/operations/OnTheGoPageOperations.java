@@ -2,14 +2,15 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pageobjects.HousePageObject;
 import pageobjects.OnTheGoPageObject;
 import utils.WaitUtils;
-
+import java.util.List;
+import java.util.concurrent.TimeoutException;
+import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnTheGoPageOperations {
-    OnTheGoPageObject onTheGoPageObject;
+    private OnTheGoPageObject onTheGoPageObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
 
@@ -26,5 +27,12 @@ public class OnTheGoPageOperations {
         readMoreFaqButton.click();
         waitUtils.waitForUrlToContains("/on-the-go",2);
         assertThat(driver.getCurrentUrl()).contains("/on-the-go");
+    }
+
+    public void compareTitles(List<String> OTGTitles) throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        List<String> compareTitles = onTheGoPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
+        assertThat(OTGTitles).hasSameSizeAs(compareTitles);
+        OTGTitles.forEach(title -> assertThat(compareTitles).contains(title));
     }
 }

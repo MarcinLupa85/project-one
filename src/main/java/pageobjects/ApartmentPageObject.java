@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class ApartmentPageObject {
     private ApartmentPageObject apartmentPageObject;
 
@@ -42,6 +44,9 @@ public class ApartmentPageObject {
     @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar/apartment'].btn-primary")
     private WebElement readMoreFaqButton;
 
+    @FindBy(css = "h4.article__title")
+    private List<WebElement> articleBody;
+
     public WebElement getFirstName() { return firstName; }
 
     public WebElement getLastName() { return lastName; }
@@ -61,4 +66,6 @@ public class ApartmentPageObject {
     public WebElement getContactSubmitButton() { return contactSubmitButton; }
 
     public WebElement getReadMoreFaqButton() { return readMoreFaqButton; }
+
+    public List<WebElement> getArticleBody() { return articleBody; }
 }
