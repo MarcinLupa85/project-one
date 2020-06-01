@@ -86,7 +86,7 @@ public class HomePageOperations {
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
-    public void logOut() {
+    public void logOut() throws TimeoutException {
         WebElement username = homePageObject.getUsernameText();
         waitUtils.waitForVisiblityOf(username);
         username.click();
@@ -94,6 +94,8 @@ public class HomePageOperations {
         waitUtils.waitForVisiblityOf(logoutButton);
         logoutButton.click();
         waitUtils.waitForUrlToContains("/home");
+        waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
+        waitUtils.waitForDocumentReadyState();
     }
 
     public void goToFaq() {
