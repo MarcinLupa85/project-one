@@ -29,10 +29,10 @@ public class OnTheGoPageOperations {
         assertThat(driver.getCurrentUrl()).contains("/on-the-go");
     }
 
-    public void compareTitles(List<String> titles) throws TimeoutException {
+    public void compareTitles(List<String> OTGTitles) throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
         List<String> compareTitles = onTheGoPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
-        assertThat(titles).hasSameSizeAs(compareTitles);
-        titles.forEach(title -> assertThat(compareTitles).contains(title));
+        assertThat(OTGTitles).hasSameSizeAs(compareTitles);
+        OTGTitles.forEach(title -> assertThat(compareTitles).contains(title));
     }
 }

@@ -31,11 +31,11 @@ public class HousePageOperations {
         assertThat(driver.getCurrentUrl()).contains("/house");
     }
 
-    public void compareTitles(List<String> titles) throws TimeoutException {
+    public void compareTitles(List<String> houseTitles) throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
         List<String> compareTitles = housePageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
-        assertThat(titles).hasSameSizeAs(compareTitles);
-        titles.forEach(title -> assertThat(compareTitles).contains(title));
+        assertThat(houseTitles).hasSameSizeAs(compareTitles);
+        houseTitles.forEach(title -> assertThat(compareTitles).contains(title));
     }
 
 

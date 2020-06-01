@@ -1,8 +1,5 @@
 import config.TestsBase;
-import operations.ArticlesPageOperations;
-import operations.HousePageOperations;
-import operations.NavbarOperations;
-import operations.OnTheGoPageOperations;
+import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -14,6 +11,7 @@ public class ArticlesTest extends TestsBase {
     private ArticlesPageOperations articlesPageOperations;
     private OnTheGoPageOperations onTheGoPageOperations;
     private HousePageOperations housePageOperations;
+    private ApartmentPageOperations apartmentPageOperations;
 
     @BeforeMethod
     private void initOperations() {
@@ -21,6 +19,7 @@ public class ArticlesTest extends TestsBase {
         articlesPageOperations = new ArticlesPageOperations(driver);
         onTheGoPageOperations = new OnTheGoPageOperations(driver);
         housePageOperations = new HousePageOperations(driver);
+        apartmentPageOperations = new ApartmentPageOperations(driver);
     }
 
 
@@ -43,6 +42,15 @@ public class ArticlesTest extends TestsBase {
         List<String> houseTitles = articlesPageOperations.listThreeHouseArticles();
         navbarOperations.openHousePage();
         housePageOperations.compareTitles(houseTitles);
+    }
+
+    @Test
+    public void chekApartmentArticlesPage() throws TimeoutException {
+        navbarOperations.openAndVerifyArticlesPage();
+        List<String> apartmentTitles = articlesPageOperations.listThreeApartmentArticles();
+        navbarOperations.openNavbarDropdown();
+        navbarOperations.openApartmentPage();
+        apartmentPageOperations.compareTitles(apartmentTitles);
     }
 
 }

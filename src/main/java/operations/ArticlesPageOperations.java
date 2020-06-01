@@ -43,5 +43,16 @@ public class ArticlesPageOperations {
         return listThreeOnTheGoArticles;
     }
 
+    public List<String> listThreeApartmentArticles() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        List<String> listThreeOnTheGoArticles = articlesPageObject.getArticleBody()
+                .stream()
+                .filter(webElement -> webElement.findElement(By.className("article__category")).getText().contains("Sameie / Borettslag"))
+                .map(webElement -> webElement.findElement(By.className("article__title")).getText())
+                .limit(3)
+                .collect(Collectors.toList());
+        System.out.println(listThreeOnTheGoArticles);
+        return listThreeOnTheGoArticles;
+    }
 
 }

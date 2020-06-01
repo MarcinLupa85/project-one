@@ -5,6 +5,11 @@ import org.openqa.selenium.WebElement;
 import pageobjects.ApartmentPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
+
+import java.util.List;
+import java.util.concurrent.TimeoutException;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -45,5 +50,12 @@ public class ApartmentPageOperations {
         readMoreFaqButton.click();
         waitUtils.waitForUrlToContains("/apartment",2);
         assertThat(driver.getCurrentUrl()).contains("/apartment");
+    }
+
+    public void compareTitles(List<String> apartmentTitles) throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        List<String> compareTitles = apartmentPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
+        assertThat(apartmentTitles).hasSameSizeAs(compareTitles);
+        apartmentTitles.forEach(title -> assertThat(compareTitles).contains(title));
     }
 }
