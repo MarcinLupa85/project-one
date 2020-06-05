@@ -10,6 +10,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import utils.WaitUtils;
 
+import java.util.concurrent.TimeoutException;
+
 import static config.Constants.BASE_URL;
 
 
@@ -21,7 +23,7 @@ public abstract class TestsBase {
 
 
     @BeforeClass(alwaysRun = true)
-    public void prepareSuite() {
+    public void prepareSuite() throws TimeoutException {
         driver = new DriverFactory().startBrowser();
         waitUtils = new WaitUtils(driver);
         driver.manage().window().maximize();
@@ -32,6 +34,9 @@ public abstract class TestsBase {
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyUnderlay"));
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
         cookiePanelOperations.clickCookieOkButton();
+        driver.navigate().refresh();
+        waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
+        waitUtils.waitForDocumentReadyState();
     }
 
     @AfterClass(alwaysRun = true)

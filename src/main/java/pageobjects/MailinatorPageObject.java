@@ -19,9 +19,19 @@ public class MailinatorPageObject {
     @FindBy(css = "button[title='Delete Emails']")
     private WebElement deleteButton;
 
+    @FindBy(css = "tbody")
+    private WebElement firstMail;
+
+    @FindBy(css = "x_panel")
+    private WebElement mailBody;
+
     public WebElement getEnterMailName() { return enterMailName; }
 
     public WebElement getMailCheckbox() { return mailCheckbox; }
 
     public WebElement getDeleteButton() { return deleteButton; }
+
+    public WebElement getFirstmail() { return firstMail; }
+
+    public WebElement getMailBody() { return mailBody; }
 }

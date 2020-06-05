@@ -31,4 +31,17 @@ public class MailinatorPageOperations {
         mailinatorPageObject.getDeleteButton().click();
     }
 
+    public void checkMailContent(String email) {
+        String mailinatorPageURL = "https://www.mailinator.com/";
+        webDriver.navigate().to(mailinatorPageURL);
+        waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
+        formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
+        mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
+        waitUtils.waitForElement(mailinatorPageObject.getMailCheckbox());
+        mailinatorPageObject.getFirstmail().click();
+        waitUtils.waitForElement(mailinatorPageObject.getMailBody());
+        mailinatorPageObject.getMailBody().getText().contains("Du ønsker at installasjonen skal gjennomføres før angrettens utløp på 14 dager fra bestillingstidspunktet");
+        mailinatorPageObject.getDeleteButton().click();
+    }
+
 }

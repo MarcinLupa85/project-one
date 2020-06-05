@@ -32,6 +32,7 @@ public class HomePageOperations {
         easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
+
     public void openEaseePurchaseFlowWithExtra() throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
@@ -84,6 +85,16 @@ public class HomePageOperations {
     public void openCablePurchaseFlow() {
         driver.navigate().to("https://emobility-test-unstable.test.gneis.io/hjemmelading-bestill/customize-order?id=2");
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+    }
+
+    public void openEaseePurchaseFlow14DaysInstalation() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
+        waitUtils.waitForVisiblityOf(easeeLink);
+        waitUtils.bringElementToViewport(easeeLink);
+        easeeLink.click();
+        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+        customizationPageOperations.tickInstallationCheckbox();
     }
 
     public void logOut() {

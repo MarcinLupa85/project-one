@@ -17,7 +17,12 @@ public class SummaryPageObject {
     @FindBy(css = "button[type=submit]")
     private WebElement finishOrderButton;
 
+    @FindBy(xpath = ".//label[contains(@for, 'accept14DaysInstall')]")
+    private WebElement fourteenDaysCheckbox;
+
     public WebElement getFinishOrderButton() { return finishOrderButton; }
 
     public WebElement getTcCheckbox() { return tcCheckbox; }
+
+    public WebElement getFourteenDaysCheckbox() { return fourteenDaysCheckbox; }
 }
