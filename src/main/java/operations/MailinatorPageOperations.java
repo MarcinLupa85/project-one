@@ -1,11 +1,14 @@
 package operations;
 
 import java.lang.*;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import pageobjects.MailinatorPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MailinatorPageOperations {
     private MailinatorPageObject mailinatorPageObject;
@@ -38,9 +41,9 @@ public class MailinatorPageOperations {
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForElement(mailinatorPageObject.getMailCheckbox());
-        mailinatorPageObject.getFirstmail().click();
+        mailinatorPageObject.getFirstMail().click();
         waitUtils.waitForElement(mailinatorPageObject.getMailBody());
-        mailinatorPageObject.getMailBody().getText().contains("Du ønsker at installasjonen skal gjennomføres før angrettens utløp på 14 dager fra bestillingstidspunktet");
+        assertThat(webDriver.findElement(By.id("msg_body")).getText()).contains("Du ønsker at installasjonen skal gjennomføres før angrettens utløp på 14 dager fra bestillingstidspunktet");
         mailinatorPageObject.getDeleteButton().click();
     }
 

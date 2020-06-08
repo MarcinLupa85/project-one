@@ -33,6 +33,9 @@ public class NavbarObject {
     @FindBy(css = "a[href='/bedrift'].nav-link")
     private WebElement businessLink;
 
+    @FindBy(css = "[class='dropdown header-dropdown-menu user-panel-menu dropdown-menu']")
+    private WebElement logoutLink;
+
     public WebElement getOnTheGoLink() { return onTheGoLink; }
     public WebElement getHouseLink() { return houseLink; }
     public WebElement getContactLink() { return contactLink; }
@@ -40,4 +43,5 @@ public class NavbarObject {
     public WebElement getApartmentLink() { return apartmentLink; }
     public WebElement getDeveloperLink() { return developerLink; }
     public WebElement getBusinessLink() { return businessLink; }
+    public WebElement getLogoutLink() { return logoutLink; }
 }

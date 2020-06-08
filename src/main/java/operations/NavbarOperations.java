@@ -49,4 +49,8 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/bedrift");
     }
 
+    public void logout() {
+        navbarObject.getLogoutLink().click();
+    }
+
 }
