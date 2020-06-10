@@ -116,7 +116,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     @Test(alwaysRun = true)
     public void testEaseePurchasePlow14DaysInstallation() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlow14DaysInstalation();
+        homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("easee14daysinstallation@mailinator.com", false, true);
         mailinatorPageOperations.checkMailContent("easee14daysinstallation@mailinator.com");
     }
