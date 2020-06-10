@@ -1,6 +1,8 @@
 package operations;
 
 import java.lang.*;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -21,6 +23,7 @@ public class MailinatorPageOperations {
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
         webDriver = driver;
+
     }
 
     public void checkMailinator(String email) {
@@ -34,17 +37,17 @@ public class MailinatorPageOperations {
         mailinatorPageObject.getDeleteButton().click();
     }
 
-    public void checkMailContent(String email) {
+    public void checkMailContent(String email) throws TimeoutException {
         String mailinatorPageURL = "https://www.mailinator.com/";
         webDriver.navigate().to(mailinatorPageURL);
         waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
-        waitUtils.waitForElement(mailinatorPageObject.getMailCheckbox());
         mailinatorPageObject.getFirstMail().click();
         waitUtils.waitForElement(mailinatorPageObject.getMailBody());
-        assertThat(webDriver.findElement(By.id("msg_body")).getText()).contains("Du ønsker at installasjonen skal gjennomføres før angrettens utløp på 14 dager fra bestillingstidspunktet");
-        mailinatorPageObject.getDeleteButton().click();
+        waitUtils.waitForDocumentReadyState();
+        final WebDriver mailText = webDriver.switchTo().frame(webDriver.findElement(By.cssSelector("iframe[name='msg_body']")));
+        assertThat(mailText.getPageSource()).contains("snart som mulig");
     }
 
 }
