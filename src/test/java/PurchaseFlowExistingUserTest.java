@@ -69,63 +69,63 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", true, false);
-        mailinatorPageOperations.checkMailinator("easeewithextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("easeewithextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowNoExtra();
         purchaseFlowExistingUser("easeenoextra@mailinator.com", false, false);
-        mailinatorPageOperations.checkMailinator("easeenoextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("easeenoextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException{
         homePageOperations.openCablePurchaseFlow();
         purchaseFlowExistingUser("cablenoextra@mailinator.com", false, false);
-        mailinatorPageOperations.checkMailinator("cablenoextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("cablenoextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
         purchaseFlowExistingUser("mennekesnoextra@mailinator.com", false, false);
-        mailinatorPageOperations.checkMailinator("mennekesnoextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("mennekesnoextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
         purchaseFlowExistingUser("mennekeswithextra@mailinator.com", true, false);
-        mailinatorPageOperations.checkMailinator("mennekeswithextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("mennekeswithextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, false);
-        mailinatorPageOperations.checkMailinator("easeeinstallation@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("easeeinstallation@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("mennekesinstallation@mailinator.com", false, false);
-        mailinatorPageOperations.checkMailinator("mennekesinstallation@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("mennekesinstallation@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testEaseePurchasePlow14DaysInstallation() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("easee14daysinstallation@mailinator.com", false, true);
-        mailinatorPageOperations.checkMailContent("easee14daysinstallation@mailinator.com");
+        mailinatorPageOperations.checkMailForPhrase("easee14daysinstallation@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testMennekesPurchasePlow14DaysInstallation() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("mennekes14daysinstallation@mailinator.com", false, true);
-        mailinatorPageOperations.checkMailContent("mennekes14daysinstallation@mailinator.com");
+        mailinatorPageOperations.checkMailForPhrase("mennekes14daysinstallation@mailinator.com");
     }
 
 }

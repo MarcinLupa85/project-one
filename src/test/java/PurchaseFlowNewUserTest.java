@@ -68,7 +68,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         userName = "newuser.easeewithextra@mailinator.com";
         extraDiscount = true;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
-        mailinatorPageOperations.checkMailinator(userName);
+        mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
     @Test(alwaysRun = true)
@@ -78,16 +78,16 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         userName = "newuser.easeenoextra@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
-        mailinatorPageOperations.checkMailinator(userName);
+        mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
     @Test(alwaysRun = true)
-    public void testCablePurchaseFlowWithNoExtra() {
+    public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openCablePurchaseFlow();
         phoneNumber = "575437306";
         userName = "newuser.cablenoextra@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
-        mailinatorPageOperations.checkMailinator(userName);
+        mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
     @Test(alwaysRun = true)
@@ -97,7 +97,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         userName = "newuser.mennekesnoextra@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
-        mailinatorPageOperations.checkMailinator(userName);
+        mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
     @Test(alwaysRun = true)
@@ -107,7 +107,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         userName = "newuser.mennekeswithextra@mailinator.com";
         extraDiscount = true;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
-        mailinatorPageOperations.checkMailinator(userName);
+        mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
     @Test(alwaysRun = true)
@@ -117,7 +117,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         userName = "newuser.easeeinstallation@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
-        mailinatorPageOperations.checkMailinator(userName);
+        mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
     @Test(alwaysRun = true)
@@ -127,7 +127,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         userName = "newuser.mennekesinstallation@mailinator.com";
         extraDiscount = false;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
-        mailinatorPageOperations.checkMailinator(userName);
+        mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
 }

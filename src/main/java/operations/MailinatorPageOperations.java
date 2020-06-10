@@ -26,18 +26,8 @@ public class MailinatorPageOperations {
 
     }
 
-    public void checkMailinator(String email) {
-        String mailinatorPageURL = "https://www.mailinator.com/";
-        webDriver.navigate().to(mailinatorPageURL);
-        waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
-        formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
-        mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
-        waitUtils.waitForElement(mailinatorPageObject.getMailCheckbox());
-        mailinatorPageObject.getMailCheckbox().click();
-        mailinatorPageObject.getDeleteButton().click();
-    }
 
-    public void checkMailContent(String email) throws TimeoutException {
+    public void checkMailForPhrase(String email) throws TimeoutException {
         String mailinatorPageURL = "https://www.mailinator.com/";
         webDriver.navigate().to(mailinatorPageURL);
         waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
@@ -48,6 +38,19 @@ public class MailinatorPageOperations {
         waitUtils.waitForDocumentReadyState();
         final WebDriver mailText = webDriver.switchTo().frame(webDriver.findElement(By.cssSelector("iframe[name='msg_body']")));
         assertThat(mailText.getPageSource()).contains("snart som mulig");
+    }
+
+    public void checkMailForLackOfPhrase(String email) throws TimeoutException {
+        String mailinatorPageURL = "https://www.mailinator.com/";
+        webDriver.navigate().to(mailinatorPageURL);
+        waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
+        formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
+        mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
+        mailinatorPageObject.getFirstMail().click();
+        waitUtils.waitForElement(mailinatorPageObject.getMailBody());
+        waitUtils.waitForDocumentReadyState();
+        final WebDriver mailText = webDriver.switchTo().frame(webDriver.findElement(By.cssSelector("iframe[name='msg_body']")));
+        assertThat(mailText.getPageSource()).doesNotContain("snart som mulig");
     }
 
 }
