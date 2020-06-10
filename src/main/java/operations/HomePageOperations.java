@@ -99,12 +99,14 @@ public class HomePageOperations {
         customizationPageOperations.tickInstallationCheckbox();
     }
 
-    public void logOut() {
+    public void logOut() throws TimeoutException {
         WebElement username = homePageObject.getUsernameText();
         waitUtils.waitForVisiblityOf(username);
         username.click();
         navbarOperations.logout();
         waitUtils.waitForUrlToContains("/home");
+        waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
+        waitUtils.waitForDocumentReadyState();
     }
 
     public void goToFaq() {
