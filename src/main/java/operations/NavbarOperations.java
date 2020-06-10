@@ -63,4 +63,8 @@ public class NavbarOperations {
         assertThat(driver.findElement(By.className("article__body")).isDisplayed());
     }
 
+    public void logout() {
+        navbarObject.getLogoutLink().click();
+    }
+
 }

@@ -50,5 +50,4 @@ public class CustomizationPageOperations {
     public void tickInstallationCheckbox() {
         customizationPageObject.getInstalllationCheckbox().click();
     }
-
 }

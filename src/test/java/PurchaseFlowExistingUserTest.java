@@ -36,7 +36,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void purchaseFlowExistingUser(String username, boolean extraDiscount) throws TimeoutException {
+    public void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
@@ -49,6 +49,9 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
             assertFalse(summaryPageOperations.hasExtraDiscount());
         }
         summaryPageOperations.tickTermsAndConditionsCheckbox();
+        if (fourteenDaysInstallation) {
+            summaryPageOperations.tick14DaysCheckbox();
+        }
         summaryPageOperations.clickNext();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
@@ -65,50 +68,57 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        purchaseFlowExistingUser("easeewithextra@mailinator.com", true);
+        purchaseFlowExistingUser("easeewithextra@mailinator.com", true, false);
         mailinatorPageOperations.checkMailinator("easeewithextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowNoExtra();
-        purchaseFlowExistingUser("easeenoextra@mailinator.com", false);
+        purchaseFlowExistingUser("easeenoextra@mailinator.com", false, false);
         mailinatorPageOperations.checkMailinator("easeenoextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException{
         homePageOperations.openCablePurchaseFlow();
-        purchaseFlowExistingUser("cablenoextra@mailinator.com", false);
+        purchaseFlowExistingUser("cablenoextra@mailinator.com", false, false);
         mailinatorPageOperations.checkMailinator("cablenoextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
-        purchaseFlowExistingUser("mennekesnoextra@mailinator.com", false);
+        purchaseFlowExistingUser("mennekesnoextra@mailinator.com", false, false);
         mailinatorPageOperations.checkMailinator("mennekesnoextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        purchaseFlowExistingUser("mennekeswithextra@mailinator.com", true);
+        purchaseFlowExistingUser("mennekeswithextra@mailinator.com", true, false);
         mailinatorPageOperations.checkMailinator("mennekeswithextra@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
-        purchaseFlowExistingUser("easeeinstallation@mailinator.com", false);
-        mailinatorPageOperations.checkMailinator("mennekeswithextra@mailinator.com");
+        purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, false);
+        mailinatorPageOperations.checkMailinator("easeeinstallation@mailinator.com");
     }
 
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
-        purchaseFlowExistingUser("mennekesinstallation@mailinator.com", false);
-        mailinatorPageOperations.checkMailinator("mennekeswithextra@mailinator.com");
+        purchaseFlowExistingUser("mennekesinstallation@mailinator.com", false, false);
+        mailinatorPageOperations.checkMailinator("mennekesinstallation@mailinator.com");
+    }
+
+    @Test(alwaysRun = true)
+    public void testEaseePurchasePlow14DaysInstallation() throws TimeoutException {
+        homePageOperations.openEaseePurchaseFlow14DaysInstalation();
+        purchaseFlowExistingUser("easee14daysinstallation@mailinator.com", false, true);
+        mailinatorPageOperations.checkMailContent("easee14daysinstallation@mailinator.com");
     }
 
 }

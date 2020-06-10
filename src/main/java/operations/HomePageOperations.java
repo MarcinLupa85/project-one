@@ -16,12 +16,14 @@ public class HomePageOperations {
     private WaitUtils waitUtils;
     private WebDriver driver;
     private CustomizationPageOperations customizationPageOperations;
+    private NavbarOperations navbarOperations;
 
     public HomePageOperations(WebDriver driver) {
         homePageObject = new HomePageObject(driver);
         waitUtils = new WaitUtils(driver);
         this.driver = driver;
         customizationPageOperations = new CustomizationPageOperations(driver);
+        navbarOperations = new NavbarOperations(driver);
     }
 
     public void openEaseePurchaseFlowNoExtra() throws TimeoutException {
@@ -32,6 +34,7 @@ public class HomePageOperations {
         easeeLink.click();
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
+
     public void openEaseePurchaseFlowWithExtra() throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
@@ -86,13 +89,21 @@ public class HomePageOperations {
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
+    public void openEaseePurchaseFlow14DaysInstalation() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
+        waitUtils.waitForVisiblityOf(easeeLink);
+        waitUtils.bringElementToViewport(easeeLink);
+        easeeLink.click();
+        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+        customizationPageOperations.tickInstallationCheckbox();
+    }
+
     public void logOut() throws TimeoutException {
         WebElement username = homePageObject.getUsernameText();
         waitUtils.waitForVisiblityOf(username);
         username.click();
-        WebElement logoutButton = driver.findElement(By.cssSelector("a.logout-href"));
-        waitUtils.waitForVisiblityOf(logoutButton);
-        logoutButton.click();
+        navbarOperations.logout();
         waitUtils.waitForUrlToContains("/home");
         waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
         waitUtils.waitForDocumentReadyState();

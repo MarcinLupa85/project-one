@@ -34,4 +34,8 @@ public class SummaryPageOperations {
         return driverUtils.isElementPresent(By.xpath(".//h4[contains(text(), 'EXTRA Club medlemsrabatt')]"));
     }
 
+    public void tick14DaysCheckbox() {
+        summaryPageObject.getFourteenDaysCheckbox().click();
+    }
+
 }

@@ -19,9 +19,19 @@ public class MailinatorPageObject {
     @FindBy(css = "button[title='Delete Emails']")
     private WebElement deleteButton;
 
+    @FindBy(css = "[class='even pointer ng-scope']")
+    private WebElement firstMail;
+
+    @FindBy(id = "msg_body")
+    private WebElement mailBody;
+
     public WebElement getEnterMailName() { return enterMailName; }
 
     public WebElement getMailCheckbox() { return mailCheckbox; }
 
     public WebElement getDeleteButton() { return deleteButton; }
+
+    public WebElement getFirstMail() { return firstMail; }
+
+    public WebElement getMailBody() { return mailBody; }
 }
