@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  test_hub:
+    image: selenium/hub:3.141.59
+    logging:
+      driver: "none"
+    shm_size: 2048
+    environment:
+      - GRID_BROWSER_TIMEOUT=100000
+      - GRID_TIMEOUT=900000
+    networks:
+      - ces-selenium-network
+  test_chrome:
+    #    image: selenium/node-firefox-debug:3.141.59
+    image: selenium/node-chrome-debug:3.141.59
+    logging:
+      driver: "none"
+    shm_size: 1024M
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=test_hub
+      - HUB_PORT_4444_TCP_PORT=4444
+      - HUB_ENV_no_proxy=localhost
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+      - no_proxy=localhost
+    entrypoint: >
+      bash -c '
+        SE_OPTS="-timeout 720 -browserTimeout 360" /opt/bin/entry_point.sh'
+    depends_on:
+      - test_hub
+    networks:
+      - ces-selenium-network
+  tests_repo:
+    image: statoilfuelretail/engage-selenium:new
+    volumes:
+      - ./:/opt/automation/
+      - ./report:/opt/automation/report
+      - ./gradleCache:/root/.gradle/caches
+    entrypoint: ./run_tests.sh
+    env_file: ./compose.env
+    depends_on:
+      - test_chrome
+    networks:
+      - ces-selenium-network
+networks:
+  ces-selenium-network:
+    name: ces-selenium-network
