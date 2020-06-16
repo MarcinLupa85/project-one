@@ -36,7 +36,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation) throws TimeoutException {
+    public void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation) {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
@@ -55,14 +55,15 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         summaryPageOperations.clickNext();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
-        homePageOperations.logOut();
-        waitUtils.waitForDocumentReadyState();
-        assertThat(driver.getCurrentUrl().contains("/home"));
+
     }
 
     @AfterMethod
-    private void goBack() {
+    private void goBack() throws TimeoutException {
         driver.navigate().to(BASE_URL);
+        homePageOperations.logOut();
+        waitUtils.waitForDocumentReadyState();
+        assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
     @Test(alwaysRun = true)
