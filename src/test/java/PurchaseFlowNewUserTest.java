@@ -66,7 +66,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         homePageOperations.logOut();
         driver.navigate().to(BASE_URL);
         waitUtils.waitForDocumentReadyState();
-        assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
 
