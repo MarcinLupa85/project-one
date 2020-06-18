@@ -89,16 +89,6 @@ public class HomePageOperations {
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
-    public void openEaseePurchaseFlow14DaysInstalation() throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
-        waitUtils.waitForVisiblityOf(easeeLink);
-        waitUtils.bringElementToViewport(easeeLink);
-        easeeLink.click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
-        customizationPageOperations.tickInstallationCheckbox();
-    }
-
     public void logOut() throws TimeoutException {
         WebElement username = homePageObject.getUsernameText();
         waitUtils.waitForVisiblityOf(username);
