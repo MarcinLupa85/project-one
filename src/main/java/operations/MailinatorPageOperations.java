@@ -26,8 +26,7 @@ public class MailinatorPageOperations {
 
     }
 
-
-    public void checkMailForPhrase(String email) throws TimeoutException {
+    private void chekMail(String email) throws TimeoutException {
         String mailinatorPageURL = "https://www.mailinator.com/";
         webDriver.navigate().to(mailinatorPageURL);
         waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
@@ -36,21 +35,19 @@ public class MailinatorPageOperations {
         mailinatorPageObject.getFirstMail().click();
         waitUtils.waitForElement(mailinatorPageObject.getMailBody());
         waitUtils.waitForDocumentReadyState();
+    }
+
+    public void checkMailForPhrase(String email) throws TimeoutException {
+        chekMail(email);
         final WebDriver mailText = webDriver.switchTo().frame(webDriver.findElement(By.cssSelector("iframe[name='msg_body']")));
         assertThat(mailText.getPageSource()).contains("snart som mulig");
     }
 
     public void checkMailForLackOfPhrase(String email) throws TimeoutException {
-        String mailinatorPageURL = "https://www.mailinator.com/";
-        webDriver.navigate().to(mailinatorPageURL);
-        waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
-        formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
-        mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
-        mailinatorPageObject.getFirstMail().click();
-        waitUtils.waitForElement(mailinatorPageObject.getMailBody());
-        waitUtils.waitForDocumentReadyState();
+        chekMail(email);
         final WebDriver mailText = webDriver.switchTo().frame(webDriver.findElement(By.cssSelector("iframe[name='msg_body']")));
         assertThat(mailText.getPageSource()).doesNotContain("snart som mulig");
     }
+
 
 }
