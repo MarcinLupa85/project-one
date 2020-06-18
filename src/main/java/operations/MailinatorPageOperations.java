@@ -7,6 +7,7 @@ import java.util.concurrent.TimeoutException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageobjects.MailinatorPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
@@ -26,7 +27,7 @@ public class MailinatorPageOperations {
 
     }
 
-    private void chekMail(String email) throws TimeoutException {
+    private void checkMail(String email) throws TimeoutException {
         String mailinatorPageURL = "https://www.mailinator.com/";
         webDriver.navigate().to(mailinatorPageURL);
         waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
@@ -35,18 +36,19 @@ public class MailinatorPageOperations {
         mailinatorPageObject.getFirstMail().click();
         waitUtils.waitForElement(mailinatorPageObject.getMailBody());
         waitUtils.waitForDocumentReadyState();
+        WebElement mailframe = webDriver.findElement(By.cssSelector("iframe[name='msg_body']"));
+        webDriver.switchTo().frame(mailframe);
+
     }
 
     public void checkMailForPhrase(String email) throws TimeoutException {
-        chekMail(email);
-        final WebDriver mailText = webDriver.switchTo().frame(webDriver.findElement(By.cssSelector("iframe[name='msg_body']")));
-        assertThat(mailText.getPageSource()).contains("snart som mulig");
+        checkMail(email);
+        assertThat(webDriver.getPageSource()).contains("snart som mulig");
     }
 
     public void checkMailForLackOfPhrase(String email) throws TimeoutException {
-        chekMail(email);
-        final WebDriver mailText = webDriver.switchTo().frame(webDriver.findElement(By.cssSelector("iframe[name='msg_body']")));
-        assertThat(mailText.getPageSource()).doesNotContain("snart som mulig");
+        checkMail(email);
+        assertThat(webDriver.getPageSource()).doesNotContain("snart som mulig");
     }
 
 
