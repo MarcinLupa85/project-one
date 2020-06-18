@@ -1,0 +1,15 @@
+FROM statoilfuelretail/engage-selenium-base:new
+
+USER root
+
+RUN rm /etc/localtime
+RUN ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+ENV TZ=Europe/Warsaw
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+WORKDIR /opt/automation
+
+COPY ./ /opt/automation/
+VOLUME ["report:/opt/automation/report"]
+
+ENTRYPOINT ["/opt/automation/run_tests.sh"]

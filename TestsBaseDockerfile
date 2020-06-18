@@ -1,0 +1,40 @@
+FROM ubuntu:bionic
+
+RUN apt-get update -y
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:openjdk-r/ppa
+
+RUN apt-get update -y \
+    && apt-get install -y \
+        nano \
+        openjdk-12-jdk \
+        firefox \
+        wget \
+        tzdata \
+        unzip \
+        python \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /opt/gradle
+RUN mkdir /opt/automation
+
+WORKDIR /opt/gradle
+
+RUN wget https://services.gradle.org/distributions/gradle-5.6.2-bin.zip
+RUN unzip gradle-5.6.2-bin.zip
+RUN rm gradle-5.6.2-bin.zip
+
+ENV PATH="$PATH:/opt/gradle/gradle-5.6.2/bin"
+ENV JAVA_HOME="/usr/lib/jvm/java-12-openjdk-amd64"
+
+USER root
+
+WORKDIR /opt/automation
+
+RUN mkdir /root/.gradle
+RUN mkdir /root/.gradle/caches
+RUN rm /etc/localtime
+RUN ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+ENV TZ=Europe/Warsaw
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone

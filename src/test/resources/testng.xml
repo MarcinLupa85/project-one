@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Regression" parallel="false" preserve-order="true">
+<suite name="Regression" parallel="false">
     <listeners>
         <listener class-name="listeners.SuiteListener"/>
         <listener class-name="org.testng.reporters.XMLReporter"/>
@@ -10,6 +10,10 @@
     <test name="sampleTests">
         <classes>
             <class name="ContactWithCircleKTests"/>
+<!--            <class name="ArticlesTest"/>-->
+<!--            <class name="FaqTests"/>-->
+<!--            <class name="PurchaseFlowExistingUserTest"/>-->
+<!--            <class name="PurchaseFlowNewUserTest"/>-->
         </classes>
     </test>
 </suite>
