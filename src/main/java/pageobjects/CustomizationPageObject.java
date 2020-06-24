@@ -26,9 +26,12 @@ public class CustomizationPageObject
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
+    @FindBy(css = ".order-summary__total-price")
+    private WebElement totalPrice;
+
     public WebElement getEaseeNumberSelector() { return easeeNumberSelector; }
 
-    public WebElement getInstalllationCheckbox() {return installlationCheckbox; }
+    public WebElement getInstallationCheckbox() {return installlationCheckbox; }
 
     public WebElement getExtraCheckbox() { return extraCheckbox; }
 
@@ -37,5 +40,7 @@ public class CustomizationPageObject
     }
 
     public WebElement getSubmitButton() { return submitButton; }
+
+    public WebElement getTotalPrice() { return totalPrice; }
 
 }
