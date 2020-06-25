@@ -16,4 +16,5 @@ public class Constants {
     public static final String WIN_DRIVER_BINARY_NAME = "chromedriver.exe";
     public static final String REPORT_DIR = getProperty("user.dir") + separator + "report" + separator;
     public static final String RESULT_FILE = REPORT_DIR + "result_file";
+    public static final String SCREENSHOT_DIR = REPORT_DIR + "screenshots" + separator;
 }
