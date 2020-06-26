@@ -5,11 +5,9 @@ import org.openqa.selenium.WebElement;
 import pageobjects.ApartmentPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
-
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 

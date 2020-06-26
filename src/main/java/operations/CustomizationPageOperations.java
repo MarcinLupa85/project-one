@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import pageobjects.CustomizationPageObject;
 import utils.WaitUtils;
 
+import static config.Constants.BASE_URL;
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class CustomizationPageOperations {
 
     private CustomizationPageObject customizationPageObject;
@@ -43,11 +46,38 @@ public class CustomizationPageOperations {
     }
 
     public void tickExtraCheckbox() {
-        customizationPageObject.getInstalllationCheckbox().click();
+        customizationPageObject.getInstallationCheckbox().click();
         customizationPageObject.getExtraCheckbox().click();
     }
 
     public void tickInstallationCheckbox() {
-        customizationPageObject.getInstalllationCheckbox().click();
+        customizationPageObject.getInstallationCheckbox().click();
+    }
+
+    public void goToInglandGarasjen() {
+        driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=28a3d121e93045d8bae308dbfbcc17ca");
+        WebElement submitButton = customizationPageObject.getSubmitButton();
+        waitUtils.waitForVisiblityOf(submitButton);
+    }
+
+    public void goToObos() {
+        driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=0b0c7f3a588611ea8e2d0242ac130003");
+        WebElement submitButton = customizationPageObject.getSubmitButton();
+        waitUtils.waitForVisiblityOf(submitButton);
+    }
+
+    public void checkInglandGarasjenPrice() {
+        WebElement totalPrice = customizationPageObject.getTotalPrice();
+        assertThat(totalPrice.getText()).containsPattern("kr\\s7.895,-");
+    }
+
+    public void checkObosPrice() {
+        tickExtraCheckbox();
+        WebElement totalPrice = customizationPageObject.getTotalPrice();
+        assertThat(totalPrice.getText()).containsPattern("kr\\s14.490,-");
+    }
+
+    public void fillMembershipNumber() {
+        customizationPageObject.getMembershipNumber().sendKeys("1234");
     }
 }
