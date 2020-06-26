@@ -19,7 +19,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
-    private CkidDashboardPageOperations ckidDashboardPageOperations;
     private WaitUtils waitUtils;
 
 
@@ -32,7 +31,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
-        ckidDashboardPageOperations = new CkidDashboardPageOperations(driver);
         waitUtils = new WaitUtils(driver);
     }
 

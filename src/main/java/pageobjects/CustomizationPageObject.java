@@ -29,6 +29,9 @@ public class CustomizationPageObject
     @FindBy(css = ".order-summary__total-price")
     private WebElement totalPrice;
 
+    @FindBy(id = "membershipNumber")
+    private  WebElement membershipNumber;
+
     public WebElement getEaseeNumberSelector() { return easeeNumberSelector; }
 
     public WebElement getInstallationCheckbox() {return installlationCheckbox; }
@@ -42,5 +45,7 @@ public class CustomizationPageObject
     public WebElement getSubmitButton() { return submitButton; }
 
     public WebElement getTotalPrice() { return totalPrice; }
+
+    public WebElement getMembershipNumber() { return membershipNumber; }
 
 }
