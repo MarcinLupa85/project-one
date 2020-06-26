@@ -9,7 +9,7 @@ services:
       - GRID_BROWSER_TIMEOUT=100000
       - GRID_TIMEOUT=900000
     networks:
-      - ces-selenium-network
+      - ev-selenium-network
   test_chrome:
     #    image: selenium/node-firefox-debug:3.141.59
     image: selenium/node-chrome-debug:3.141.59
@@ -29,7 +29,7 @@ services:
     depends_on:
       - test_hub
     networks:
-      - ces-selenium-network
+      - ev-selenium-network
   tests_repo:
     image: statoilfuelretail/engage-selenium:new
     volumes:
@@ -41,7 +41,7 @@ services:
     depends_on:
       - test_chrome
     networks:
-      - ces-selenium-network
+      - ev-selenium-network
 networks:
-  ces-selenium-network:
-    name: ces-selenium-network
+  ev-selenium-network:
+    name: ev-selenium-network
