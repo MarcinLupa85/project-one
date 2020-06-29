@@ -1,4 +1,5 @@
 import config.TestsBase;
+import jdk.internal.jline.internal.TestAccessible;
 import operations.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,7 +21,7 @@ public class SDUFlowTests extends TestsBase {
     private HomePageOperations homePageOperations;
     private WaitUtils waitUtils;
 
-    public void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary) {
+    public void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber) {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
@@ -65,13 +66,21 @@ public class SDUFlowTests extends TestsBase {
     public void inglandGarasjenSDUFlow() {
         customizationPageOperations.goToInglandGarasjen();
         customizationPageOperations.checkInglandGarasjenPrice();
-        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, false);
+        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, false, null);
     }
 
     @Test
     public void ObosSDUFlow() {
         customizationPageOperations.goToObos();
         customizationPageOperations.checkObosPrice();
-        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true);
+        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true, "1234");
+    }
+
+    @Test
+    public void PolestarSDUFlow() {
+        customizationPageOperations.goToPolestar();
+        customizationPageOperations.tickInstallationCheckbox();
+        customizationPageOperations.checkPolestarPrice();
+        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", false, true, "12341234");
     }
 }
