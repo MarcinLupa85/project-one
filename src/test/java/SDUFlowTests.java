@@ -1,5 +1,5 @@
+import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
-import jdk.internal.jline.internal.TestAccessible;
 import operations.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -62,6 +62,7 @@ public class SDUFlowTests extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
+    @TestCaseId(testRailCaseId = 2842)
     @Test
     public void inglandGarasjenSDUFlow() {
         customizationPageOperations.goToInglandGarasjen();
@@ -69,6 +70,7 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, false, null);
     }
 
+    @TestCaseId(testRailCaseId = 2843)
     @Test
     public void ObosSDUFlow() {
         customizationPageOperations.goToObos();
@@ -76,11 +78,11 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true, "1234");
     }
 
+    @TestCaseId(testRailCaseId = 2844)
     @Test
     public void PolestarSDUFlow() {
         customizationPageOperations.goToPolestar();
-        customizationPageOperations.tickInstallationCheckbox();
         customizationPageOperations.checkPolestarPrice();
-        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", false, true, "12341234");
+        purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, false, null);
     }
 }

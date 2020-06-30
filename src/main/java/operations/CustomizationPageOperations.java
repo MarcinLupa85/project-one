@@ -84,7 +84,7 @@ public class CustomizationPageOperations {
     }
 
     public void checkPolestarPrice() {
-        tickExtraCheckbox();
+        tickInstallationCheckbox();
         WebElement totalPrice = customizationPageObject.getTotalPrice();
         assertThat(totalPrice.getText()).containsPattern("kr\\s15.490,-");
     }
