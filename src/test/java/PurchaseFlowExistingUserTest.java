@@ -34,7 +34,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation) {
+    private void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation) {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
