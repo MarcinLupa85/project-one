@@ -72,7 +72,7 @@ public class SDUFlowTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 2843)
     @Test
-    public void ObosSDUFlow() {
+    public void obosSDUFlow() {
         customizationPageOperations.goToObos();
         customizationPageOperations.checkObosPrice();
         purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true, "1234");
@@ -80,7 +80,7 @@ public class SDUFlowTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 2844)
     @Test
-    public void PolestarSDUFlow() {
+    public void polestarSDUFlow() {
         customizationPageOperations.goToPolestar();
         customizationPageOperations.checkPolestarPrice();
         purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, false, null);
