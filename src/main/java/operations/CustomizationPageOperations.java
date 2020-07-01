@@ -13,6 +13,7 @@ public class CustomizationPageOperations {
 
     private CustomizationPageObject customizationPageObject;
     private WaitUtils waitUtils;
+    private String membershipNumber;
     WebDriver driver;
 
     public CustomizationPageOperations(WebDriver driver) {
@@ -89,7 +90,7 @@ public class CustomizationPageOperations {
         assertThat(totalPrice.getText()).containsPattern("kr\\s15.490,-");
     }
 
-    public void fillMembershipNumber() {
-        customizationPageObject.getMembershipNumber().sendKeys("1234");
+    public void fillMembershipNumber(String membershipNumber) {
+        customizationPageObject.getMembershipNumber().sendKeys(membershipNumber);
     }
 }

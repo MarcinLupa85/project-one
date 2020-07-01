@@ -21,14 +21,14 @@ public class SDUFlowTests extends TestsBase {
     private HomePageOperations homePageOperations;
     private WaitUtils waitUtils;
 
-    private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber) {
+    public void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber) {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
         addressPageOperations.fillBillingCity("Test Billing City");
         addressPageOperations.fillBillingZipCode("72433");
         if (membershipNumberNecessary){
-            customizationPageOperations.fillMembershipNumber();
+            customizationPageOperations.fillMembershipNumber(membershipNumber);
         }
         addressPageOperations.clickNext(); //TODO: change to DriverUtils.clicknext
         if (extraDiscount) {
@@ -40,7 +40,6 @@ public class SDUFlowTests extends TestsBase {
         summaryPageOperations.clickNext();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
-
     }
 
     @BeforeMethod private void initOperations() {
