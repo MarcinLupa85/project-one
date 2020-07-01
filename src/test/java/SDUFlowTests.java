@@ -1,3 +1,4 @@
+import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import operations.*;
 import org.testng.annotations.AfterMethod;
@@ -20,14 +21,14 @@ public class SDUFlowTests extends TestsBase {
     private HomePageOperations homePageOperations;
     private WaitUtils waitUtils;
 
-    public void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary) {
+    private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber) {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
         addressPageOperations.fillBillingCity("Test Billing City");
         addressPageOperations.fillBillingZipCode("72433");
         if (membershipNumberNecessary){
-            customizationPageOperations.fillMembershipNumber();
+            customizationPageOperations.fillMembershipNumber(membershipNumber);
         }
         addressPageOperations.clickNext(); //TODO: change to DriverUtils.clicknext
         if (extraDiscount) {
@@ -39,7 +40,6 @@ public class SDUFlowTests extends TestsBase {
         summaryPageOperations.clickNext();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
-
     }
 
     @BeforeMethod private void initOperations() {
@@ -61,17 +61,27 @@ public class SDUFlowTests extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
+    @TestCaseId(testRailCaseId = 2842)
     @Test
     public void inglandGarasjenSDUFlow() {
         customizationPageOperations.goToInglandGarasjen();
         customizationPageOperations.checkInglandGarasjenPrice();
-        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, false);
+        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, false, null);
     }
 
+    @TestCaseId(testRailCaseId = 2843)
     @Test
-    public void ObosSDUFlow() {
+    public void obosSDUFlow() {
         customizationPageOperations.goToObos();
         customizationPageOperations.checkObosPrice();
-        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true);
+        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true, "1234");
+    }
+
+    @TestCaseId(testRailCaseId = 2844)
+    @Test
+    public void polestarSDUFlow() {
+        customizationPageOperations.goToPolestar();
+        customizationPageOperations.checkPolestarPrice();
+        purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, false, null);
     }
 }

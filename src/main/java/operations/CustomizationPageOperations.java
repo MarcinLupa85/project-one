@@ -13,6 +13,7 @@ public class CustomizationPageOperations {
 
     private CustomizationPageObject customizationPageObject;
     private WaitUtils waitUtils;
+    private String membershipNumber;
     WebDriver driver;
 
     public CustomizationPageOperations(WebDriver driver) {
@@ -66,6 +67,12 @@ public class CustomizationPageOperations {
         waitUtils.waitForVisiblityOf(submitButton);
     }
 
+    public void goToPolestar() {
+        driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=22857be80c644c47a2d40c37ed9da68c");
+        WebElement submitButton = customizationPageObject.getSubmitButton();
+        waitUtils.waitForVisiblityOf(submitButton);
+    }
+
     public void checkInglandGarasjenPrice() {
         WebElement totalPrice = customizationPageObject.getTotalPrice();
         assertThat(totalPrice.getText()).containsPattern("kr\\s7.895,-");
@@ -77,7 +84,13 @@ public class CustomizationPageOperations {
         assertThat(totalPrice.getText()).containsPattern("kr\\s14.490,-");
     }
 
-    public void fillMembershipNumber() {
-        customizationPageObject.getMembershipNumber().sendKeys("1234");
+    public void checkPolestarPrice() {
+        tickInstallationCheckbox();
+        WebElement totalPrice = customizationPageObject.getTotalPrice();
+        assertThat(totalPrice.getText()).containsPattern("kr\\s15.490,-");
+    }
+
+    public void fillMembershipNumber(String membershipNumber) {
+        customizationPageObject.getMembershipNumber().sendKeys(membershipNumber);
     }
 }
