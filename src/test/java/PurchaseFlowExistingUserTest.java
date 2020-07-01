@@ -65,7 +65,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
-    @TestCaseId(testRailCaseId = 2506)
+    @TestCaseId(testRailCaseId = 2872)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
@@ -73,7 +73,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase("easeewithextra@mailinator.com");
     }
 
-    @TestCaseId(testRailCaseId = 1225)
+    @TestCaseId(testRailCaseId = 2873)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowNoExtra();
@@ -81,7 +81,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase("easeenoextra@mailinator.com");
     }
 
-    @TestCaseId(testRailCaseId = 2506)
+    @TestCaseId(testRailCaseId = 2876)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException{
         homePageOperations.openCablePurchaseFlow();
@@ -89,7 +89,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase("cablenoextra@mailinator.com");
     }
 
-    @TestCaseId(testRailCaseId = 2510)
+    @TestCaseId(testRailCaseId = 2874)
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
@@ -97,7 +97,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase("mennekesnoextra@mailinator.com");
     }
 
-    @TestCaseId(testRailCaseId = 1219)
+    @TestCaseId(testRailCaseId = 2875)
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
@@ -105,7 +105,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase("mennekeswithextra@mailinator.com");
     }
 
-    @TestCaseId(testRailCaseId = 2514)
+    @TestCaseId(testRailCaseId = 2879)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
@@ -113,7 +113,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase("easeeinstallation@mailinator.com");
     }
 
-    @TestCaseId(testRailCaseId = 2515)
+    @TestCaseId(testRailCaseId = 2880)
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
@@ -121,17 +121,17 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase("mennekesinstallation@mailinator.com");
     }
 
-    @TestCaseId(testRailCaseId = 1158)
+    @TestCaseId(testRailCaseId = 2877)
     @Test(alwaysRun = true)
-    public void testEaseePurchasePlow14DaysInstallation() throws TimeoutException {
+    public void testEaseePurchaseFlow14DaysInstallation() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("easee14daysinstallation@mailinator.com", false, true);
         mailinatorPageOperations.checkMailForPhrase("easee14daysinstallation@mailinator.com");
     }
 
-    @TestCaseId(testRailCaseId = 1158)
+    @TestCaseId(testRailCaseId = 2878)
     @Test(alwaysRun = true)
-    public void testMennekesPurchasePlow14DaysInstallation() throws TimeoutException {
+    public void testMennekesPurchaseFlow14DaysInstallation() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("mennekes14daysinstallation@mailinator.com", false, true);
         mailinatorPageOperations.checkMailForPhrase("mennekes14daysinstallation@mailinator.com");

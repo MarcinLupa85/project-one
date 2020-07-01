@@ -25,13 +25,13 @@ public class ArticlesTest extends TestsBase {
         developerPageOperations = new DeveloperPageOperations(driver);
     }
 
-    @TestCaseId(testRailCaseId = 1183)
+    @TestCaseId(testRailCaseId = 2858)
     @Test
     public void goAndCheckToArticlesTest() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
     }
 
-    @TestCaseId(testRailCaseId = 1186)
+    @TestCaseId(testRailCaseId = 2859)
     @Test
     public void checkOnTheGoArticlesTest() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -41,7 +41,7 @@ public class ArticlesTest extends TestsBase {
 
     }
 
-    @TestCaseId(testRailCaseId = 1187)
+    @TestCaseId(testRailCaseId = 2860)
     @Test
     public void checkHouseArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -50,7 +50,7 @@ public class ArticlesTest extends TestsBase {
         housePageOperations.compareTitles(houseTitles);
     }
 
-    @TestCaseId(testRailCaseId = 1188)
+    @TestCaseId(testRailCaseId = 2861)
     @Test
     public void checkApartmentArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -60,7 +60,7 @@ public class ArticlesTest extends TestsBase {
         apartmentPageOperations.compareTitles(apartmentTitles);
     }
 
-    @TestCaseId(testRailCaseId = 1189)
+    @TestCaseId(testRailCaseId = 2862)
     @Test
     public void checkDeveloperArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();

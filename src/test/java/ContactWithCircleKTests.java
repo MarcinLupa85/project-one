@@ -33,7 +33,7 @@ public class ContactWithCircleKTests extends TestsBase {
         driver.navigate().refresh();
     }
 
-    @TestCaseId(testRailCaseId = 1164)
+    @TestCaseId(testRailCaseId = 2853)
     @Test
     public void testSendGeneralContactForm() {
         navbarOperations.openContactPage();
@@ -41,15 +41,7 @@ public class ContactWithCircleKTests extends TestsBase {
         contactPageOperations.clickSend();
     }
 
-    @TestCaseId(testRailCaseId = 1163)
-    @Test
-    public void testSendBusinessContactForm() {
-        navbarOperations.openBusinessPage();
-        businessPageOperations.fillForm("Test Automation", "testSendBusinessContactForm@mailinator.com", "123873456", "Company name", "Test comment");
-        contactPageOperations.clickSend();
-    }
-
-    @TestCaseId(testRailCaseId = 1162)
+    @TestCaseId(testRailCaseId = 2854)
     @Test
     public void testSendApartmentContactForm() {
         navbarOperations.openNavbarDropdown();
@@ -58,7 +50,15 @@ public class ContactWithCircleKTests extends TestsBase {
         apartmentPageOperations.clickSendContactForm();
     }
 
-    @TestCaseId(testRailCaseId = 1204)
+    @TestCaseId(testRailCaseId = 2855)
+    @Test
+    public void testSendBusinessContactForm() {
+        navbarOperations.openBusinessPage();
+        businessPageOperations.fillForm("Test Automation", "testSendBusinessContactForm@mailinator.com", "123873456", "Company name", "Test comment");
+        contactPageOperations.clickSend();
+    }
+
+    @TestCaseId(testRailCaseId = 2856)
     @Test
     public void testSendDeveloperContactForm() {
         navbarOperations.openNavbarDropdown();
@@ -67,7 +67,7 @@ public class ContactWithCircleKTests extends TestsBase {
         developerPageOperations.clickSendForm();
     }
 
-    @TestCaseId(testRailCaseId = 1205)
+    @TestCaseId(testRailCaseId = 2857)
     @Test
     public void testSendReportProblemForm(){
         reportProblemPageOperations.goToReportProblemPage();
