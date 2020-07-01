@@ -1,3 +1,4 @@
+import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import operations.*;
 import org.testng.annotations.AfterMethod;
@@ -32,6 +33,7 @@ public class ContactWithCircleKTests extends TestsBase {
         driver.navigate().refresh();
     }
 
+    @TestCaseId(testRailCaseId = 1164)
     @Test
     public void testSendGeneralContactForm() {
         navbarOperations.openContactPage();
@@ -39,6 +41,7 @@ public class ContactWithCircleKTests extends TestsBase {
         contactPageOperations.clickSend();
     }
 
+    @TestCaseId(testRailCaseId = 1163)
     @Test
     public void testSendBusinessContactForm() {
         navbarOperations.openBusinessPage();
@@ -46,6 +49,7 @@ public class ContactWithCircleKTests extends TestsBase {
         contactPageOperations.clickSend();
     }
 
+    @TestCaseId(testRailCaseId = 1162)
     @Test
     public void testSendApartmentContactForm() {
         navbarOperations.openNavbarDropdown();
@@ -54,6 +58,7 @@ public class ContactWithCircleKTests extends TestsBase {
         apartmentPageOperations.clickSendContactForm();
     }
 
+    @TestCaseId(testRailCaseId = 1204)
     @Test
     public void testSendDeveloperContactForm() {
         navbarOperations.openNavbarDropdown();
@@ -62,6 +67,7 @@ public class ContactWithCircleKTests extends TestsBase {
         developerPageOperations.clickSendForm();
     }
 
+    @TestCaseId(testRailCaseId = 1205)
     @Test
     public void testSendReportProblemForm(){
         reportProblemPageOperations.goToReportProblemPage();

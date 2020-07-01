@@ -1,3 +1,4 @@
+import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
@@ -24,12 +25,13 @@ public class ArticlesTest extends TestsBase {
         developerPageOperations = new DeveloperPageOperations(driver);
     }
 
-
+    @TestCaseId(testRailCaseId = 1183)
     @Test
     public void goAndCheckToArticlesTest() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
     }
 
+    @TestCaseId(testRailCaseId = 1186)
     @Test
     public void checkOnTheGoArticlesTest() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -38,6 +40,8 @@ public class ArticlesTest extends TestsBase {
         onTheGoPageOperations.compareTitles(OTGTitles);
 
     }
+
+    @TestCaseId(testRailCaseId = 1187)
     @Test
     public void checkHouseArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -46,6 +50,7 @@ public class ArticlesTest extends TestsBase {
         housePageOperations.compareTitles(houseTitles);
     }
 
+    @TestCaseId(testRailCaseId = 1188)
     @Test
     public void checkApartmentArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -55,6 +60,7 @@ public class ArticlesTest extends TestsBase {
         apartmentPageOperations.compareTitles(apartmentTitles);
     }
 
+    @TestCaseId(testRailCaseId = 1189)
     @Test
     public void checkDeveloperArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
