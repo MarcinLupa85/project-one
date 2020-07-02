@@ -61,7 +61,7 @@ public class SDUFlowTests extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
-    @TestCaseId(testRailCaseId = 2842)
+    @TestCaseId(testRailCaseId = 2885)
     @Test
     public void inglandGarasjenSDUFlow() {
         customizationPageOperations.goToInglandGarasjen();
@@ -69,7 +69,7 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, false, null);
     }
 
-    @TestCaseId(testRailCaseId = 2843)
+    @TestCaseId(testRailCaseId = 2886)
     @Test
     public void obosSDUFlow() {
         customizationPageOperations.goToObos();
@@ -77,7 +77,7 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true, "1234");
     }
 
-    @TestCaseId(testRailCaseId = 2844)
+    @TestCaseId(testRailCaseId = 2887)
     @Test
     public void polestarSDUFlow() {
         customizationPageOperations.goToPolestar();

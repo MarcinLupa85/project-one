@@ -1,3 +1,4 @@
+import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import operations.*;
 import org.testng.annotations.AfterMethod;
@@ -32,6 +33,7 @@ public class ContactWithCircleKTests extends TestsBase {
         driver.navigate().refresh();
     }
 
+    @TestCaseId(testRailCaseId = 2853)
     @Test
     public void testSendGeneralContactForm() {
         navbarOperations.openContactPage();
@@ -39,13 +41,7 @@ public class ContactWithCircleKTests extends TestsBase {
         contactPageOperations.clickSend();
     }
 
-    @Test
-    public void testSendBusinessContactForm() {
-        navbarOperations.openBusinessPage();
-        businessPageOperations.fillForm("Test Automation", "testSendBusinessContactForm@mailinator.com", "123873456", "Company name", "Test comment");
-        contactPageOperations.clickSend();
-    }
-
+    @TestCaseId(testRailCaseId = 2854)
     @Test
     public void testSendApartmentContactForm() {
         navbarOperations.openNavbarDropdown();
@@ -54,6 +50,15 @@ public class ContactWithCircleKTests extends TestsBase {
         apartmentPageOperations.clickSendContactForm();
     }
 
+    @TestCaseId(testRailCaseId = 2855)
+    @Test
+    public void testSendBusinessContactForm() {
+        navbarOperations.openBusinessPage();
+        businessPageOperations.fillForm("Test Automation", "testSendBusinessContactForm@mailinator.com", "123873456", "Company name", "Test comment");
+        contactPageOperations.clickSend();
+    }
+
+    @TestCaseId(testRailCaseId = 2856)
     @Test
     public void testSendDeveloperContactForm() {
         navbarOperations.openNavbarDropdown();
@@ -62,6 +67,7 @@ public class ContactWithCircleKTests extends TestsBase {
         developerPageOperations.clickSendForm();
     }
 
+    @TestCaseId(testRailCaseId = 2857)
     @Test
     public void testSendReportProblemForm(){
         reportProblemPageOperations.goToReportProblemPage();

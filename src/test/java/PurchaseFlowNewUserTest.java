@@ -1,3 +1,4 @@
+import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import operations.*;
 import org.testng.ITestResult;
@@ -68,7 +69,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         waitUtils.waitForDocumentReadyState();
     }
 
-
+    @TestCaseId(testRailCaseId = 2867)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
@@ -79,6 +80,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
+    @TestCaseId(testRailCaseId = 2868)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowNoExtra();
@@ -88,6 +90,8 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
+
+    @TestCaseId(testRailCaseId = 2871)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openCablePurchaseFlow();
@@ -98,6 +102,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
+    @TestCaseId(testRailCaseId = 2870)
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
@@ -108,6 +113,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
+    @TestCaseId(testRailCaseId = 2869)
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithExtra();
@@ -118,6 +124,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
+    @TestCaseId(testRailCaseId = 2881)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
@@ -128,6 +135,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
+    @TestCaseId(testRailCaseId = 2882)
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
