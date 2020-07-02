@@ -37,7 +37,8 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/kontakt");
     }
 
-    public void openNavbarDropdown() {
+    public void clickNavbarDropdown() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
         navbarObject.getNavbarDropdown().click();
     }
 

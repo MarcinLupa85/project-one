@@ -13,7 +13,6 @@ public class CustomizationPageOperations {
 
     private CustomizationPageObject customizationPageObject;
     private WaitUtils waitUtils;
-    private String membershipNumber;
     WebDriver driver;
 
     public CustomizationPageOperations(WebDriver driver) {
@@ -29,10 +28,7 @@ public class CustomizationPageOperations {
         waitUtils.waitForPresentOf(By.id("submit-registration-step-one"));
     }
 
-    public void clickBackButton() {
-        customizationPageObject.getBackButton().click();
-        waitUtils.waitForUrlToContains("/hjemmelading");
-    }
+
 //TODO change metod to be more universal (mennekes, cables) using ENUM
     private void selectEaseeAmount (Integer value) {
         WebElement selectContainer = customizationPageObject.getEaseeNumberSelector();

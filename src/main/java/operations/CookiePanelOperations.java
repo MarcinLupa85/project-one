@@ -11,6 +11,7 @@ public class CookiePanelOperations {
     }
 
     public void clickCookieOkButton() {
-        cookiePanelObject.cookieOkButton().click();
+        cookiePanelObject.getCookieDetailsButton().click();
+        cookiePanelObject.getCookieOkButton().click();
     }
 }

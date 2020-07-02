@@ -21,7 +21,7 @@ public class NavbarObject {
     @FindBy(css = "a[href='/kontakt'].nav-link")
     private WebElement contactLink;
 
-    @FindBy(css = "[class='nav-link dropdown-hover menu-element__hyperlink--user dropdown-toggle']")
+    @FindBy(css = "span[class='caret']")
     private WebElement navbarDropdown;
 
     @FindBy(css = "a[href='/sameie-borettslag'].nav-link")
@@ -30,7 +30,7 @@ public class NavbarObject {
     @FindBy(css = "a[href='/utbygger'].nav-link")
     private WebElement developerLink;
 
-    @FindBy(css = "a[href='/bedrift'].nav-link")
+    @FindBy(xpath = "//a[contains(text(),'Bedrift')] ")
     private WebElement businessLink;
 
     @FindBy(css = "[class='dropdown header-dropdown-menu user-panel-menu dropdown-menu']")
