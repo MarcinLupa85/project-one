@@ -4,16 +4,19 @@
 <suite name="Regression" parallel="false">
     <listeners>
         <listener class-name="listeners.SuiteListener"/>
+        <listener class-name="listeners.TestListener"/>
+        <listener class-name="listeners.TestRailTestNgListener"/>
         <listener class-name="org.testng.reporters.XMLReporter"/>
     </listeners>
 
-    <test name="sampleTests">
+    <test name="regression">
         <classes>
             <class name="ContactWithCircleKTests"/>
-<!--            <class name="ArticlesTest"/>-->
-<!--            <class name="FaqTests"/>-->
-<!--            <class name="PurchaseFlowExistingUserTest"/>-->
-<!--            <class name="PurchaseFlowNewUserTest"/>-->
+            <class name="ArticlesTest"/>
+            <class name="FaqTests"/>
+            <class name="PurchaseFlowExistingUserTest"/>
+            <class name="PurchaseFlowNewUserTest"/>
+            <class name="SDUFlowTests"/>
         </classes>
     </test>
 </suite>
