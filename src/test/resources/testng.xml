@@ -17,6 +17,7 @@
             <class name="PurchaseFlowExistingUserTest"/>
             <class name="PurchaseFlowNewUserTest"/>
             <class name="SDUFlowTests"/>
+            <class name="MDUFlowTests"/>
         </classes>
     </test>
 </suite>
