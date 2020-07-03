@@ -15,14 +15,14 @@ public class CookiePanelObject{
     @FindBy(id = "CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")
     private WebElement cookieOkButton;
 
-    @FindBy(css = "button[class='btn-close']")
-    private WebElement cookieCloseButton;
+    @FindBy(id = "CybotCookiebotDialogBodyLevelDetailsButton")
+    private WebElement cookieDetailsButton;
 
-    public WebElement cookieOkButton() {
+    public WebElement getCookieOkButton() {
         return cookieOkButton;
     }
 
-    public WebElement cookieCloseButton(){
-        return cookieCloseButton;
+    public WebElement getCookieDetailsButton(){
+        return cookieDetailsButton;
     }
 }

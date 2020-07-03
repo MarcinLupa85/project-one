@@ -55,7 +55,7 @@ public class ArticlesTest extends TestsBase {
     public void checkApartmentArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
         List<String> apartmentTitles = articlesPageOperations.listThreeApartmentArticles();
-        navbarOperations.openNavbarDropdown();
+        navbarOperations.clickNavbarDropdown();
         navbarOperations.openApartmentPage();
         apartmentPageOperations.compareTitles(apartmentTitles);
     }
@@ -65,7 +65,7 @@ public class ArticlesTest extends TestsBase {
     public void checkDeveloperArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
         List<String> developerTitles = articlesPageOperations.listThreeDeveloperArticles();
-        navbarOperations.openNavbarDropdown();
+        navbarOperations.clickNavbarDropdown();
         navbarOperations.openDeveloperPage();
         apartmentPageOperations.compareTitles(developerTitles);
     }

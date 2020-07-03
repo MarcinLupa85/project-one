@@ -33,6 +33,7 @@ public class MailinatorPageOperations {
         waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
+        waitUtils.waitForDocumentReadyState();
         mailinatorPageObject.getFirstMail().click();
         waitUtils.waitForElement(mailinatorPageObject.getMailBody());
         waitUtils.waitForDocumentReadyState();
