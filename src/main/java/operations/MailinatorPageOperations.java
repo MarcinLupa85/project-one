@@ -1,7 +1,6 @@
 package operations;
 
 import java.lang.*;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
@@ -35,11 +34,14 @@ public class MailinatorPageOperations {
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForDocumentReadyState();
         mailinatorPageObject.getFirstMail().click();
-        waitUtils.waitForElement(mailinatorPageObject.getMailBody());
+        WebElement mailBody = mailinatorPageObject.getMailBody();
+        waitUtils.waitForElement(mailBody);
+        if (!mailBody.isDisplayed()){
+            mailinatorPageObject.getFirstMail().click();
+        }
         waitUtils.waitForDocumentReadyState();
-        WebElement mailframe = webDriver.findElement(By.cssSelector("iframe[name='msg_body']"));
-        webDriver.switchTo().frame(mailframe);
-
+        WebElement mailFrame = webDriver.findElement(By.cssSelector("iframe[name='msg_body']"));
+        webDriver.switchTo().frame(mailFrame);
     }
 
     public void checkMailForPhrase(String email) throws TimeoutException {
@@ -51,6 +53,5 @@ public class MailinatorPageOperations {
         checkMail(email);
         assertThat(webDriver.getPageSource()).doesNotContain("snart som mulig");
     }
-
 
 }
