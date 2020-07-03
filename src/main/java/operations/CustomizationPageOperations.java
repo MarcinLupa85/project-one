@@ -53,26 +53,22 @@ public class CustomizationPageOperations {
 
     public void goToBigTrial() {
         driver.navigate().to(BASE_URL + "apartment-order/customize-order?id=8226947439e34584a4e13a641408e2ac");
-        WebElement submitButton = customizationPageObject.getSubmitButton();
-        waitUtils.waitForVisiblityOf(submitButton);
+        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToInglandGarasjen() {
         driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=28a3d121e93045d8bae308dbfbcc17ca");
-        WebElement submitButton = customizationPageObject.getSubmitButton();
-        waitUtils.waitForVisiblityOf(submitButton);
+        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToObos() {
         driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=0b0c7f3a588611ea8e2d0242ac130003");
-        WebElement submitButton = customizationPageObject.getSubmitButton();
-        waitUtils.waitForVisiblityOf(submitButton);
+        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToPolestar() {
         driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=22857be80c644c47a2d40c37ed9da68c");
-        WebElement submitButton = customizationPageObject.getSubmitButton();
-        waitUtils.waitForVisiblityOf(submitButton);
+        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());;
     }
 
     public void checkBigTrialPrices() {

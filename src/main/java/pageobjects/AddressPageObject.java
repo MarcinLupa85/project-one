@@ -35,10 +35,10 @@ public class AddressPageObject {
     @FindBy(css = "textarea#comment")
     private WebElement commentInput;
 
-    @FindBy(css = "input#condominium_name")
+    @FindBy(id = "condominium_name")
     private WebElement condominiumInput;
 
-    @FindBy(css = "input#parkingPlace0")
+    @FindBy(id = "parkingPlace0")
     private WebElement parkingPlaceInput;
 
     @FindBy(css = "button[type=\"submit\"]")
