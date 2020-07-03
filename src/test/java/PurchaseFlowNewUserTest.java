@@ -52,7 +52,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
             assertFalse(summaryPageOperations.hasExtraDiscount());
         }
         summaryPageOperations.tickTermsAndConditionsCheckbox();
-        summaryPageOperations.clickNext();
+        summaryPageOperations.clickFinish();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
         assertThat(driver.getCurrentUrl().contains("/home"));

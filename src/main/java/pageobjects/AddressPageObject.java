@@ -35,8 +35,11 @@ public class AddressPageObject {
     @FindBy(css = "textarea#comment")
     private WebElement commentInput;
 
-    @FindBy(css = "a[href=\"/hjemmelading-bestill/customize-order\"]")
-    private WebElement backButton;
+    @FindBy(css = "input#condominium_name")
+    private WebElement condominiumInput;
+
+    @FindBy(css = "input#parkingPlace0")
+    private WebElement parkingPlaceInput;
 
     @FindBy(css = "button[type=\"submit\"]")
     private WebElement nextButton;
@@ -53,29 +56,9 @@ public class AddressPageObject {
         return billingCityInput;
     }
 
-    public WebElement getInstallationAddressInput() {
-        return installationAddressInput;
-    }
+    public WebElement getCondominiumInput() { return condominiumInput; }
 
-    public WebElement getInstallationZipCodeInput() {
-        return installationZipCodeInput;
-    }
-
-    public WebElement getInstallationCityInput() {
-        return installationCityInput;
-    }
-
-    public WebElement getInstallationAddressCheckbox() {
-        return installationAddressCheckbox;
-    }
-
-    public WebElement getCommentInput() {
-        return commentInput;
-    }
-
-    public WebElement getBackButton() {
-        return backButton;
-    }
+    public WebElement getParkingPlaceInput() { return parkingPlaceInput; }
 
     public WebElement getNextButton() {
         return nextButton;

@@ -29,6 +29,9 @@ public class CustomizationPageObject
     @FindBy(css = ".order-summary__total-price")
     private WebElement totalPrice;
 
+    @FindBy(css = "[class = 'order-summary__body-list']")
+    private WebElement subscriptionFee;
+
     @FindBy(id = "membershipNumber")
     private  WebElement membershipNumber;
 
@@ -38,13 +41,11 @@ public class CustomizationPageObject
 
     public WebElement getExtraCheckbox() { return extraCheckbox; }
 
-    public WebElement getBackButton() {
-        return backButton;
-    }
-
     public WebElement getSubmitButton() { return submitButton; }
 
     public WebElement getTotalPrice() { return totalPrice; }
+
+    public WebElement getSubscriptionFee() { return subscriptionFee; }
 
     public WebElement getMembershipNumber() { return membershipNumber; }
 

@@ -29,28 +29,14 @@ public class AddressPageOperations {
         addressPageObject.getBillingCityInput().sendKeys(city);
     }
 
-    public void fillInstallationAddress(String address) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getInstallationAddressInput());
-        addressPageObject.getInstallationAddressInput().sendKeys(address);
+    public void fillCondominiumName(String condominium) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getCondominiumInput());
+        addressPageObject.getCondominiumInput().sendKeys(condominium);
     }
 
-    public void fillInstallationZipCode(String zipCode) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getInstallationZipCodeInput());
-        addressPageObject.getInstallationZipCodeInput().sendKeys(zipCode);
-    }
-
-    public void fillInstallationCity(String city) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getInstallationCityInput());
-        addressPageObject.getInstallationCityInput().sendKeys(city);
-    }
-
-    public void fillComment(String comment) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getInstallationCityInput());
-        addressPageObject.getInstallationCityInput().sendKeys(comment);
-    }
-
-    public void tickInstallationAddressCheckbox() {
-        addressPageObject.getInstallationAddressCheckbox().click();
+    public void fillParkingPlace(String parkingPlace) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getParkingPlaceInput());
+        addressPageObject.getParkingPlaceInput().sendKeys(parkingPlace);
     }
 
     public void clickNext() {
@@ -58,9 +44,9 @@ public class AddressPageOperations {
         waitUtils.waitForUrlToContains("/house-order/confirm-order");
     }
 
-    public void clickBack() {
-        addressPageObject.getBackButton().click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+    public void clickNextApartmentFlow() {
+        addressPageObject.getNextButton().click();
+        waitUtils.waitForUrlToContains("/apartment-order/confirm-order");
     }
 
 }

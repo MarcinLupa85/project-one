@@ -51,7 +51,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         if (fourteenDaysInstallation) {
             summaryPageOperations.tick14DaysCheckbox();
         }
-        summaryPageOperations.clickNext();
+        summaryPageOperations.clickFinish();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
 

@@ -51,6 +51,12 @@ public class CustomizationPageOperations {
         customizationPageObject.getInstallationCheckbox().click();
     }
 
+    public void goToBigTrial() {
+        driver.navigate().to(BASE_URL + "apartment-order/customize-order?id=8226947439e34584a4e13a641408e2ac");
+        WebElement submitButton = customizationPageObject.getSubmitButton();
+        waitUtils.waitForVisiblityOf(submitButton);
+    }
+
     public void goToInglandGarasjen() {
         driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=28a3d121e93045d8bae308dbfbcc17ca");
         WebElement submitButton = customizationPageObject.getSubmitButton();
@@ -67,6 +73,13 @@ public class CustomizationPageOperations {
         driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=22857be80c644c47a2d40c37ed9da68c");
         WebElement submitButton = customizationPageObject.getSubmitButton();
         waitUtils.waitForVisiblityOf(submitButton);
+    }
+
+    public void checkBigTrialPrices() {
+        WebElement totalPrice = customizationPageObject.getTotalPrice();
+        assertThat(totalPrice.getText()).containsPattern("kr\\s20.990,-");
+        WebElement subscriptionFee = customizationPageObject.getSubscriptionFee();
+        assertThat(subscriptionFee.getText()).containsPattern("kr\\s89,-");
     }
 
     public void checkInglandGarasjenPrice() {
