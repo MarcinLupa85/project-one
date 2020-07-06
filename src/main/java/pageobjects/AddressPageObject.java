@@ -20,21 +20,6 @@ public class AddressPageObject {
     @FindBy(id = "billingCity")
     private WebElement billingCityInput;
 
-    @FindBy(css = "input#installation_address_address")
-    private WebElement installationAddressInput;
-
-    @FindBy(css = "input#installation_address_zip_code")
-    private WebElement installationZipCodeInput;
-
-    @FindBy(css = "input#installation_address_city")
-    private WebElement installationCityInput;
-
-    @FindBy(css = "i.radio-circle__icon")
-    private WebElement installationAddressCheckbox;
-
-    @FindBy(css = "textarea#comment")
-    private WebElement commentInput;
-
     @FindBy(id = "condominium_name")
     private WebElement condominiumInput;
 
