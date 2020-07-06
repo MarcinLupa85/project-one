@@ -69,5 +69,12 @@ public class MDUFlowTests extends TestsBase {
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
 
-
+    @TestCaseId(testRailCaseId = 2896)
+    @Test
+    private void bigMDUFlow() {
+        customizationPageOperations.goToBig();
+        customizationPageOperations.checkBigPrices();
+        customizationPageOperations.tickExtraCheckbox();
+        purchaseFlowMDUUser("mdueaseewithextra@mailinator.com", true);
+    }
 }
