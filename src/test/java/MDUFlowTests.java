@@ -74,7 +74,6 @@ public class MDUFlowTests extends TestsBase {
     private void bigMDUFlow() {
         customizationPageOperations.goToBig();
         customizationPageOperations.checkBigPrices();
-        customizationPageOperations.tickExtraCheckbox();
         purchaseFlowMDUUser("mdueaseewithextra@mailinator.com", true);
     }
 }
