@@ -25,9 +25,14 @@ public class SummaryPageOperations {
         termsAndConditionsCheckbox.click();
     }
 
-    public void clickNext() {
+    public void clickFinish() {
         summaryPageObject.getFinishOrderButton().click();
         waitUtils.waitForUrlToContains("/house-order/complete");
+    }
+
+    public void clickFinishApartmentFlow() {
+        summaryPageObject.getFinishOrderButton().click();
+        waitUtils.waitForUrlToContains("/apartment-order/complete");
     }
 
     public boolean hasExtraDiscount(){
