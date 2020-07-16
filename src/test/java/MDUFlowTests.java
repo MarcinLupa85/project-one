@@ -61,7 +61,7 @@ public class MDUFlowTests extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
-    @TestCaseId(testRailCaseId = 2895)
+    @TestCaseId(testRailCaseId = 2888)
     @Test
     private void bigTrialMDUFlow() {
         customizationPageOperations.goToBigTrial();
@@ -69,7 +69,7 @@ public class MDUFlowTests extends TestsBase {
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
 
-    @TestCaseId(testRailCaseId = 2896)
+    @TestCaseId(testRailCaseId = 2889)
     @Test
     private void bigMDUFlow() {
         customizationPageOperations.goToBig();

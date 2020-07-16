@@ -22,7 +22,7 @@ public abstract class TestsBase {
     private CookiePanelOperations cookiePanelOperations;
 
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void prepareSuite() throws TimeoutException {
         driver = new DriverFactory().startBrowser();
         waitUtils = new WaitUtils(driver);

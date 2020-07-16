@@ -36,7 +36,7 @@ public class CkidPageObject {
     @FindBy(css = "select#edit-region-select")
     private WebElement countryDropdown;
 
-    @FindBy(css = "div[id=accepted-tc-4f2461a0-acff-4a6f-832a-a795b9357532] span")
+    @FindBy(css = "[class='icon-container']")
     private WebElement CkidTcCheckbox;
 
     @FindBy(css = "div[id=accepted-tc-e82a3da0-0d33-46e2-9c4c-7a0ac7d86dd9] span")
@@ -56,6 +56,32 @@ public class CkidPageObject {
 
     @FindBy(css = "button#login-submit-button")
     private WebElement loginButton;
+
+    @FindBy(css = "section#user-dashboard [ui-sref='dashboard.myAccount']")
+    private WebElement editAccountButton;
+
+    @FindBy(css = "button[ng-click=\"deleteAccount()\"]")
+    private WebElement deleteAccountButton;
+
+    @FindBy(css = "input#input-validationPhrase")
+    private WebElement validationPhraseInput;
+
+    @FindBy(css = "button[type=\"submit\"]")
+    private WebElement deleteAccountConfirmationButton;
+
+    public WebElement getEditAccountButton() { return editAccountButton; }
+
+    public WebElement getDeleteAccountButton() {
+        return deleteAccountButton;
+    }
+
+    public WebElement getValidationPhraseInput() {
+        return validationPhraseInput;
+    }
+
+    public WebElement getDeleteAccountConfirmationButton() {
+        return deleteAccountConfirmationButton;
+    }
 
     public WebElement getLoginLink() {
         return loginLink;
