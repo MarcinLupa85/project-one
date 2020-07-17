@@ -1,4 +1,5 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
+import config.Constants;
 import config.TestsBase;
 import models.User;
 import operations.*;
@@ -24,6 +25,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private String phoneNumber, userName;
     private Boolean extraDiscount;
     private List<User> testUsers;
+    private Constants constants;
 
 
     @BeforeMethod
@@ -36,10 +38,12 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
         testUsers = new Users().getUsersList();
+        driver.navigate().to(constants.BASE_URL);
     }
 
     private void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) {
         customizationPageOperations.clickSubmitButton();
+        ckidPageOperations.closeCookieBot();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
         addressPageOperations.fillBillingCity("Test Billing City");
@@ -66,7 +70,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        phoneNumber = "575437398";
+        phoneNumber = "575437397";
         userName = "newuser.easeewithextra@mailinator.com";
         extraDiscount = true;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);

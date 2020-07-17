@@ -36,6 +36,7 @@ public class CkidPageOperations {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getLoginLink());
         waitUtils.waitForPresentOf(By.cssSelector("input[type=email]"));
+        closeCookieBot();
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);
         ckidPageObject.getLoginButton().click();
@@ -56,15 +57,22 @@ public class CkidPageOperations {
         ckidPageObject.getFirstNameInput().sendKeys("Tester");
         ckidPageObject.getLastNameInput().sendKeys("Kowalski");
         ckidPageObject.getCountrySelect().selectByValue("string:NORWAY");
-        waitUtils.waitForPresentOf(By.cssSelector("input[type=checkbox]"));
+        waitUtils.waitForPresentOf(By.cssSelector("[class = 'icon-container']"));
         ckidPageObject.getCkidTcCheckbox().click();
         //Accepted in review
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getRegisterButton());
     }
 
-    public void deleteAccounts() {
+    public void closeCookieBot() {
+        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyUnderlay"));
+        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
+        cookiePanelOperations.clickCookieOkButton();
+    }
 
+    public void deleteAccounts() {
+        driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
+        closeCookieBot();
         testUsers.forEach(this::deleteAccount);
 
     }
@@ -72,9 +80,7 @@ public class CkidPageOperations {
     private void deleteAccount(User testUser) {
         try {
             driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
-            waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyUnderlay"));
-            waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
-            cookiePanelOperations.clickCookieOkButton();
+            waitUtils.waitForDocumentReadyState();
             userName = testUser.getEmail();
             waitUtils.waitForVisiblityOf(ckidPageObject.getEmailInput());
             ckidPageObject.getEmailInput().clear();
