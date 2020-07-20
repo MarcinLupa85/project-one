@@ -7,11 +7,8 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.CkidPageObject;
 import utils.Users;
 import utils.WaitUtils;
-
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-
-import static config.Constants.BASE_URL;
 
 public class CkidPageOperations {
 
@@ -21,6 +18,7 @@ public class CkidPageOperations {
     private List<User> testUsers;
     private String userName, password;
     private CookiePanelOperations cookiePanelOperations;
+    private String CkidUrl;
 
 
     public CkidPageOperations(WebDriver driver) {
@@ -29,9 +27,10 @@ public class CkidPageOperations {
         this.driver = driver;
         testUsers = new Users().getUsersList();
         cookiePanelOperations = new CookiePanelOperations(driver);
+        CkidUrl = "https://test-circlekid-core-stable.test.gneis.io/#/dashboard";
     }
 
-    public void logInWithCredentials(String username, String password) {
+    public void logInWithCredentials(String username, String password) throws TimeoutException {
 
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getLoginLink());
@@ -64,14 +63,15 @@ public class CkidPageOperations {
         jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getRegisterButton());
     }
 
-    public void closeCookieBot() {
+    public void closeCookieBot() throws TimeoutException {
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyUnderlay"));
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
         cookiePanelOperations.clickCookieOkButton();
+        waitUtils.waitForDocumentReadyState();
     }
 
-    public void deleteAccounts() {
-        driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
+    public void deleteAccounts() throws TimeoutException {
+        driver.navigate().to(CkidUrl);
         closeCookieBot();
         testUsers.forEach(this::deleteAccount);
 
@@ -79,7 +79,7 @@ public class CkidPageOperations {
 
     private void deleteAccount(User testUser) {
         try {
-            driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
+            driver.navigate().to(CkidUrl);
             waitUtils.waitForDocumentReadyState();
             userName = testUser.getEmail();
             waitUtils.waitForVisiblityOf(ckidPageObject.getEmailInput());
@@ -98,7 +98,7 @@ public class CkidPageOperations {
             waitUtils.waitForElement(ckidPageObject.getValidationPhraseInput()).sendKeys("CLOSE MY ACCOUNT");
             waitUtils.waitForElement(ckidPageObject.getDeleteAccountConfirmationButton()).click();
             waitUtils.waitForPresentOf(By.id("login-submit-button"));
-            driver.navigate().to("https://test-circlekid-core-stable.test.gneis.io/#/dashboard");
+            driver.navigate().to(CkidUrl);
         } catch (org.openqa.selenium.TimeoutException|TimeoutException exception) {
             System.out.printf("Cannot delete user %s due to exception %s %n", testUser.getEmail(), exception.getMessage());
             exception.printStackTrace();

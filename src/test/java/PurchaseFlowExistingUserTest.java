@@ -35,7 +35,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         waitUtils = new WaitUtils(driver);
     }
 
-    private void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation) {
+    private void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");

@@ -1,5 +1,6 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.Constants;
+import config.DriverFactory;
 import config.TestsBase;
 import models.User;
 import operations.*;
@@ -7,10 +8,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.Users;
-
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
@@ -41,7 +40,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         driver.navigate().to(constants.BASE_URL);
     }
 
-    private void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) {
+    private void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.closeCookieBot();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
@@ -61,9 +60,12 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
-    @AfterClass
-    private void cleanUp() {
+    @AfterClass(alwaysRun = true)
+    private void cleanUp() throws TimeoutException {
+        driver = new DriverFactory().startBrowser();
+        ckidPageOperations = new CkidPageOperations(driver);
         ckidPageOperations.deleteAccounts();
+        tearDown();
     }
 
     @TestCaseId(testRailCaseId = 2867)
