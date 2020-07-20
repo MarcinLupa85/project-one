@@ -12,11 +12,11 @@ import java.net.URL;
 import static config.Constants.DRIVER_TYPE;
 import static config.DriverTypes.*;
 
-class DriverFactory {
+public class DriverFactory {
 
     public WebDriver webDriver;
 
-    WebDriver startBrowser() {
+    public WebDriver startBrowser() {
         switch (DRIVER_TYPE) {
             case FIREFOX:
                 webDriver = new FirefoxDriver(CapabilitiesProvider.getFirefoxCapabilities());

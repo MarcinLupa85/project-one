@@ -21,7 +21,7 @@ public class SDUFlowTests extends TestsBase {
     private HomePageOperations homePageOperations;
     private WaitUtils waitUtils;
 
-    private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber) {
+    private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
@@ -63,7 +63,7 @@ public class SDUFlowTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 2885)
     @Test
-    public void inglandGarasjenSDUFlow() {
+    public void inglandGarasjenSDUFlow() throws TimeoutException {
         customizationPageOperations.goToInglandGarasjen();
         customizationPageOperations.checkInglandGarasjenPrice();
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, false, null);
@@ -71,7 +71,7 @@ public class SDUFlowTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 2886)
     @Test
-    public void obosSDUFlow() {
+    public void obosSDUFlow() throws TimeoutException {
         customizationPageOperations.goToObos();
         customizationPageOperations.checkObosPrice();
         purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true, "1234");
@@ -79,7 +79,7 @@ public class SDUFlowTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 2887)
     @Test
-    public void polestarSDUFlow() {
+    public void polestarSDUFlow() throws TimeoutException {
         customizationPageOperations.goToPolestar();
         customizationPageOperations.checkPolestarPrice();
         purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, false, null);

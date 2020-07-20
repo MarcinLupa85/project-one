@@ -39,7 +39,7 @@ public abstract class TestsBase {
         waitUtils.waitForDocumentReadyState();
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.close();
         driver.quit();
