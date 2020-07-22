@@ -63,7 +63,7 @@ public class CkidPageObject {
     @FindBy(css = "button[ng-click=\"deleteAccount()\"]")
     private WebElement deleteAccountButton;
 
-    @FindBy(css = "input#input-validationPhrase")
+    @FindBy(id = "input-validationPhrase")
     private WebElement validationPhraseInput;
 
     @FindBy(css = "button[type=\"submit\"]")

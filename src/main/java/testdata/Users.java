@@ -1,4 +1,4 @@
-package utils;
+package testdata;
 
 import models.User;
 

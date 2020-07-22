@@ -35,10 +35,10 @@ public class MailinatorPageOperations {
         waitUtils.waitForDocumentReadyState();
         mailinatorPageObject.getFirstMail().click();
         WebElement mailBody = mailinatorPageObject.getMailBody();
-        waitUtils.waitForElement(mailBody);
         if (!mailBody.isDisplayed()){
             mailinatorPageObject.getFirstMail().click();
         }
+        waitUtils.waitForElement(mailBody);
         waitUtils.waitForDocumentReadyState();
         WebElement mailFrame = webDriver.findElement(By.cssSelector("iframe[name='msg_body']"));
         webDriver.switchTo().frame(mailFrame);

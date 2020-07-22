@@ -7,7 +7,7 @@ import operations.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.Users;
+import testdata.Users;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
