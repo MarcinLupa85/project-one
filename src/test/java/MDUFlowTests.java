@@ -21,7 +21,7 @@ public class MDUFlowTests extends TestsBase {
     private HomePageOperations homePageOperations;
     private WaitUtils waitUtils;
 
-    private void purchaseFlowMDUUser(String username, boolean extraDiscount) {
+    private void purchaseFlowMDUUser(String username, boolean extraDiscount) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
@@ -61,17 +61,17 @@ public class MDUFlowTests extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
-    @TestCaseId(testRailCaseId = 2895)
+    @TestCaseId(testRailCaseId = 2888)
     @Test
-    private void bigTrialMDUFlow() {
+    private void bigTrialMDUFlow() throws TimeoutException {
         customizationPageOperations.goToBigTrial();
         customizationPageOperations.checkBigTrialPrices();
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
 
-    @TestCaseId(testRailCaseId = 2896)
+    @TestCaseId(testRailCaseId = 2889)
     @Test
-    private void bigMDUFlow() {
+    private void bigMDUFlow() throws TimeoutException {
         customizationPageOperations.goToBig();
         customizationPageOperations.checkBigPrices();
         purchaseFlowMDUUser("mdueaseewithextra@mailinator.com", true);

@@ -1,15 +1,15 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
+import config.Constants;
+import config.DriverFactory;
 import config.TestsBase;
+import models.User;
 import operations.*;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.WaitUtils;
-
+import testdata.Users;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
-
-import static config.Constants.BASE_URL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
@@ -21,10 +21,11 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
-    private CkidDashboardPageOperations ckidDashboardPageOperations;
-    private WaitUtils waitUtils;
     private String phoneNumber, userName;
     private Boolean extraDiscount;
+    private List<User> testUsers;
+    private Constants constants;
+
 
     @BeforeMethod
     private void initOperations() {
@@ -35,12 +36,13 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
-        ckidDashboardPageOperations = new CkidDashboardPageOperations(driver);
-        waitUtils = new WaitUtils(driver);
+        testUsers = new Users().getUsersList();
+        driver.navigate().to(constants.BASE_URL);
     }
 
-    private void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) {
+    private void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
+        ckidPageOperations.closeCookieBot();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
         addressPageOperations.fillBillingAddress("Test Addresse 582");
         addressPageOperations.fillBillingCity("Test Billing City");
@@ -58,22 +60,19 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
-    @AfterMethod
-    private void cleanUp(ITestResult result) throws TimeoutException {
-        if (result.isSuccess()) {
-            ckidDashboardPageOperations.deleteAccount();
-        }
-        driver.navigate().to(BASE_URL);
-        homePageOperations.logOut();
-        driver.navigate().to(BASE_URL);
-        waitUtils.waitForDocumentReadyState();
+    @AfterClass(alwaysRun = true)
+    private void cleanUp() throws TimeoutException {
+        driver = new DriverFactory().startBrowser();
+        ckidPageOperations = new CkidPageOperations(driver);
+        ckidPageOperations.deleteAccounts();
+        tearDown();
     }
 
     @TestCaseId(testRailCaseId = 2867)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        phoneNumber = "575437398";
+        phoneNumber = "575437397";
         userName = "newuser.easeewithextra@mailinator.com";
         extraDiscount = true;
         purchaseFlowNewUser(phoneNumber, userName, extraDiscount);

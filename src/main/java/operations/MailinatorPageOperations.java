@@ -11,6 +11,7 @@ import pageobjects.MailinatorPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
 import static org.assertj.core.api.Assertions.assertThat;
+import org.openqa.selenium.Dimension;
 
 public class MailinatorPageOperations {
     private MailinatorPageObject mailinatorPageObject;
@@ -35,10 +36,12 @@ public class MailinatorPageOperations {
         waitUtils.waitForDocumentReadyState();
         mailinatorPageObject.getFirstMail().click();
         WebElement mailBody = mailinatorPageObject.getMailBody();
-        waitUtils.waitForElement(mailBody);
+        Dimension d = new Dimension(1366,657);
+        webDriver.manage().window().setSize(d);
         if (!mailBody.isDisplayed()){
             mailinatorPageObject.getFirstMail().click();
         }
+        waitUtils.waitForElement(mailBody);
         waitUtils.waitForDocumentReadyState();
         WebElement mailFrame = webDriver.findElement(By.cssSelector("iframe[name='msg_body']"));
         webDriver.switchTo().frame(mailFrame);
