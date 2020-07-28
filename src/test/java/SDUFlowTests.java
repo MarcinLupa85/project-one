@@ -19,6 +19,7 @@ public class SDUFlowTests extends TestsBase {
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
     private HomePageOperations homePageOperations;
+    private PartnerOrderOperations partnerOrderOperations;
     private WaitUtils waitUtils;
 
     private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber) throws TimeoutException {
@@ -50,13 +51,13 @@ public class SDUFlowTests extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
+        partnerOrderOperations = new PartnerOrderOperations(driver);
         waitUtils = new WaitUtils(driver);
     }
 
     @AfterMethod
     private void goBack() throws TimeoutException {
         driver.navigate().to(BASE_URL);
-        homePageOperations.logOut();
         waitUtils.waitForDocumentReadyState();
         assertThat(driver.getCurrentUrl().contains("/home"));
     }
@@ -83,5 +84,22 @@ public class SDUFlowTests extends TestsBase {
         customizationPageOperations.goToPolestar();
         customizationPageOperations.checkPolestarPrice();
         purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, false, null);
+    }
+
+    @TestCaseId(testRailCaseId = 2982)
+    @Test
+    public void elkjopSDUFlow() {
+        partnerOrderOperations.goToElkjop();
+        partnerOrderOperations.fillElkjopForm("Test", "Kowalski", "sduelkjopnoinstallationy@mailinator.com", "575437667", "Test Addresse 582", "72433", "Test Billing City");
+        partnerOrderOperations.submitOrder();
+    }
+
+    @TestCaseId(testRailCaseId = 2983)
+    @Test
+    public void elkjopWithInstallationSDUFlow() {
+        partnerOrderOperations.goToElkjop();
+        partnerOrderOperations.tickInstallationCheckbox();
+        partnerOrderOperations.fillElkjopForm("Test", "Kowalski", "sduelkjopnoinstallationy@mailinator.com", "575437667", "Test Addresse 582", "72433", "Test Billing City");
+        partnerOrderOperations.submitOrder();
     }
 }
