@@ -12,15 +12,13 @@ public class PartnerOrderOperations {
     private PartnerOrderPageObject partnerOrderPageObject;
     private WaitUtils waitUtils;
     private FormUtils formUtils;
-    WebDriver driver;
-    private WebElement webElement;
+    private WebDriver driver;
 
     public PartnerOrderOperations(WebDriver driver) {
         partnerOrderPageObject = new PartnerOrderPageObject(driver);
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
         this.driver = driver;
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
     }
 
     public void goToElkjop() {
