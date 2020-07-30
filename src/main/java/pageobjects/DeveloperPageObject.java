@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class DeveloperPageObject {
+public class DeveloperPageObject implements WithNewestArticlePageObject{
     private DeveloperPageObject developerPageObject;
 
     public DeveloperPageObject(WebDriver driver) {

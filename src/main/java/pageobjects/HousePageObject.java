@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HousePageObject {
+public class HousePageObject implements WithNewestArticlePageObject{
     public HousePageObject(WebDriver driver) { PageFactory.initElements(driver, this); }
 
     @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar/house'].btn-primary")

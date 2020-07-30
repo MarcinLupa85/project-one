@@ -17,11 +17,13 @@ public class DeveloperPageOperations {
     private DeveloperPageObject developerPageObject;
     private WaitUtils waitUtils;
     private FormUtils formUtils;
+    private NewestArticlesComponentOperations newestArticlesComponentOperations;
 
     public DeveloperPageOperations(WebDriver driver) {
         developerPageObject = new DeveloperPageObject(driver);
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
+        newestArticlesComponentOperations = new NewestArticlesComponentOperations(developerPageObject, driver);
     }
 
     public void fillForm(String firstName, String lastName, String email, String mobile, String company, String project, String parkingPlaces, String description){
@@ -41,11 +43,8 @@ public class DeveloperPageOperations {
         developerPageObject.getSubmitButton().click();
     }
 
-    public void compareTitles(List<String> apartmentTitles) throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        List<String> compareTitles = developerPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
-        assertThat(apartmentTitles).hasSameSizeAs(compareTitles);
-        apartmentTitles.forEach(title -> assertThat(compareTitles).contains(title));
+    public void compareTitles(List<String> developerTitles) throws TimeoutException {
+        newestArticlesComponentOperations.compareTitles(developerTitles);
     }
 
 }

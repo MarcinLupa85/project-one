@@ -7,7 +7,6 @@ import utils.FormUtils;
 import utils.WaitUtils;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -17,12 +16,14 @@ public class ApartmentPageOperations {
     private WaitUtils waitUtils;
     private FormUtils formUtils;
     private WebDriver driver;
+    private NewestArticlesComponentOperations newestArticlesComponentOperations;
 
     public ApartmentPageOperations(WebDriver driver) {
         apartmentPageObject = new ApartmentPageObject(driver);
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
         this.driver = driver;
+        newestArticlesComponentOperations = new NewestArticlesComponentOperations(apartmentPageObject, driver);
     }
 
     public void fillContactForm(String firstName, String lastName, String email, String mobile, String company, String parkingPlaces,String zipCode, String description){
@@ -51,9 +52,6 @@ public class ApartmentPageOperations {
     }
 
     public void compareTitles(List<String> apartmentTitles) throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        List<String> compareTitles = apartmentPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
-        assertThat(apartmentTitles).hasSameSizeAs(compareTitles);
-        apartmentTitles.forEach(title -> assertThat(compareTitles).contains(title));
+        newestArticlesComponentOperations.compareTitles(apartmentTitles);
     }
 }
