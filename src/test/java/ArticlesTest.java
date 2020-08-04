@@ -67,7 +67,7 @@ public class ArticlesTest extends TestsBase {
         List<String> developerTitles = articlesPageOperations.listThreeDeveloperArticles();
         navbarOperations.clickNavbarDropdown();
         navbarOperations.openDeveloperPage();
-        apartmentPageOperations.compareTitles(developerTitles);
+        developerPageOperations.compareTitles(developerTitles);
     }
 
 }

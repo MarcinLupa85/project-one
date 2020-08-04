@@ -12,14 +12,16 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HousePageOperations {
-    HousePageObject housePageObject;
+    private HousePageObject housePageObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
+    private NewestArticlesComponentOperations newestArticlesComponentOperations;
 
     public HousePageOperations(WebDriver driver) {
         housePageObject = new HousePageObject(driver);
         waitUtils = new WaitUtils(driver);
         this.driver = driver;
+        newestArticlesComponentOperations = new NewestArticlesComponentOperations(housePageObject, driver);
     }
 
     public void goToFaq() {
@@ -32,10 +34,7 @@ public class HousePageOperations {
     }
 
     public void compareTitles(List<String> houseTitles) throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        List<String> compareTitles = housePageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
-        assertThat(houseTitles).hasSameSizeAs(compareTitles);
-        houseTitles.forEach(title -> assertThat(compareTitles).contains(title));
+        newestArticlesComponentOperations.compareTitles(houseTitles);
     }
 
 

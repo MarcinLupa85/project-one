@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class ApartmentPageObject {
+public class ApartmentPageObject implements WithNewestArticlePageObject{
     private ApartmentPageObject apartmentPageObject;
 
     public ApartmentPageObject(WebDriver driver) {

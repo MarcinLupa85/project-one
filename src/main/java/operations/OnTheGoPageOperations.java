@@ -13,11 +13,13 @@ public class OnTheGoPageOperations {
     private OnTheGoPageObject onTheGoPageObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
+    private NewestArticlesComponentOperations newestArticlesComponentOperations;
 
     public OnTheGoPageOperations(WebDriver driver) {
         onTheGoPageObject = new OnTheGoPageObject(driver);
         waitUtils = new WaitUtils(driver);
         this.driver = driver;
+        newestArticlesComponentOperations = new NewestArticlesComponentOperations(onTheGoPageObject, driver);
     }
 
     public void goToFaq() {
@@ -30,9 +32,6 @@ public class OnTheGoPageOperations {
     }
 
     public void compareTitles(List<String> OTGTitles) throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        List<String> compareTitles = onTheGoPageObject.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
-        assertThat(OTGTitles).hasSameSizeAs(compareTitles);
-        OTGTitles.forEach(title -> assertThat(compareTitles).contains(title));
+        newestArticlesComponentOperations.compareTitles(OTGTitles);
     }
 }
