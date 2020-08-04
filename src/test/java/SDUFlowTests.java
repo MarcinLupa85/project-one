@@ -86,7 +86,7 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, false, null);
     }
 
-    @TestCaseId(testRailCaseId = 2982)
+    @TestCaseId(testRailCaseId = 2985)
     @Test
     public void elkjopSDUFlow() {
         partnerOrderOperations.goToElkjop();
@@ -94,7 +94,7 @@ public class SDUFlowTests extends TestsBase {
         partnerOrderOperations.submitOrder();
     }
 
-    @TestCaseId(testRailCaseId = 2983)
+    @TestCaseId(testRailCaseId = 2986)
     @Test
     public void elkjopWithInstallationSDUFlow() {
         partnerOrderOperations.goToElkjop();
