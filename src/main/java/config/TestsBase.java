@@ -34,7 +34,6 @@ public abstract class TestsBase {
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyUnderlay"));
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
         cookiePanelOperations.clickCookieOkButton();
-        driver.navigate().refresh();
         waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
         waitUtils.waitForDocumentReadyState();
     }
