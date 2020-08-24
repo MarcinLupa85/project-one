@@ -85,7 +85,7 @@ public class HomePageOperations {
     }
 
     public void openCablePurchaseFlow() {
-        driver.navigate().to("https://emobility-test-unstable.test.gneis.io/hjemmelading-bestill/customize-order?id=2");
+        driver.navigate().to("https://emobility-test-stable.test.gneis.io/hjemmelading-bestill/customize-order?id=2");
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 

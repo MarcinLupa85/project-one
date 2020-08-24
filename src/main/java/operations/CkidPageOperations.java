@@ -58,6 +58,7 @@ public class CkidPageOperations {
         ckidPageObject.getCountrySelect().selectByValue("string:NORWAY");
         waitUtils.waitForPresentOf(By.cssSelector("[class = 'icon-container']"));
         ckidPageObject.getCkidTcCheckbox().click();
+        ckidPageObject.getEvTcCheckbox().click();
         //Accepted in review
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getRegisterButton());
