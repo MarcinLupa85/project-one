@@ -42,7 +42,7 @@ public class CkidPageObject {
     @FindBy(css = "div[id=accepted-tc-e82a3da0-0d33-46e2-9c4c-7a0ac7d86dd9] span")
     private WebElement EvTcCheckbox;
 
-    @FindBy(css = "#main-view > div > div > div > div > form > fieldset > div:nth-child(10) > div > button")
+    @FindBy(css = "[class='button primary ng-scope']")
     private WebElement registerButton;
 
     @FindBy(css = "a[href=\"#/login\"]")
