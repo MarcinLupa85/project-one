@@ -23,7 +23,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     private WaitUtils waitUtils;
 
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     private void initOperations() {
         mailinatorPageOperations = new MailinatorPageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
@@ -54,16 +54,9 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         summaryPageOperations.clickFinish();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
-
     }
 
-    @AfterMethod
-    private void goBack() throws TimeoutException {
-        driver.navigate().to(BASE_URL);
-        homePageOperations.logOut();
-        waitUtils.waitForDocumentReadyState();
-        assertThat(driver.getCurrentUrl().contains("/home"));
-    }
+    //Deleted AfterMethod due to TestNG defect: When there is a failed assertion within AfterMethod, the following tests would be ignored
 
     @TestCaseId(testRailCaseId = 2872)
     @Test(alwaysRun = true)
@@ -136,5 +129,4 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         purchaseFlowExistingUser("mennekes14daysinstallation@mailinator.com", false, true);
         mailinatorPageOperations.checkMailForPhrase("mennekes14daysinstallation@mailinator.com");
     }
-
 }
