@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.HomePageObject;
 import utils.WaitUtils;
+import static config.Constants.BASE_URL;
 
 import java.util.concurrent.TimeoutException;
 
@@ -85,7 +86,7 @@ public class HomePageOperations {
     }
 
     public void openCablePurchaseFlow() {
-        driver.navigate().to("https://emobility-test-stable.test.gneis.io/hjemmelading-bestill/customize-order?id=2");
+        driver.navigate().to(BASE_URL + "/hjemmelading-bestill/customize-order?id=2");
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import pageobjects.ReportProblemPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
+import static config.Constants.BASE_URL;
 
 public class ReportProblemPageOperations {
 
@@ -21,8 +22,8 @@ public class ReportProblemPageOperations {
     }
 
     public void goToReportProblemPage() {
-        String reportPageURL = "https://emobility-test-unstable.test.gneis.io/mobile/problem";
-        webDriver.navigate().to(reportPageURL);
+        String reportPageURL = "mobile/problem";
+        webDriver.navigate().to(BASE_URL + reportPageURL);
     }
 
     public void fillReportForm(String fullNameInput, String emailInput, String telephoneNumberInput, String chargersNumber,String carModel, String description){
