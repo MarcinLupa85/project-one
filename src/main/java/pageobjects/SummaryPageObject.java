@@ -23,7 +23,7 @@ public class SummaryPageObject {
     @FindBy(css = "div.list-group.list-group-sm.list-group-pills > button:nth-child(1)")
     private WebElement creditCardOption;
 
-    @FindBy(css = "button:nth-child(1)")
+    @FindBy(xpath = "//button[contains(text(),' Betal med faktura ')]")
     private WebElement invoiceOption;
 
     @FindBy(id = "encryptedCardNumber")

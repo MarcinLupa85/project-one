@@ -52,6 +52,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
                 summaryPageOperations.chooseInvoiceOption();
                 chooseInstallation(fourteenDaysInstallation);
                 summaryPageOperations.clickFinish();
+                break;
             case "Visa":
                 summaryPageOperations.chooseCreditCardOption();
                 chooseInstallation(fourteenDaysInstallation);

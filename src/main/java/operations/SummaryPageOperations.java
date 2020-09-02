@@ -38,7 +38,7 @@ public class SummaryPageOperations {
     }
 
     public boolean hasExtraDiscount() {
-        return driverUtils.isElementPresent(By.xpath(".//dt[contains(text(), 'Rabat')]"));
+        return driverUtils.isElementPresent(By.xpath(".//dt[contains(text(), 'Rabatt')]"));
     }
 
     public void payWithCreditCard(String cardNumber) {
@@ -57,21 +57,25 @@ public class SummaryPageOperations {
     public void chooseInvoiceOption() { summaryPageObject.getInvoiceOption().click(); }
 
     public void fillCreditCardNumber(String creditCardNumber) {
+        waitUtils.waitForPresentOf(By.cssSelector("iframe[title='Iframe for secured card data input field']"));
         WebElement inputFrameField = webDriver.findElement(By.cssSelector("iframe[title='Iframe for secured card data input field']"));
         webDriver.switchTo().frame(inputFrameField);
         summaryPageObject.getCreditCardNumber().sendKeys(creditCardNumber);
+        webDriver.switchTo().defaultContent();
     }
 
     public void fillExpiryDate(String expiryDate) {
         WebElement inputFrameField = webDriver.findElement(By.cssSelector("iframe[title='Iframe for secured card data input field']:nth-child(1)"));
         webDriver.switchTo().frame(inputFrameField);
         summaryPageObject.getExpiryDate().sendKeys(expiryDate);
+        webDriver.switchTo().defaultContent();
     }
 
     public void fillSecurityCode(String securityCode) {
-        WebElement inputFrameField = webDriver.findElement(By.cssSelector("iframe[title='Iframe for secured card data input field']:nth-child(2)"));
+        WebElement inputFrameField = webDriver.findElement(By.cssSelector("div.adyen-checkout__field--securityCode iframe[title='Iframe for secured card data input field']"));
         webDriver.switchTo().frame(inputFrameField);
         summaryPageObject.getSecurityCode().sendKeys(securityCode);
+        webDriver.switchTo().defaultContent();
     }
 
     public void chooseKlarnaOption() { summaryPageObject.getKlarnaPaymentOption().click(); }
