@@ -60,6 +60,7 @@ public class SummaryPageOperations {
         waitUtils.waitForPresentOf(By.cssSelector("iframe[title='Iframe for secured card data input field']"));
         WebElement inputFrameField = webDriver.findElement(By.cssSelector("iframe[title='Iframe for secured card data input field']"));
         webDriver.switchTo().frame(inputFrameField);
+        waitUtils.waitForVisiblityOf(summaryPageObject.getCreditCardNumber());
         summaryPageObject.getCreditCardNumber().sendKeys(creditCardNumber);
         webDriver.switchTo().defaultContent();
     }
@@ -78,7 +79,10 @@ public class SummaryPageOperations {
         webDriver.switchTo().defaultContent();
     }
 
-    public void chooseKlarnaOption() { summaryPageObject.getKlarnaPaymentOption().click(); }
+    public void chooseKlarnaOption() {
+        waitUtils.waitForVisiblityOf(summaryPageObject.getKlarnaPaymentOption());
+        summaryPageObject.getKlarnaPaymentOption().click();
+    }
 
     public void payWithKlarna() { summaryPageObject.getKlarnaPayButton().click(); }
 
