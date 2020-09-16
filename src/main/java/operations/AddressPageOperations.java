@@ -14,17 +14,17 @@ public class AddressPageOperations {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void fillBillingAddress(String address) {
+    private void fillBillingAddress(String address) {
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingAddressInput());
         addressPageObject.getBillingAddressInput().sendKeys(address);
     }
 
-    public void fillBillingZipCode(String zipCode) {
+    private void fillBillingZipCode(String zipCode) {
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingZipCodeInput());
         addressPageObject.getBillingZipCodeInput().sendKeys(zipCode);
     }
 
-    public void fillBillingCity(String city) {
+    private void fillBillingCity(String city) {
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingCityInput());
         addressPageObject.getBillingCityInput().sendKeys(city);
     }
@@ -41,12 +41,7 @@ public class AddressPageOperations {
 
     public void clickNext() {
         addressPageObject.getNextButton().click();
-        waitUtils.waitForUrlToContains("/house-order/confirm-order");
-    }
-
-    public void clickNextApartmentFlow() {
-        addressPageObject.getNextButton().click();
-        waitUtils.waitForUrlToContains("/apartment-order/confirm-order");
+        waitUtils.waitForUrlToContains("/confirm-order");
     }
 
     public void fillClientInfo(String address, String city, String zipcode) {

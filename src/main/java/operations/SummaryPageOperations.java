@@ -33,12 +33,7 @@ public class SummaryPageOperations {
 
     public void clickFinish() {
         summaryPageObject.getFinishOrderButton().click();
-        waitUtils.waitForUrlToContains("/house-order/complete");
-    }
-
-    public void clickFinishApartmentFlow() {
-        summaryPageObject.getFinishOrderButton().click();
-        waitUtils.waitForUrlToContains("/apartment-order/complete");
+        waitUtils.waitForUrlToContains("/complete");
     }
 
     public boolean hasExtraDiscount() {

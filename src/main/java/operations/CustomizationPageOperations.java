@@ -81,28 +81,28 @@ public class CustomizationPageOperations {
     }
 
     public void checkBigTrialPrices() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("kr\\s20.990,-");
-        assertThat(customizationPageObject.getSubscriptionFee().getText()).containsPattern("kr\\s89,-");
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s20.990,-");
+        assertThat(customizationPageObject.getSubscriptionFee().getText()).containsPattern("\\s89,-");
     }
 
     public void checkBigPrices() {
         tickMDUExtraCheckbox();
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("kr\\s21.990,-");
-        assertThat(customizationPageObject.getSubscriptionFee().getText()).containsPattern("kr\\s89,-");
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s21.990,-");
+        assertThat(customizationPageObject.getSubscriptionFee().getText()).containsPattern("\\s89,-");
     }
 
     public void checkInglandGarasjenPrice() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("kr\\s7.895,-");
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s7.895,-");
     }
 
     public void checkObosPrice() {
         tickExtraCheckbox();
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("kr\\s14.490,-");
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s14.490,-");
     }
 
     public void checkPolestarPrice() {
         tickInstallationCheckbox();
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("kr\\s15.490,-");
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s15.490,-");
     }
 
     public void fillMembershipNumber(String membershipNumber) {
