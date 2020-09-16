@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
 public class PurchaseFlowExistingUserTest extends TestsBase {
@@ -35,56 +33,12 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         waitUtils = new WaitUtils(driver);
     }
 
-    private void fillClientInfo() {
-        addressPageOperations.fillBillingAddress("Test Addresse 582");
-        addressPageOperations.fillBillingCity("Test Billing City");
-        addressPageOperations.fillBillingZipCode("72433");
-        addressPageOperations.clickNext();
-    }
-
-    private void assertExtraDiscount(boolean extraDiscount) {
-        assertEquals(summaryPageOperations.hasExtraDiscount(), extraDiscount);
-    }
-
-    private void pay(String paymentMethod, boolean fourteenDaysInstallation) {
-        switch (paymentMethod) {
-            case "Invoice":
-                summaryPageOperations.chooseInvoiceOption();
-                chooseInstallation(fourteenDaysInstallation);
-                summaryPageOperations.clickFinish();
-                break;
-            case "Visa":
-                summaryPageOperations.chooseCreditCardOption();
-                chooseInstallation(fourteenDaysInstallation);
-                summaryPageOperations.payWithCreditCard(VISA);
-                break;
-            case "Mastercard":
-                summaryPageOperations.chooseCreditCardOption();
-                chooseInstallation(fourteenDaysInstallation);
-                summaryPageOperations.payWithCreditCard(MASTERCARD);
-                break;
-            case "Klarna":
-                summaryPageOperations.chooseCreditCardOption();
-                chooseInstallation(fourteenDaysInstallation);
-                summaryPageOperations.chooseKlarnaOption();
-                summaryPageOperations.payWithKlarna();
-                break;
-        }
-    }
-
-    private void chooseInstallation(boolean fourteenDaysInstallation) {
-        summaryPageOperations.tickTermsAndConditionsCheckbox();
-        if (fourteenDaysInstallation) {
-            summaryPageOperations.tick14DaysCheckbox();
-        }
-    }
-
     private void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation, String paymentMethod) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
-        fillClientInfo();
-        assertExtraDiscount(extraDiscount);
-        pay(paymentMethod, fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
+        summaryPageOperations.assertExtraDiscount(extraDiscount);
+        summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
     }

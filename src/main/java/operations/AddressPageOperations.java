@@ -49,4 +49,11 @@ public class AddressPageOperations {
         waitUtils.waitForUrlToContains("/apartment-order/confirm-order");
     }
 
+    public void fillClientInfo(String address, String city, String zipcode) {
+        fillBillingAddress(address);
+        fillBillingCity(city);
+        fillBillingZipCode(zipcode);
+        clickNext();
+    }
+
 }

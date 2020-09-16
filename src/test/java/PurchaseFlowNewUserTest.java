@@ -8,6 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.Users;
+
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,8 +22,8 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
-    private String phoneNumber, userName;
-    private Boolean extraDiscount;
+    private String phoneNumber, userName, paymentMethod;
+    private Boolean extraDiscount, fourteenDaysInstallation;
     private List<User> testUsers;
     private Constants constants;
 
@@ -37,24 +38,17 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
         testUsers = new Users().getUsersList();
+
         driver.navigate().to(constants.BASE_URL);
     }
 
-    private void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount) throws TimeoutException {
+    private void purchaseFlowNewUser(String phoneNumber, String username, boolean extraDiscount, boolean fourteenDaysInstallation, String paymentMethod) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.closeCookieBot();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
-        addressPageOperations.fillBillingAddress("Test Addresse 582");
-        addressPageOperations.fillBillingCity("Test Billing City");
-        addressPageOperations.fillBillingZipCode("72433");
-        addressPageOperations.clickNext(); //TODO: change to DriverUtils.clicknext
-        if (extraDiscount) {
-            assertTrue(summaryPageOperations.hasExtraDiscount());
-        } else {
-            assertFalse(summaryPageOperations.hasExtraDiscount());
-        }
-        summaryPageOperations.tickTermsAndConditionsCheckbox();
-        summaryPageOperations.clickFinish();
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
+        summaryPageOperations.assertExtraDiscount(extraDiscount);
+        summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
         assertThat(driver.getCurrentUrl().contains("/home"));
@@ -72,10 +66,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
-        phoneNumber = "575437397";
-        userName = "newuser.easeewithextra@mailinator.com";
-        extraDiscount = true;
-        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        purchaseFlowNewUser("575437397", "newuser.easeewithextra@mailinator.com", true, false, "Mastercard");
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
@@ -83,10 +74,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowNoExtra();
-        phoneNumber = "575437666";
-        userName = "newuser.easeenoextra@mailinator.com";
-        extraDiscount = false;
-        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        purchaseFlowNewUser("575437666", "newuser.easeenoextra@mailinator.com", false, false, "Klarna");
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
@@ -94,10 +82,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openCablePurchaseFlow();
-        phoneNumber = "575437306";
-        userName = "newuser.cablenoextra@mailinator.com";
-        extraDiscount = false;
-        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        purchaseFlowNewUser("575437306", "newuser.cablenoextra@mailinator.com", false, false, "Invoice");
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
@@ -105,10 +90,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
-        phoneNumber = "575437304";
-        userName = "newuser.mennekesnoextra@mailinator.com";
-        extraDiscount = false;
-        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        purchaseFlowNewUser("575437304", "newuser.mennekesnoextra@mailinator.com", false, false, "Visa");
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
@@ -116,10 +98,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithExtra();
-        phoneNumber = "575437305";
-        userName = "newuser.mennekeswithextra@mailinator.com";
-        extraDiscount = true;
-        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        purchaseFlowNewUser("575437305", "newuser.mennekeswithextra@mailinator.com", true, false, "Mastercard");
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
@@ -127,10 +106,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
-        phoneNumber = "575437307";
-        userName = "newuser.easeeinstallation@mailinator.com";
-        extraDiscount = false;
-        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        purchaseFlowNewUser("575437307", "newuser.easeeinstallation@mailinator.com", false, false, "Klarna");
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
@@ -138,10 +114,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
-        phoneNumber = "575437308";
-        userName = "newuser.mennekesinstallation@mailinator.com";
-        extraDiscount = false;
-        purchaseFlowNewUser(phoneNumber, userName, extraDiscount);
+        purchaseFlowNewUser("575437308", "newuser.mennekesinstallation@mailinator.com", false, false, "Invoice");
         mailinatorPageOperations.checkMailForLackOfPhrase(userName);
     }
 
