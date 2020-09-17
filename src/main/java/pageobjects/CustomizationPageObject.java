@@ -29,7 +29,7 @@ public class CustomizationPageObject
     @FindBy(css = ".order-summary__total-price")
     private WebElement totalPrice;
 
-    @FindBy(css = "[class = 'order-summary__body-list']")
+    @FindBy(css = "[class = 'order-summary__subscription-price']")
     private WebElement subscriptionFee;
 
     @FindBy(id = "membershipNumber")
