@@ -14,6 +14,15 @@ public class SummaryPageObject {
     @FindBy(css = "div.custom-radio")
     private WebElement tcCheckbox;
 
+    @FindBy(css = "iframe[title='Iframe for secured card data input field']")
+    private WebElement cardIFrame;
+
+    @FindBy(css = "iframe[title='Iframe for secured card data input field']:nth-child(1)")
+    private WebElement expiryDateIFrame;
+
+    @FindBy(css = "div.adyen-checkout__field--securityCode iframe[title='Iframe for secured card data input field']")
+    private WebElement securityCodeIFrame;
+
     @FindBy(css = "button[type=submit]")
     private WebElement finishOrderButton;
 
@@ -47,6 +56,12 @@ public class SummaryPageObject {
     public WebElement getFinishOrderButton() { return finishOrderButton; }
 
     public WebElement getTcCheckbox() { return tcCheckbox; }
+
+    public WebElement getCardIFrame() { return cardIFrame; }
+
+    public WebElement getExpiryDateIFrame() { return expiryDateIFrame; }
+
+    public WebElement getSecurityCodeIFrame() { return securityCodeIFrame; }
 
     public WebElement getFourteenDaysCheckbox() { return fourteenDaysCheckbox; }
 

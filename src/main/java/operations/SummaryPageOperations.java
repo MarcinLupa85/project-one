@@ -1,5 +1,6 @@
 package operations;
 
+import enums.PAYMENTMETHODS;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,8 +16,8 @@ public class SummaryPageOperations {
     private WaitUtils waitUtils;
     private DriverUtils driverUtils;
     private WebDriver webDriver;
-    private static final String VISA = "4988 4388 4388 4305";
-    private static final String MASTERCARD = "5101 1800 0000 0007";
+    private static final String visaCardNumber = "4988 4388 4388 4305";
+    private static final String mastercardCardNumber = "5101 1800 0000 0007";
 
     public SummaryPageOperations (WebDriver driver) {
         summaryPageObject = new SummaryPageObject(driver);
@@ -56,8 +57,8 @@ public class SummaryPageOperations {
     public void chooseInvoiceOption() { summaryPageObject.getInvoiceOption().click(); }
 
     public void fillCreditCardNumber(String creditCardNumber) {
-        waitUtils.waitForPresentOf(By.cssSelector("iframe[title='Iframe for secured card data input field']"));
-        WebElement inputFrameField = webDriver.findElement(By.cssSelector("iframe[title='Iframe for secured card data input field']"));
+        WebElement inputFrameField = summaryPageObject.getCardIFrame();
+        waitUtils.waitForVisiblityOf(inputFrameField);
         webDriver.switchTo().frame(inputFrameField);
         waitUtils.waitForVisiblityOf(summaryPageObject.getCreditCardNumber());
         summaryPageObject.getCreditCardNumber().sendKeys(creditCardNumber);
@@ -65,14 +66,14 @@ public class SummaryPageOperations {
     }
 
     public void fillExpiryDate(String expiryDate) {
-        WebElement inputFrameField = webDriver.findElement(By.cssSelector("iframe[title='Iframe for secured card data input field']:nth-child(1)"));
+        WebElement inputFrameField = summaryPageObject.getExpiryDateIFrame();
         webDriver.switchTo().frame(inputFrameField);
         summaryPageObject.getExpiryDate().sendKeys(expiryDate);
         webDriver.switchTo().defaultContent();
     }
 
     public void fillSecurityCode(String securityCode) {
-        WebElement inputFrameField = webDriver.findElement(By.cssSelector("div.adyen-checkout__field--securityCode iframe[title='Iframe for secured card data input field']"));
+        WebElement inputFrameField = summaryPageObject.getSecurityCodeIFrame();
         webDriver.switchTo().frame(inputFrameField);
         summaryPageObject.getSecurityCode().sendKeys(securityCode);
         webDriver.switchTo().defaultContent();
@@ -89,24 +90,24 @@ public class SummaryPageOperations {
         assertEquals(hasExtraDiscount(), extraDiscount);
     }
 
-    public void pay(String paymentMethod, boolean fourteenDaysInstallation) {
+    public void pay(PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) {
         switch (paymentMethod) {
-            case "Invoice":
+            case INVOICE:
                 chooseInvoiceOption();
                 chooseInstallation(fourteenDaysInstallation);
                 clickFinish();
                 break;
-            case "Visa":
+            case VISA:
                 chooseCreditCardOption();
                 chooseInstallation(fourteenDaysInstallation);
-                payWithCreditCard(VISA);
+                payWithCreditCard(visaCardNumber);
                 break;
-            case "Mastercard":
+            case MASTERCARD:
                 chooseCreditCardOption();
                 chooseInstallation(fourteenDaysInstallation);
-                payWithCreditCard(MASTERCARD);
+                payWithCreditCard(mastercardCardNumber);
                 break;
-            case "Klarna":
+            case KLARNA:
                 chooseCreditCardOption();
                 chooseInstallation(fourteenDaysInstallation);
                 chooseKlarnaOption();
