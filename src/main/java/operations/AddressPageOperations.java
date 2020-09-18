@@ -14,21 +14,6 @@ public class AddressPageOperations {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void fillBillingAddress(String address) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getBillingAddressInput());
-        addressPageObject.getBillingAddressInput().sendKeys(address);
-    }
-
-    public void fillBillingZipCode(String zipCode) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getBillingZipCodeInput());
-        addressPageObject.getBillingZipCodeInput().sendKeys(zipCode);
-    }
-
-    public void fillBillingCity(String city) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getBillingCityInput());
-        addressPageObject.getBillingCityInput().sendKeys(city);
-    }
-
     public void fillCondominiumName(String condominium) {
         waitUtils.waitForVisiblityOf(addressPageObject.getCondominiumInput());
         addressPageObject.getCondominiumInput().sendKeys(condominium);
@@ -41,12 +26,17 @@ public class AddressPageOperations {
 
     public void clickNext() {
         addressPageObject.getNextButton().click();
-        waitUtils.waitForUrlToContains("/house-order/confirm-order");
+        waitUtils.waitForUrlToContains("/confirm-order");
     }
 
-    public void clickNextApartmentFlow() {
-        addressPageObject.getNextButton().click();
-        waitUtils.waitForUrlToContains("/apartment-order/confirm-order");
+    public void fillClientInfo(String address, String city, String zipcode) {
+        waitUtils.waitForVisiblityOf(addressPageObject.getBillingAddressInput());
+        addressPageObject.getBillingAddressInput().sendKeys(address);
+        waitUtils.waitForVisiblityOf(addressPageObject.getBillingCityInput());
+        addressPageObject.getBillingCityInput().sendKeys(city);
+        waitUtils.waitForVisiblityOf(addressPageObject.getBillingZipCodeInput());
+        addressPageObject.getBillingZipCodeInput().sendKeys(zipcode);
+        clickNext();
     }
 
 }

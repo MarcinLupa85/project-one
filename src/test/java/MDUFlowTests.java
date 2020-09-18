@@ -24,19 +24,17 @@ public class MDUFlowTests extends TestsBase {
     private void purchaseFlowMDUUser(String username, boolean extraDiscount) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
-        addressPageOperations.fillBillingAddress("Test Addresse 582");
-        addressPageOperations.fillBillingCity("Test Billing City");
-        addressPageOperations.fillBillingZipCode("72433");
         addressPageOperations.fillCondominiumName("Test Condominium");
         addressPageOperations.fillParkingPlace("23");
-        addressPageOperations.clickNextApartmentFlow();
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
+        addressPageOperations.clickNext();
         if (extraDiscount) {
             assertTrue(summaryPageOperations.hasExtraDiscount());
         } else {
             assertFalse(summaryPageOperations.hasExtraDiscount());
         }
         summaryPageOperations.tickTermsAndConditionsCheckbox();
-        summaryPageOperations.clickFinishApartmentFlow();
+        summaryPageOperations.clickFinish();
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
     }
