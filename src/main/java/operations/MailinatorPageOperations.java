@@ -49,7 +49,7 @@ public class MailinatorPageOperations {
 
     public void checkMailForPhrase(String email) throws TimeoutException {
         checkMail(email);
-        assertThat(webDriver.getPageSource()).contains("snart som mulig");
+        assertThat(webDriver.getPageSource()).contains("at installasjonen skal");
     }
 
     public void checkMailForLackOfPhrase(String email) throws TimeoutException {
