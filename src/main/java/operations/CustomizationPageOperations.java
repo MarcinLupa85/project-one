@@ -106,6 +106,7 @@ public class CustomizationPageOperations {
     }
 
     public void fillMembershipNumber(String membershipNumber) {
+        waitUtils.waitForVisiblityOf(customizationPageObject.getMembershipNumber());
         customizationPageObject.getMembershipNumber().sendKeys(membershipNumber);
     }
 }

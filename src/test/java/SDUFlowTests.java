@@ -26,10 +26,10 @@ public class SDUFlowTests extends TestsBase {
     private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber, PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
         if (membershipNumberNecessary){
             customizationPageOperations.fillMembershipNumber(membershipNumber);
         }
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
         summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
         if (extraDiscount) {
             assertTrue(summaryPageOperations.hasExtraDiscount());
