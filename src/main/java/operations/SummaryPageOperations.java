@@ -8,6 +8,8 @@ import pageobjects.SummaryPageObject;
 import utils.DriverUtils;
 import utils.WaitUtils;
 
+import java.util.concurrent.TimeoutException;
+
 import static org.testng.Assert.assertEquals;
 
 public class SummaryPageOperations {
@@ -15,6 +17,7 @@ public class SummaryPageOperations {
     private SummaryPageObject summaryPageObject;
     private WaitUtils waitUtils;
     private DriverUtils driverUtils;
+    private KlarnaPageOperations klarnaPageOperations;
     private WebDriver webDriver;
     private static final String visaCardNumber = "4988 4388 4388 4305";
     private static final String mastercardCardNumber = "5101 1800 0000 0007";
@@ -23,6 +26,7 @@ public class SummaryPageOperations {
         summaryPageObject = new SummaryPageObject(driver);
         waitUtils = new WaitUtils(driver);
         driverUtils = new DriverUtils(driver);
+        klarnaPageOperations = new KlarnaPageOperations(driver);
         webDriver = driver;
     }
 
@@ -112,6 +116,8 @@ public class SummaryPageOperations {
                 chooseInstallation(fourteenDaysInstallation);
                 chooseKlarnaOption();
                 payWithKlarna();
+                klarnaPageOperations.clickBuyButton();
+                klarnaPageOperations.fillForm();
                 break;
         }
     }

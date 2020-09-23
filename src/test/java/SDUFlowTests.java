@@ -29,13 +29,14 @@ public class SDUFlowTests extends TestsBase {
         if (membershipNumberNecessary){
             customizationPageOperations.fillMembershipNumber(membershipNumber);
         }
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
-        summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "9990");
         if (extraDiscount) {
             assertTrue(summaryPageOperations.hasExtraDiscount());
         } else {
             assertFalse(summaryPageOperations.hasExtraDiscount());
         }
+        summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
+
         assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
     }
@@ -50,13 +51,6 @@ public class SDUFlowTests extends TestsBase {
         homePageOperations = new HomePageOperations(driver);
         partnerOrderOperations = new PartnerOrderOperations(driver);
         waitUtils = new WaitUtils(driver);
-    }
-
-    @AfterMethod
-    private void goBack() throws TimeoutException {
-        driver.navigate().to(BASE_URL);
-        waitUtils.waitForDocumentReadyState();
-        assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
     @TestCaseId(testRailCaseId = 2885)

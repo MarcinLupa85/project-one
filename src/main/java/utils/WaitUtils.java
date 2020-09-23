@@ -2,7 +2,7 @@ package utils;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.sql.Timestamp;
 import java.time.Duration;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -25,6 +25,22 @@ public class WaitUtils {
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(WebDriverException.class)
                 .until(urlContains(url));
+    }
+
+    public void waitForElementToBeClickable(WebElement element) {
+        new WebDriverWait(driver, defaultMaxTimeoutForAllWaits)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofMillis(500))
+                .ignoring(NoSuchElementException.class)
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void waitForElementToBeClickable(By by) {
+        new WebDriverWait(driver, defaultMaxTimeoutForAllWaits)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofMillis(500))
+                .ignoring(NoSuchElementException.class)
+                .until(ExpectedConditions.elementToBeClickable(by));
     }
 
     public void waitForDocumentReadyState() throws java.util.concurrent.TimeoutException {
@@ -102,5 +118,4 @@ public class WaitUtils {
         jsExecutor.executeScript("arguments[0].scrollIntoView()", element);
         jsExecutor.executeScript("window.scrollBy(0, -123);");
     }
-
 }
