@@ -94,7 +94,7 @@ public class SummaryPageOperations {
         assertEquals(hasExtraDiscount(), extraDiscount);
     }
 
-    public void pay(PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation){
+    public void pay(PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) {
         switch (paymentMethod) {
             case INVOICE:
                 chooseInvoiceOption();

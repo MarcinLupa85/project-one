@@ -35,6 +35,14 @@ public class WaitUtils {
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public void waitForElementToBeClickable(By by) {
+        new WebDriverWait(driver, defaultMaxTimeoutForAllWaits)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofMillis(500))
+                .ignoring(NoSuchElementException.class)
+                .until(ExpectedConditions.elementToBeClickable(by));
+    }
+
     public void waitForDocumentReadyState() throws java.util.concurrent.TimeoutException {
         Timestamp timestampWithTimeoutAdded = new Timestamp(System.currentTimeMillis() + 30000);
         JavascriptExecutor jse = (JavascriptExecutor) driver;

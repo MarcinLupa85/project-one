@@ -1,8 +1,6 @@
 package operations;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import pageobjects.KlarnaPageObject;
 import utils.WaitUtils;
 import java.util.concurrent.TimeoutException;
@@ -33,20 +31,17 @@ public class KlarnaPageOperations {
         klarnaPageObject.getPostalCode().sendKeys("3004");
         klarnaPageObject.getNationalID().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         klarnaPageObject.getNationalID().sendKeys("250850-14407");
-        klarnaPageObject.getNationalID().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+        klarnaPageObject.getAddress().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         klarnaPageObject.getAddress().sendKeys("Dronninggata 28");
         klarnaPageObject.getCity().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         klarnaPageObject.getCity().sendKeys("Drammen");
         klarnaPageObject.getPhone().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         klarnaPageObject.getPhone().sendKeys("+4745558584");
         klarnaPageObject.getFinishButton().click();
-        // cannot think of a wait here since literally the same button is clicked after reloading but found nothing to catch the reload with
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        klarnaPageObject.getFinishButton().click();
+        By bekrefteBy = By.xpath(".//div[@id='identification-dialog__footer-button-wrapper']//span[text()='Bekrefte']/parent::div");
+        waitUtils.waitForElementToBeClickable(bekrefteBy);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) webDriver;
+        jsExecutor.executeScript("arguments[0].click()", webDriver.findElement(bekrefteBy));
         webDriver.switchTo().defaultContent();
     }
 }
