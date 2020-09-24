@@ -30,7 +30,7 @@ public class MailinatorPageOperations {
     private void checkMail(String email) throws TimeoutException {
         String mailinatorPageURL = "https://www.mailinator.com/";
         webDriver.navigate().to(mailinatorPageURL);
-        waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
+        waitUtils.waitForElementToBeClickable(mailinatorPageObject.getEnterMailName());
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForDocumentReadyState();

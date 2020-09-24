@@ -35,7 +35,6 @@ public class MDUFlowTests extends TestsBase {
         }
         summaryPageOperations.tickTermsAndConditionsCheckbox();
         summaryPageOperations.clickFinish();
-        assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
     }
 

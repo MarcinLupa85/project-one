@@ -4,10 +4,7 @@ import enums.PAYMENTMETHODS;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.WaitUtils;
-
 import java.util.concurrent.TimeoutException;
-import static org.testng.Assert.*;
 
 public class PurchaseFlowExistingUserTest extends TestsBase {
 
@@ -18,7 +15,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
-    private WaitUtils waitUtils;
 
     @BeforeMethod(alwaysRun = true)
     private void initOperations() {
@@ -29,7 +25,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
-        waitUtils = new WaitUtils(driver);
     }
 
     private void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation, PAYMENTMETHODS paymentMethod) throws TimeoutException {
@@ -38,7 +33,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
         summaryPageOperations.assertExtraDiscount(extraDiscount);
         summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
-        assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
     }
 
