@@ -9,11 +9,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.Users;
-
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.testng.Assert.*;
 
 public class PurchaseFlowNewUserTest extends TestsBase {
     private MailinatorPageOperations mailinatorPageOperations;
@@ -50,7 +48,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
         summaryPageOperations.assertExtraDiscount(extraDiscount);
         summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
-        assertEquals(completePageOperations.getEmail(), username);
         completePageOperations.clickBack();
         assertThat(driver.getCurrentUrl().contains("/home"));
     }

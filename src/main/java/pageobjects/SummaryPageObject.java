@@ -26,7 +26,7 @@ public class SummaryPageObject {
     @FindBy(css = "button[type=submit]")
     private WebElement finishOrderButton;
 
-    @FindBy(xpath = ".//label[contains(@for, 'accept14DaysInstall')]")
+    @FindBy(xpath = "//label[contains(text(), 'at installasjonen om mulig skal')]")
     private WebElement fourteenDaysCheckbox;
 
     @FindBy(css = "div.list-group.list-group-sm.list-group-pills > button:nth-child(1)")

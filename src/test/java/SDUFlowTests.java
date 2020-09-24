@@ -2,15 +2,9 @@ import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import enums.PAYMENTMETHODS;
 import operations.*;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.WaitUtils;
-
 import java.util.concurrent.TimeoutException;
-
-import static config.Constants.BASE_URL;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
 public class SDUFlowTests extends TestsBase {
@@ -18,10 +12,7 @@ public class SDUFlowTests extends TestsBase {
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
-    private CompletePageOperations completePageOperations;
-    private HomePageOperations homePageOperations;
     private PartnerOrderOperations partnerOrderOperations;
-    private WaitUtils waitUtils;
 
     private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber, PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
@@ -36,9 +27,6 @@ public class SDUFlowTests extends TestsBase {
             assertFalse(summaryPageOperations.hasExtraDiscount());
         }
         summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
-
-        assertEquals(completePageOperations.getEmail(), username);
-        completePageOperations.clickBack();
     }
 
     @BeforeMethod private void initOperations() {
@@ -47,10 +35,7 @@ public class SDUFlowTests extends TestsBase {
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        completePageOperations = new CompletePageOperations(driver);
-        homePageOperations = new HomePageOperations(driver);
         partnerOrderOperations = new PartnerOrderOperations(driver);
-        waitUtils = new WaitUtils(driver);
     }
 
     @TestCaseId(testRailCaseId = 2885)
