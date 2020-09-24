@@ -31,7 +31,6 @@ public class MailinatorPageOperations {
         String mailinatorPageURL = "https://www.mailinator.com/";
         webDriver.navigate().to(mailinatorPageURL);
         waitUtils.waitForElementToBeClickable(mailinatorPageObject.getEnterMailName());
-//        waitUtils.waitForElement(mailinatorPageObject.getEnterMailName());
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForDocumentReadyState();
