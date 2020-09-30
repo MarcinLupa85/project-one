@@ -34,6 +34,7 @@ public class MailinatorPageOperations {
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForDocumentReadyState();
+        waitUtils.waitForElementToBeClickable(mailinatorPageObject.getFirstMail());
         mailinatorPageObject.getFirstMail().click();
         WebElement mailBody = mailinatorPageObject.getMailBody();
         Dimension d = new Dimension(1366,657);
