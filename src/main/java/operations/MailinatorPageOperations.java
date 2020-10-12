@@ -24,7 +24,6 @@ public class MailinatorPageOperations {
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
         webDriver = driver;
-
     }
 
     private void checkMail(String email) throws TimeoutException {
@@ -51,11 +50,12 @@ public class MailinatorPageOperations {
     public void checkMailForPhrase(String email) throws TimeoutException {
         checkMail(email);
         assertThat(webDriver.getPageSource()).contains("at installasjonen skal");
+        assertThat(webDriver.getPageSource()).contains("Test comment");
     }
 
     public void checkMailForLackOfPhrase(String email) throws TimeoutException {
         checkMail(email);
         assertThat(webDriver.getPageSource()).doesNotContain("snart som mulig");
+        assertThat(webDriver.getPageSource()).contains("Test comment");
     }
-
 }

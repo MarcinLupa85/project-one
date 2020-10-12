@@ -29,24 +29,20 @@ public class AddressPageObject {
     @FindBy(css = "button[type=\"submit\"]")
     private WebElement nextButton;
 
-    public WebElement getBillingAddressInput() {
-        return billingAddressInput;
-    }
+    @FindBy(id = "comment")
+    private WebElement commentInput;
 
-    public WebElement getBillingZipCodeInput() {
-        return billingZipCodeInput;
-    }
+    public WebElement getBillingAddressInput() { return billingAddressInput; }
 
-    public WebElement getBillingCityInput() {
-        return billingCityInput;
-    }
+    public WebElement getBillingZipCodeInput() { return billingZipCodeInput; }
+
+    public WebElement getBillingCityInput() { return billingCityInput; }
 
     public WebElement getCondominiumInput() { return condominiumInput; }
 
     public WebElement getParkingPlaceInput() { return parkingPlaceInput; }
 
-    public WebElement getNextButton() {
-        return nextButton;
-    }
+    public WebElement getNextButton() { return nextButton; }
 
+    public WebElement getCommentInput() { return commentInput; }
 }
