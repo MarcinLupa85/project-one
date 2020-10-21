@@ -69,6 +69,12 @@ public class CkidPageObject {
     @FindBy(css = "button[type=\"submit\"]")
     private WebElement deleteAccountConfirmationButton;
 
+    @FindBy(id = "input-mfa-code")
+    private WebElement secondStepVerificationInput;
+
+    @FindBy(id = "mfa-submit-btn")
+    private WebElement secondStepVerificationButton;
+
     public WebElement getEditAccountButton() { return editAccountButton; }
 
     public WebElement getDeleteAccountButton() {
@@ -138,4 +144,9 @@ public class CkidPageObject {
     public WebElement getEvTcCheckbox() { return EvTcCheckbox; }
 
     public WebElement getRegisterButton() { return registerButton; }
+
+    public WebElement getSecondStepVerificationInput() { return secondStepVerificationInput; }
+
+    public WebElement getSecondStepVerificationButton() { return secondStepVerificationButton; }
+
 }
