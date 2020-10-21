@@ -36,6 +36,7 @@ public class AddressPageOperations {
         addressPageObject.getBillingCityInput().sendKeys(city);
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingZipCodeInput());
         addressPageObject.getBillingZipCodeInput().sendKeys(zipcode);
+        addressPageObject.getCommentInput().sendKeys("Test comment");
         clickNext();
     }
 
