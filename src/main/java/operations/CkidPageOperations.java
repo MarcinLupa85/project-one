@@ -91,6 +91,10 @@ public class CkidPageOperations {
             ckidPageObject.getPasswordInput().clear();
             ckidPageObject.getPasswordInput().sendKeys(password);
             ckidPageObject.getLoginButton().click();
+            waitUtils.waitForElementToBeClickable(ckidPageObject.getSecondStepVerificationInput());
+            // default password for CKID test env
+            ckidPageObject.getSecondStepVerificationInput().sendKeys("000000");
+            ckidPageObject.getSecondStepVerificationButton().click();
             waitUtils.waitForDocumentReadyState();
             waitUtils.waitForElement(ckidPageObject.getEditAccountButton());
             waitUtils.bringElementToViewport(ckidPageObject.getEditAccountButton());
