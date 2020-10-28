@@ -26,11 +26,7 @@ public abstract class TestsBase {
         driver.navigate().to(BASE_URL);
         waitUtils.waitUntilOnUrl(10, BASE_URL);
         waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
-        cookiePanelOperations = new CookiePanelOperations(driver);
-        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyUnderlay"));
-        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
-        cookiePanelOperations.clickCookieOkButton();
-        waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
+
         waitUtils.waitForDocumentReadyState();
     }
 
