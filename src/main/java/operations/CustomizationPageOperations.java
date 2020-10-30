@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import pageobjects.CustomizationPageObject;
 import utils.WaitUtils;
 
+import java.util.concurrent.TimeoutException;
+
 import static config.Constants.BASE_URL;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,9 +23,10 @@ public class CustomizationPageOperations {
         this.driver = driver;
     }
 
-    public void clickSubmitButton() {
+    public void clickSubmitButton() throws TimeoutException {
         WebElement submitButton = customizationPageObject.getSubmitButton();
         waitUtils.waitForVisiblityOf(submitButton);
+        waitUtils.waitForDocumentReadyState();
         submitButton.click();
         waitUtils.waitForPresentOf(By.id("submit-registration-step-one"));
     }
