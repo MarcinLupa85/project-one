@@ -11,9 +11,7 @@ import static config.Constants.BASE_URL;
 
 public class ContactWithCircleKTests extends TestsBase {
     private NavbarOperations navbarOperations;
-    private CookiePanelOperations cookiePanelOperations;
     private ContactPageOperations contactPageOperations;
-    private BusinessPageOperations businessPageOperations;
     private ApartmentPageOperations apartmentPageOperations;
     private DeveloperPageOperations developerPageOperations;
     private ReportProblemPageOperations reportProblemPageOperations;
@@ -23,8 +21,6 @@ public class ContactWithCircleKTests extends TestsBase {
     private void initOperations() {
         navbarOperations = new NavbarOperations(driver);
         contactPageOperations =  new ContactPageOperations(driver);
-        cookiePanelOperations = new CookiePanelOperations(driver);
-        businessPageOperations =  new BusinessPageOperations(driver);
         apartmentPageOperations = new ApartmentPageOperations(driver);
         developerPageOperations = new DeveloperPageOperations(driver);
         reportProblemPageOperations = new ReportProblemPageOperations(driver);
@@ -52,14 +48,6 @@ public class ContactWithCircleKTests extends TestsBase {
         navbarOperations.clickNavbarDropdown();
         apartmentPageOperations.fillContactForm("Test", "Automation", "testSendApartmentContactForm@mailinator.com", "123873456", "Company name", "123","1234", "Test description");
         apartmentPageOperations.clickSendContactForm();
-    }
-
-    @TestCaseId(testRailCaseId = 2855)
-    @Test
-    public void testSendBusinessContactForm() {
-        navbarOperations.openBusinessPage();
-        businessPageOperations.fillForm("Test Automation", "testSendBusinessContactForm@mailinator.com", "123873456", "Company name", "Test comment");
-        contactPageOperations.clickSend();
     }
 
     @TestCaseId(testRailCaseId = 2856)
