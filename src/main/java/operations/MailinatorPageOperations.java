@@ -33,6 +33,9 @@ public class MailinatorPageOperations {
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForDocumentReadyState();
+        if (!mailinatorPageObject.getFirstMail().isDisplayed()){
+            webDriver.navigate().refresh();
+        }
         waitUtils.waitForElementToBeClickable(mailinatorPageObject.getFirstMail());
         mailinatorPageObject.getFirstMail().click();
         WebElement mailBody = mailinatorPageObject.getMailBody();
