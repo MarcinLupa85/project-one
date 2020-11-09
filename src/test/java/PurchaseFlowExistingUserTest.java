@@ -81,8 +81,8 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2879)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
-        purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, false, PAYMENTMETHODS.VISA);
+//        homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
+//        purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, false, PAYMENTMETHODS.VISA);
         mailinatorPageOperations.checkMailForLackOfPhrase("easeeinstallation@mailinator.com");
     }
 

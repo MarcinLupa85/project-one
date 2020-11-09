@@ -37,11 +37,15 @@ public class MailinatorPageOperations {
         waitUtils.waitForDocumentReadyState();
         WebElement mail = mailinatorPageObject.getFirstMail();
         List<WebElement> mailList = new ArrayList<>();
-        mailList.add(mail);
-        for(int i=0; i<3; i++) {
-            if (mailList.size()==0){
-                webDriver.navigate().refresh();
-            }else{break;}
+        boolean noMail = mailList.isEmpty();
+        int count = 0;
+        while (count < 3) {
+            webDriver.navigate().refresh();
+            noMail = mailList.isEmpty();
+            if(noMail=false) {
+                break;
+            }
+            count++;
         }
         waitUtils.waitForElementToBeClickable(mailinatorPageObject.getFirstMail());
         mailinatorPageObject.getFirstMail().click();
