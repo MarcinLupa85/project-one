@@ -1,6 +1,8 @@
 package operations;
 
 import java.lang.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
@@ -33,8 +35,12 @@ public class MailinatorPageOperations {
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForDocumentReadyState();
-        if (!mailinatorPageObject.getFirstMail().isDisplayed()){
+        List<WebElement> mailList = new ArrayList<>();
+        int count = 0;
+        while (count < 3 && mailList.isEmpty()) {
             webDriver.navigate().refresh();
+            mailList.add(mailinatorPageObject.getFirstMail());
+            count++;
         }
         waitUtils.waitForElementToBeClickable(mailinatorPageObject.getFirstMail());
         mailinatorPageObject.getFirstMail().click();
