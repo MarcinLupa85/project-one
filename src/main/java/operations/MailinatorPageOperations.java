@@ -35,16 +35,11 @@ public class MailinatorPageOperations {
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForDocumentReadyState();
-        WebElement mail = mailinatorPageObject.getFirstMail();
         List<WebElement> mailList = new ArrayList<>();
-        boolean noMail = mailList.isEmpty();
         int count = 0;
-        while (count < 3) {
+        while (count < 3 && mailList.isEmpty()) {
             webDriver.navigate().refresh();
-            noMail = mailList.isEmpty();
-            if(noMail=false) {
-                break;
-            }
+            mailList.add(mailinatorPageObject.getFirstMail());
             count++;
         }
         waitUtils.waitForElementToBeClickable(mailinatorPageObject.getFirstMail());
