@@ -41,7 +41,7 @@ public class DeveloperPageObject implements WithNewestArticlePageObject{
     @FindBy (css = "button[type='submit']")
     private WebElement submitButton;
 
-    @FindBy(css = "h4.article__title")
+    @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
 
     public WebElement getFirstName() { return firstName; }

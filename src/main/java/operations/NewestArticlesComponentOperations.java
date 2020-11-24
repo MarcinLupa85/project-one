@@ -1,5 +1,6 @@
 package operations;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.WithNewestArticlePageObject;
@@ -22,7 +23,10 @@ public class NewestArticlesComponentOperations {
 
     public void compareTitles(List<String> apartmentTitles) throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
-        List<String> compareTitles = page.getArticleBody().stream().map(WebElement::getText).collect(Collectors.toList());
+        List<String> compareTitles = page.getArticleBody().get(0).findElements(By.className("article-tile__title"))
+                .stream()
+                .map(WebElement::getText).collect(Collectors.toList());
+        System.out.println(compareTitles);
         assertThat(apartmentTitles).hasSameSizeAs(compareTitles);
         apartmentTitles.forEach(title -> assertThat(compareTitles).contains(title));
     }

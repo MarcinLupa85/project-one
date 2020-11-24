@@ -33,5 +33,6 @@ public class OnTheGoPageOperations {
 
     public void compareTitles(List<String> OTGTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(OTGTitles);
+        System.out.println(OTGTitles);
     }
 }

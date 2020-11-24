@@ -12,7 +12,7 @@ public class OnTheGoPageObject implements WithNewestArticlePageObject {
     @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar/on-the-go'].btn-primary")
     private WebElement readMoreFaqButton;
 
-    @FindBy(css = "h4.article__title")
+    @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
 
     public WebElement getReadMoreFaqButton() { return readMoreFaqButton; }
