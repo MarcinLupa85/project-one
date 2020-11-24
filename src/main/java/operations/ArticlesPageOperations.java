@@ -47,7 +47,13 @@ public class ArticlesPageOperations {
                 .limit(3)
                 .collect(Collectors.toList());
             listOfArticles.addAll(subListOfArticles);
-            articlesPageObject.getNextButton().click();
+            try {
+                articlesPageObject.getNextButton().click();
+            } catch (NoSuchElementException e2) {
+                System.out.println("No more pages to load");
+                break;
+            }
+
         }
         return listOfArticles.stream().limit(3).collect(Collectors.toList());
     }
