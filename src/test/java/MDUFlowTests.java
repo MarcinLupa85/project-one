@@ -1,15 +1,10 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import operations.*;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.WaitUtils;
-
 import java.util.concurrent.TimeoutException;
-
-import static config.Constants.BASE_URL;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
 public class MDUFlowTests extends TestsBase {
@@ -48,14 +43,6 @@ public class MDUFlowTests extends TestsBase {
         completePageOperations = new CompletePageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
         waitUtils = new WaitUtils(driver);
-    }
-
-    @AfterMethod
-    private void goBack() throws TimeoutException {
-        driver.navigate().to(BASE_URL);
-        homePageOperations.logOut();
-        waitUtils.waitForDocumentReadyState();
-        assertThat(driver.getCurrentUrl().contains("/home"));
     }
 
     @TestCaseId(testRailCaseId = 2888)
