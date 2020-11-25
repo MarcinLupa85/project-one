@@ -1,6 +1,5 @@
 package operations;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.HomePageObject;
@@ -88,16 +87,6 @@ public class HomePageOperations {
     public void openCablePurchaseFlow() {
         driver.navigate().to(BASE_URL + "/hjemmelading-bestill/customize-order?id=2");
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
-    }
-
-    public void logOut() throws TimeoutException {
-        WebElement username = homePageObject.getUsernameText();
-        waitUtils.waitForVisiblityOf(username);
-        username.click();
-        navbarOperations.logout();
-        waitUtils.waitForUrlToContains("/home");
-        waitUtils.waitForPresentOf(By.cssSelector("ev-image.banner-image-desktop"));
-        waitUtils.waitForDocumentReadyState();
     }
 
     public void goToFaq() {
