@@ -35,7 +35,7 @@ public class ArticlesTest extends TestsBase {
     @Test
     public void checkOnTheGoArticlesTest() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
-        List<String> OTGTitles = articlesPageOperations.listThreeOnTheGoArticles();
+        List<String> OTGTitles = articlesPageOperations.addToList("Hurtiglading");
         navbarOperations.openOnTheGoPage();
         onTheGoPageOperations.compareTitles(OTGTitles);
 
@@ -45,7 +45,7 @@ public class ArticlesTest extends TestsBase {
     @Test
     public void checkHouseArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
-        List<String> houseTitles = articlesPageOperations.listThreeHouseArticles();
+        List<String> houseTitles = articlesPageOperations.addToList("Hjemmelading");
         navbarOperations.openHousePage();
         housePageOperations.compareTitles(houseTitles);
     }
@@ -54,7 +54,7 @@ public class ArticlesTest extends TestsBase {
     @Test
     public void checkApartmentArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
-        List<String> apartmentTitles = articlesPageOperations.listThreeApartmentArticles();
+        List<String> apartmentTitles = articlesPageOperations.addToList("Sameie / Borettslag");
         navbarOperations.clickNavbarDropdown();
         navbarOperations.openApartmentPage();
         apartmentPageOperations.compareTitles(apartmentTitles);
@@ -64,7 +64,7 @@ public class ArticlesTest extends TestsBase {
     @Test
     public void checkDeveloperArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
-        List<String> developerTitles = articlesPageOperations.listThreeDeveloperArticles();
+        List<String> developerTitles = articlesPageOperations.addToList("Utbygger");
         navbarOperations.clickNavbarDropdown();
         navbarOperations.openDeveloperPage();
         developerPageOperations.compareTitles(developerTitles);

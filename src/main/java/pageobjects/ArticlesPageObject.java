@@ -12,18 +12,24 @@ public class ArticlesPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "div.article__category")
-    private List<WebElement> categoryName;
+    @FindBy(xpath = ".//div[contains(@class, 'article-tile__category')]/ancestor::ev-article-tile")
+    private List<WebElement> articleTitleCategoryList;
 
-    @FindBy(css = "article__title")
-    private List<WebElement> titleName;
+    @FindBy(css = "article-tile__category")
+    private WebElement articleCategory;
 
-    @FindBy(css = "div.article__body")
-    private List<WebElement> articleBody;
+    @FindBy(css = "article-tile__title")
+    private WebElement articleTitle;
 
-    public List<WebElement> getCategoryName() { return categoryName; }
+    @FindBy(css = "li.page-item.page-item__next")
+    private WebElement nextButton;
 
-    public List<WebElement>  getTitleName() { return titleName; }
+    public List<WebElement> getArticleTitleCategoryList() { return articleTitleCategoryList; }
 
-    public List<WebElement> getArticleBody() { return articleBody; }
+    public WebElement getArticleCategory() { return articleCategory; }
+
+    public WebElement getArticleTitle() { return articleTitle; }
+
+    public WebElement getNextButton() { return nextButton; }
+
 }

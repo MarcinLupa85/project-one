@@ -45,6 +45,7 @@ public class DeveloperPageOperations {
 
     public void compareTitles(List<String> developerTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(developerTitles);
+        System.out.println(developerTitles);
     }
 
 }

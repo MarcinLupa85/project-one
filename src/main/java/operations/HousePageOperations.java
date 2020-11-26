@@ -35,6 +35,7 @@ public class HousePageOperations {
 
     public void compareTitles(List<String> houseTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(houseTitles);
+        System.out.println(houseTitles);
     }
 
 
