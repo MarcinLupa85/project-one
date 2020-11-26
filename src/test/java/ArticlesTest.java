@@ -55,7 +55,6 @@ public class ArticlesTest extends TestsBase {
     public void checkApartmentArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
         List<String> apartmentTitles = articlesPageOperations.addToList("Sameie / Borettslag");
-        System.out.println(apartmentTitles);
         navbarOperations.clickNavbarDropdown();
         navbarOperations.openApartmentPage();
         apartmentPageOperations.compareTitles(apartmentTitles);

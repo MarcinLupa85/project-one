@@ -12,7 +12,7 @@ public class ArticlesPageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "div[class='row ng-star-inserted'] .article-tile__body")
+    @FindBy(xpath = ".//div[contains(@class, 'article-tile__category')]/ancestor::ev-article-tile")
     private List<WebElement> articleTitleCategoryList;
 
     @FindBy(css = "article-tile__category")

@@ -28,24 +28,14 @@ public class ArticlesPageOperations {
     public List<String> addToList(String category) throws TimeoutException {
         List<String> listOfArticles = new ArrayList<>();
         List<String> subListOfArticles;
-        while (listOfArticles.size()<3) {
-        waitUtils.waitForDocumentReadyState();
+        while (listOfArticles.size() < 3) {
+            waitUtils.waitForDocumentReadyState();
             subListOfArticles = articlesPageObject.getArticleTitleCategoryList()
-                .stream()
-                .filter(webElement -> {
-                    try {
-                        if (webElement.findElement(By.className("article-tile__category")) != null
-                                && StringUtils.contains(webElement.findElement(By.className("article-tile__category")).getText(), category)) {
-                            return true;
-                        }
-                    } catch(NoSuchElementException e){
-                        System.out.println("NoSuchElementException occured");
-                    }
-                    return false;
-                })
-                .map(webElement -> webElement.findElement(By.className("article-tile__title")) != null ? webElement.findElement(By.className("article-tile__title")).getText() : "NO_TITLE_FOUND")
-                .limit(3)
-                .collect(Collectors.toList());
+                    .stream()
+                    .filter(webElement -> webElement.findElement(By.className("article-tile__category")).getText().contains(category))
+                    .map(webElement -> webElement.findElement(By.className("article-tile__title")).getText())
+                    .limit(3)
+                    .collect(Collectors.toList());
             listOfArticles.addAll(subListOfArticles);
             try {
                 articlesPageObject.getNextButton().click();
@@ -53,7 +43,6 @@ public class ArticlesPageOperations {
                 System.out.println("No more pages to load");
                 break;
             }
-
         }
         return listOfArticles.stream().limit(3).collect(Collectors.toList());
     }
