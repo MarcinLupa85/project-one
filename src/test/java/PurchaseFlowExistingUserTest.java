@@ -2,6 +2,7 @@ import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import enums.PAYMENTMETHODS;
 import operations.*;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeoutException;
@@ -36,14 +37,26 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         completePageOperations.clickBack();
     }
 
-    //Deleted AfterMethod due to TestNG defect: When there is a failed assertion within AfterMethod, the following tests would be ignored
+    @AfterClass(alwaysRun = true)
+    public void checkEmails() throws TimeoutException {
+        mailinatorPageOperations.checkMailForLackOfPhrase("easeewithextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("easeenoextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("cablenoextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("mennekesnoextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("mennekeswithextra@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("easeeinstallation@mailinator.com");
+        mailinatorPageOperations.checkMailForLackOfPhrase("mennekesinstallation@mailinator.com");
+        mailinatorPageOperations.checkMailForPhrase("easee14daysinstallation@mailinator.com");
+        mailinatorPageOperations.checkMailForPhrase("mennekes14daysinstallation@mailinator.com");
+        mailinatorPageOperations.getSoftAssertions().assertAll();
+    }
+
 
     @TestCaseId(testRailCaseId = 2872)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", true, false, PAYMENTMETHODS.VISA);
-        mailinatorPageOperations.checkMailForLackOfPhrase("easeewithextra@mailinator.com");
     }
 
     @TestCaseId(testRailCaseId = 2873)
@@ -51,7 +64,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowNoExtra();
         purchaseFlowExistingUser("easeenoextra@mailinator.com", false, false, PAYMENTMETHODS.MASTERCARD);
-        mailinatorPageOperations.checkMailForLackOfPhrase("easeenoextra@mailinator.com");
     }
 
     @TestCaseId(testRailCaseId = 2876)
@@ -59,7 +71,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openCablePurchaseFlow();
         purchaseFlowExistingUser("cablenoextra@mailinator.com", false, false, PAYMENTMETHODS.VISA);
-        mailinatorPageOperations.checkMailForLackOfPhrase("cablenoextra@mailinator.com");
     }
 
     @TestCaseId(testRailCaseId = 2874)
@@ -67,7 +78,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowNoExtra();
         purchaseFlowExistingUser("mennekesnoextra@mailinator.com", false, false, PAYMENTMETHODS.INVOICE);
-        mailinatorPageOperations.checkMailForLackOfPhrase("mennekesnoextra@mailinator.com");
     }
 
     @TestCaseId(testRailCaseId = 2875)
@@ -75,7 +85,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithExtra();
         purchaseFlowExistingUser("mennekeswithextra@mailinator.com", true, false, PAYMENTMETHODS.KLARNA);
-        mailinatorPageOperations.checkMailForLackOfPhrase("mennekeswithextra@mailinator.com");
     }
 
     @TestCaseId(testRailCaseId = 2879)
@@ -83,7 +92,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, false, PAYMENTMETHODS.VISA);
-        mailinatorPageOperations.checkMailForLackOfPhrase("easeeinstallation@mailinator.com");
     }
 
     @TestCaseId(testRailCaseId = 2880)
@@ -91,7 +99,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("mennekesinstallation@mailinator.com", false, false, PAYMENTMETHODS.MASTERCARD);
-        mailinatorPageOperations.checkMailForLackOfPhrase("mennekesinstallation@mailinator.com");
     }
 
     @TestCaseId(testRailCaseId = 2877)
@@ -99,7 +106,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlow14DaysInstallation() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("easee14daysinstallation@mailinator.com", false, true, PAYMENTMETHODS.MASTERCARD);
-        mailinatorPageOperations.checkMailForPhrase("easee14daysinstallation@mailinator.com");
     }
 
     @TestCaseId(testRailCaseId = 2878)
@@ -107,6 +113,5 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testMennekesPurchaseFlow14DaysInstallation() throws TimeoutException {
         homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
         purchaseFlowExistingUser("mennekes14daysinstallation@mailinator.com", false, true, PAYMENTMETHODS.INVOICE);
-        mailinatorPageOperations.checkMailForPhrase("mennekes14daysinstallation@mailinator.com");
     }
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,20 +13,22 @@ import org.openqa.selenium.WebElement;
 import pageobjects.MailinatorPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.openqa.selenium.Dimension;
+import org.testng.asserts.SoftAssert;
 
 public class MailinatorPageOperations {
     private MailinatorPageObject mailinatorPageObject;
     private WebDriver webDriver;
     private FormUtils formUtils;
     private WaitUtils waitUtils;
+    private SoftAssertions softAssertions;
 
     public MailinatorPageOperations(WebDriver driver) {
         mailinatorPageObject = new MailinatorPageObject(driver);
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
         webDriver = driver;
+        softAssertions = new SoftAssertions();
     }
 
     private void checkMail(String email) throws TimeoutException {
@@ -58,13 +61,17 @@ public class MailinatorPageOperations {
 
     public void checkMailForPhrase(String email) throws TimeoutException {
         checkMail(email);
-        assertThat(webDriver.getPageSource()).contains("at installasjonen skal");
-        assertThat(webDriver.getPageSource()).contains("Test comment");
+        softAssertions.assertThat(webDriver.getPageSource()).contains("at installasjonen skal");
+        softAssertions.assertThat(webDriver.getPageSource()).contains("Test comment");
     }
 
     public void checkMailForLackOfPhrase(String email) throws TimeoutException {
         checkMail(email);
-        assertThat(webDriver.getPageSource()).doesNotContain("snart som mulig");
-        assertThat(webDriver.getPageSource()).contains("Test comment");
+        softAssertions.assertThat(webDriver.getPageSource()).doesNotContain("snart som mulig");
+        softAssertions.assertThat(webDriver.getPageSource()).contains("Test comment");
+    }
+
+    public SoftAssertions getSoftAssertions() {
+        return softAssertions;
     }
 }

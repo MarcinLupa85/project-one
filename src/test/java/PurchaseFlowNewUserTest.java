@@ -37,7 +37,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
         testUsers = new Users().getUsersList();
-
         driver.navigate().to(constants.BASE_URL);
     }
 
@@ -115,7 +114,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         purchaseFlowNewUser("575437308", "newuser.mennekesinstallation@mailinator.com", false, false, PAYMENTMETHODS.INVOICE);
         mailinatorPageOperations.checkMailForLackOfPhrase("newuser.mennekesinstallation@mailinator.com");
     }
-
 }
 
 
