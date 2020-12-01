@@ -14,7 +14,6 @@ import pageobjects.MailinatorPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
 import org.openqa.selenium.Dimension;
-import org.testng.asserts.SoftAssert;
 
 public class MailinatorPageOperations {
     private MailinatorPageObject mailinatorPageObject;
@@ -61,14 +60,14 @@ public class MailinatorPageOperations {
 
     public void checkMailForPhrase(String email) throws TimeoutException {
         checkMail(email);
-        softAssertions.assertThat(webDriver.getPageSource()).contains("at installasjonen skal");
-        softAssertions.assertThat(webDriver.getPageSource()).contains("Test comment");
+        softAssertions.assertThat(webDriver.getPageSource()).contains("at installasjonen skal").withFailMessage(email + "has failed validation");
+        softAssertions.assertThat(webDriver.getPageSource()).contains("Test comment").withFailMessage(email + "has failed comment validation");
     }
 
     public void checkMailForLackOfPhrase(String email) throws TimeoutException {
         checkMail(email);
-        softAssertions.assertThat(webDriver.getPageSource()).doesNotContain("snart som mulig");
-        softAssertions.assertThat(webDriver.getPageSource()).contains("Test comment");
+        softAssertions.assertThat(webDriver.getPageSource()).doesNotContain("snart som mulig").withFailMessage(email + "has failed content validation");
+        softAssertions.assertThat(webDriver.getPageSource()).contains("Test comment").withFailMessage(email + "has failed comment validation");
     }
 
     public SoftAssertions getSoftAssertions() {

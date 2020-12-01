@@ -56,31 +56,19 @@ public class HomePageOperations {
     }
 
     public void openMennekesPurchaseFlowNoExtra() throws TimeoutException {
+        driver.navigate().to(BASE_URL+"/hjemmelading-bestill/customize-order?id=0");
         waitUtils.waitForDocumentReadyState();
-        WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
-        waitUtils.waitForVisiblityOf(mennekesLink);
-        waitUtils.bringElementToViewport(mennekesLink);
-        mennekesLink.click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
     public void openMennekesPurchaseFlowWithExtra() throws TimeoutException {
+        driver.navigate().to(BASE_URL+"/hjemmelading-bestill/customize-order?id=0");
         waitUtils.waitForDocumentReadyState();
-        WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
-        waitUtils.waitForVisiblityOf(mennekesLink);
-        waitUtils.bringElementToViewport(mennekesLink);
-        mennekesLink.click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
         customizationPageOperations.tickExtraCheckbox();
     }
 
     public void openMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
+        driver.navigate().to(BASE_URL+"/hjemmelading-bestill/customize-order?id=0");
         waitUtils.waitForDocumentReadyState();
-        WebElement mennekesLink = homePageObject.getPurchaseFlowMennekesLink();
-        waitUtils.waitForVisiblityOf(mennekesLink);
-        waitUtils.bringElementToViewport(mennekesLink);
-        mennekesLink.click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
         customizationPageOperations.tickInstallationCheckbox();
     }
 
