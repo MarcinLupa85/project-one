@@ -61,6 +61,8 @@ public class PurchaseFlowNewUserTest extends TestsBase {
 
     @AfterClass(alwaysRun = true)
     public void checkEmails() throws TimeoutException {
+        driver = new DriverFactory().startBrowser();
+        mailinatorPageOperations = new MailinatorPageOperations(driver);
         mailinatorPageOperations.checkMailForLackOfPhrase("newuser.easeewithextra@mailinator.com");
         mailinatorPageOperations.checkMailForLackOfPhrase("newuser.easeenoextra@mailinator.com");
         mailinatorPageOperations.checkMailForLackOfPhrase("newuser.cablenoextra@mailinator.com");

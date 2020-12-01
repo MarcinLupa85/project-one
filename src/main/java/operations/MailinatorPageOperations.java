@@ -37,13 +37,14 @@ public class MailinatorPageOperations {
         formUtils.fillField(mailinatorPageObject.getEnterMailName(), email);
         mailinatorPageObject.getEnterMailName().sendKeys(Keys.ENTER);
         waitUtils.waitForDocumentReadyState();
-        List<WebElement> mailList = new ArrayList<>();
-        int count = 0;
-        while (count < 3 && mailList.isEmpty()) {
-            webDriver.navigate().refresh();
-            mailList.add(mailinatorPageObject.getFirstMail());
-            count++;
-        }
+//        List<WebElement> mailList = new ArrayList<>();
+//        int count = 0;
+//        while (count < 3 && mailList.isEmpty()) {
+//            webDriver.navigate().refresh();
+//            mailList.add(mailinatorPageObject.getFirstMail());
+//            count++;
+//        }
+        softAssertions.assertThat(mailinatorPageObject.getFirstMail()).withFailMessage(email + "has failed email presence validation");
         waitUtils.waitForElementToBeClickable(mailinatorPageObject.getFirstMail());
         mailinatorPageObject.getFirstMail().click();
         WebElement mailBody = mailinatorPageObject.getMailBody();
@@ -60,14 +61,14 @@ public class MailinatorPageOperations {
 
     public void checkMailForPhrase(String email) throws TimeoutException {
         checkMail(email);
-        softAssertions.assertThat(webDriver.getPageSource()).contains("at installasjonen skal").withFailMessage(email + "has failed validation");
-        softAssertions.assertThat(webDriver.getPageSource()).contains("Test comment").withFailMessage(email + "has failed comment validation");
+        softAssertions.assertThat(webDriver.getPageSource()).withFailMessage(email + "has failed validation").contains("at installasjonen skal");
+        softAssertions.assertThat(webDriver.getPageSource()).withFailMessage(email + "has failed comment validation").contains("Test comment");
     }
 
     public void checkMailForLackOfPhrase(String email) throws TimeoutException {
         checkMail(email);
-        softAssertions.assertThat(webDriver.getPageSource()).doesNotContain("snart som mulig").withFailMessage(email + "has failed content validation");
-        softAssertions.assertThat(webDriver.getPageSource()).contains("Test comment").withFailMessage(email + "has failed comment validation");
+        softAssertions.assertThat(webDriver.getPageSource()).withFailMessage(email + "has failed content validation").doesNotContain("snart som mulig");
+        softAssertions.assertThat(webDriver.getPageSource()).withFailMessage(email + "has failed comment validation").contains("Test comment");
     }
 
     public SoftAssertions getSoftAssertions() {

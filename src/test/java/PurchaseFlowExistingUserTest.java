@@ -1,4 +1,5 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
+import config.DriverFactory;
 import config.TestsBase;
 import enums.PAYMENTMETHODS;
 import operations.*;
@@ -30,7 +31,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     private void purchaseFlowExistingUser(String username, boolean extraDiscount, boolean fourteenDaysInstallation, PAYMENTMETHODS paymentMethod) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.logInWithCredentials(username, "Emobility!");
+        ckidPageOperations.logInWithCredentials(username, "Emobility1!");
         addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
         summaryPageOperations.assertExtraDiscount(extraDiscount);
         summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
@@ -39,6 +40,8 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     @AfterClass(alwaysRun = true)
     public void checkEmails() throws TimeoutException {
+        driver = new DriverFactory().startBrowser();
+        mailinatorPageOperations = new MailinatorPageOperations(driver);
         mailinatorPageOperations.checkMailForLackOfPhrase("easeewithextra@mailinator.com");
         mailinatorPageOperations.checkMailForLackOfPhrase("easeenoextra@mailinator.com");
         mailinatorPageOperations.checkMailForLackOfPhrase("cablenoextra@mailinator.com");
@@ -49,7 +52,8 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         mailinatorPageOperations.checkMailForPhrase("easee14daysinstallation@mailinator.com");
         mailinatorPageOperations.checkMailForPhrase("mennekes14daysinstallation@mailinator.com");
         mailinatorPageOperations.getSoftAssertions().assertAll();
-    }
+        tearDown();
+     }
 
 
     @TestCaseId(testRailCaseId = 2872)
