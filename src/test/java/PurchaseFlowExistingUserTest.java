@@ -3,14 +3,12 @@ import config.DriverFactory;
 import config.TestsBase;
 import enums.PAYMENTMETHODS;
 import operations.*;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeoutException;
 
 public class PurchaseFlowExistingUserTest extends TestsBase {
 
-    private MailinatorPageOperations mailinatorPageOperations;
     private HomePageOperations homePageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
@@ -20,7 +18,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     @BeforeMethod(alwaysRun = true)
     private void initOperations() {
-        mailinatorPageOperations = new MailinatorPageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -37,24 +34,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
         completePageOperations.clickBack();
     }
-
-    @AfterClass(alwaysRun = true)
-    public void checkEmails() throws TimeoutException {
-        driver = new DriverFactory().startBrowser();
-        mailinatorPageOperations = new MailinatorPageOperations(driver);
-        mailinatorPageOperations.checkMailForLackOfPhrase("easeewithextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("easeenoextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("cablenoextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("mennekesnoextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("mennekeswithextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("easeeinstallation@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("mennekesinstallation@mailinator.com");
-        mailinatorPageOperations.checkMailForPhrase("easee14daysinstallation@mailinator.com");
-        mailinatorPageOperations.checkMailForPhrase("mennekes14daysinstallation@mailinator.com");
-        mailinatorPageOperations.getSoftAssertions().assertAll();
-        tearDown();
-     }
-
 
     @TestCaseId(testRailCaseId = 2872)
     @Test(alwaysRun = true)

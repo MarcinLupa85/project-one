@@ -14,7 +14,6 @@ import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PurchaseFlowNewUserTest extends TestsBase {
-    private MailinatorPageOperations mailinatorPageOperations;
     private HomePageOperations homePageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
@@ -29,7 +28,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
 
     @BeforeMethod
     private void initOperations() {
-        mailinatorPageOperations = new MailinatorPageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -57,20 +55,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         ckidPageOperations = new CkidPageOperations(driver);
         ckidPageOperations.deleteAccounts();
         tearDown();
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void checkEmails() throws TimeoutException {
-        driver = new DriverFactory().startBrowser();
-        mailinatorPageOperations = new MailinatorPageOperations(driver);
-        mailinatorPageOperations.checkMailForLackOfPhrase("newuser.easeewithextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("newuser.easeenoextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("newuser.cablenoextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("newuser.mennekesnoextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("newuser.mennekeswithextra@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("newuser.easeeinstallation@mailinator.com");
-        mailinatorPageOperations.checkMailForLackOfPhrase("newuser.mennekesinstallation@mailinator.com");
-        mailinatorPageOperations.getSoftAssertions().assertAll();
     }
 
     @TestCaseId(testRailCaseId = 2867)
