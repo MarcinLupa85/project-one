@@ -14,31 +14,16 @@ public class ApartmentPageObject implements WithNewestArticlePageObject{
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "first_name")
-    private WebElement firstName;
+    @FindBy(id = "name")
+    private WebElement name;
 
-    @FindBy(id = "last_name")
-    private WebElement lastName;
-
-    @FindBy(id = "email")
-    private WebElement email;
-
-    @FindBy(id = "mobile")
-    private WebElement mobile;
+    @FindBy(id = "phone")
+    private WebElement phone;
 
     @FindBy(id = "company")
-    private WebElement comapany;
+    private WebElement company;
 
-    @FindBy(css = "[id='00N1x000001qwx1']")
-    private WebElement parkingPlaces;
-
-    @FindBy(id = "zip")
-    private WebElement zipCode;
-
-    @FindBy(id = "description")
-    private WebElement description;
-
-    @FindBy(css = "button.contact-branded-button")
+    @FindBy(xpath = "//*[contains(text(),'Send')]")
     private WebElement contactSubmitButton;
 
     @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar/apartment'].btn-primary")
@@ -47,21 +32,11 @@ public class ApartmentPageObject implements WithNewestArticlePageObject{
     @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
 
-    public WebElement getFirstName() { return firstName; }
+    public WebElement getName() { return name; }
 
-    public WebElement getLastName() { return lastName; }
+    public WebElement getPhone() { return phone; }
 
-    public WebElement getEmail() { return email; }
-
-    public WebElement getMobile() { return mobile; }
-
-    public WebElement getCompanyNameInput() { return comapany; }
-
-    public WebElement getParkingPlaces() { return parkingPlaces; }
-
-    public WebElement getZipCode() { return zipCode; }
-
-    public WebElement getDescription() { return description; }
+    public WebElement getCompanyNameInput() { return company; }
 
     public WebElement getContactSubmitButton() { return contactSubmitButton; }
 

@@ -46,7 +46,7 @@ public class ContactWithCircleKTests extends TestsBase {
         navbarOperations.clickNavbarDropdown();
         navbarOperations.openApartmentPage();
         navbarOperations.clickNavbarDropdown();
-        apartmentPageOperations.fillContactForm("Test", "Automation", "testSendApartmentContactForm@mailinator.com", "123873456", "Company name", "123","1234", "Test description");
+        apartmentPageOperations.fillContactForm("Test", "123873456", "Company name");
         apartmentPageOperations.clickSendContactForm();
     }
 
