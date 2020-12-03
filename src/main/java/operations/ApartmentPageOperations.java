@@ -1,5 +1,6 @@
 package operations;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.ApartmentPageObject;
@@ -26,17 +27,13 @@ public class ApartmentPageOperations {
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(apartmentPageObject, driver);
     }
 
-    public void fillContactForm(String firstName, String lastName, String email, String mobile, String company, String parkingPlaces,String zipCode, String description){
-        waitUtils.bringElementToViewport(apartmentPageObject.getFirstName());
-        formUtils.fillField(apartmentPageObject.getFirstName(), firstName);
-        formUtils.fillField(apartmentPageObject.getLastName(), lastName);
-        formUtils.fillField(apartmentPageObject.getEmail(), email);
-        formUtils.fillField(apartmentPageObject.getMobile(), mobile);
+    public void fillContactForm(String name, String phone, String company){
+        waitUtils.bringElementToViewport(apartmentPageObject.getName());
+        formUtils.fillField(apartmentPageObject.getName(), name);
+        formUtils.fillField(apartmentPageObject.getPhone(), phone);
         formUtils.fillField(apartmentPageObject.getCompanyNameInput(), company);
-        formUtils.fillField(apartmentPageObject.getParkingPlaces(), parkingPlaces);
-        formUtils.fillField(apartmentPageObject.getZipCode(), zipCode);
-        formUtils.fillField(apartmentPageObject.getDescription(), description);
     }
+
     public void clickSendContactForm() {
         waitUtils.waitForVisiblityOf(apartmentPageObject.getContactSubmitButton());
         apartmentPageObject.getContactSubmitButton().click();
