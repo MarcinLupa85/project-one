@@ -12,7 +12,6 @@ public class SDUFlowTests extends TestsBase {
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
-    private PartnerOrderOperations partnerOrderOperations;
 
     private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber, PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
@@ -35,7 +34,6 @@ public class SDUFlowTests extends TestsBase {
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        partnerOrderOperations = new PartnerOrderOperations(driver);
     }
 
     @TestCaseId(testRailCaseId = 2885)
@@ -62,20 +60,4 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, false, null, PAYMENTMETHODS.INVOICE, false);
     }
 
-    @TestCaseId(testRailCaseId = 2985)
-    @Test
-    public void elkjopSDUFlow() {
-        partnerOrderOperations.goToElkjop();
-        partnerOrderOperations.fillElkjopForm("Test", "Kowalski", "sduelkjopnoinstallationy@mailinator.com", "575437667", "Test Addresse 582", "72433", "Test Billing City");
-        partnerOrderOperations.submitOrder();
-    }
-
-    @TestCaseId(testRailCaseId = 2986)
-    @Test
-    public void elkjopWithInstallationSDUFlow() {
-        partnerOrderOperations.goToElkjop();
-        partnerOrderOperations.tickInstallationCheckbox();
-        partnerOrderOperations.fillElkjopForm("Test", "Kowalski", "sduelkjopnoinstallationy@mailinator.com", "575437667", "Test Addresse 582", "72433", "Test Billing City");
-        partnerOrderOperations.submitOrder();
-    }
 }

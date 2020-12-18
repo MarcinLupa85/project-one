@@ -1,5 +1,4 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
-import config.DriverFactory;
 import config.TestsBase;
 import enums.PAYMENTMETHODS;
 import operations.*;
