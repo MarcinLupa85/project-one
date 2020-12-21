@@ -31,7 +31,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
         summaryPageOperations.assertExtraDiscount(extraDiscount);
         summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
-        completePageOperations.clickBack();
     }
 
     @TestCaseId(testRailCaseId = 2872)
