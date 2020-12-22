@@ -36,14 +36,15 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2872)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlowWithExtra();
+        homePageOperations.openEaseePurchaseFlow();
+        homePageOperations.flowWithExtra();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", true, false, PAYMENTMETHODS.VISA);
     }
 
     @TestCaseId(testRailCaseId = 2873)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlowNoExtra();
+        homePageOperations.openEaseePurchaseFlow();
         purchaseFlowExistingUser("easeenoextra@mailinator.com", false, false, PAYMENTMETHODS.MASTERCARD);
     }
 
@@ -64,14 +65,15 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2875)
     @Test(alwaysRun = true)
     public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlowWithExtra();
+        homePageOperations.flowWithExtra();
         purchaseFlowExistingUser("mennekeswithextra@mailinator.com", true, false, PAYMENTMETHODS.KLARNA);
     }
 
     @TestCaseId(testRailCaseId = 2879)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
+        homePageOperations.openEaseePurchaseFlow();
+        homePageOperations.flowWithInstallationOnly();
         purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, false, PAYMENTMETHODS.VISA);
     }
 
@@ -85,7 +87,8 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2877)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlow14DaysInstallation() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlowWithInstallationOnly();
+        homePageOperations.openEaseePurchaseFlow();
+        homePageOperations.flowWithInstallationOnly();
         purchaseFlowExistingUser("easee14daysinstallation@mailinator.com", false, true, PAYMENTMETHODS.MASTERCARD);
     }
 
