@@ -58,6 +58,10 @@ public class CustomizationPageOperations {
         customizationPageObject.getInstallationCheckbox().click();
     }
 
+    public void addEqualizer() {
+        customizationPageObject.getAddEqualizer().click();
+    }
+
     public void goToBigTrial() {
         driver.navigate().to(BASE_URL + "apartment-order/customize-order?id=8226947439e34584a4e13a641408e2ac");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
@@ -80,7 +84,7 @@ public class CustomizationPageOperations {
 
     public void goToPolestar() {
         driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=22857be80c644c47a2d40c37ed9da68c");
-        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());;
+        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void checkBigTrialPrices() {

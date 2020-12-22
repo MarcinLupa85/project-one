@@ -26,7 +26,7 @@ public class HomePageOperations {
         navbarOperations = new NavbarOperations(driver);
     }
 
-    public void openEaseePurchaseFlowNoExtra() throws TimeoutException {
+    public void openEaseePurchaseFlow() throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
         waitUtils.waitForVisiblityOf(easeeLink);
@@ -35,24 +35,16 @@ public class HomePageOperations {
         waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
-    public void openEaseePurchaseFlowWithExtra() throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
-        waitUtils.waitForVisiblityOf(easeeLink);
-        waitUtils.bringElementToViewport(easeeLink);
-        easeeLink.click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+    public void flowWithExtra() {
         customizationPageOperations.tickExtraCheckbox();
     }
 
-    public void openEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        WebElement easeeLink = homePageObject.getPurchaseFlowEaseeLink();
-        waitUtils.waitForVisiblityOf(easeeLink);
-        waitUtils.bringElementToViewport(easeeLink);
-        easeeLink.click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+    public void flowWithInstallationOnly() {
         customizationPageOperations.tickInstallationCheckbox();
+    }
+
+    public void flowWithEqualizer() {
+        customizationPageOperations.addEqualizer();
     }
 
     public void openMennekesPurchaseFlowNoExtra() throws TimeoutException {
