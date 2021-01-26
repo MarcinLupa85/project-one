@@ -20,7 +20,7 @@ public class CustomizationPageObject
     @FindBy(css= "label[for='join-extra']")
     private WebElement extraCheckbox;
 
-    @FindBy(xpath = "/html/body/ev-root/ev-base-layout/ev-house-order-page/div/ev-step-customize-order/div/div/div/ev-products-ordering-list/ev-product-ordering[3]/div/div[1]/ev-number-selector/div/button[2]")
+    @FindBy(xpath = "//h4[contains(text(), 'Easee Equalizer')]/ancestor::*[position()=1]//button[2]")
     private WebElement addEqualizer;
 
     @FindBy(css = "a[href=\"/hjemmelading\"]")

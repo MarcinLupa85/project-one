@@ -38,6 +38,7 @@ public class CkidPageOperations {
         closeCookieBot();
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);
+        waitUtils.waitForElementToBeClickable(ckidPageObject.getLoginButton());
         ckidPageObject.getLoginButton().click();
     }
 

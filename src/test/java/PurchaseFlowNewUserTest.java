@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import testdata.Users;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class PurchaseFlowNewUserTest extends TestsBase {
     private HomePageOperations homePageOperations;
