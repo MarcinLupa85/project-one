@@ -57,7 +57,7 @@ public class CkidPageObject {
     @FindBy(css = "button#login-submit-button")
     private WebElement loginButton;
 
-    @FindBy(css = "section#user-dashboard [ui-sref='dashboard.myAccount']")
+    @FindBy(css = "section#user-dashboard-groups [ui-sref='dashboard.myAccount']")
     private WebElement editAccountButton;
 
     @FindBy(css = "button[ng-click=\"deleteAccount()\"]")

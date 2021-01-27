@@ -14,7 +14,7 @@ public class HomePageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=1&optionId=179")
+    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=1&optionId=3']")
     private WebElement purchaseFlowEaseeLink;
 
     @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=0']")
