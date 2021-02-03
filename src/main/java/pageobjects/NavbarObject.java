@@ -21,7 +21,7 @@ public class NavbarObject {
     @FindBy(css = "a[href='/kontakt'].nav-link")
     private WebElement contactLink;
 
-    @FindBy(css = "span[class='caret']")
+    @FindBy(xpath = "//a[contains(text(), 'Borettslag/Utbygger')]")
     private WebElement navbarDropdown;
 
     @FindBy(css = "a[href='/sameie-borettslag'].nav-link")
