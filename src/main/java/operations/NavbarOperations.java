@@ -61,7 +61,7 @@ public class NavbarOperations {
         navbarObject.getArticlesLink().click();
         waitUtils.waitForUrlToContains("/nyheter/1");
         waitUtils.waitForDocumentReadyState();
-        assertThat(driver.findElement(By.xpath("//h2[contains(text(), 'Nyheter')]")).isDisplayed());
+        assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Nyheter')]")).isDisplayed());
     }
 
     public void logout() {
