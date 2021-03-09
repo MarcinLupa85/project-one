@@ -32,7 +32,16 @@ public class HomePageOperations {
         waitUtils.waitForVisiblityOf(easeeLink);
         waitUtils.bringElementToViewport(easeeLink);
         easeeLink.click();
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
+        waitUtils.waitForUrlToContains("/bestill/customize-order");
+    }
+
+    public void openEqualizerPurchaseFlow() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        WebElement easeeLink = homePageObject.getPurchaseFlowEqualizerLink();
+        waitUtils.waitForVisiblityOf(easeeLink);
+        waitUtils.bringElementToViewport(easeeLink);
+        easeeLink.click();
+        waitUtils.waitForUrlToContains("/bestill/customize-order");
     }
 
     public void flowWithExtra() {
@@ -62,11 +71,6 @@ public class HomePageOperations {
         driver.navigate().to(BASE_URL+"/hjemmelading-bestill/customize-order?id=0");
         waitUtils.waitForDocumentReadyState();
         customizationPageOperations.tickInstallationCheckbox();
-    }
-
-    public void openCablePurchaseFlow() {
-        driver.navigate().to(BASE_URL + "/hjemmelading-bestill/customize-order?id=2");
-        waitUtils.waitForUrlToContains("/hjemmelading-bestill/customize-order");
     }
 
     public void goToFaq() {

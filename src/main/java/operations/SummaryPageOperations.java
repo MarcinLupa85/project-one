@@ -97,10 +97,6 @@ public class SummaryPageOperations {
         waitUtils.waitForUrlToContains("klarna.com");
     }
 
-    public void assertExtraDiscount(boolean extraDiscount) {
-        assertEquals(hasExtraDiscount(), extraDiscount);
-    }
-
     public void pay(PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation){
         switch (paymentMethod) {
             case INVOICE:

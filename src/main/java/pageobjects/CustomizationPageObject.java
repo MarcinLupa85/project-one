@@ -14,13 +14,13 @@ public class CustomizationPageObject
     @FindBy(css = "li#id1 app-number-selector")
     private WebElement easeeNumberSelector;
 
-    @FindBy(css = "label.custom-control-center")
+    @FindBy(css = "[for=withInstallation]")
     private WebElement installlationCheckbox;
 
-    @FindBy(css= "label[for='join-extra']")
+    @FindBy(css = "[for=withExtra]")
     private WebElement extraCheckbox;
 
-    @FindBy(xpath = "//h4[contains(text(), 'Easee Equalizer')]/ancestor::*[position()=1]//button[2]")
+    @FindBy(xpath = "(.//button[@data-type='plus'])[last()]")
     private WebElement addEqualizer;
 
     @FindBy(css = "a[href=\"/hjemmelading\"]")

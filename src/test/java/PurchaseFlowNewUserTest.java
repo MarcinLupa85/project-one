@@ -14,6 +14,7 @@ import java.util.concurrent.TimeoutException;
 
 public class PurchaseFlowNewUserTest extends TestsBase {
     private HomePageOperations homePageOperations;
+    private HousePageOperations housePageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
@@ -28,6 +29,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @BeforeMethod
     private void initOperations() {
         homePageOperations = new HomePageOperations(driver);
+        housePageOperations = new HousePageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
@@ -42,7 +44,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         ckidPageOperations.closeCookieBot();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
         addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433");
-        summaryPageOperations.assertExtraDiscount(extraDiscount);
         summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
     }
 
@@ -72,7 +73,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2871)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
-        homePageOperations.openCablePurchaseFlow();
+        housePageOperations.openCablePurchaseFlow();
         purchaseFlowNewUser("575437306", "newuser.cablenoextra@mailinator.com", false, false, PAYMENTMETHODS.INVOICE);
     }
 

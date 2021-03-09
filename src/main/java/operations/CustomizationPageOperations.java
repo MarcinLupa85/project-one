@@ -28,7 +28,7 @@ public class CustomizationPageOperations {
         waitUtils.waitForVisiblityOf(submitButton);
         waitUtils.waitForDocumentReadyState();
         submitButton.click();
-        waitUtils.waitForPresentOf(By.id("submit-registration-step-one"));
+        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBody"));
     }
 
 
