@@ -26,8 +26,7 @@ public class SummaryPageObject {
     @FindBy(css = "button[type=submit]")
     private WebElement finishOrderButton;
 
-    @FindBy(xpath = "//label[contains(text(), 'at installasjonen om mulig skal')]")
-    private WebElement fourteenDaysCheckbox;
+
 
     @FindBy(css = "div.list-group.list-group-sm.list-group-pills > button:nth-child(1)")
     private WebElement creditCardOption;
@@ -62,8 +61,6 @@ public class SummaryPageObject {
     public WebElement getExpiryDateIFrame() { return expiryDateIFrame; }
 
     public WebElement getSecurityCodeIFrame() { return securityCodeIFrame; }
-
-    public WebElement getFourteenDaysCheckbox() { return fourteenDaysCheckbox; }
 
     public WebElement getCreditCardOption() { return creditCardOption; }
 

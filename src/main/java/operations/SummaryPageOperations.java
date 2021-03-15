@@ -56,9 +56,7 @@ public class SummaryPageOperations {
         summaryPageObject.getCreditCardPayButton().click();
     }
 
-    public void tick14DaysCheckbox() {
-        summaryPageObject.getFourteenDaysCheckbox().click();
-    }
+
 
     public void chooseCreditCardOption() { summaryPageObject.getCreditCardOption().click(); }
 
@@ -97,39 +95,33 @@ public class SummaryPageOperations {
         waitUtils.waitForUrlToContains("klarna.com");
     }
 
-    public void pay(PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation){
+    public void pay(PAYMENTMETHODS paymentMethod){
         switch (paymentMethod) {
             case INVOICE:
                 chooseInvoiceOption();
-                chooseInstallation(fourteenDaysInstallation);
+                tickTermsAndConditionsCheckbox();
                 clickFinish();
                 completePageOperations.clickBack();
                 break;
             case VISA:
                 chooseCreditCardOption();
-                chooseInstallation(fourteenDaysInstallation);
+                tickTermsAndConditionsCheckbox();
                 payWithCreditCard(visaCardNumber);
                 completePageOperations.clickBack();
                 break;
             case MASTERCARD:
                 chooseCreditCardOption();
-                chooseInstallation(fourteenDaysInstallation);
+                tickTermsAndConditionsCheckbox();
                 payWithCreditCard(mastercardCardNumber);
                 completePageOperations.clickBack();
                 break;
             case KLARNA:
                 chooseCreditCardOption();
-                chooseInstallation(fourteenDaysInstallation);
+                tickTermsAndConditionsCheckbox();
                 chooseKlarnaOption();
                 payWithKlarna();
                 break;
         }
     }
 
-    private void chooseInstallation(boolean fourteenDaysInstallation) {
-        tickTermsAndConditionsCheckbox();
-        if (fourteenDaysInstallation) {
-            tick14DaysCheckbox();
-        }
-    }
 }

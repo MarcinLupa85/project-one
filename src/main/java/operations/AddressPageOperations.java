@@ -29,7 +29,7 @@ public class AddressPageOperations {
         waitUtils.waitForUrlToContains("/confirm-order");
     }
 
-    public void fillClientInfo(String address, String city, String zipcode) {
+    public void fillClientInfo(String address, String city, String zipcode, boolean fourteenDaysInstallation) {
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingAddressInput());
         addressPageObject.getBillingAddressInput().sendKeys(address);
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingCityInput());
@@ -37,7 +37,14 @@ public class AddressPageOperations {
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingZipCodeInput());
         addressPageObject.getBillingZipCodeInput().sendKeys(zipcode);
         addressPageObject.getCommentInput().sendKeys("Test comment");
-        clickNext();
+        tick14DaysCheckbox(fourteenDaysInstallation);
+
     }
 
+    public void tick14DaysCheckbox(boolean fourteenDaysInstallation) {
+        if (fourteenDaysInstallation) {
+            addressPageObject.getFourteenDaysCheckbox().click();
+        }
+        clickNext();
+    }
 }
