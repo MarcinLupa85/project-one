@@ -32,6 +32,9 @@ public class AddressPageObject {
     @FindBy(id = "comment")
     private WebElement commentInput;
 
+    @FindBy(xpath = "//label[contains(text(), 'at installasjonen om mulig skal')]")
+    private WebElement fourteenDaysCheckbox;
+
     public WebElement getBillingAddressInput() { return billingAddressInput; }
 
     public WebElement getBillingZipCodeInput() { return billingZipCodeInput; }
@@ -45,4 +48,6 @@ public class AddressPageObject {
     public WebElement getNextButton() { return nextButton; }
 
     public WebElement getCommentInput() { return commentInput; }
+
+    public WebElement getFourteenDaysCheckbox() { return fourteenDaysCheckbox; }
 }

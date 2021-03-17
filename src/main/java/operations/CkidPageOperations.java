@@ -43,6 +43,7 @@ public class CkidPageOperations {
     }
 
     public void registerNewUser(String phoneNumber, String username, String password) {
+        ckidPageObject.getRegisterSwitchButton().click();
         waitUtils.waitForPresentOf(By.cssSelector("input#edit-phone-number"));
         ckidPageObject.getCountryCodeInput().sendKeys("48");
         ckidPageObject.getPhoneNumberInput().sendKeys(phoneNumber);
@@ -62,6 +63,7 @@ public class CkidPageOperations {
 //        temporarily skipped due to Stable environment bein repurposed
 //        ckidPageObject.getEvTcCheckbox().click();
         //Accepted in review
+        waitUtils.waitForElementToBeClickable(ckidPageObject.getRegisterButton());
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getRegisterButton());
     }
@@ -102,7 +104,7 @@ public class CkidPageOperations {
             ckidPageObject.getEditAccountButton().click();
             waitUtils.waitForDocumentReadyState();
             waitUtils.waitForElement(ckidPageObject.getDeleteAccountButton()).click();
-            waitUtils.waitForElement(ckidPageObject.getValidationPhraseInput()).sendKeys("CLOSE MY ACCOUNT");
+            waitUtils.waitForElement(ckidPageObject.getValidationPhraseInput()).sendKeys("DELETE ACCOUNT");
             waitUtils.waitForElement(ckidPageObject.getDeleteAccountConfirmationButton()).click();
             waitUtils.waitForPresentOf(By.id("login-submit-button"));
             driver.navigate().to(ckidUrl);

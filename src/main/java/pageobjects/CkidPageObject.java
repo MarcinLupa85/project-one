@@ -42,6 +42,9 @@ public class CkidPageObject {
     @FindBy(css = "div[id=accepted-tc-e82a3da0-0d33-46e2-9c4c-7a0ac7d86dd9] span")
     private WebElement EvTcCheckbox;
 
+    @FindBy(css = "[class='button secondary ng-scope']")
+    private WebElement registerSwitchButton;
+
     @FindBy(css = "[class='button primary ng-scope']")
     private WebElement registerButton;
 
@@ -144,6 +147,8 @@ public class CkidPageObject {
     public WebElement getEvTcCheckbox() { return EvTcCheckbox; }
 
     public WebElement getRegisterButton() { return registerButton; }
+
+    public WebElement getRegisterSwitchButton() { return registerSwitchButton; }
 
     public WebElement getSecondStepVerificationInput() { return secondStepVerificationInput; }
 

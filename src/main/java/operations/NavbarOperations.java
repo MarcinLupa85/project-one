@@ -59,7 +59,7 @@ public class NavbarOperations {
 
     public void openAndVerifyArticlesPage() throws TimeoutException {
         navbarObject.getArticlesLink().click();
-        waitUtils.waitForUrlToContains("/nyheter/1");
+        waitUtils.waitForUrlToContains("/nyheter");
         waitUtils.waitForDocumentReadyState();
         assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Nyheter')]")).isDisplayed());
     }

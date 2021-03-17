@@ -13,19 +13,14 @@ public class SDUFlowTests extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
 
-    private void purchaseFlowSDUUser(String username, boolean extraDiscount, boolean membershipNumberNecessary, String membershipNumber, PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
+    private void purchaseFlowSDUUser(String username, boolean membershipNumberNecessary, String membershipNumber, PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         if (membershipNumberNecessary){
             customizationPageOperations.fillMembershipNumber(membershipNumber);
         }
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "9990");
-        if (extraDiscount) {
-            assertTrue(summaryPageOperations.hasExtraDiscount());
-        } else {
-            assertFalse(summaryPageOperations.hasExtraDiscount());
-        }
-        summaryPageOperations.pay(paymentMethod, fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "9990", fourteenDaysInstallation);
+        summaryPageOperations.pay(paymentMethod);
     }
 
     @BeforeMethod private void initOperations() {
@@ -41,7 +36,7 @@ public class SDUFlowTests extends TestsBase {
     public void inglandGarasjenSDUFlow() throws TimeoutException {
         customizationPageOperations.goToInglandGarasjen();
         customizationPageOperations.checkInglandGarasjenPrice();
-        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, false, null, PAYMENTMETHODS.VISA, false);
+        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.VISA, false);
     }
 
     @TestCaseId(testRailCaseId = 2886)
@@ -49,7 +44,7 @@ public class SDUFlowTests extends TestsBase {
     public void obosSDUFlow() throws TimeoutException {
         customizationPageOperations.goToObos();
         customizationPageOperations.checkObosPrice();
-        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, true, "1234", PAYMENTMETHODS.KLARNA, false);
+        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, "1234", PAYMENTMETHODS.KLARNA, false);
     }
 
     @TestCaseId(testRailCaseId = 2887)
@@ -57,7 +52,7 @@ public class SDUFlowTests extends TestsBase {
     public void polestarSDUFlow() throws TimeoutException {
         customizationPageOperations.goToPolestar();
         customizationPageOperations.checkPolestarPrice();
-        purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, false, null, PAYMENTMETHODS.INVOICE, false);
+        purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, null, PAYMENTMETHODS.INVOICE, false);
     }
 
 }

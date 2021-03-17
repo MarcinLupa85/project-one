@@ -16,7 +16,12 @@ public class HousePageObject implements WithNewestArticlePageObject{
     @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
 
+    @FindBy(css = "a[href='/bestill?with=1140448']")
+    private WebElement purchaseFlowCableLink;
+
     public WebElement getReadMoreFaqButton() { return readMoreFaqButton; }
 
     public List<WebElement> getArticleBody() { return articleBody; }
+
+    public WebElement getPurchaseFlowCableLink() { return purchaseFlowCableLink; }
 }

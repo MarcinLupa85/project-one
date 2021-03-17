@@ -14,8 +14,11 @@ public class HomePageObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=1&optionId=3']")
+    @FindBy(css = "a[href='/bestill?with=1140446']")
     private WebElement purchaseFlowEaseeLink;
+
+    @FindBy(css = "a[href='/bestill?with=1166018']")
+    private WebElement purchaseFlowEqualizerLink;
 
     @FindBy(css = "a[href='/hjemmelading-bestill/customize-order?id=0']")
     private WebElement purchaseFlowMennekesLink;
@@ -28,6 +31,7 @@ public class HomePageObject {
 
 
     public WebElement getPurchaseFlowEaseeLink() { return purchaseFlowEaseeLink; }
+    public WebElement getPurchaseFlowEqualizerLink() { return purchaseFlowEqualizerLink; }
     public WebElement getPurchaseFlowMennekesLink() {
         return purchaseFlowMennekesLink;
     }
