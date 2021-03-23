@@ -20,9 +20,6 @@ public class AddressPageObject {
     @FindBy(id = "billingCity")
     private WebElement billingCityInput;
 
-    @FindBy(id = "condominium_name")
-    private WebElement condominiumInput;
-
     @FindBy(id = "parkingPlace0")
     private WebElement parkingPlaceInput;
 
@@ -40,8 +37,6 @@ public class AddressPageObject {
     public WebElement getBillingZipCodeInput() { return billingZipCodeInput; }
 
     public WebElement getBillingCityInput() { return billingCityInput; }
-
-    public WebElement getCondominiumInput() { return condominiumInput; }
 
     public WebElement getParkingPlaceInput() { return parkingPlaceInput; }
 

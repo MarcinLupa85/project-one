@@ -50,10 +50,6 @@ public class CustomizationPageOperations {
         customizationPageObject.getExtraCheckbox().click();
     }
 
-    public void tickMDUExtraCheckbox() {
-        customizationPageObject.getExtraCheckbox().click();
-    }
-
     public void tickInstallationCheckbox() {
         customizationPageObject.getInstallationCheckbox().click();
     }
@@ -62,58 +58,44 @@ public class CustomizationPageOperations {
         customizationPageObject.getAddEqualizer().click();
     }
 
-    public void goToBigTrial() {
-        driver.navigate().to(BASE_URL + "apartment-order/customize-order?id=8226947439e34584a4e13a641408e2ac");
+    public void goToSDUPartner() {
+        driver.navigate().to(BASE_URL + "bestill/Y21-74576");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
-    public void goToBig() {
-        driver.navigate().to(BASE_URL + "apartment-order/customize-order?id=5a134d8704314215bccbd8b38129dffc");
+    public void goToMDULight() {
+        driver.navigate().to(BASE_URL + "bestill/Y21-785527");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
-    public void goToInglandGarasjen() {
-        driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=28a3d121e93045d8bae308dbfbcc17ca");
+    public void goToMDUReady() {
+        driver.navigate().to(BASE_URL + "bestill/Y21-723430");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
-    public void goToObos() {
-        driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=0b0c7f3a588611ea8e2d0242ac130003");
+    public void goToMDULeasing() {
+        driver.navigate().to(BASE_URL + "bestill/Y21-682527");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
-    public void goToPolestar() {
-        driver.navigate().to(BASE_URL + "hjemmelading-bestill/customize-order?offer_id=22857be80c644c47a2d40c37ed9da68c");
-        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
+    public void checkSDUPartnerPrices() {
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s6.895,-");
     }
 
-    public void checkBigTrialPrices() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s20.990,-");
-        assertThat(customizationPageObject.getSubscriptionFee().getText()).containsPattern("\\s89,-");
+    public void checkMDULightPrices() {
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s19.990,-");
+    }
+    public void checkMDUReadyPrices() {
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s16.990,-");
     }
 
-    public void checkBigPrices() {
-        tickMDUExtraCheckbox();
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s21.990,-");
-        assertThat(customizationPageObject.getSubscriptionFee().getText()).containsPattern("\\s89,-");
-    }
-
-    public void checkInglandGarasjenPrice() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s7.895,-");
-    }
-
-    public void checkObosPrice() {
-        tickExtraCheckbox();
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s14.490,-");
-    }
-
-    public void checkPolestarPrice() {
-        tickInstallationCheckbox();
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s15.490,-");
+    public void checkMDULeasingPrices() {
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s199,-");
     }
 
     public void fillMembershipNumber(String membershipNumber) {
         waitUtils.waitForVisiblityOf(customizationPageObject.getMembershipNumber());
         customizationPageObject.getMembershipNumber().sendKeys(membershipNumber);
     }
+
 }

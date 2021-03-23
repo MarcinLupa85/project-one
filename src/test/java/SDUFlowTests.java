@@ -5,7 +5,6 @@ import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeoutException;
-import static org.testng.Assert.*;
 
 public class SDUFlowTests extends TestsBase {
     private CustomizationPageOperations customizationPageOperations;
@@ -31,28 +30,14 @@ public class SDUFlowTests extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
     }
 
-    @TestCaseId(testRailCaseId = 2885)
+    @TestCaseId(testRailCaseId = 4612)
     @Test
-    public void inglandGarasjenSDUFlow() throws TimeoutException {
-        customizationPageOperations.goToInglandGarasjen();
-        customizationPageOperations.checkInglandGarasjenPrice();
+    public void SDUPartnerFlow() throws TimeoutException {
+        customizationPageOperations.goToSDUPartner();
+        customizationPageOperations.checkSDUPartnerPrices();
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.VISA, false);
     }
 
-    @TestCaseId(testRailCaseId = 2886)
-    @Test
-    public void obosSDUFlow() throws TimeoutException {
-        customizationPageOperations.goToObos();
-        customizationPageOperations.checkObosPrice();
-        purchaseFlowSDUUser("sduuserwithextra@mailinator.com", true, "1234", PAYMENTMETHODS.KLARNA, false);
-    }
 
-    @TestCaseId(testRailCaseId = 2887)
-    @Test
-    public void polestarSDUFlow() throws TimeoutException {
-        customizationPageOperations.goToPolestar();
-        customizationPageOperations.checkPolestarPrice();
-        purchaseFlowSDUUser("sduuserinstallationonly@mailinator.com", false, null, PAYMENTMETHODS.INVOICE, false);
-    }
 
 }
