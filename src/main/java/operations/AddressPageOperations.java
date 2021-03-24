@@ -14,11 +14,6 @@ public class AddressPageOperations {
         waitUtils = new WaitUtils(driver);
     }
 
-    public void fillCondominiumName(String condominium) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getCondominiumInput());
-        addressPageObject.getCondominiumInput().sendKeys(condominium);
-    }
-
     public void fillParkingPlace(String parkingPlace) {
         waitUtils.waitForVisiblityOf(addressPageObject.getParkingPlaceInput());
         addressPageObject.getParkingPlaceInput().sendKeys(parkingPlace);

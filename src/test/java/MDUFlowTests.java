@@ -5,7 +5,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.WaitUtils;
 import java.util.concurrent.TimeoutException;
-import static org.testng.Assert.*;
 
 public class MDUFlowTests extends TestsBase {
     private CustomizationPageOperations customizationPageOperations;
@@ -19,7 +18,6 @@ public class MDUFlowTests extends TestsBase {
     private void purchaseFlowMDUUser(String username, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
-        addressPageOperations.fillCondominiumName("Test Condominium");
         addressPageOperations.fillParkingPlace("23");
         addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433", fourteenDaysInstallation);
         addressPageOperations.clickNext();
@@ -40,19 +38,28 @@ public class MDUFlowTests extends TestsBase {
         waitUtils = new WaitUtils(driver);
     }
 
-    @TestCaseId(testRailCaseId = 2888)
+    @TestCaseId(testRailCaseId = 4609)
     @Test
-    private void bigTrialMDUFlow() throws TimeoutException {
-        customizationPageOperations.goToBigTrial();
-        customizationPageOperations.checkBigTrialPrices();
+    private void MDULightFlow() throws TimeoutException {
+        customizationPageOperations.goToMDULight();
+        customizationPageOperations.checkMDULightPrices();
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
 
-    @TestCaseId(testRailCaseId = 2889)
+    @TestCaseId(testRailCaseId = 4610)
     @Test
-    private void bigMDUFlow() throws TimeoutException {
-        customizationPageOperations.goToBig();
-        customizationPageOperations.checkBigPrices();
-        purchaseFlowMDUUser("mdueaseewithextra@mailinator.com", true);
+    private void MDUReadFlow() throws TimeoutException {
+        customizationPageOperations.goToMDUReady();
+        customizationPageOperations.checkMDUReadyPrices();
+        purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
+    }
+
+    @TestCaseId(testRailCaseId = 4611)
+    @Test
+    private void MDULeasingFlow() throws TimeoutException {
+        customizationPageOperations.goToMDULeasing();
+        customizationPageOperations.checkMDULeasingPrices();
+        purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
+
     }
 }

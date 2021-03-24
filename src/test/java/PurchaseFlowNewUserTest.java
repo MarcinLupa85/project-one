@@ -77,20 +77,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         purchaseFlowNewUser("575437306", "newuser.cablenoextra@mailinator.com", false, PAYMENTMETHODS.INVOICE);
     }
 
-    @TestCaseId(testRailCaseId = 2870)
-    @Test(alwaysRun = true)
-    public void testMennekesPurchaseFlowWithNoExtra() throws TimeoutException {
-        homePageOperations.openMennekesPurchaseFlowNoExtra();
-        purchaseFlowNewUser("575437304", "newuser.mennekesnoextra@mailinator.com", false, PAYMENTMETHODS.VISA);
-    }
-
-    @TestCaseId(testRailCaseId = 2869)
-    @Test(alwaysRun = true)
-    public void testMennekesPurchaseFlowWithExtra() throws TimeoutException {
-        homePageOperations.openMennekesPurchaseFlowWithExtra();
-        purchaseFlowNewUser("575437305", "newuser.mennekeswithextra@mailinator.com", false, PAYMENTMETHODS.MASTERCARD);
-    }
-
     @TestCaseId(testRailCaseId = 2881)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
@@ -99,12 +85,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         purchaseFlowNewUser("575437307", "newuser.easeeinstallation@mailinator.com", false, PAYMENTMETHODS.KLARNA);
     }
 
-    @TestCaseId(testRailCaseId = 2882)
-    @Test(alwaysRun = true)
-    public void testMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
-        homePageOperations.openMennekesPurchaseFlowWithInstallationOnly();
-        purchaseFlowNewUser("575437308", "newuser.mennekesinstallation@mailinator.com", false, PAYMENTMETHODS.INVOICE);
-    }
 }
 
 
