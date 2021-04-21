@@ -24,7 +24,9 @@ public class CompletePageOperations {
     }
 
     public void clickBack() {
+        waitUtils.waitForVisiblityOf(completePageObject.getBackButton());
+        waitUtils.waitForElementToBeClickable(completePageObject.getBackButton());
         completePageObject.getBackButton().click();
-        waitUtils.waitForUrlToContains("/home");
+        waitUtils.waitForUrlToContains("/elbillading");
     }
 }

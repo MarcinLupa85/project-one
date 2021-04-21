@@ -23,7 +23,7 @@ public class ContactPageObject {
     @FindBy(id = "phone")
     private WebElement telephoneNumberInput;
 
-    @FindBy(css = "[id='00N5800000DlrUQ']")
+    @FindBy(css = "[id='company']")
     private WebElement companyNameInput;
 
     @FindBy(id = "description")

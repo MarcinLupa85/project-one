@@ -45,7 +45,7 @@ public class CkidPageObject {
     @FindBy(css = "[class='button secondary ng-scope']")
     private WebElement registerSwitchButton;
 
-    @FindBy(css = "[class='button primary ng-scope']")
+    @FindBy(xpath = "//*[contains(text(),'Create account')]")
     private WebElement registerButton;
 
     @FindBy(css = "a[href=\"#/login\"]")

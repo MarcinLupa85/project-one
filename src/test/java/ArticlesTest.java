@@ -35,7 +35,7 @@ public class ArticlesTest extends TestsBase {
     @Test
     public void checkOnTheGoArticlesTest() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
-        List<String> OTGTitles = articlesPageOperations.addToList("Hurtiglading");
+        List<String> OTGTitles = articlesPageOperations.addToList("Ladestasjoner");
         navbarOperations.openOnTheGoPage();
         onTheGoPageOperations.compareTitles(OTGTitles);
 
@@ -54,7 +54,7 @@ public class ArticlesTest extends TestsBase {
     @Test
     public void checkApartmentArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
-        List<String> apartmentTitles = articlesPageOperations.addToList("Sameie / Borettslag");
+        List<String> apartmentTitles = articlesPageOperations.addToList("Ladetjenester");
         navbarOperations.clickNavbarDropdown();
         navbarOperations.openApartmentPage();
         apartmentPageOperations.compareTitles(apartmentTitles);

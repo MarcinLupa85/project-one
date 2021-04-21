@@ -12,18 +12,18 @@ public class ReportProblemPageOperations {
     private ReportProblemPageObject reportProblemPageObject;
     private WaitUtils waitUtils;
     private FormUtils formUtils;
-    private WebDriver webDriver;
+    private WebDriver driver;
 
     public ReportProblemPageOperations(WebDriver driver) {
         reportProblemPageObject = new ReportProblemPageObject(driver);
         waitUtils = new WaitUtils(driver);
         formUtils = new FormUtils(driver);
-        webDriver = driver;
+        this.driver = driver;
     }
 
     public void goToReportProblemPage() {
-        String reportPageURL = "mobile/problem";
-        webDriver.navigate().to(BASE_URL + reportPageURL);
+        String reportPageURL = "/mobile/problem";
+        driver.navigate().to(BASE_URL + reportPageURL);
     }
 
     public void fillReportForm(String fullNameInput, String emailInput, String telephoneNumberInput, String chargersNumber,String carModel, String description){

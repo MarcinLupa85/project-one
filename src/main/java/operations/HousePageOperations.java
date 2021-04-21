@@ -32,8 +32,8 @@ public class HousePageOperations {
         waitUtils.waitForVisiblityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContains("/house",2);
-        assertThat(driver.getCurrentUrl()).contains("/house");
+        waitUtils.waitForUrlToContains("/hjemmelading",2);
+        assertThat(driver.getCurrentUrl()).contains("/hjemmelading");
     }
 
     public void compareTitles(List<String> houseTitles) throws TimeoutException {

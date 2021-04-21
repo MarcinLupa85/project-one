@@ -12,22 +12,19 @@ public class NavbarObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "a[href='/ladestasjoner'].nav-link")
+    @FindBy(css = "a[href='/elbillading/ladestasjoner'].nav-link")
     private WebElement onTheGoLink;
 
-    @FindBy(css = "a[href='/hjemmelading'].nav-link")
+    @FindBy(css = "a[href='/elbillading/hjemmelading'].nav-link")
     private WebElement houseLink;
 
-    @FindBy(css = "a[href='/kontakt'].nav-link")
-    private WebElement contactLink;
-
-    @FindBy(xpath = "//a[contains(text(), 'Borettslag/Utbygger')]")
+    @FindBy(xpath = "//a[contains(text(), 'Borettslag/Sameie/Utbygger')]")
     private WebElement navbarDropdown;
 
-    @FindBy(css = "a[href='/sameie-borettslag'].nav-link")
+    @FindBy(css = "a[href='/elbillading/ladetjenester/borettslag-sameie'].nav-link")
     private WebElement apartmentLink;
 
-    @FindBy(css = "a[href='/utbygger'].nav-link")
+    @FindBy(css = "a[href='/elbillading/ladetjenester/utbygger'].nav-link")
     private WebElement developerLink;
 
     @FindBy(xpath = "//a[contains(text(),'Bedrift')] ")
@@ -36,12 +33,11 @@ public class NavbarObject {
     @FindBy(css = "[class='dropdown header-dropdown-menu user-panel-menu dropdown-menu']")
     private WebElement logoutLink;
 
-    @FindBy(css = "a[href='/nyheter'].nav-link")
+    @FindBy(css = "a[href='/elbillading/ladenytt'].nav-link")
     private WebElement articlesLink;
 
     public WebElement getOnTheGoLink() { return onTheGoLink; }
     public WebElement getHouseLink() { return houseLink; }
-    public WebElement getContactLink() { return contactLink; }
     public WebElement getNavbarDropdown() { return navbarDropdown; }
     public WebElement getApartmentLink() { return apartmentLink; }
     public WebElement getDeveloperLink() { return developerLink; }

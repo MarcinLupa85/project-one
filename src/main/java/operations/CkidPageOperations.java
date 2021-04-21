@@ -31,9 +31,6 @@ public class CkidPageOperations {
     }
 
     public void logInWithCredentials(String username, String password) throws TimeoutException {
-
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].click()", ckidPageObject.getLoginLink());
         waitUtils.waitForPresentOf(By.cssSelector("input[type=email]"));
         closeCookieBot();
         ckidPageObject.getEmailInput().sendKeys(username);

@@ -21,13 +21,13 @@ public class ReportProblemPageObject {
     @FindBy(id = "phone")
     private WebElement telephoneNumberInput;
 
-    @FindBy(css = "[id='00N1x000002heFL']")
+    @FindBy(id = "chargerNumber")
     private WebElement chargersNumber;
 
-    @FindBy(css = "select[id*='00N1x000002heGE']")
+    @FindBy(id = "carBrand")
     private WebElement carMake;
 
-    @FindBy(css = "#\\30 0N1x000002heKR")
+    @FindBy(id = "carModel")
     private WebElement carModel;
 
     @FindBy(id = "description")
@@ -38,13 +38,9 @@ public class ReportProblemPageObject {
 
     public WebElement getFullNameInput() { return fullNameInput; }
 
-    public WebElement getEmailInput() {
-        return emailInput;
-    }
+    public WebElement getEmailInput() { return emailInput; }
 
-    public WebElement getTelephoneNumberInput() {
-        return telephoneNumberInput;
-    }
+    public WebElement getTelephoneNumberInput() { return telephoneNumberInput; }
 
     public WebElement getChargersNumber() { return chargersNumber; }
 

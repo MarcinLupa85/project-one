@@ -34,7 +34,7 @@ public class SDUFlowTests extends TestsBase {
     @Test
     public void SDUPartnerFlow() throws TimeoutException {
         customizationPageOperations.goToSDUPartner();
-        customizationPageOperations.checkSDUPartnerPrices();
+        customizationPageOperations.checkPriceFormat();
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.VISA, false);
     }
 

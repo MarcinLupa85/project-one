@@ -27,8 +27,8 @@ public class OnTheGoPageOperations {
         waitUtils.waitForVisiblityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContains("/on-the-go",2);
-        assertThat(driver.getCurrentUrl()).contains("/on-the-go");
+        waitUtils.waitForUrlToContains("/ladestasjoner/faq",2);
+        assertThat(driver.getCurrentUrl()).contains("/ladestasjoner/faq");
     }
 
     public void compareTitles(List<String> OTGTitles) throws TimeoutException {

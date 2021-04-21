@@ -15,7 +15,7 @@ public class CompletePageObject {
     @FindBy(css = "p.order-successful strong")
     private WebElement emailText;
 
-    @FindBy(css = "a[href=\"/home\"]")
+    @FindBy(css = "a[href=\"/elbillading\"]")
     private WebElement backButton;
 
     public WebElement getEmailText() {
