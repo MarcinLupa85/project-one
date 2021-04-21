@@ -37,7 +37,7 @@ public class ContactWithCircleKTests extends TestsBase {
     @TestCaseId(testRailCaseId = 2853)
     @Test
     public void testSendGeneralContactForm() {
-        homePageOperations.goToContact();
+        homePageOperations.goToContactPage();
         contactPageOperations.fillForm("Test Automation", "testSendGeneralContactForm@mailinator.com", "123873456", "Company name", "Test comment");
         contactPageOperations.clickSend();
     }

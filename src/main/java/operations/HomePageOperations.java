@@ -65,7 +65,7 @@ public class HomePageOperations {
         assertThat(driver.getCurrentUrl()).contains("/ladestasjoner/faq");
     }
 
-    public void goToContact() {
+    public void goToContactPage() {
         waitUtils.waitForVisiblityOf(homePageObject.getContactButton());
         waitUtils.bringElementToViewport(homePageObject.getContactButton());
         homePageObject.getContactButton().click();
