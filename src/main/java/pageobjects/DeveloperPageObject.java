@@ -14,26 +14,26 @@ public class DeveloperPageObject implements WithNewestArticlePageObject{
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "first_name")
+    @FindBy(id = "firstName")
     private WebElement firstName;
 
-    @FindBy(id = "last_name")
+    @FindBy(id = "lastName")
     private WebElement lastName;
 
     @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(id = "mobile")
-    private WebElement mobile;
+    @FindBy(id = "phone")
+    private WebElement phone;
 
     @FindBy(id = "company")
     private WebElement comapany;
 
-    @FindBy(css = "[id='00N580000082RAX']")
-    private WebElement projectName;
+    @FindBy(id = "membershipOrganization")
+    private WebElement membershipOrganization;
 
-    @FindBy(css = "[id='00N1x000001qwx1']")
-    private WebElement parkingPlaces;
+    @FindBy(id = "parkingUnits")
+    private WebElement parkingUnits;
 
     @FindBy(id = "description")
     private WebElement description;
@@ -50,13 +50,13 @@ public class DeveloperPageObject implements WithNewestArticlePageObject{
 
     public WebElement getEmail() { return email; }
 
-    public WebElement getMobile() { return mobile; }
+    public WebElement getPhone() { return phone; }
 
     public WebElement getCompanyNameInput() { return comapany; }
 
-    public WebElement getProjectName() { return projectName; }
+    public WebElement getMembershipOrganization() { return membershipOrganization; }
 
-    public WebElement getParkingPlaces() { return  parkingPlaces; }
+    public WebElement getParkingUnits() { return parkingUnits; }
 
     public WebElement getDescription() { return  description; }
 

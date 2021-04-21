@@ -61,7 +61,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         homePageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithInstallationOnly();
-        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.VISA);
+        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.KLARNA);
     }
 
     @TestCaseId(testRailCaseId = 2877)
@@ -90,7 +90,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     @TestCaseId(testRailCaseId = 4066)
     @Test(alwaysRun = true)
-    public void testEqualizerWithInstallationOnly() throws TimeoutException {
+    public void testEqualizerWithoutExtra() throws TimeoutException {
         homePageOperations.openEqualizerPurchaseFlow();
         homePageOperations.flowWithEqualizer();
         purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.VISA);

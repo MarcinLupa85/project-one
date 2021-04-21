@@ -15,6 +15,7 @@ public class ContactWithCircleKTests extends TestsBase {
     private ApartmentPageOperations apartmentPageOperations;
     private DeveloperPageOperations developerPageOperations;
     private ReportProblemPageOperations reportProblemPageOperations;
+    private HomePageOperations homePageOperations;
 
 
     @BeforeMethod
@@ -24,6 +25,7 @@ public class ContactWithCircleKTests extends TestsBase {
         apartmentPageOperations = new ApartmentPageOperations(driver);
         developerPageOperations = new DeveloperPageOperations(driver);
         reportProblemPageOperations = new ReportProblemPageOperations(driver);
+        homePageOperations = new HomePageOperations(driver);
     }
 
     @AfterMethod
@@ -35,7 +37,7 @@ public class ContactWithCircleKTests extends TestsBase {
     @TestCaseId(testRailCaseId = 2853)
     @Test
     public void testSendGeneralContactForm() {
-        navbarOperations.openContactPage();
+        homePageOperations.goToContact();
         contactPageOperations.fillForm("Test Automation", "testSendGeneralContactForm@mailinator.com", "123873456", "Company name", "Test comment");
         contactPageOperations.clickSend();
     }
@@ -44,29 +46,24 @@ public class ContactWithCircleKTests extends TestsBase {
     @Test
     public void testSendApartmentContactForm() throws TimeoutException {
         navbarOperations.clickNavbarDropdown();
-        navbarOperations.openApartmentPage();
-        navbarOperations.clickNavbarDropdown();
-        apartmentPageOperations.fillContactForm("Test", "123873456", "Company name");
+        apartmentPageOperations.fillContactForm("Test", "123873456", "Company name", "testapartmentfrom@mailinator.com");
         apartmentPageOperations.clickSendContactForm();
     }
 
     @TestCaseId(testRailCaseId = 2856)
     @Test
-    public void testSendDeveloperContactForm() throws TimeoutException {
-        navbarOperations.clickNavbarDropdown();
-        navbarOperations.openDeveloperPage();
-        navbarOperations.clickNavbarDropdown();
+    public void testSendDeveloperContactForm() {
+        developerPageOperations.goToDeveloperPage();
         developerPageOperations.fillForm("Test", "Automation", "testSendDeveloperContactForm@mailinator.com", "123873456", "Company name", "Test Project", "123", "Test description" );
         developerPageOperations.clickSendForm();
     }
 
     @TestCaseId(testRailCaseId = 2857)
     @Test
-    public void testSendReportProblemForm(){
+    public void testSendReportProblemForm() {
         reportProblemPageOperations.goToReportProblemPage();
         reportProblemPageOperations.fillReportForm("Test Automation", "testSendReportProblemForm@mailinator.com", "123873456", "123", "Test model", "Test description");
         reportProblemPageOperations.chooseCarMake();
         reportProblemPageOperations.clickSend();
     }
-
 }

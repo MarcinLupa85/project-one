@@ -59,38 +59,31 @@ public class CustomizationPageOperations {
     }
 
     public void goToSDUPartner() {
-        driver.navigate().to(BASE_URL + "bestill/Y21-740505");
+        driver.navigate().to(BASE_URL + "/bestill/Y21-740505");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToMDULight() {
-        driver.navigate().to(BASE_URL + "bestill/Y21-580541");
+        driver.navigate().to(BASE_URL + "/bestill/Y21-580541");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToMDUReady() {
-        driver.navigate().to(BASE_URL + "bestill/Y21-18954");
+        driver.navigate().to(BASE_URL + "/bestill/Y21-18954");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToMDULeasing() {
-        driver.navigate().to(BASE_URL + "bestill/Y21-761442");
+        driver.navigate().to(BASE_URL + "/bestill/Y21-761442");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
-    public void checkSDUPartnerPrices() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s7.895,-");
+    public void checkPriceFormat() {
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s\\d+.\\d{3},-");
     }
 
-    public void checkMDULightPrices() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s20.990,-");
-    }
-    public void checkMDUReadyPrices() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s18.990,-");
-    }
-
-    public void checkMDULeasingPrices() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s299,-");
+    public void checkMDULeasingPriceFormat() {
+        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s\\d{3},-");
     }
 
     public void fillMembershipNumber(String membershipNumber) {

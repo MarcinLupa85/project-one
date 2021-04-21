@@ -48,7 +48,6 @@ public class FaqTests extends TestsBase {
     @Test
     public void apartmentPageGoToFaqTest() throws TimeoutException {
         navbarOperations.clickNavbarDropdown();
-        navbarOperations.openApartmentPage();
         apartmentPageOperations.goToFaq();
     }
 }

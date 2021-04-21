@@ -23,14 +23,20 @@ public class ApartmentPageObject implements WithNewestArticlePageObject{
     @FindBy(id = "company")
     private WebElement company;
 
+    @FindBy(id = "email")
+    private WebElement mail;
+
     @FindBy(xpath = "//*[contains(text(),'Send')]")
     private WebElement contactSubmitButton;
 
-    @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar/apartment'].btn-primary")
+    @FindBy(css = "[href='/elbillading/ladetjenester/faq'].btn-primary")
     private WebElement readMoreFaqButton;
 
     @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
+
+    @FindBy(css = "[class='heading-4']")
+    private WebElement thankYouText;
 
     public WebElement getName() { return name; }
 
@@ -38,9 +44,13 @@ public class ApartmentPageObject implements WithNewestArticlePageObject{
 
     public WebElement getCompanyNameInput() { return company; }
 
+    public WebElement getMail() { return mail; }
+
     public WebElement getContactSubmitButton() { return contactSubmitButton; }
 
     public WebElement getReadMoreFaqButton() { return readMoreFaqButton; }
 
     public List<WebElement> getArticleBody() { return articleBody; }
+
+    public WebElement getThankYouText() {return thankYouText;}
 }

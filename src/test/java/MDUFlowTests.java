@@ -42,7 +42,7 @@ public class MDUFlowTests extends TestsBase {
     @Test
     private void MDULightFlow() throws TimeoutException {
         customizationPageOperations.goToMDULight();
-        customizationPageOperations.checkMDULightPrices();
+        customizationPageOperations.checkPriceFormat();
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
 
@@ -50,7 +50,7 @@ public class MDUFlowTests extends TestsBase {
     @Test
     private void MDUReadFlow() throws TimeoutException {
         customizationPageOperations.goToMDUReady();
-        customizationPageOperations.checkMDUReadyPrices();
+        customizationPageOperations.checkPriceFormat();
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
 
@@ -58,7 +58,7 @@ public class MDUFlowTests extends TestsBase {
     @Test
     private void MDULeasingFlow() throws TimeoutException {
         customizationPageOperations.goToMDULeasing();
-        customizationPageOperations.checkMDULeasingPrices();
+        customizationPageOperations.checkMDULeasingPriceFormat();
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
 
     }

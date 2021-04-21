@@ -56,29 +56,19 @@ public class HomePageOperations {
         customizationPageOperations.addEqualizer();
     }
 
-    public void openMennekesPurchaseFlowNoExtra() throws TimeoutException {
-        driver.navigate().to(BASE_URL+"/hjemmelading-bestill/customize-order?id=0");
-        waitUtils.waitForDocumentReadyState();
-    }
-
-    public void openMennekesPurchaseFlowWithExtra() throws TimeoutException {
-        driver.navigate().to(BASE_URL+"/hjemmelading-bestill/customize-order?id=0");
-        waitUtils.waitForDocumentReadyState();
-        customizationPageOperations.tickExtraCheckbox();
-    }
-
-    public void openMennekesPurchaseFlowWithInstallationOnly() throws TimeoutException {
-        driver.navigate().to(BASE_URL+"/hjemmelading-bestill/customize-order?id=0");
-        waitUtils.waitForDocumentReadyState();
-        customizationPageOperations.tickInstallationCheckbox();
-    }
-
     public void goToFaq() {
         WebElement readMoreFaqButton = homePageObject.getReadMoreFaqButton();
         waitUtils.waitForVisiblityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContains("/on-the-go",2);
-        assertThat(driver.getCurrentUrl()).contains("/on-the-go");
+        waitUtils.waitForUrlToContains("/elbillading/ladestasjoner/faq",2);
+        assertThat(driver.getCurrentUrl()).contains("/ladestasjoner/faq");
+    }
+
+    public void goToContact() {
+        waitUtils.waitForVisiblityOf(homePageObject.getContactButton());
+        waitUtils.bringElementToViewport(homePageObject.getContactButton());
+        homePageObject.getContactButton().click();
+        waitUtils.waitForUrlToContains("/kontakt-oss",2);
     }
 }

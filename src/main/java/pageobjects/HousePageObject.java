@@ -10,13 +10,13 @@ import java.util.List;
 public class HousePageObject implements WithNewestArticlePageObject{
     public HousePageObject(WebDriver driver) { PageFactory.initElements(driver, this); }
 
-    @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar/house'].btn-primary")
+    @FindBy(css = "[href='/elbillading/hjemmelading/faq'].btn-primary")
     private WebElement readMoreFaqButton;
 
     @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
 
-    @FindBy(css = "a[href='/bestill?with=1140448']")
+    @FindBy(css = "a[href='/elbillading/bestill?with=1140449']")
     private WebElement purchaseFlowCableLink;
 
     public WebElement getReadMoreFaqButton() { return readMoreFaqButton; }

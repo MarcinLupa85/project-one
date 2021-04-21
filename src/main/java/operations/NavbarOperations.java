@@ -31,20 +31,15 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/hjemmelading");
     }
 
-    public void openContactPage() {
-        waitUtils.waitForElement(navbarObject.getContactLink());
-        navbarObject.getContactLink().click();
-        waitUtils.waitForUrlToContains("/kontakt");
-    }
-
     public void clickNavbarDropdown() throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
         navbarObject.getNavbarDropdown().click();
+        waitUtils.waitForUrlToContains("/ladetjenester");
     }
 
     public void openApartmentPage() {
         navbarObject.getApartmentLink().click();
-        waitUtils.waitForUrlToContains("/sameie-borettslag");
+        waitUtils.waitForUrlToContains("/borettslag-sameie");
     }
 
     public void openDeveloperPage() {
@@ -59,9 +54,9 @@ public class NavbarOperations {
 
     public void openAndVerifyArticlesPage() throws TimeoutException {
         navbarObject.getArticlesLink().click();
-        waitUtils.waitForUrlToContains("/nyheter");
+        waitUtils.waitForUrlToContains("/ladenytt");
         waitUtils.waitForDocumentReadyState();
-        assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Nyheter')]")).isDisplayed());
+        assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Ladenytt')]")).isDisplayed());
     }
 
     public void logout() {

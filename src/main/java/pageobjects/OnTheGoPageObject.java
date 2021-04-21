@@ -9,7 +9,7 @@ import java.util.List;
 public class OnTheGoPageObject implements WithNewestArticlePageObject {
     public OnTheGoPageObject(WebDriver driver) { PageFactory.initElements(driver, this); }
 
-    @FindBy(css = "[href='/sp%C3%B8rsm%C3%A5l-og-svar/on-the-go'].btn-primary")
+    @FindBy(css = "[href='/elbillading/ladestasjoner/faq'].btn-primary")
     private WebElement readMoreFaqButton;
 
     @FindBy(css = "ev-articles-list")
