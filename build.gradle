@@ -6,23 +6,16 @@ plugins {
 group 'com.circlek'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenCentral()
     maven {
-        url 'https://statoilfuelretail.bintray.com/maven'
+        url 'https://circlek-artifacts-test-769910020948.d.codeartifact.eu-west-1.amazonaws.com/maven/testrail/'
         credentials {
-            username java.util.Optional.ofNullable(System.getenv('BINTRAY_USER'))
-                    .orElseGet({ ->
-                        java.util.Optional.ofNullable(System.getProperty('BINTRAY_USER'))
-                                .orElseThrow({ -> new IllegalStateException('Missing BINTRAY_USER, read README.md') })
-                    })
-            password java.util.Optional.ofNullable(System.getenv('BINTRAY_KEY'))
-                    .orElseGet({ ->
-                        java.util.Optional.ofNullable(System.getProperty('BINTRAY_KEY'))
-                                .orElseThrow({ -> new IllegalStateException('Missing BINTRAY_KEY, read README.md') })
-                    })
+            username "aws"
+            password System.env.AWS_CODEARTIFACT_TOKEN
         }
     }
 }
