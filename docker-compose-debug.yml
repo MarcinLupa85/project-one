@@ -29,7 +29,6 @@ services:
     volumes:
       - ./:/opt/automation/
       - ./report:/opt/automation/report
-      - ./gradleCache:/root/.gradle/caches
     entrypoint: ./run_tests.sh
     env_file: ./compose.env
     depends_on:
