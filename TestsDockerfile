@@ -1,4 +1,4 @@
-FROM adoptopenjdk:16
+FROM gradle:7.1.1-jdk16
 
 USER root
 
