@@ -12,6 +12,5 @@ RUN mkdir /opt/automation/report
 WORKDIR /opt/automation
 
 COPY ./ /opt/automation/
-VOLUME ["report:/opt/automation/report"]
 
 ENTRYPOINT ["/opt/automation/run_tests.sh"]
