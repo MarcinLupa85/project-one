@@ -1,0 +1,3 @@
+[submodule "testrail-client"]
+	path = testrail-client
+	url = git@github.com:circlekeurope/testrail-client-java.git
