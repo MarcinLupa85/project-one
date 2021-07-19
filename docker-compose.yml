@@ -31,7 +31,7 @@ services:
     networks:
       - ev-selenium-network
   tests_repo:
-    image: statoilfuelretail/engage-selenium:new
+    image: statoilfuelretail/ev-selenium:latest
     volumes:
       - ./:/opt/automation/
       - ./report:/opt/automation/report

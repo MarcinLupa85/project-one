@@ -25,7 +25,7 @@ services:
     depends_on:
       - test_hub
   tests_repo:
-    image: statoilfuelretail/engage-selenium:new
+    image: statoilfuelretail/ev-selenium:latest
     volumes:
       - ./:/opt/automation/
       - ./report:/opt/automation/report

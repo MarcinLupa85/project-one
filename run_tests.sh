@@ -3,7 +3,7 @@
 
 mkdir -p report
 
-gradle clean test -i -Pdriver_type="$browser" -Pbuild_tag=$tag
+./gradlew clean test -i -Pdriver_type="$browser" -Pbuild_tag=$tag --info
 
 echo "END"
 

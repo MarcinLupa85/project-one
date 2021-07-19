@@ -1,4 +1,4 @@
-FROM statoilfuelretail/engage-selenium-base:new
+FROM adoptopenjdk:16
 
 USER root
 
@@ -6,6 +6,8 @@ RUN rm /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN mkdir /opt/automation
+RUN mkdir /opt/automation/report
 
 WORKDIR /opt/automation
 
