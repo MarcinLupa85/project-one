@@ -28,7 +28,6 @@ services:
     image: statoilfuelretail/ev-selenium:latest
     volumes:
       - ./:/opt/automation/
-      - ./report:/opt/automation/report
     entrypoint: ./run_tests.sh
     env_file: ./compose.env
     depends_on:
