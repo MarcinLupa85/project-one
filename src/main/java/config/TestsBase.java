@@ -29,7 +29,7 @@ public abstract class TestsBase {
         waitUtils.waitForPresentOf(By.id("cookie-bot"));
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
         cookiePanelOperations.clickCookieOkButton();
-        waitUtils.waitForPresentOf(By.cssSelector("header-main"));
+        waitUtils.waitForPresentOf(By.id("header-main"));
 
         waitUtils.waitForDocumentReadyState();
     }
