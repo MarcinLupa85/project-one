@@ -47,11 +47,6 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/utbygger");
     }
 
-    public void openBusinessPage() {
-        navbarObject.getBusinessLink().click();
-        waitUtils.waitForUrlToContains("/bedrift");
-    }
-
     public void openAndVerifyArticlesPage() throws TimeoutException {
         navbarObject.getArticlesLink().click();
         waitUtils.waitForUrlToContains("/ladenytt");
@@ -59,8 +54,9 @@ public class NavbarOperations {
         assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Ladenytt')]")).isDisplayed());
     }
 
-    public void logout() {
-        navbarObject.getLogoutLink().click();
+    public void openProductsPage() {
+        navbarObject.getProductsLink().click();
+        waitUtils.waitForUrlToContains("/nettbutikk");
     }
 
 }

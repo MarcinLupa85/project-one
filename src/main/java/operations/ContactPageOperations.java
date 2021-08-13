@@ -32,10 +32,4 @@ public class ContactPageOperations {
         contactPageObject.submitButton().click();
     }
 
-    public void clickBack() {
-        contactPageObject.getBackButton().click();
-        waitUtils.waitForUrlToContains("/home");
-    }
-
-
 }

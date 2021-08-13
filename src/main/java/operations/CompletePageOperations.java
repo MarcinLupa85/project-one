@@ -17,12 +17,6 @@ public class CompletePageOperations {
         waitUtils = new WaitUtils(driver);
     }
 
-    public String getEmail(){
-        WebElement email = completePageObject.getEmailText();
-        waitUtils.waitForVisiblityOf(email);
-        return email.getText();
-    }
-
     public void clickBack() {
         waitUtils.waitForVisiblityOf(completePageObject.getBackButton());
         waitUtils.waitForElementToBeClickable(completePageObject.getBackButton());

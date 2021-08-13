@@ -14,6 +14,7 @@ import java.util.concurrent.TimeoutException;
 
 public class PurchaseFlowNewUserTest extends TestsBase {
     private HomePageOperations homePageOperations;
+    private ProductsPageOperations productsPageOperations;
     private HousePageOperations housePageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
@@ -29,6 +30,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @BeforeMethod
     private void initOperations() {
         homePageOperations = new HomePageOperations(driver);
+        productsPageOperations = new ProductsPageOperations(driver);
         housePageOperations = new HousePageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -43,7 +45,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.closeCookieBot();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433", fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "3000", fourteenDaysInstallation);
         summaryPageOperations.pay(paymentMethod);
     }
 
@@ -58,7 +60,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2867)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlow();
+        productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithExtra();
         purchaseFlowNewUser("575437397", "newuser.easeewithextra@mailinator.com", false, PAYMENTMETHODS.MASTERCARD);
     }
@@ -66,21 +68,21 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2868)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlow();
+        productsPageOperations.openEaseePurchaseFlow();
         purchaseFlowNewUser("575437666", "newuser.easeenoextra@mailinator.com", false, PAYMENTMETHODS.KLARNA);
     }
 
     @TestCaseId(testRailCaseId = 2871)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
-        housePageOperations.openCablePurchaseFlow();
+        productsPageOperations.openCablePurchaseFlow();
         purchaseFlowNewUser("575437306", "newuser.cablenoextra@mailinator.com", false, PAYMENTMETHODS.INVOICE);
     }
 
     @TestCaseId(testRailCaseId = 2881)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
-        homePageOperations.openEaseePurchaseFlow();
+        productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithInstallationOnly();
         purchaseFlowNewUser("575437307", "newuser.easeeinstallation@mailinator.com", false, PAYMENTMETHODS.KLARNA);
     }

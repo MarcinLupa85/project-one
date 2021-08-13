@@ -49,7 +49,6 @@ public class DeveloperPageOperations {
         System.out.println(developerTitles);
     }
 
-    // goToDeveloperPage method to be introduced
     public void goToDeveloperPage() {
         String reportPageURL = ("/ladetjenester/utbygger");
         driver.navigate().to(BASE_URL + reportPageURL);
