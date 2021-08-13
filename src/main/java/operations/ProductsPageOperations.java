@@ -33,8 +33,8 @@ public class ProductsPageOperations {
     }
 
     public void openEqualizerPurchaseFlow() throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
         navbarOperations.openProductsPage();
+        waitUtils.waitForDocumentReadyState();
         WebElement equalizerName = driver.findElement(By.cssSelector("img[src='assets/images/products/cards/equalizer/equalizer-1.jpg']"));
         waitUtils.bringElementToViewport(equalizerName);
         productsPageObject.getPurchaseFlowEqualizerLink().click();
@@ -42,8 +42,8 @@ public class ProductsPageOperations {
     }
 
     public void openCablePurchaseFlow() throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
         navbarOperations.openProductsPage();
+        waitUtils.waitForDocumentReadyState();
         WebElement cableLink = productsPageObject.getPurchaseFlowCableLink();
         waitUtils.waitForVisiblityOf(cableLink);
         cableLink.click();
