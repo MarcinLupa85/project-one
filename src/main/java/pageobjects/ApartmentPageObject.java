@@ -38,6 +38,9 @@ public class ApartmentPageObject implements WithNewestArticlePageObject{
     @FindBy(css = "[class='heading-4']")
     private WebElement thankYouText;
 
+    @FindBy(xpath ="//*[contains(text(),'til borettslag og sameie')]" )
+    private WebElement redirectToFormButton;
+
     public WebElement getName() { return name; }
 
     public WebElement getPhone() { return phone; }
@@ -53,4 +56,6 @@ public class ApartmentPageObject implements WithNewestArticlePageObject{
     public List<WebElement> getArticleBody() { return articleBody; }
 
     public WebElement getThankYouText() {return thankYouText;}
+
+    public WebElement getRedirectToFormButton() { return redirectToFormButton; }
 }

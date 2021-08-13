@@ -54,4 +54,8 @@ public class ApartmentPageOperations {
     public void compareTitles(List<String> apartmentTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(apartmentTitles);
     }
+
+    public void clickRedirectToForm() {
+        apartmentPageObject.getRedirectToFormButton().click();
+    }
 }

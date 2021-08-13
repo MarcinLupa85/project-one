@@ -32,6 +32,8 @@ public abstract class TestsBase {
         waitUtils.waitForPresentOf(By.id("header-main"));
 
         waitUtils.waitForDocumentReadyState();
+        //line to be removed after bug ECA-1435 is fixed
+        driver.navigate().refresh();
     }
 
     @AfterMethod(alwaysRun = true)

@@ -37,7 +37,4 @@ public class SDUFlowTests extends TestsBase {
         customizationPageOperations.checkPriceFormat();
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.VISA, false);
     }
-
-
-
 }

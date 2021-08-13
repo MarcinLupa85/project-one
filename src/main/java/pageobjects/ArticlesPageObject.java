@@ -15,20 +15,10 @@ public class ArticlesPageObject {
     @FindBy(xpath = ".//div[contains(@class, 'article-tile__category')]/ancestor::ev-article-tile")
     private List<WebElement> articleTitleCategoryList;
 
-    @FindBy(css = "article-tile__category")
-    private WebElement articleCategory;
-
-    @FindBy(css = "article-tile__title")
-    private WebElement articleTitle;
-
     @FindBy(css = "li.page-item.page-item__next")
     private WebElement nextButton;
 
     public List<WebElement> getArticleTitleCategoryList() { return articleTitleCategoryList; }
-
-    public WebElement getArticleCategory() { return articleCategory; }
-
-    public WebElement getArticleTitle() { return articleTitle; }
 
     public WebElement getNextButton() { return nextButton; }
 

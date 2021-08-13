@@ -15,14 +15,8 @@ public class CookiePanelObject{
     @FindBy(id = "CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")
     private WebElement cookieOkButton;
 
-    @FindBy(id = "CybotCookiebotDialogBodyLevelDetailsButton")
-    private WebElement cookieDetailsButton;
-
     public WebElement getCookieOkButton() {
         return cookieOkButton;
     }
 
-    public WebElement getCookieDetailsButton(){
-        return cookieDetailsButton;
-    }
 }
