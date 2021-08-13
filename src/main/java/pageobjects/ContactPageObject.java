@@ -23,14 +23,11 @@ public class ContactPageObject {
     @FindBy(id = "phone")
     private WebElement telephoneNumberInput;
 
-    @FindBy(css = "[id='company']")
+    @FindBy(css = "[id='companyName']")
     private WebElement companyNameInput;
 
     @FindBy(id = "description")
     private WebElement commentInput;
-
-    @FindBy(css = "div.message a[href=\"/home\"]")
-    private WebElement backButton;
 
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
@@ -44,8 +41,6 @@ public class ContactPageObject {
     public WebElement getCompanyNameInput() { return companyNameInput; }
 
     public WebElement getCommentInput() { return commentInput; }
-
-    public WebElement getBackButton() { return backButton; }
 
     public WebElement submitButton() { return submitButton; }
 }

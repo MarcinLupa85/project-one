@@ -32,9 +32,6 @@ public class CustomizationPageObject
     @FindBy(css = ".order-summary__total-price")
     private WebElement totalPrice;
 
-    @FindBy(css = "[class = 'order-summary__subscription-price']")
-    private WebElement subscriptionFee;
-
     @FindBy(id = "membershipNumber")
     private  WebElement membershipNumber;
 
@@ -49,8 +46,6 @@ public class CustomizationPageObject
     public WebElement getSubmitButton() { return submitButton; }
 
     public WebElement getTotalPrice() { return totalPrice; }
-
-    public WebElement getSubscriptionFee() { return subscriptionFee; }
 
     public WebElement getMembershipNumber() { return membershipNumber; }
 

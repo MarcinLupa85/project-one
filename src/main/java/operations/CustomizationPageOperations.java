@@ -31,20 +31,6 @@ public class CustomizationPageOperations {
         waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBody"));
     }
 
-
-//TODO change metod to be more universal (mennekes, cables) using ENUM
-    private void selectEaseeAmount (Integer value) {
-        WebElement selectContainer = customizationPageObject.getEaseeNumberSelector();
-        selectContainer.click();
-        WebElement optionsContainer = selectContainer.findElement(By.cssSelector("div.selector-dropdown.visible"));
-        optionsContainer.findElements(By.cssSelector("div.option-box"))
-                .stream()
-                .filter(element ->element.getText().equals(String.valueOf(value)))
-                .findFirst()
-                .get()
-                .click();
-    }
-
     public void tickExtraCheckbox() {
         customizationPageObject.getInstallationCheckbox().click();
         customizationPageObject.getExtraCheckbox().click();

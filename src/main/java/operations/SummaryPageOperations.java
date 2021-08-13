@@ -36,7 +36,8 @@ public class SummaryPageOperations {
 
     public void tickTermsAndConditionsCheckbox() {
         WebElement termsAndConditionsCheckbox = summaryPageObject.getTcCheckbox();
-        waitUtils.bringElementToViewport(termsAndConditionsCheckbox);
+        WebElement navigation = driver.findElement(By.cssSelector("a[href='/elbillading']"));
+        waitUtils.bringElementToViewport(navigation);
         termsAndConditionsCheckbox.click();
     }
 
@@ -45,18 +46,12 @@ public class SummaryPageOperations {
         waitUtils.waitForUrlToContains("/complete");
     }
 
-    public boolean hasExtraDiscount() {
-        return driverUtils.isElementPresent(By.xpath(".//dt[contains(text(), 'Rabatt')]"));
-    }
-
     public void payWithCreditCard(String cardNumber) {
         fillCreditCardNumber(cardNumber);
         fillExpiryDate("0330");
         fillSecurityCode("737");
         summaryPageObject.getCreditCardPayButton().click();
     }
-
-
 
     public void chooseCreditCardOption() { summaryPageObject.getCreditCardOption().click(); }
 

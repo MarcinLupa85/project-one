@@ -26,8 +26,6 @@ public class SummaryPageObject {
     @FindBy(css = "button[type=submit]")
     private WebElement finishOrderButton;
 
-
-
     @FindBy(css = "div.list-group.list-group-sm.list-group-pills > button:nth-child(1)")
     private WebElement creditCardOption;
 

@@ -1,5 +1,6 @@
 package operations;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.HousePageObject;
@@ -28,26 +29,14 @@ public class HousePageOperations {
     }
 
     public void goToFaq() {
-        WebElement readMoreFaqButton = housePageObject.getReadMoreFaqButton();
-        waitUtils.waitForVisiblityOf(readMoreFaqButton);
-        waitUtils.bringElementToViewport(readMoreFaqButton);
-        readMoreFaqButton.click();
-        waitUtils.waitForUrlToContains("/hjemmelading",2);
-        assertThat(driver.getCurrentUrl()).contains("/hjemmelading");
+        housePageObject.getHouseFAQ().click();
+        waitUtils.waitForUrlToContains("/hjemmelading/faq",2);
+        assertThat(driver.getCurrentUrl()).contains("/hjemmelading/faq");
     }
 
     public void compareTitles(List<String> houseTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(houseTitles);
         System.out.println(houseTitles);
-    }
-
-    public void openCablePurchaseFlow() throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        navbarOperations.openHousePage();
-        WebElement cableLink = housePageObject.getPurchaseFlowCableLink();
-        waitUtils.waitForVisiblityOf(cableLink);
-        cableLink.click();
-        waitUtils.waitForUrlToContains("/bestill/customize-order");
     }
 
 }
