@@ -68,6 +68,13 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.KLARNA);
     }
 
+    @TestCaseId(testRailCaseId = 5490)
+    @Test(alwaysRun = true)
+    public void testEaseePurchaseFlowWithInstallationAsProduct() throws TimeoutException {
+        productsPageOperations.openInstallationPurchaseFlow();
+        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.INVOICE);
+    }
+
     @TestCaseId(testRailCaseId = 2877)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlow14DaysInstallation() throws TimeoutException {

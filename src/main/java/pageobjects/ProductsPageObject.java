@@ -19,7 +19,11 @@ public class ProductsPageObject {
     @FindBy(css = "a[href='/elbillading/bestill?with=1140449']")
     private WebElement purchaseFlowCableLink;
 
+    @FindBy(css = "button.btn-primary")
+    private WebElement purchaseInstallationButton;
+
     public WebElement getPurchaseFlowEaseeLink() { return purchaseFlowEaseeLink; }
     public WebElement getPurchaseFlowEqualizerLink() { return purchaseFlowEqualizerLink; }
     public WebElement getPurchaseFlowCableLink() { return purchaseFlowCableLink; }
+    public WebElement getPurchaseInstallationButton() { return purchaseInstallationButton; }
 }
