@@ -8,6 +8,8 @@ import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
 
+import static config.Constants.BASE_URL;
+
 public class ProductsPageOperations {
     ProductsPageObject productsPageObject;
     NavbarOperations navbarOperations;
@@ -47,6 +49,15 @@ public class ProductsPageOperations {
         WebElement cableLink = productsPageObject.getPurchaseFlowCableLink();
         waitUtils.waitForVisiblityOf(cableLink);
         cableLink.click();
+        waitUtils.waitForUrlToContains("/bestill/customize-order");
+    }
+
+    public void openInstallationPurchaseFlow() throws TimeoutException {
+        driver.navigate().to(BASE_URL+"/nettbutikk/montering-elbillader");
+        waitUtils.waitForDocumentReadyState();
+        WebElement installationLink = productsPageObject.getPurchaseInstallationButton();
+        waitUtils.waitForVisiblityOf(installationLink);
+        installationLink.click();
         waitUtils.waitForUrlToContains("/bestill/customize-order");
     }
 }
