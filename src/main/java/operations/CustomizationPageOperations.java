@@ -50,7 +50,7 @@ public class CustomizationPageOperations {
     }
 
     public void goToMDULight() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-580541");
+        driver.navigate().to(BASE_URL + "/bestill/Y21-785527");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
@@ -60,8 +60,9 @@ public class CustomizationPageOperations {
     }
 
     public void goToMDULeasing() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-761442");
+        driver.navigate().to(BASE_URL + "/bestill/Y21-35010");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
+        driver.findElement(By.xpath("//*[contains(text(),'Leie av ladeboks')]")).click();
     }
 
     public void checkPriceFormat() {
@@ -69,7 +70,7 @@ public class CustomizationPageOperations {
     }
 
     public void checkMDULeasingPriceFormat() {
-        assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s\\d{3},-");
+        assertThat(customizationPageObject.getSubscriptionPrice().getText()).containsPattern("\\s\\d{3},-");
     }
 
     public void fillMembershipNumber(String membershipNumber) {

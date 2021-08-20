@@ -16,7 +16,7 @@
             <class name="FaqTests"/>
             <class name="PurchaseFlowExistingUserTest"/>
             <class name="PurchaseFlowNewUserTest"/>
-            <class name="SDUFlowTests"/>
+<!--            <class name="SDUFlowTests"/>-->
             <class name="MDUFlowTests"/>
 <!--            <class name="SampleTest"/>-->
         </classes>
