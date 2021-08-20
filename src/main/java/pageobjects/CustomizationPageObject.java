@@ -23,14 +23,17 @@ public class CustomizationPageObject
     @FindBy(xpath = "(.//button[@data-type='plus'])[last()]")
     private WebElement addEqualizer;
 
-    @FindBy(css = "a[href=\"/hjemmelading\"]")
+    @FindBy(css = "a[href=/hjemmelading]")
     private WebElement backButton;
 
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
-    @FindBy(css = ".order-summary__total-price")
+    @FindBy(xpath = "//*[contains(text(),'Totalpris')]/parent::h4")
     private WebElement totalPrice;
+
+    @FindBy(xpath = "//*[contains(text(),'Ladeabonnement')]/parent::h5")
+    private WebElement subscriptionPrice;
 
     @FindBy(id = "membershipNumber")
     private  WebElement membershipNumber;
@@ -46,6 +49,8 @@ public class CustomizationPageObject
     public WebElement getSubmitButton() { return submitButton; }
 
     public WebElement getTotalPrice() { return totalPrice; }
+
+    public WebElement getSubscriptionPrice() { return subscriptionPrice; }
 
     public WebElement getMembershipNumber() { return membershipNumber; }
 

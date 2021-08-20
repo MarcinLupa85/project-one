@@ -19,7 +19,7 @@ public class MDUFlowTests extends TestsBase {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1");
         addressPageOperations.fillParkingPlace("23");
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "72433", fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "3000", fourteenDaysInstallation);
         addressPageOperations.clickNext();
         summaryPageOperations.tickTermsAndConditionsCheckbox();
         summaryPageOperations.clickFinish();
@@ -45,14 +45,14 @@ public class MDUFlowTests extends TestsBase {
         customizationPageOperations.checkPriceFormat();
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
-
-    @TestCaseId(testRailCaseId = 4610)
-    @Test
-    private void MDUReadFlow() throws TimeoutException {
-        customizationPageOperations.goToMDUReady();
-        customizationPageOperations.checkPriceFormat();
-        purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
-    }
+// Offer unavailable in the test environment - temporarily disabled not to create false negatives
+//    @TestCaseId(testRailCaseId = 4610)
+//    @Test
+//    private void MDUReadyFlow() throws TimeoutException {
+//        customizationPageOperations.goToMDUReady();
+//        customizationPageOperations.checkPriceFormat();
+//        purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
+//    }
 
     @TestCaseId(testRailCaseId = 4611)
     @Test
