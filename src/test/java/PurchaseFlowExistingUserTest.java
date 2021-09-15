@@ -106,4 +106,18 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         homePageOperations.flowWithEqualizer();
         purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.VISA);
     }
+
+    @Test(alwaysRun = true)
+    public void test2FactorAuthentication3DS1() throws TimeoutException {
+        productsPageOperations.openEaseePurchaseFlow();
+        homePageOperations.flowWithExtra();
+        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.TWOFACTORTYPE1);
+    }
+
+    @Test
+    public void test2FactorAuthentication3DS2() throws TimeoutException {
+        productsPageOperations.openEaseePurchaseFlow();
+        homePageOperations.flowWithExtra();
+        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.TWOFACTORTYPE2);
+    }
 }
