@@ -25,6 +25,8 @@ public class SummaryPageOperations {
     private WebDriver driver;
     private static final String visaCardNumber = "4988 4388 4388 4305";
     private static final String mastercardCardNumber = "5101 1800 0000 0007";
+    private static final String twoFactorCardNumberType1 = "5212 3456 7890 1234";
+    public static final String twoFactorCardNumberType2 = "4917 6100 0000 0000";
 
     public SummaryPageOperations (WebDriver driver) {
         summaryPageObject = new SummaryPageObject(driver);
@@ -90,6 +92,21 @@ public class SummaryPageOperations {
         waitUtils.waitForUrlToContains("klarna.com");
     }
 
+    public void twoFactorAuthentication3DS1() {
+        waitUtils.waitForUrlToContains("test.adyen.com");
+        driver.findElement(By.id("username")).sendKeys("user");
+        driver.findElement(By.id("password")).sendKeys("password");
+        driver.findElement(By.cssSelector("input[type='submit']")).click();
+    }
+
+    public void twoFactorAuthentication3DS2() {
+        waitUtils.waitForUrlToContains("/identifyShopper");
+        driver.switchTo().frame("threeDSIframe");
+        driver.findElement(By.cssSelector("input[type='text']")).sendKeys("password");
+        driver.findElement(By.cssSelector("input[type='submit']")).click();
+        driver.switchTo().defaultContent();
+    }
+
     public void pay(PAYMENTMETHODS paymentMethod){
         switch (paymentMethod) {
             case INVOICE:
@@ -116,6 +133,19 @@ public class SummaryPageOperations {
                 chooseKlarnaOption();
                 payWithKlarna();
                 break;
+            case TWOFACTORTYPE1:
+                chooseCreditCardOption();
+                tickTermsAndConditionsCheckbox();
+                payWithCreditCard(twoFactorCardNumberType1);
+                twoFactorAuthentication3DS1();
+                completePageOperations.clickBack();
+                break;
+            case TWOFACTORTYPE2:
+                chooseCreditCardOption();
+                tickTermsAndConditionsCheckbox();
+                payWithCreditCard(twoFactorCardNumberType2);
+                twoFactorAuthentication3DS2();
+                completePageOperations.clickBack();
         }
     }
 

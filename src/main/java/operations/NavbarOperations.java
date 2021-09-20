@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.NavbarObject;
 import utils.WaitUtils;
 import static org.assertj.core.api.Assertions.assertThat;
-import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeoutException;
 

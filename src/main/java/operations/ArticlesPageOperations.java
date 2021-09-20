@@ -1,11 +1,8 @@
 package operations;
 
-import com.google.inject.internal.cglib.transform.$ClassTransformer;
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pageobjects.ArticlesPageObject;
 import utils.WaitUtils;
 
