@@ -26,6 +26,7 @@ services:
       - test_hub
   tests_repo:
     image: statoilfuelretail/ev-selenium:latest
+    user: $UID
     volumes:
       - ./:/opt/automation/
     entrypoint: ./run_tests.sh
