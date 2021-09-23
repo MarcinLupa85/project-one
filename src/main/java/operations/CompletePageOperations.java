@@ -9,7 +9,6 @@ import utils.WaitUtils;
 public class CompletePageOperations {
 
     private CompletePageObject completePageObject;
-    private AddressPageObject addressPageObject;
     private WaitUtils waitUtils;
 
     public CompletePageOperations (WebDriver driver) {

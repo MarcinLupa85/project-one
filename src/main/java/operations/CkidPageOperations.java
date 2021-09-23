@@ -57,7 +57,7 @@ public class CkidPageOperations {
         ckidPageObject.getCountrySelect().selectByValue("string:NORWAY");
         waitUtils.waitForPresentOf(By.cssSelector("[class = 'icon-container']"));
         ckidPageObject.getCkidTcCheckbox().click();
-//        temporarily skipped due to Stable environment bein repurposed
+//        skipped due to Stable environment bein repurposed
 //        ckidPageObject.getEvTcCheckbox().click();
         //Accepted in review
         waitUtils.waitForElementToBeClickable(ckidPageObject.getRegisterButton());
