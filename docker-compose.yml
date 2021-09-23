@@ -32,7 +32,7 @@ services:
       - ev-selenium-network
   tests_repo:
     image: statoilfuelretail/ev-selenium:latest
-    user: $UID
+    user: "${UID}:${GID}"
     volumes:
       - ./:/opt/automation/
     entrypoint: ./run_tests.sh
