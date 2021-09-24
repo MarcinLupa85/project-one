@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+set -x
+export UID=$(id -u)
+export GID=$(id -g)
+
 . bash_functions
 
 runtime_environment=""

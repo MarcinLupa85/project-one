@@ -44,6 +44,10 @@ public class CustomizationPageOperations {
         customizationPageObject.getAddEqualizer().click();
     }
 
+    public void addCharger() {
+        customizationPageObject.getEaseeNumberSelector().click();
+    }
+
     public void goToSDUPartner() {
         driver.navigate().to(BASE_URL + "/bestill/Y21-740505");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());

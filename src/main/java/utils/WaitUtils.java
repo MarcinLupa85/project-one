@@ -27,12 +27,13 @@ public class WaitUtils {
                 .until(urlContains(url));
     }
 
-    public void waitForElementToBeClickable(WebElement element) {
+    public WebElement waitForElementToBeClickable(WebElement element) {
         new WebDriverWait(driver, defaultMaxTimeoutForAllWaits)
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(element));
+        return element;
     }
 
     public void waitForElementToBeClickable(By by) {
