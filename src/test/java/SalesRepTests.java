@@ -29,6 +29,4 @@ public class SalesRepTests extends TestsBase {
         salesRepOperations.clickCheckbox();
         salesRepOperations.completeOrder();
     }
-
-
 }
