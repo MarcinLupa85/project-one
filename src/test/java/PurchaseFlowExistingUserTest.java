@@ -2,8 +2,12 @@ import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import enums.PAYMENTMETHODS;
 import operations.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.WaitUtils;
+
 import java.util.concurrent.TimeoutException;
 
 public class PurchaseFlowExistingUserTest extends TestsBase {
@@ -17,6 +21,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
     private NavbarOperations navbarOperations;
+    private WaitUtils waitUtils;
 
     @BeforeMethod(alwaysRun = true)
     private void initOperations() {
@@ -29,6 +34,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
         navbarOperations = new NavbarOperations(driver);
+        waitUtils = new WaitUtils(driver);
     }
 
     private void purchaseFlowExistingUser(String username, boolean fourteenDaysInstallation, PAYMENTMETHODS paymentMethod) throws TimeoutException {
@@ -121,5 +127,16 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithExtra();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.TWOFACTORTYPE2);
+    }
+
+    @TestCaseId(testRailCaseId = 5567)
+    @Test
+    public void testCanceledPaymentStatus() throws TimeoutException {
+        productsPageOperations.openEaseePurchaseFlow();
+        homePageOperations.flowWithExtra();
+        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.KLARNA);
+        waitUtils.waitForElementToBeClickable(By.xpath("//*[contains(text(),'Tilbake')]"));
+        ((JavascriptExecutor) driver).executeScript("document.getElementById('back-button__text').click();");
+        waitUtils.waitForUrlToContains("/order/payment-result");
     }
 }
