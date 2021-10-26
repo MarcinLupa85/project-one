@@ -81,5 +81,4 @@ public class CustomizationPageOperations {
         waitUtils.waitForVisiblityOf(customizationPageObject.getMembershipNumber());
         customizationPageObject.getMembershipNumber().sendKeys(membershipNumber);
     }
-
 }

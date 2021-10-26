@@ -45,8 +45,7 @@ public class ContactWithCircleKTests extends TestsBase {
     @TestCaseId(testRailCaseId = 2854)
     @Test
     public void testSendApartmentContactForm() throws TimeoutException {
-        navbarOperations.clickNavbarDropdown();
-        apartmentPageOperations.clickRedirectToForm();
+        navbarOperations.openApartmentPage();
         apartmentPageOperations.fillContactForm("Test", "123873456", "Company name", "testapartmentfrom@mailinator.com");
         apartmentPageOperations.clickSendContactForm();
     }

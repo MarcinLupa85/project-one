@@ -4,11 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.WaitUtils;
 
 public class CustomizationPageObject
 {
+    private WaitUtils waitUtils;
     public CustomizationPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        waitUtils = new WaitUtils(driver);
     }
 
     @FindBy(css = "li#id1 app-number-selector")
@@ -40,11 +43,11 @@ public class CustomizationPageObject
 
     public WebElement getEaseeNumberSelector() { return easeeNumberSelector; }
 
-    public WebElement getInstallationCheckbox() {return installlationCheckbox; }
+    public WebElement getInstallationCheckbox() {return waitUtils.waitForElementToBeClickable(installlationCheckbox); }
 
     public WebElement getExtraCheckbox() { return extraCheckbox; }
 
-    public WebElement getAddEqualizer() { return addEqualizer; }
+    public WebElement getAddEqualizer() { return waitUtils.waitForElementToBeClickable(addEqualizer); }
 
     public WebElement getSubmitButton() { return submitButton; }
 
