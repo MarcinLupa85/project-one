@@ -47,6 +47,8 @@ public class ArticlesTest extends TestsBase {
         List<String> houseTitles = articlesPageOperations.addToList("Hjemmelading");
         navbarOperations.openHousePage();
         housePageOperations.compareTitles(houseTitles);
+        navbarOperations.openHouseAndCabinPage();
+        apartmentPageOperations.compareTitles(houseTitles);
     }
 
     @TestCaseId(testRailCaseId = 2861)
@@ -55,8 +57,6 @@ public class ArticlesTest extends TestsBase {
         navbarOperations.openAndVerifyArticlesPage();
         List<String> companyTitles = articlesPageOperations.addToList("Bedrift");
         navbarOperations.openCompanyPage();
-        apartmentPageOperations.compareTitles(companyTitles);
-        navbarOperations.openHouseAndCabinPage();
         apartmentPageOperations.compareTitles(companyTitles);
     }
 
