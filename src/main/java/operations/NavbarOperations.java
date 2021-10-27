@@ -5,11 +5,10 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.NavbarObject;
 import utils.WaitUtils;
 import static org.assertj.core.api.Assertions.assertThat;
-
+import static config.Constants.BASE_URL;
 import java.util.concurrent.TimeoutException;
 
 public class NavbarOperations {
-
     private NavbarObject navbarObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
@@ -30,20 +29,20 @@ public class NavbarOperations {
         waitUtils.waitForUrlToContains("/hjemmelading");
     }
 
-    public void clickNavbarDropdown() throws TimeoutException {
-        waitUtils.waitForDocumentReadyState();
-        navbarObject.getNavbarDropdown().click();
-        waitUtils.waitForUrlToContains("/ladetjenester");
+    public void openCompanyPage() {
+        driver.navigate().to(BASE_URL+"/bedriftslading");
+    }
+
+    public void openHouseAndCabinPage() {
+        driver.navigate().to(BASE_URL+"/hjemmelading/hus-hytte");
+    }
+
+    public void openPartnerPage() {
+        driver.navigate().to(BASE_URL+"/ladepartnere/utbygger");
     }
 
     public void openApartmentPage() {
-        navbarObject.getApartmentLink().click();
-        waitUtils.waitForUrlToContains("/borettslag-sameie");
-    }
-
-    public void openDeveloperPage() {
-        navbarObject.getDeveloperLink().click();
-        waitUtils.waitForUrlToContains("/utbygger");
+        driver.navigate().to(BASE_URL+"/hjemmelading/borettslag-sameie");
     }
 
     public void openAndVerifyArticlesPage() throws TimeoutException {
@@ -54,8 +53,6 @@ public class NavbarOperations {
     }
 
     public void openProductsPage() {
-        navbarObject.getProductsLink().click();
-        waitUtils.waitForUrlToContains("/nettbutikk");
+        driver.navigate().to(BASE_URL+"/nettbutikk");
     }
-
 }

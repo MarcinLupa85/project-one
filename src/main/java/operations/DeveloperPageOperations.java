@@ -4,12 +4,9 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.DeveloperPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
-
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-
 import static config.Constants.BASE_URL;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class DeveloperPageOperations {
 

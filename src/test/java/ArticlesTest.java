@@ -38,7 +38,6 @@ public class ArticlesTest extends TestsBase {
         List<String> OTGTitles = articlesPageOperations.addToList("Ladestasjoner");
         navbarOperations.openOnTheGoPage();
         onTheGoPageOperations.compareTitles(OTGTitles);
-
     }
 
     @TestCaseId(testRailCaseId = 2860)
@@ -48,26 +47,35 @@ public class ArticlesTest extends TestsBase {
         List<String> houseTitles = articlesPageOperations.addToList("Hjemmelading");
         navbarOperations.openHousePage();
         housePageOperations.compareTitles(houseTitles);
+        navbarOperations.openHouseAndCabinPage();
+        apartmentPageOperations.compareTitles(houseTitles);
     }
 
     @TestCaseId(testRailCaseId = 2861)
     @Test
-    public void checkApartmentArticlesPage() throws TimeoutException {
+    public void checkCompanyArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
-        List<String> apartmentTitles = articlesPageOperations.addToList("Ladetjenester");
-        navbarOperations.clickNavbarDropdown();
-        navbarOperations.openApartmentPage();
-        apartmentPageOperations.compareTitles(apartmentTitles);
+        List<String> companyTitles = articlesPageOperations.addToList("Bedrift");
+        navbarOperations.openCompanyPage();
+        apartmentPageOperations.compareTitles(companyTitles);
     }
 
     @TestCaseId(testRailCaseId = 2862)
     @Test
     public void checkDeveloperArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
-        List<String> developerTitles = articlesPageOperations.addToList("Utbygger");
-        navbarOperations.clickNavbarDropdown();
-        navbarOperations.openDeveloperPage();
+        List<String> developerTitles = articlesPageOperations.addToList("Ladepartnere");
+        navbarOperations.openPartnerPage();
         developerPageOperations.compareTitles(developerTitles);
+    }
+
+    @TestCaseId(testRailCaseId = 5720) //temporary ID
+    @Test
+    public void checkPartnerArticlesPage() throws TimeoutException {
+        navbarOperations.openAndVerifyArticlesPage();
+        List<String> partnerTitles = articlesPageOperations.addToList("Referanser");
+        navbarOperations.openPartnerPage();
+        developerPageOperations.compareTitles(partnerTitles);
     }
 
 }

@@ -3,7 +3,6 @@ import operations.CustomizationPageOperations;
 import operations.SalesRepOperations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.util.concurrent.TimeoutException;
 
 public class SalesRepTests extends TestsBase {

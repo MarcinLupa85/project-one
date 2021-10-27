@@ -47,7 +47,7 @@ public class FaqTests extends TestsBase {
     @TestCaseId(testRailCaseId = 2866)
     @Test
     public void apartmentPageGoToFaqTest() throws TimeoutException {
-        navbarOperations.clickNavbarDropdown();
+        navbarOperations.openApartmentPage();
         apartmentPageOperations.goToFaq();
     }
 }
