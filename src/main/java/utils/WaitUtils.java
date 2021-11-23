@@ -119,4 +119,12 @@ public class WaitUtils {
         jsExecutor.executeScript("arguments[0].scrollIntoView()", element);
         jsExecutor.executeScript("window.scrollBy(0, -123);");
     }
+
+    //currently unused but highly likely it will be useful in the future
+    public void waitForInvisibility(WebElement element) {
+        new WebDriverWait(driver, defaultMaxTimeoutForAllWaits)
+                .pollingEvery(Duration.ofMillis(2))
+                .ignoring(NoSuchElementException.class)
+                .until(invisibilityOf(element));
+    }
 }

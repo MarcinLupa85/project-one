@@ -54,7 +54,7 @@ public class SummaryPageObject {
 
     public WebElement getFinishOrderButton() { return finishOrderButton; }
 
-    public WebElement getTcCheckbox() { return waitUtils.waitForElementToBeClickable(tcCheckbox); }
+    public WebElement getTcCheckbox() { return tcCheckbox; }
 
     public WebElement getCardIFrame() { return cardIFrame; }
 

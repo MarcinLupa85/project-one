@@ -9,12 +9,6 @@ import pageobjects.SummaryPageObject;
 import utils.DriverUtils;
 import utils.WaitUtils;
 
-import javax.print.DocFlavor;
-import java.net.URL;
-import java.util.concurrent.TimeoutException;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class SummaryPageOperations {
 
@@ -38,6 +32,7 @@ public class SummaryPageOperations {
 
     public void tickTermsAndConditionsCheckbox() {
         WebElement termsAndConditionsCheckbox = summaryPageObject.getTcCheckbox();
+        waitUtils.waitForElement(termsAndConditionsCheckbox);
         WebElement navigation = driver.findElement(By.cssSelector("a[href='/elbillading']"));
         waitUtils.bringElementToViewport(navigation);
         termsAndConditionsCheckbox.click();
