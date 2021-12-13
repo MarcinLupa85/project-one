@@ -48,8 +48,18 @@ public class CustomizationPageOperations {
         customizationPageObject.getEaseeNumberSelector().click();
     }
 
-    public void goToSDUPartner() {
+    public void goToNafSDUPartner() {
         driver.navigate().to(BASE_URL + "/bestill/Y21-740505");
+        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
+    }
+
+    public void goToSmbSDUPartner() {
+        driver.navigate().to(BASE_URL + "/bestill/Y21-832885");
+        waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
+    }
+
+    public void goToIglandSDUPartner() {
+        driver.navigate().to(BASE_URL + "/bestill/Y21-950539");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 

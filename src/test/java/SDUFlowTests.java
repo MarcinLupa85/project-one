@@ -14,7 +14,7 @@ public class SDUFlowTests extends TestsBase {
 
     private void purchaseFlowSDUUser(String username, boolean membershipNumberNecessary, String membershipNumber, PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.logInWithCredentials(username, "Emobility1");
+        ckidPageOperations.logInWithCredentials(username, "Emobility1!@");
         if (membershipNumberNecessary){
             customizationPageOperations.fillMembershipNumber(membershipNumber);
         }
@@ -32,9 +32,25 @@ public class SDUFlowTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 4612)
     @Test
-    public void SDUPartnerFlow() throws TimeoutException {
-        customizationPageOperations.goToSDUPartner();
+    public void NafSDUPartnerFlow() throws TimeoutException {
+        customizationPageOperations.goToNafSDUPartner();
         customizationPageOperations.checkPriceFormat();
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.VISA, false);
+    }
+
+    //TestCaseID to be introduced
+    @Test
+    public void SmbSDUPartnerFlow() throws TimeoutException {
+        customizationPageOperations.goToSmbSDUPartner();
+        customizationPageOperations.checkPriceFormat();
+        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.MASTERCARD, false);
+    }
+
+    //TestCaseID to be introduced
+    @Test
+    public void IglandSDUPartnerFlow() throws TimeoutException {
+        customizationPageOperations.goToSmbSDUPartner();
+        customizationPageOperations.checkPriceFormat();
+        purchaseFlowSDUUser("easeeinstallation@mailinator.com", false, null, PAYMENTMETHODS.INVOICE, false);
     }
 }
