@@ -11,16 +11,16 @@
 
     <test name="regression">
         <classes>
-<!--            <class name="ContactWithCircleKTests"/>-->
-<!--            <class name="ArticlesTest"/>-->
-<!--            <class name="FaqTests"/>-->
-<!--            <class name="PurchaseFlowExistingUserTest"/>-->
-<!--            <class name="PurchaseFlowNewUserTest"/>-->
-<!--            <class name="MDUFlowTests"/>-->
+            <class name="ContactWithCircleKTests"/>
+            <class name="ArticlesTest"/>
+            <class name="FaqTests"/>
+            <class name="PurchaseFlowExistingUserTest"/>
+            <class name="PurchaseFlowNewUserTest"/>
+            <class name="MDUFlowTests"/>
 
             <!--            <class name="SDUFlowTests"/>-->
 
-                        <class name="SampleTest"/>
+<!--                        <class name="SampleTest"/>-->
         </classes>
     </test>
 </suite>
