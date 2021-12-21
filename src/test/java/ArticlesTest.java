@@ -69,13 +69,13 @@ public class ArticlesTest extends TestsBase {
         developerPageOperations.compareTitles(developerTitles);
     }
 
-    @TestCaseId(testRailCaseId = 5720) //temporary ID
-    @Test
-    public void checkPartnerArticlesPage() throws TimeoutException {
-        navbarOperations.openAndVerifyArticlesPage();
-        List<String> partnerTitles = articlesPageOperations.addToList("Referanser");
-        navbarOperations.openPartnerPage();
-        developerPageOperations.compareTitles(partnerTitles);
-    }
+//    @TestCaseId(testRailCaseId = 5720) //temporary ID
+//    @Test
+//    public void checkPartnerArticlesPage() throws TimeoutException {
+//        navbarOperations.openAndVerifyArticlesPage();
+//        List<String> partnerTitles = articlesPageOperations.addToList("Referanser");
+//        navbarOperations.openPartnerPage();
+//        developerPageOperations.compareTitles(partnerTitles);
+//    }
 
 }
