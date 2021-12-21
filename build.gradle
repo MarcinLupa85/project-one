@@ -1,13 +1,17 @@
 plugins {
     id 'groovy'
     id 'java'
+    id 'java-library'
 }
 
 group 'com.circlek'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 16
-targetCompatibility = 16
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
 
 repositories {
     mavenCentral()
