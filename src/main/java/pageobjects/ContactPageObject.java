@@ -7,10 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ContactPageObject {
 
-    private NavbarObject navbarObject;
-
     public ContactPageObject(WebDriver driver) {
-        navbarObject =  new NavbarObject(driver);
         PageFactory.initElements(driver, this);
     }
 

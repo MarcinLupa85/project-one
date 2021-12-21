@@ -38,7 +38,7 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.VISA, false);
     }
 
-    //TestCaseID to be introduced
+    @TestCaseId(testRailCaseId = 6093)
     @Test
     public void SmbSDUPartnerFlow() throws TimeoutException {
         customizationPageOperations.goToSmbSDUPartner();
@@ -46,7 +46,7 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.MASTERCARD, false);
     }
 
-    //TestCaseID to be introduced
+    @TestCaseId(testRailCaseId = 6092)
     @Test
     public void IglandSDUPartnerFlow() throws TimeoutException {
         customizationPageOperations.goToSmbSDUPartner();

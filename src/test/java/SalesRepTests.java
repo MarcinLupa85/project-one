@@ -1,3 +1,4 @@
+import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
 import operations.CustomizationPageOperations;
 import operations.SalesRepOperations;
@@ -15,6 +16,7 @@ public class SalesRepTests extends TestsBase {
         customizationPageOperations = new CustomizationPageOperations(driver);
     }
 
+    @TestCaseId(testRailCaseId = 6094)
     @Test
     public void  salesRepFlowTest() throws TimeoutException {
         salesRepOperations.goToSalesRepPage();
