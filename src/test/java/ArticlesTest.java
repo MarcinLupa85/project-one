@@ -69,6 +69,7 @@ public class ArticlesTest extends TestsBase {
         developerPageOperations.compareTitles(developerTitles);
     }
 
+
     @TestCaseId(testRailCaseId = 5720)
     @Test
     public void checkPartnerArticlesPage() throws TimeoutException {
@@ -77,5 +78,4 @@ public class ArticlesTest extends TestsBase {
         navbarOperations.openPartnerPage();
         developerPageOperations.compareTitles(partnerTitles);
     }
-
 }

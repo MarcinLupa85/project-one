@@ -17,7 +17,7 @@ public class TestRailServiceConfig {
             .newBuilder()
             .addInterceptor(
                     new HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
-                            .setLevel(HttpLoggingInterceptor.Level.BASIC))
+                            .setLevel(HttpLoggingInterceptor.Level.BODY))
             .addInterceptor(
                     new BasicAuthInterceptor(
                             System.getenv("TESTRAIL_USER"),
