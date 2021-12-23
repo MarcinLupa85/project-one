@@ -38,28 +38,27 @@ public class MDUFlowTests extends TestsBase {
         waitUtils = new WaitUtils(driver);
     }
 
-    @TestCaseId(testRailCaseId = 4609)
+    @TestCaseId(testRailCaseId = 4598)
     @Test
     private void MDULightFlow() throws TimeoutException {
         customizationPageOperations.goToMDULight();
         customizationPageOperations.checkPriceFormat();
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
-// Offer unavailable in the test environment - temporarily disabled not to create false negatives
-//    @TestCaseId(testRailCaseId = 4610)
+
+    @TestCaseId(testRailCaseId = 4599)
+    @Test
+    private void MDUReadyFlow() throws TimeoutException {
+        customizationPageOperations.goToMDUReady();
+        customizationPageOperations.checkPriceFormat();
+        purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
+    }
+// No Leasing offer available in SF
+//    @TestCaseId(testRailCaseId = 4600)
 //    @Test
-//    private void MDUReadyFlow() throws TimeoutException {
-//        customizationPageOperations.goToMDUReady();
-//        customizationPageOperations.checkPriceFormat();
+//    private void MDULeasingFlow() throws TimeoutException {
+//        customizationPageOperations.goToMDULeasing();
+//        customizationPageOperations.checkMDULeasingPriceFormat();
 //        purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
 //    }
-
-    @TestCaseId(testRailCaseId = 4611)
-    @Test
-    private void MDULeasingFlow() throws TimeoutException {
-        customizationPageOperations.goToMDULeasing();
-        customizationPageOperations.checkMDULeasingPriceFormat();
-        purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
-
-    }
 }

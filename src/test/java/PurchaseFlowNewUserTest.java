@@ -57,7 +57,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         tearDown();
     }
 
-    @TestCaseId(testRailCaseId = 2867)
+    @TestCaseId(testRailCaseId = 1821)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
@@ -65,28 +65,27 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         purchaseFlowNewUser("575437397", "newuser.easeewithextra@mailinator.com", false, PAYMENTMETHODS.MASTERCARD);
     }
 
-    @TestCaseId(testRailCaseId = 2868)
+    @TestCaseId(testRailCaseId = 2507)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         purchaseFlowNewUser("575437666", "newuser.easeenoextra@mailinator.com", false, PAYMENTMETHODS.KLARNA);
     }
 
-    @TestCaseId(testRailCaseId = 2871)
+    @TestCaseId(testRailCaseId = 5049)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
         productsPageOperations.openCablePurchaseFlow();
         purchaseFlowNewUser("575437306", "newuser.cablenoextra@mailinator.com", false, PAYMENTMETHODS.INVOICE);
     }
 
-    @TestCaseId(testRailCaseId = 2881)
+    @TestCaseId(testRailCaseId = 2512)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithInstallationOnly();
         purchaseFlowNewUser("575437307", "newuser.easeeinstallation@mailinator.com", false, PAYMENTMETHODS.KLARNA);
     }
-
 }
 
 

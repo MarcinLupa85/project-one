@@ -14,7 +14,7 @@ public class B2bFormTest extends TestsBase {
         b2bFormOperations = new B2bFormOperations(driver);
     }
 
-    @TestCaseId(testRailCaseId = 6095)
+    @TestCaseId(testRailCaseId = 5850)
     @Test
     public void sendB2bForm() throws TimeoutException {
         b2bFormOperations.goToB2bForm();
