@@ -30,15 +30,15 @@ public class SDUFlowTests extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
     }
 
-    @TestCaseId(testRailCaseId = 4612)
+    @TestCaseId(testRailCaseId = 4601)
     @Test
     public void NafSDUPartnerFlow() throws TimeoutException {
         customizationPageOperations.goToNafSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.VISA, false);
+        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.KLARNA, false);
     }
 
-    @TestCaseId(testRailCaseId = 6093)
+    @TestCaseId(testRailCaseId = 4597)
     @Test
     public void SmbSDUPartnerFlow() throws TimeoutException {
         customizationPageOperations.goToSmbSDUPartner();
@@ -46,10 +46,10 @@ public class SDUFlowTests extends TestsBase {
         purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.MASTERCARD, false);
     }
 
-    @TestCaseId(testRailCaseId = 6092)
+    @TestCaseId(testRailCaseId = 4595)
     @Test
     public void IglandSDUPartnerFlow() throws TimeoutException {
-        customizationPageOperations.goToSmbSDUPartner();
+        customizationPageOperations.goToIglandSDUPartner();
         customizationPageOperations.checkPriceFormat();
         purchaseFlowSDUUser("easeeinstallation@mailinator.com", false, null, PAYMENTMETHODS.INVOICE, false);
     }

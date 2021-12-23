@@ -34,7 +34,7 @@ public class ContactWithCircleKTests extends TestsBase {
         driver.navigate().refresh();
     }
 
-    @TestCaseId(testRailCaseId = 2853)
+    @TestCaseId(testRailCaseId = 1164)
     @Test
     public void testSendGeneralContactForm() {
         homePageOperations.goToContactPage();
@@ -42,15 +42,15 @@ public class ContactWithCircleKTests extends TestsBase {
         contactPageOperations.clickSend();
     }
 
-    @TestCaseId(testRailCaseId = 2854)
+    @TestCaseId(testRailCaseId = 1162)
     @Test
-    public void testSendApartmentContactForm() throws TimeoutException {
+    public void testSendApartmentContactForm() {
         navbarOperations.openApartmentPage();
         apartmentPageOperations.fillContactForm("Test", "123873456", "Company name", "testapartmentfrom@mailinator.com");
         apartmentPageOperations.clickSendContactForm();
     }
 
-    @TestCaseId(testRailCaseId = 2856)
+    @TestCaseId(testRailCaseId = 1204)
     @Test
     public void testSendDeveloperContactForm() {
         developerPageOperations.goToDeveloperPage();
@@ -58,7 +58,7 @@ public class ContactWithCircleKTests extends TestsBase {
         developerPageOperations.clickSendForm();
     }
 
-    @TestCaseId(testRailCaseId = 2857)
+    @TestCaseId(testRailCaseId = 1205)
     @Test
     public void testSendReportProblemForm() {
         reportProblemPageOperations.goToReportProblemPage();

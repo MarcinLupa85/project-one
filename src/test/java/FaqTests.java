@@ -24,27 +24,27 @@ public class FaqTests extends TestsBase {
         cookiePanelOperations = new CookiePanelOperations(driver);
     }
 
-    @TestCaseId(testRailCaseId = 2863)
+    @TestCaseId(testRailCaseId = 1208)
     @Test
     public void homePageGoToFaqTest() {
         homePageOperations.goToFaq();
     }
 
-    @TestCaseId(testRailCaseId = 2864)
+    @TestCaseId(testRailCaseId = 1206)
     @Test
     public void onTheGoPageGoToFaqTest() {
         navbarOperations.openOnTheGoPage();
         onTheGoPageOperations.goToFaq();
     }
 
-    @TestCaseId(testRailCaseId = 2865)
+    @TestCaseId(testRailCaseId = 1207)
     @Test
     public void housePageGoToFaqTest() {
         navbarOperations.openHousePage();
         housePageOperations.goToFaq();
     }
 
-    @TestCaseId(testRailCaseId = 2866)
+    @TestCaseId(testRailCaseId = 1209)
     @Test
     public void apartmentPageGoToFaqTest() throws TimeoutException {
         navbarOperations.openApartmentPage();

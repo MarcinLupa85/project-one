@@ -25,13 +25,13 @@ public class ArticlesTest extends TestsBase {
         developerPageOperations = new DeveloperPageOperations(driver);
     }
 
-    @TestCaseId(testRailCaseId = 2858)
+    @TestCaseId(testRailCaseId = 1183)
     @Test
     public void goAndCheckToArticlesTest() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
     }
 
-    @TestCaseId(testRailCaseId = 2859)
+    @TestCaseId(testRailCaseId = 1186)
     @Test
     public void checkOnTheGoArticlesTest() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -40,7 +40,7 @@ public class ArticlesTest extends TestsBase {
         onTheGoPageOperations.compareTitles(OTGTitles);
     }
 
-    @TestCaseId(testRailCaseId = 2860)
+    @TestCaseId(testRailCaseId = 1187)
     @Test
     public void checkHouseArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -51,7 +51,7 @@ public class ArticlesTest extends TestsBase {
         apartmentPageOperations.compareTitles(houseTitles);
     }
 
-    @TestCaseId(testRailCaseId = 2861)
+    @TestCaseId(testRailCaseId = 1189)
     @Test
     public void checkCompanyArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -60,7 +60,7 @@ public class ArticlesTest extends TestsBase {
         apartmentPageOperations.compareTitles(companyTitles);
     }
 
-    @TestCaseId(testRailCaseId = 2862)
+    @TestCaseId(testRailCaseId = 6097)
     @Test
     public void checkDeveloperArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
@@ -69,7 +69,7 @@ public class ArticlesTest extends TestsBase {
         developerPageOperations.compareTitles(developerTitles);
     }
 
-    @TestCaseId(testRailCaseId = 5720) //temporary ID
+    @TestCaseId(testRailCaseId = 5720)
     @Test
     public void checkPartnerArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();

@@ -64,7 +64,7 @@ public class CustomizationPageOperations {
     }
 
     public void goToMDULight() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-785527");
+        driver.navigate().to(BASE_URL + "/bestill/Y21-580541");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 

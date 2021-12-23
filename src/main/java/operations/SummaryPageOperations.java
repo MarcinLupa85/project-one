@@ -50,9 +50,15 @@ public class SummaryPageOperations {
         summaryPageObject.getCreditCardPayButton().click();
     }
 
-    public void chooseCreditCardOption() { summaryPageObject.getCreditCardOption().click(); }
+    public void chooseCreditCardOption() {
+        waitUtils.waitForElementToBeClickable(summaryPageObject.getCreditCardOption());
+        summaryPageObject.getCreditCardOption().click();
+    }
 
-    public void chooseInvoiceOption() { summaryPageObject.getInvoiceOption().click(); }
+    public void chooseInvoiceOption() {
+        waitUtils.waitForElementToBeClickable(summaryPageObject.getInvoiceOption());
+        summaryPageObject.getInvoiceOption().click();
+    }
 
     public void fillCreditCardNumber(String creditCardNumber) {
         WebElement inputFrameField = summaryPageObject.getCardIFrame();

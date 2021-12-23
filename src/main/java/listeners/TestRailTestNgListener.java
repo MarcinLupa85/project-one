@@ -9,6 +9,6 @@ import static services.config.TestRailServiceConfig.testRailApi;
 public class TestRailTestNgListener extends TestRailListener {
 
     public TestRailTestNgListener() {
-        super(testRailApi(), 12, 80, "EV Test Automation "+getFormattedNowDate(), SCREENSHOT_DIR);
+        super(testRailApi(), 12, 50, "Master "+getFormattedNowDate(), SCREENSHOT_DIR);
     }
 }

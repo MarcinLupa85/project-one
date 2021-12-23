@@ -16,7 +16,7 @@ public class SalesRepTests extends TestsBase {
         customizationPageOperations = new CustomizationPageOperations(driver);
     }
 
-    @TestCaseId(testRailCaseId = 6094)
+    @TestCaseId(testRailCaseId = 5535)
     @Test
     public void  salesRepFlowTest() throws TimeoutException {
         salesRepOperations.goToSalesRepPage();
