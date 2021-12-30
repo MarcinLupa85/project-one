@@ -4,7 +4,6 @@ import enums.PAYMENTMETHODS;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import pageobjects.SummaryPageObject;
 import utils.DriverUtils;
 import utils.WaitUtils;

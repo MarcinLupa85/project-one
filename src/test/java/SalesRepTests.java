@@ -18,7 +18,7 @@ public class SalesRepTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 5535)
     @Test
-    public void  salesRepFlowTest() throws TimeoutException {
+    public void salesRepFlowTest() throws TimeoutException {
         salesRepOperations.goToSalesRepPage();
         salesRepOperations.chooseRepName();
         salesRepOperations.sendRepMail();
