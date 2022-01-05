@@ -21,6 +21,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
+    private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
     private String phoneNumber, userName, paymentMethod;
     private Boolean extraDiscount, fourteenDaysInstallation;
     private List<User> testUsers;
@@ -37,6 +38,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
+        sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
         testUsers = new Users().getUsersList();
         driver.navigate().to(constants.BASE_URL);
     }
@@ -85,6 +87,16 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithInstallationOnly();
         purchaseFlowNewUser("575437307", "newuser.easeeinstallation@mailinator.com", false, PAYMENTMETHODS.KLARNA);
+    }
+
+    @TestCaseId(testRailCaseId = 6114)
+    @Test
+    public void DiscountPartnerNewUserTest(){
+        sduDiscountPartnerOperations.goToNafDiscountPage();
+        sduDiscountPartnerOperations.clickBecomeMemberButton();
+        sduDiscountPartnerOperations.sendPhoneNumber();
+        sduDiscountPartnerOperations.sendRegisterForm("Name", "Test", "newuser.easeenoextra2@mailinator.com", "Emobility1","9876543210");
+        sduDiscountPartnerOperations.assertThankYouPage();
     }
 }
 

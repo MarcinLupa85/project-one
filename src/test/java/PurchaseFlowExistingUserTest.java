@@ -20,6 +20,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
+    private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
     private NavbarOperations navbarOperations;
     private WaitUtils waitUtils;
 
@@ -33,6 +34,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
+        sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
         navbarOperations = new NavbarOperations(driver);
         waitUtils = new WaitUtils(driver);
     }
@@ -138,5 +140,26 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         waitUtils.waitForElementToBeClickable(By.xpath("//*[contains(text(),'Tilbake')]"));
         ((JavascriptExecutor) driver).executeScript("document.getElementById('back-button__text').click();");
         waitUtils.waitForUrlToContains("/order/payment-result");
+    }
+
+    @TestCaseId(testRailCaseId =6113)
+    @Test
+    public void DiscountPartnerLogInTest() throws TimeoutException {
+        sduDiscountPartnerOperations.goToCoopDiscountPage();
+        sduDiscountPartnerOperations.clickLoginButton();
+        ckidPageOperations.logInWithCredentials("easeewithextra@mailinator.com", "Emobility1!@");
+        sduDiscountPartnerOperations.sendWithMembershipNumber();
+        sduDiscountPartnerOperations.assertThankYouPage();
+    }
+
+
+
+    @TestCaseId(testRailCaseId = 6115)
+    @Test
+    public void DiscountPartnerNoExtraTest(){
+        sduDiscountPartnerOperations.goToObosDiscountPage();
+        sduDiscountPartnerOperations.clickNoExtraLink();
+        sduDiscountPartnerOperations.sendNoExtraForm("575437005", "Test", "Kowalski", "easeenoextra@mailinator.com", "9876543");
+        sduDiscountPartnerOperations.assertThankYouPage();
     }
 }
