@@ -7,8 +7,11 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.CkidPageObject;
 import testdata.Users;
 import utils.WaitUtils;
+
 import java.util.List;
 import java.util.concurrent.TimeoutException;
+
+import static config.Constants.CKID_URL;
 import static config.Constants.SMS_CODE;
 
 public class CkidPageOperations {
@@ -19,8 +22,6 @@ public class CkidPageOperations {
     private List<User> testUsers;
     private String userName, password;
     private CookiePanelOperations cookiePanelOperations;
-    private String ckidUrl;
-
 
     public CkidPageOperations(WebDriver driver) {
         ckidPageObject = new CkidPageObject(driver);
@@ -28,7 +29,6 @@ public class CkidPageOperations {
         this.driver = driver;
         testUsers = new Users().getUsersList();
         cookiePanelOperations = new CookiePanelOperations(driver);
-        ckidUrl = "https://test-circlekid-core-stable.test.gneis.io/#/dashboard";
     }
 
     public void logInWithCredentials(String username, String password) throws TimeoutException {
@@ -74,7 +74,7 @@ public class CkidPageOperations {
     }
 
     public void deleteAccounts() throws TimeoutException {
-        driver.navigate().to(ckidUrl);
+        driver.navigate().to(CKID_URL);
         closeCookieBot();
         testUsers.forEach(this::deleteAccount);
 
@@ -82,7 +82,7 @@ public class CkidPageOperations {
 
     private void deleteAccount(User testUser) {
         try {
-            driver.navigate().to(ckidUrl);
+            driver.navigate().to(CKID_URL);
             waitUtils.waitForDocumentReadyState();
             userName = testUser.getEmail();
             waitUtils.waitForVisiblityOf(ckidPageObject.getEmailInput());
@@ -94,7 +94,7 @@ public class CkidPageOperations {
             ckidPageObject.getLoginButton().click();
             waitUtils.waitForElementToBeClickable(ckidPageObject.getSecondStepVerificationInput());
             // default password for CKID test env
-            ckidPageObject.getSecondStepVerificationInput().sendKeys("000000");
+            ckidPageObject.getSecondStepVerificationInput().sendKeys(SMS_CODE);
             ckidPageObject.getSecondStepVerificationButton().click();
             waitUtils.waitForDocumentReadyState();
             waitUtils.waitForElement(ckidPageObject.getEditAccountButton());
@@ -105,8 +105,8 @@ public class CkidPageOperations {
             waitUtils.waitForElement(ckidPageObject.getValidationPhraseInput()).sendKeys("DELETE ACCOUNT");
             waitUtils.waitForElement(ckidPageObject.getDeleteAccountConfirmationButton()).click();
             waitUtils.waitForPresenceOf(By.id("login-submit-button"));
-            driver.navigate().to(ckidUrl);
-        } catch (org.openqa.selenium.TimeoutException|TimeoutException exception) {
+            driver.navigate().to(CKID_URL);
+        } catch (org.openqa.selenium.TimeoutException | TimeoutException exception) {
             System.out.printf("Cannot delete user %s due to exception %s %n", testUser.getEmail(), exception.getMessage());
             exception.printStackTrace();
         }

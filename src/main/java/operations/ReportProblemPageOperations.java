@@ -7,6 +7,7 @@ import utils.FormUtils;
 import utils.WaitUtils;
 
 import static config.Constants.BASE_URL;
+import static testdata.EvRoutes.MOBILE_REPORT_PAGE;
 
 public class ReportProblemPageOperations {
 
@@ -23,8 +24,7 @@ public class ReportProblemPageOperations {
     }
 
     public void goToReportProblemPage() {
-        String reportPageURL = "/mobile/problem";
-        driver.navigate().to(BASE_URL + reportPageURL);
+        driver.navigate().to(BASE_URL + MOBILE_REPORT_PAGE);
     }
 
     public void fillReportForm(String fullNameInput, String emailInput, String telephoneNumberInput, String chargersNumber, String carModel, String description) {
