@@ -6,8 +6,9 @@ import utils.FormUtils;
 import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
-import static config.Constants.SMS_CODE;
+
 import static config.Constants.BASE_URL;
+import static config.Constants.SMS_CODE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SDUDiscountPartnerOperations {
@@ -23,19 +24,19 @@ public class SDUDiscountPartnerOperations {
         formUtils = new FormUtils(driver);
     }
 
-    public void goToObosDiscountPage(){
+    public void goToObosDiscountPage() {
         driver.navigate().to(BASE_URL + "/partnere/obos");
     }
 
-    public void goToCoopDiscountPage(){
+    public void goToCoopDiscountPage() {
         driver.navigate().to(BASE_URL + "/partnere/coop");
     }
 
-    public void goToNafDiscountPage(){
+    public void goToNafDiscountPage() {
         driver.navigate().to(BASE_URL + "/partnere/naf");
     }
 
-    public void clickLoginButton(){
+    public void clickLoginButton() {
         sduDiscountPartnerPageObject.getLogInButton().click();
     }
 
@@ -91,6 +92,5 @@ public class SDUDiscountPartnerOperations {
     public void assertThankYouPage() {
         assertThat(driver.getCurrentUrl()).contains("/confirmation");
     }
-
 
 }

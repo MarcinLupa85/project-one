@@ -78,7 +78,9 @@ public class CkidPageObject {
     @FindBy(id = "mfa-submit-btn")
     private WebElement secondStepVerificationButton;
 
-    public WebElement getEditAccountButton() { return editAccountButton; }
+    public WebElement getEditAccountButton() {
+        return editAccountButton;
+    }
 
     public WebElement getDeleteAccountButton() {
         return deleteAccountButton;
@@ -112,7 +114,9 @@ public class CkidPageObject {
         return countryCodeInput;
     }
 
-    public WebElement getPhoneNumberInput() { return phoneNumberInput; }
+    public WebElement getPhoneNumberInput() {
+        return phoneNumberInput;
+    }
 
     public WebElement getSendCodeButton() {
         return sendCodeButton;
@@ -142,16 +146,28 @@ public class CkidPageObject {
         return new Select(countryDropdown);
     }
 
-    public WebElement getCkidTcCheckbox() { return CkidTcCheckbox; }
+    public WebElement getCkidTcCheckbox() {
+        return CkidTcCheckbox;
+    }
 
-    public WebElement getEvTcCheckbox() { return EvTcCheckbox; }
+    public WebElement getEvTcCheckbox() {
+        return EvTcCheckbox;
+    }
 
-    public WebElement getRegisterButton() { return registerButton; }
+    public WebElement getRegisterButton() {
+        return registerButton;
+    }
 
-    public WebElement getRegisterSwitchButton() { return registerSwitchButton; }
+    public WebElement getRegisterSwitchButton() {
+        return registerSwitchButton;
+    }
 
-    public WebElement getSecondStepVerificationInput() { return secondStepVerificationInput; }
+    public WebElement getSecondStepVerificationInput() {
+        return secondStepVerificationInput;
+    }
 
-    public WebElement getSecondStepVerificationButton() { return secondStepVerificationButton; }
+    public WebElement getSecondStepVerificationButton() {
+        return secondStepVerificationButton;
+    }
 
 }

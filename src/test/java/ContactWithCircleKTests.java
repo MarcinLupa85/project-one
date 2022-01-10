@@ -5,8 +5,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeoutException;
-
 import static config.Constants.BASE_URL;
 
 public class ContactWithCircleKTests extends TestsBase {
@@ -21,7 +19,7 @@ public class ContactWithCircleKTests extends TestsBase {
     @BeforeMethod
     private void initOperations() {
         navbarOperations = new NavbarOperations(driver);
-        contactPageOperations =  new ContactPageOperations(driver);
+        contactPageOperations = new ContactPageOperations(driver);
         apartmentPageOperations = new ApartmentPageOperations(driver);
         developerPageOperations = new DeveloperPageOperations(driver);
         reportProblemPageOperations = new ReportProblemPageOperations(driver);
@@ -54,7 +52,7 @@ public class ContactWithCircleKTests extends TestsBase {
     @Test
     public void testSendDeveloperContactForm() {
         developerPageOperations.goToDeveloperPage();
-        developerPageOperations.fillForm("Test", "Automation", "testSendDeveloperContactForm@mailinator.com", "123873456", "Company name", "Test Project", "123", "Test description" );
+        developerPageOperations.fillForm("Test", "Automation", "testSendDeveloperContactForm@mailinator.com", "123873456", "Company name", "Test Project", "123", "Test description");
         developerPageOperations.clickSendForm();
     }
 

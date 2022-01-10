@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.WaitUtils;
 
-public class CustomizationPageObject
-{
+public class CustomizationPageObject {
     private WaitUtils waitUtils;
+
     public CustomizationPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
         waitUtils = new WaitUtils(driver);
@@ -39,22 +39,38 @@ public class CustomizationPageObject
     private WebElement subscriptionPrice;
 
     @FindBy(id = "membershipNumber")
-    private  WebElement membershipNumber;
+    private WebElement membershipNumber;
 
-    public WebElement getEaseeNumberSelector() { return easeeNumberSelector; }
+    public WebElement getEaseeNumberSelector() {
+        return easeeNumberSelector;
+    }
 
-    public WebElement getInstallationCheckbox() {return waitUtils.waitForElementToBeClickable(installlationCheckbox); }
+    public WebElement getInstallationCheckbox() {
+        return waitUtils.waitForElementToBeClickable(installlationCheckbox);
+    }
 
-    public WebElement getExtraCheckbox() { return extraCheckbox; }
+    public WebElement getExtraCheckbox() {
+        return extraCheckbox;
+    }
 
-    public WebElement getAddEqualizer() { return waitUtils.waitForElementToBeClickable(addEqualizer); }
+    public WebElement getAddEqualizer() {
+        return waitUtils.waitForElementToBeClickable(addEqualizer);
+    }
 
-    public WebElement getSubmitButton() { return submitButton; }
+    public WebElement getSubmitButton() {
+        return submitButton;
+    }
 
-    public WebElement getTotalPrice() { return totalPrice; }
+    public WebElement getTotalPrice() {
+        return totalPrice;
+    }
 
-    public WebElement getSubscriptionPrice() { return subscriptionPrice; }
+    public WebElement getSubscriptionPrice() {
+        return subscriptionPrice;
+    }
 
-    public WebElement getMembershipNumber() { return membershipNumber; }
+    public WebElement getMembershipNumber() {
+        return membershipNumber;
+    }
 
 }

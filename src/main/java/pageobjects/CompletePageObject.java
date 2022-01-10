@@ -7,7 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CompletePageObject {
 
-    public CompletePageObject(WebDriver driver) { PageFactory.initElements(driver, this); }
+    public CompletePageObject(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(css = "a[href=\"/elbillading\"]")
     private WebElement backButton;
@@ -16,4 +18,3 @@ public class CompletePageObject {
         return backButton;
     }
 }
-

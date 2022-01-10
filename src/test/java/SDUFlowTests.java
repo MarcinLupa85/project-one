@@ -1,6 +1,6 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
-import enums.PAYMENTMETHODS;
+import enums.PaymentMethod;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,7 +12,7 @@ public class SDUFlowTests extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
 
-    private void purchaseFlowSDUUser(String username, boolean membershipNumberNecessary, String membershipNumber, PAYMENTMETHODS paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
+    private void purchaseFlowSDUUser(String username, boolean membershipNumberNecessary, String membershipNumber, PaymentMethod paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1!@");
         if (membershipNumberNecessary){
@@ -35,7 +35,7 @@ public class SDUFlowTests extends TestsBase {
     public void NafSDUPartnerFlow() throws TimeoutException {
         customizationPageOperations.goToNafSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.KLARNA, false);
+        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PaymentMethod.KLARNA, false);
     }
 
     @TestCaseId(testRailCaseId = 4597)
@@ -43,7 +43,7 @@ public class SDUFlowTests extends TestsBase {
     public void SmbSDUPartnerFlow() throws TimeoutException {
         customizationPageOperations.goToSmbSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PAYMENTMETHODS.MASTERCARD, false);
+        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PaymentMethod.MASTERCARD, false);
     }
 
     @TestCaseId(testRailCaseId = 4595)
@@ -51,6 +51,6 @@ public class SDUFlowTests extends TestsBase {
     public void IglandSDUPartnerFlow() throws TimeoutException {
         customizationPageOperations.goToIglandSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser("easeeinstallation@mailinator.com", false, null, PAYMENTMETHODS.INVOICE, false);
+        purchaseFlowSDUUser("easeeinstallation@mailinator.com", false, null, PaymentMethod.INVOICE, false);
     }
 }

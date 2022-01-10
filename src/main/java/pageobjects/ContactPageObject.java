@@ -29,15 +29,27 @@ public class ContactPageObject {
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
-    public WebElement getFullNameInput() { return fullNameInput; }
+    public WebElement getFullNameInput() {
+        return fullNameInput;
+    }
 
-    public WebElement getEmailInput() { return emailInput; }
+    public WebElement getEmailInput() {
+        return emailInput;
+    }
 
-    public WebElement getTelephoneNumberInput() { return telephoneNumberInput; }
+    public WebElement getTelephoneNumberInput() {
+        return telephoneNumberInput;
+    }
 
-    public WebElement getCompanyNameInput() { return companyNameInput; }
+    public WebElement getCompanyNameInput() {
+        return companyNameInput;
+    }
 
-    public WebElement getCommentInput() { return commentInput; }
+    public WebElement getCommentInput() {
+        return commentInput;
+    }
 
-    public WebElement submitButton() { return submitButton; }
+    public WebElement submitButton() {
+        return submitButton;
+    }
 }

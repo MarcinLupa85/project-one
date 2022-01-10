@@ -7,8 +7,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HousePageObject implements WithNewestArticlePageObject{
-    public HousePageObject(WebDriver driver) { PageFactory.initElements(driver, this); }
+public class HousePageObject implements WithNewestArticlePageObject {
+    public HousePageObject(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
@@ -16,7 +18,11 @@ public class HousePageObject implements WithNewestArticlePageObject{
     @FindBy(css = "a[href='/elbillading/hjemmelading/faq'].nav-link")
     private WebElement houseFAQ;
 
-    public List<WebElement> getArticleBody() { return articleBody; }
+    public List<WebElement> getArticleBody() {
+        return articleBody;
+    }
 
-    public WebElement getHouseFAQ() { return houseFAQ; }
+    public WebElement getHouseFAQ() {
+        return houseFAQ;
+    }
 }

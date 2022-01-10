@@ -1,6 +1,6 @@
 package operations;
 
-import enums.PAYMENTMETHODS;
+import enums.PaymentMethod;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -107,7 +107,7 @@ public class SummaryPageOperations {
         driver.switchTo().defaultContent();
     }
 
-    public void pay(PAYMENTMETHODS paymentMethod){
+    public void pay(PaymentMethod paymentMethod){
         switch (paymentMethod) {
             case INVOICE:
                 chooseInvoiceOption();

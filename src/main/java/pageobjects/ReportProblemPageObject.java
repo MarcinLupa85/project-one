@@ -36,19 +36,35 @@ public class ReportProblemPageObject {
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
-    public WebElement getFullNameInput() { return fullNameInput; }
+    public WebElement getFullNameInput() {
+        return fullNameInput;
+    }
 
-    public WebElement getEmailInput() { return emailInput; }
+    public WebElement getEmailInput() {
+        return emailInput;
+    }
 
-    public WebElement getTelephoneNumberInput() { return telephoneNumberInput; }
+    public WebElement getTelephoneNumberInput() {
+        return telephoneNumberInput;
+    }
 
-    public WebElement getChargersNumber() { return chargersNumber; }
+    public WebElement getChargersNumber() {
+        return chargersNumber;
+    }
 
-    public WebElement getCarMake() { return carMake; }
+    public WebElement getCarMake() {
+        return carMake;
+    }
 
-    public WebElement getCarModel() { return carModel; }
+    public WebElement getCarModel() {
+        return carModel;
+    }
 
-    public WebElement getDescription() { return description; }
+    public WebElement getDescription() {
+        return description;
+    }
 
-    public WebElement getSubmitButton() { return submitButton; }
+    public WebElement getSubmitButton() {
+        return submitButton;
+    }
 }

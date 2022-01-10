@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class DeveloperPageObject implements WithNewestArticlePageObject{
+public class DeveloperPageObject implements WithNewestArticlePageObject {
     private DeveloperPageObject developerPageObject;
 
     public DeveloperPageObject(WebDriver driver) {
@@ -38,29 +38,49 @@ public class DeveloperPageObject implements WithNewestArticlePageObject{
     @FindBy(id = "description")
     private WebElement description;
 
-    @FindBy (css = "button[type='submit']")
+    @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
     @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
 
-    public WebElement getFirstName() { return firstName; }
+    public WebElement getFirstName() {
+        return firstName;
+    }
 
-    public WebElement getLastName() { return lastName; }
+    public WebElement getLastName() {
+        return lastName;
+    }
 
-    public WebElement getEmail() { return email; }
+    public WebElement getEmail() {
+        return email;
+    }
 
-    public WebElement getPhone() { return phone; }
+    public WebElement getPhone() {
+        return phone;
+    }
 
-    public WebElement getCompanyNameInput() { return comapany; }
+    public WebElement getCompanyNameInput() {
+        return comapany;
+    }
 
-    public WebElement getMembershipOrganization() { return membershipOrganization; }
+    public WebElement getMembershipOrganization() {
+        return membershipOrganization;
+    }
 
-    public WebElement getParkingUnits() { return parkingUnits; }
+    public WebElement getParkingUnits() {
+        return parkingUnits;
+    }
 
-    public WebElement getDescription() { return  description; }
+    public WebElement getDescription() {
+        return description;
+    }
 
-    public WebElement getSubmitButton() { return  submitButton; }
+    public WebElement getSubmitButton() {
+        return submitButton;
+    }
 
-    public List<WebElement> getArticleBody() { return articleBody; }
+    public List<WebElement> getArticleBody() {
+        return articleBody;
+    }
 }

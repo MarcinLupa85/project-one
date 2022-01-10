@@ -17,7 +17,7 @@ public class ProductsPageOperations {
     private WebDriver driver;
 
 
-    public ProductsPageOperations(WebDriver driver){
+    public ProductsPageOperations(WebDriver driver) {
         productsPageObject = new ProductsPageObject(driver);
         navbarOperations = new NavbarOperations(driver);
         this.driver = driver;
@@ -53,7 +53,7 @@ public class ProductsPageOperations {
     }
 
     public void openInstallationPurchaseFlow() throws TimeoutException {
-        driver.navigate().to(BASE_URL+"/nettbutikk/montering-elbillader");
+        driver.navigate().to(BASE_URL + "/nettbutikk/montering-elbillader");
         waitUtils.waitForDocumentReadyState();
         WebElement installationLink = productsPageObject.getPurchaseInstallationButton();
         waitUtils.waitForVisiblityOf(installationLink);

@@ -8,7 +8,10 @@ import static services.config.TestRailServiceConfig.testRailApi;
 
 public class TestRailTestNgListener extends TestRailListener {
 
+    public static final int PROJECT_ID = 12;
+    public static final int SUITE_ID = 50;
+
     public TestRailTestNgListener() {
-        super(testRailApi(), 12, 50, "Master "+getFormattedNowDate(), SCREENSHOT_DIR);
+        super(testRailApi(), PROJECT_ID, SUITE_ID, "Master "+getFormattedNowDate(), SCREENSHOT_DIR);
     }
 }

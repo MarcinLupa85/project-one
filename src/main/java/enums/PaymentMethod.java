@@ -1,5 +1,5 @@
 package enums;
 
-public enum PAYMENTMETHODS {
+public enum PaymentMethod {
     VISA, MASTERCARD, KLARNA, INVOICE, TWOFACTORTYPE1, TWOFACTORTYPE2;
 }

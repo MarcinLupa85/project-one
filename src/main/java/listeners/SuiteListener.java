@@ -14,6 +14,9 @@ import static utils.FilesUtils.appendTextToFile;
 @Listeners
 public class SuiteListener implements ISuiteListener {
 
+    public static final String FAIL = "fail";
+    public static final String PASS = "pass";
+
     @Override
     public void onStart(ISuite suite) {
     }
@@ -27,9 +30,9 @@ public class SuiteListener implements ISuiteListener {
         List<String> content = new ArrayList<>();
         if (suite.getResults().entrySet().stream().anyMatch(result -> result.getValue().getTestContext().getFailedTests().size() > 0
                 || result.getValue().getTestContext().getSkippedTests().size() > 0)) {
-            content.add("fail");
+            content.add(FAIL);
         } else {
-            content.add("pass");
+            content.add(PASS);
         }
         appendTextToFile(content, Paths.get(RESULT_FILE));
     }

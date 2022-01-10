@@ -1,6 +1,6 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
-import enums.PAYMENTMETHODS;
+import enums.PaymentMethod;
 import operations.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -39,7 +39,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         waitUtils = new WaitUtils(driver);
     }
 
-    private void purchaseFlowExistingUser(String username, boolean fourteenDaysInstallation, PAYMENTMETHODS paymentMethod) throws TimeoutException {
+    private void purchaseFlowExistingUser(String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, "Emobility1!@");
         addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "3000", fourteenDaysInstallation);
@@ -51,21 +51,21 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithExtra();
-        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.VISA);
+        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.VISA);
     }
 
     @TestCaseId(testRailCaseId = 1225)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        purchaseFlowExistingUser("easeenoextra@mailinator.com",  false, PAYMENTMETHODS.MASTERCARD);
+        purchaseFlowExistingUser("easeenoextra@mailinator.com",  false, PaymentMethod.MASTERCARD);
     }
 
     @TestCaseId(testRailCaseId = 4775)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
         productsPageOperations.openCablePurchaseFlow();
-        purchaseFlowExistingUser("cablenoextra@mailinator.com",false, PAYMENTMETHODS.VISA);
+        purchaseFlowExistingUser("cablenoextra@mailinator.com",false, PaymentMethod.VISA);
     }
 
     @TestCaseId(testRailCaseId = 2514)
@@ -73,14 +73,14 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithInstallationOnly();
-        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.KLARNA);
+        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PaymentMethod.KLARNA);
     }
 
     @TestCaseId(testRailCaseId = 5488)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationAsProduct() throws TimeoutException {
         productsPageOperations.openInstallationPurchaseFlow();
-        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.INVOICE);
+        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PaymentMethod.INVOICE);
     }
 
     @TestCaseId(testRailCaseId = 5052)
@@ -88,7 +88,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlow14DaysInstallation() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithInstallationOnly();
-        purchaseFlowExistingUser("easee14daysinstallation@mailinator.com",true, PAYMENTMETHODS.MASTERCARD);
+        purchaseFlowExistingUser("easee14daysinstallation@mailinator.com",true, PaymentMethod.MASTERCARD);
     }
 
     @TestCaseId(testRailCaseId = 6099)
@@ -96,7 +96,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEqualizerNoExtra() throws TimeoutException {
         productsPageOperations.openEqualizerPurchaseFlow();
         homePageOperations.flowWithEqualizer();
-        purchaseFlowExistingUser("easeenoextra@mailinator.com",false, PAYMENTMETHODS.KLARNA);
+        purchaseFlowExistingUser("easeenoextra@mailinator.com",false, PaymentMethod.KLARNA);
     }
 
     @TestCaseId(testRailCaseId = 4061)
@@ -104,7 +104,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEqualizerWithExtra() throws TimeoutException {
         productsPageOperations.openEqualizerPurchaseFlow();
         homePageOperations.flowWithEqualizer();
-        purchaseFlowExistingUser("easeewithextra@mailinator.com",false, PAYMENTMETHODS.INVOICE);
+        purchaseFlowExistingUser("easeewithextra@mailinator.com",false, PaymentMethod.INVOICE);
     }
 
     @TestCaseId(testRailCaseId = 6098)
@@ -112,7 +112,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEqualizerWithoutExtra() throws TimeoutException {
         productsPageOperations.openEqualizerPurchaseFlow();
         homePageOperations.flowWithEqualizer();
-        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PAYMENTMETHODS.VISA);
+        purchaseFlowExistingUser("easeeinstallation@mailinator.com",false, PaymentMethod.VISA);
     }
 
     @TestCaseId(testRailCaseId = 5556)
@@ -120,7 +120,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void test2FactorAuthentication3DS1() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithExtra();
-        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.TWOFACTORTYPE1);
+        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.TWOFACTORTYPE1);
     }
 
     @TestCaseId(testRailCaseId = 5557)
@@ -128,7 +128,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void test2FactorAuthentication3DS2() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithExtra();
-        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.TWOFACTORTYPE2);
+        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.TWOFACTORTYPE2);
     }
 
     @TestCaseId(testRailCaseId = 5565)
@@ -136,7 +136,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testCanceledPaymentStatus() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         homePageOperations.flowWithExtra();
-        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.KLARNA);
+        purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.KLARNA);
         waitUtils.waitForElementToBeClickable(By.xpath("//*[contains(text(),'Tilbake')]"));
         ((JavascriptExecutor) driver).executeScript("document.getElementById('back-button__text').click();");
         waitUtils.waitForUrlToContain("/order/payment-result");

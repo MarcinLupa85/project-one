@@ -8,6 +8,7 @@ import utils.WaitUtils;
 
 public class SalesRepPageObject {
     private WaitUtils waitUtils;
+
     public SalesRepPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
         waitUtils = new WaitUtils(driver);

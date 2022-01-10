@@ -29,10 +29,27 @@ public class NavbarObject {
     @FindBy(css = "a[href='/elbillading/nettbutikk'].nav-link")
     private WebElement productsLink;
 
-    public WebElement getOnTheGoLink() { return onTheGoLink; }
-    public WebElement getHouseLink() { return houseLink; }
-    public WebElement getNavbarDropdown() { return navbarDropdown; }
-    public WebElement getDeveloperLink() { return developerLink; }
-    public WebElement getArticlesLink() { return articlesLink; }
-    public WebElement getProductsLink() { return productsLink; }
+    public WebElement getOnTheGoLink() {
+        return onTheGoLink;
+    }
+
+    public WebElement getHouseLink() {
+        return houseLink;
+    }
+
+    public WebElement getNavbarDropdown() {
+        return navbarDropdown;
+    }
+
+    public WebElement getDeveloperLink() {
+        return developerLink;
+    }
+
+    public WebElement getArticlesLink() {
+        return articlesLink;
+    }
+
+    public WebElement getProductsLink() {
+        return productsLink;
+    }
 }

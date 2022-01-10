@@ -10,7 +10,7 @@ public class HomePageObject {
     private NavbarObject navbarObject;
 
     public HomePageObject(WebDriver driver) {
-        navbarObject =  new NavbarObject(driver);
+        navbarObject = new NavbarObject(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -20,6 +20,11 @@ public class HomePageObject {
     @FindBy(css = "a[href='/elbillading/kontakt-oss'].btn")
     private WebElement contactButton;
 
-    public WebElement getReadMoreFaqButton() { return  readMoreFaqButton; }
-    public WebElement getContactButton() { return contactButton; }
+    public WebElement getReadMoreFaqButton() {
+        return readMoreFaqButton;
+    }
+
+    public WebElement getContactButton() {
+        return contactButton;
+    }
 }

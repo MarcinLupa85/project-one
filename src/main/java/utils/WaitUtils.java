@@ -1,10 +1,12 @@
 package utils;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.sql.Timestamp;
 import java.time.Duration;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class WaitUtils {
