@@ -139,7 +139,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PAYMENTMETHODS.KLARNA);
         waitUtils.waitForElementToBeClickable(By.xpath("//*[contains(text(),'Tilbake')]"));
         ((JavascriptExecutor) driver).executeScript("document.getElementById('back-button__text').click();");
-        waitUtils.waitForUrlToContains("/order/payment-result");
+        waitUtils.waitForUrlToContain("/order/payment-result");
     }
 
     @TestCaseId(testRailCaseId =6113)
@@ -148,7 +148,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         sduDiscountPartnerOperations.goToCoopDiscountPage();
         sduDiscountPartnerOperations.clickLoginButton();
         ckidPageOperations.logInWithCredentials("easeewithextra@mailinator.com", "Emobility1!@");
-        sduDiscountPartnerOperations.sendWithMembershipNumber();
+        sduDiscountPartnerOperations.sendWithMembershipNumber("9876543210");
         sduDiscountPartnerOperations.assertThankYouPage();
     }
 

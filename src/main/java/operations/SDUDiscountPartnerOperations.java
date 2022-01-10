@@ -1,13 +1,12 @@
 package operations;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import pageobjects.SDUDiscountPartnerPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
-
+import static config.Constants.SMS_CODE;
 import static config.Constants.BASE_URL;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -53,7 +52,7 @@ public class SDUDiscountPartnerOperations {
         sduDiscountPartnerPageObject.getPhone().sendKeys("94564565");
         sduDiscountPartnerPageObject.getSendCode().click();
         waitUtils.waitForElement(sduDiscountPartnerPageObject.getSmsCodeInput());
-        sduDiscountPartnerPageObject.getSmsCodeInput().sendKeys("000000");
+        sduDiscountPartnerPageObject.getSmsCodeInput().sendKeys(SMS_CODE);
         sduDiscountPartnerPageObject.getConfirmButton().click();
     }
 
@@ -65,7 +64,7 @@ public class SDUDiscountPartnerOperations {
         formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         sduDiscountPartnerPageObject.getExtraCheckbox().click();
         sduDiscountPartnerPageObject.getRegisterButton().click();
-        waitUtils.waitForUrlToContains("/confirmation");
+        waitUtils.waitForUrlToContain("/confirmation");
     }
 
     public void sendNoExtraForm(String phone, String firstName, String lastName, String mail, String membershipNumber) {
@@ -76,17 +75,17 @@ public class SDUDiscountPartnerOperations {
         formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getSendButton());
         sduDiscountPartnerPageObject.getSendButton().click();
-        waitUtils.waitForUrlToContains("/confirmation");
+        waitUtils.waitForUrlToContain("/confirmation");
     }
 
-    public void sendWithMembershipNumber() throws TimeoutException {
-        waitUtils.waitForUrlToContains("/details");
+    public void sendWithMembershipNumber(String membershipNumber) throws TimeoutException {
+        waitUtils.waitForUrlToContain("/details");
         waitUtils.waitForDocumentReadyState();
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getMembershipNumber());
-        sduDiscountPartnerPageObject.getMembershipNumber().sendKeys("9876543210");
+        formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getSendButton());
         sduDiscountPartnerPageObject.getSendButton().click();
-        waitUtils.waitForUrlToContains("/confirmation");
+        waitUtils.waitForUrlToContain("/confirmation");
     }
 
     public void assertThankYouPage() {

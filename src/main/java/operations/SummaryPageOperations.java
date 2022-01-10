@@ -39,7 +39,7 @@ public class SummaryPageOperations {
 
     public void clickFinish() {
         summaryPageObject.getFinishOrderButton().click();
-        waitUtils.waitForUrlToContains("/complete");
+        waitUtils.waitForUrlToContain("/complete");
     }
 
     public void payWithCreditCard(String cardNumber) {
@@ -89,18 +89,18 @@ public class SummaryPageOperations {
 
     public void payWithKlarna(){
         summaryPageObject.getKlarnaPayButton().click();
-        waitUtils.waitForUrlToContains("klarna.com");
+        waitUtils.waitForUrlToContain("klarna.com");
     }
 
     public void twoFactorAuthentication3DS1() {
-        waitUtils.waitForUrlToContains("test.adyen.com");
+        waitUtils.waitForUrlToContain("test.adyen.com");
         driver.findElement(By.id("username")).sendKeys("user");
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.cssSelector("input[type='submit']")).click();
     }
 
     public void twoFactorAuthentication3DS2() {
-        waitUtils.waitForUrlToContains("/identifyShopper");
+        waitUtils.waitForUrlToContain("/identifyShopper");
         driver.switchTo().frame("threeDSIframe");
         driver.findElement(By.cssSelector("input[type='text']")).sendKeys("password");
         driver.findElement(By.cssSelector("input[type='submit']")).click();

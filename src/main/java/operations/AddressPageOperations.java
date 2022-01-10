@@ -21,7 +21,7 @@ public class AddressPageOperations {
 
     public void clickNext() {
         addressPageObject.getNextButton().click();
-        waitUtils.waitForUrlToContains("/confirm-order");
+        waitUtils.waitForUrlToContain("/confirm-order");
     }
 
     public void fillClientInfo(String address, String city, String zipcode, boolean fourteenDaysInstallation) {

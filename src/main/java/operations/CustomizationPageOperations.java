@@ -28,7 +28,7 @@ public class CustomizationPageOperations {
         waitUtils.waitForVisiblityOf(submitButton);
         waitUtils.waitForDocumentReadyState();
         submitButton.click();
-        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBody"));
+        waitUtils.waitForPresenceOf(By.id("CybotCookiebotDialogBody"));
     }
 
     public void tickExtraCheckbox() {

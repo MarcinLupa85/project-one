@@ -1,8 +1,6 @@
 package operations;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import pageobjects.AddressPageObject;
 import pageobjects.CompletePageObject;
 import utils.WaitUtils;
 
@@ -20,6 +18,6 @@ public class CompletePageOperations {
         waitUtils.waitForVisiblityOf(completePageObject.getBackButton());
         waitUtils.waitForElementToBeClickable(completePageObject.getBackButton());
         completePageObject.getBackButton().click();
-        waitUtils.waitForUrlToContains("/elbillading");
+        waitUtils.waitForUrlToContain("/elbillading");
     }
 }

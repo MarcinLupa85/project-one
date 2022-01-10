@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageobjects.NavbarObject;
 import utils.WaitUtils;
-import static org.assertj.core.api.Assertions.assertThat;
-import static config.Constants.BASE_URL;
+
 import java.util.concurrent.TimeoutException;
+
+import static config.Constants.BASE_URL;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class NavbarOperations {
     private NavbarObject navbarObject;
@@ -21,12 +23,12 @@ public class NavbarOperations {
 
     public void openOnTheGoPage() {
         navbarObject.getOnTheGoLink().click();
-        waitUtils.waitForUrlToContains("ladestasjoner");
+        waitUtils.waitForUrlToContain("ladestasjoner");
     }
 
     public void openHousePage() {
         navbarObject.getHouseLink().click();
-        waitUtils.waitForUrlToContains("/hjemmelading");
+        waitUtils.waitForUrlToContain("/hjemmelading");
     }
 
     public void openCompanyPage() {
@@ -47,7 +49,7 @@ public class NavbarOperations {
 
     public void openAndVerifyArticlesPage() throws TimeoutException {
         navbarObject.getArticlesLink().click();
-        waitUtils.waitForUrlToContains("/ladenytt");
+        waitUtils.waitForUrlToContain("/ladenytt");
         waitUtils.waitForDocumentReadyState();
         assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Ladenytt')]")).isDisplayed());
     }
