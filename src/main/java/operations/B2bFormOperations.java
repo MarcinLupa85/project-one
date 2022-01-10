@@ -20,7 +20,7 @@ public class B2bFormOperations {
     public B2bFormOperations(WebDriver driver) {
         b2bFormPageObject = new B2bFormPageObject(driver);
         waitUtils = new WaitUtils(driver);
-        formUtils =  new FormUtils(driver);
+        formUtils = new FormUtils(driver);
         this.driver = driver;
     }
 
@@ -29,16 +29,16 @@ public class B2bFormOperations {
         waitUtils.waitForDocumentReadyState();
     }
 
-    public void chooseNumberOfChargers(){
+    public void chooseNumberOfChargers() {
         Select dropdown = new Select(b2bFormPageObject.getChargerAmountDropdown());
         dropdown.selectByIndex(1);
     }
 
-    public void agreeToReimbursement(){
+    public void agreeToReimbursement() {
         b2bFormPageObject.getReimbursementAgreementRadioButton().click();
     }
 
-    public void fillCompanyForm(String companyName, String organisationNumber, String companyAddress, String companyZipCode, String companyCity, String invoiceAddress, String invoiceZipCode, String invoiceCity, String buyerName, String buyerEmail, String buyerPhone, String buyerInvoiceEmail, String referenceNumber){
+    public void fillCompanyForm(String companyName, String organisationNumber, String companyAddress, String companyZipCode, String companyCity, String invoiceAddress, String invoiceZipCode, String invoiceCity, String buyerName, String buyerEmail, String buyerPhone, String buyerInvoiceEmail, String referenceNumber) {
         formUtils.fillField(b2bFormPageObject.getCompanyName(), companyName);
         formUtils.fillField(b2bFormPageObject.getOrganisationNumber(), organisationNumber);
         formUtils.fillField(b2bFormPageObject.getCompanyAddress(), companyAddress);
@@ -54,20 +54,20 @@ public class B2bFormOperations {
         formUtils.fillField(b2bFormPageObject.getReferenceNumber(), referenceNumber);
     }
 
-    public void chooseColorOfCharger(){
+    public void chooseColorOfCharger() {
         Select dropdown = new Select(b2bFormPageObject.getChargerColorDropdown());
         dropdown.selectByIndex(2);
     }
 
-    public void disagreeToInstallation(){
+    public void disagreeToInstallation() {
         b2bFormPageObject.getInstallationNoRadio().click();
     }
 
-    public void chooseFileFormat(){
+    public void chooseFileFormat() {
         b2bFormPageObject.getPdfRadio().click();
     }
 
-    public void fillChargerFrom(String name, String address, String zipCode, String city, String email, String phone){
+    public void fillChargerFrom(String name, String address, String zipCode, String city, String email, String phone) {
         formUtils.fillField(b2bFormPageObject.getName(), name);
         formUtils.fillField(b2bFormPageObject.getAddress(), address);
         formUtils.fillField(b2bFormPageObject.getZipCode(), zipCode);

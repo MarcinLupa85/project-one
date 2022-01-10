@@ -47,6 +47,10 @@ public class NavbarOperations {
         driver.navigate().to(BASE_URL+"/hjemmelading/borettslag-sameie");
     }
 
+    public void openBecomeChargingPartnerPage() {
+        driver.navigate().to(BASE_URL+"/ladepartnere");
+    }
+
     public void openAndVerifyArticlesPage() throws TimeoutException {
         navbarObject.getArticlesLink().click();
         waitUtils.waitForUrlToContain("/ladenytt");
