@@ -9,6 +9,7 @@ import testdata.Users;
 import utils.WaitUtils;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
+import static config.Constants.SMS_CODE;
 
 public class CkidPageOperations {
 
@@ -31,7 +32,7 @@ public class CkidPageOperations {
     }
 
     public void logInWithCredentials(String username, String password) throws TimeoutException {
-        waitUtils.waitForPresentOf(By.cssSelector("input[type=email]"));
+        waitUtils.waitForPresenceOf(By.cssSelector("input[type=email]"));
         closeCookieBot();
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);
@@ -41,21 +42,21 @@ public class CkidPageOperations {
 
     public void registerNewUser(String phoneNumber, String username, String password) {
         ckidPageObject.getRegisterSwitchButton().click();
-        waitUtils.waitForPresentOf(By.cssSelector("input#edit-phone-number"));
+        waitUtils.waitForPresenceOf(By.cssSelector("input#edit-phone-number"));
         ckidPageObject.getCountryCodeInput().sendKeys("48");
         ckidPageObject.getPhoneNumberInput().sendKeys(phoneNumber);
         ckidPageObject.getSendCodeButton().click();
-        waitUtils.waitForPresentOf(By.cssSelector("input#validation-code-input"));
+        waitUtils.waitForPresenceOf(By.cssSelector("input#validation-code-input"));
         // universal SMS code for test CKID environments
-        ckidPageObject.getSmsCodeInput().sendKeys("000000");
+        ckidPageObject.getSmsCodeInput().sendKeys(SMS_CODE);
         ckidPageObject.getVerifyCodeButton().click();
-        waitUtils.waitForPresentOf(By.cssSelector("input[type=email"));
+        waitUtils.waitForPresenceOf(By.cssSelector("input[type=email]"));
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);
         ckidPageObject.getFirstNameInput().sendKeys("Tester");
         ckidPageObject.getLastNameInput().sendKeys("Kowalski");
         ckidPageObject.getCountrySelect().selectByValue("string:NORWAY");
-        waitUtils.waitForPresentOf(By.cssSelector("[class = 'icon-container']"));
+        waitUtils.waitForPresenceOf(By.cssSelector("[class = 'icon-container']"));
         ckidPageObject.getCkidTcCheckbox().click();
 //        skipped due to Stable environment bein repurposed
 //        ckidPageObject.getEvTcCheckbox().click();
@@ -66,8 +67,8 @@ public class CkidPageOperations {
     }
 
     public void closeCookieBot() throws TimeoutException {
-        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyUnderlay"));
-        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
+        waitUtils.waitForPresenceOf(By.id("CybotCookiebotDialogBodyUnderlay"));
+        waitUtils.waitForPresenceOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
         cookiePanelOperations.clickCookieOkButton();
         waitUtils.waitForDocumentReadyState();
     }
@@ -103,7 +104,7 @@ public class CkidPageOperations {
             waitUtils.waitForElement(ckidPageObject.getDeleteAccountButton()).click();
             waitUtils.waitForElement(ckidPageObject.getValidationPhraseInput()).sendKeys("DELETE ACCOUNT");
             waitUtils.waitForElement(ckidPageObject.getDeleteAccountConfirmationButton()).click();
-            waitUtils.waitForPresentOf(By.id("login-submit-button"));
+            waitUtils.waitForPresenceOf(By.id("login-submit-button"));
             driver.navigate().to(ckidUrl);
         } catch (org.openqa.selenium.TimeoutException|TimeoutException exception) {
             System.out.printf("Cannot delete user %s due to exception %s %n", testUser.getEmail(), exception.getMessage());

@@ -6,7 +6,7 @@ import pageobjects.OnTheGoPageObject;
 import utils.WaitUtils;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnTheGoPageOperations {
@@ -27,7 +27,7 @@ public class OnTheGoPageOperations {
         waitUtils.waitForVisiblityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContains("/ladestasjoner/faq",2);
+        waitUtils.waitForUrlToContain("/ladestasjoner/faq",2);
         assertThat(driver.getCurrentUrl()).contains("/ladestasjoner/faq");
     }
 

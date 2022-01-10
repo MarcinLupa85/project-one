@@ -26,10 +26,10 @@ public abstract class TestsBase {
         driver.navigate().to(BASE_URL);
         waitUtils.waitUntilOnUrl(10, BASE_URL);
         cookiePanelOperations = new CookiePanelOperations(driver);
-        waitUtils.waitForPresentOf(By.id("cookie-bot"));
-        waitUtils.waitForPresentOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
+        waitUtils.waitForPresenceOf(By.id("cookie-bot"));
+        waitUtils.waitForPresenceOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
         cookiePanelOperations.clickCookieOkButton();
-        waitUtils.waitForPresentOf(By.id("header-main"));
+        waitUtils.waitForPresenceOf(By.id("header-main"));
 
         waitUtils.waitForDocumentReadyState();
     }

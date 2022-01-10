@@ -4,9 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.HomePageObject;
 import utils.WaitUtils;
-import static config.Constants.BASE_URL;
-
-import java.util.concurrent.TimeoutException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,7 +42,7 @@ public class HomePageOperations {
         waitUtils.waitForVisiblityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContains("/elbillading/ladestasjoner/faq",2);
+        waitUtils.waitForUrlToContain("/elbillading/ladestasjoner/faq",2);
         assertThat(driver.getCurrentUrl()).contains("/ladestasjoner/faq");
     }
 
@@ -53,6 +50,6 @@ public class HomePageOperations {
         waitUtils.waitForVisiblityOf(homePageObject.getContactButton());
         waitUtils.bringElementToViewport(homePageObject.getContactButton());
         homePageObject.getContactButton().click();
-        waitUtils.waitForUrlToContains("/kontakt-oss",2);
+        waitUtils.waitForUrlToContain("/kontakt-oss",2);
     }
 }

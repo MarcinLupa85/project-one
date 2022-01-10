@@ -7,7 +7,6 @@ import utils.WaitUtils;
 import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class SalesRepOperations {
     private WaitUtils waitUtils;
@@ -44,7 +43,7 @@ public class SalesRepOperations {
 
     public void goToForm() {
         salesRepPageObject.getGoToFormButton().click();
-        waitUtils.waitForUrlToContains("/forhandler/customize-order");
+        waitUtils.waitForUrlToContain("/forhandler/customize-order");
     }
 
     public void addCharger() {
@@ -69,7 +68,7 @@ public class SalesRepOperations {
 
     public void completeOrder() {
         salesRepPageObject.getCompleteOrderButton().click();
-        waitUtils.waitForUrlToContains("/bestill/forhandler/summary");
+        waitUtils.waitForUrlToContain("/bestill/forhandler/summary");
     }
 }
 

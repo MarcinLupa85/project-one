@@ -31,7 +31,7 @@ public class ProductsPageOperations {
         waitUtils.waitForVisiblityOf(easeeLink);
         waitUtils.bringElementToViewport(easeeLink);
         easeeLink.click();
-        waitUtils.waitForUrlToContains("/bestill/customize-order");
+        waitUtils.waitForUrlToContain("/bestill/customize-order");
     }
 
     public void openEqualizerPurchaseFlow() throws TimeoutException {
@@ -40,7 +40,7 @@ public class ProductsPageOperations {
         WebElement equalizerName = driver.findElement(By.cssSelector("img[src='assets/images/products/cards/equalizer/equalizer-1.jpg']"));
         waitUtils.bringElementToViewport(equalizerName);
         productsPageObject.getPurchaseFlowEqualizerLink().click();
-        waitUtils.waitForUrlToContains("/bestill/customize-order");
+        waitUtils.waitForUrlToContain("/bestill/customize-order");
     }
 
     public void openCablePurchaseFlow() throws TimeoutException {
@@ -49,7 +49,7 @@ public class ProductsPageOperations {
         WebElement cableLink = productsPageObject.getPurchaseFlowCableLink();
         waitUtils.waitForVisiblityOf(cableLink);
         cableLink.click();
-        waitUtils.waitForUrlToContains("/bestill/customize-order");
+        waitUtils.waitForUrlToContain("/bestill/customize-order");
     }
 
     public void openInstallationPurchaseFlow() throws TimeoutException {
@@ -58,6 +58,6 @@ public class ProductsPageOperations {
         WebElement installationLink = productsPageObject.getPurchaseInstallationButton();
         waitUtils.waitForVisiblityOf(installationLink);
         installationLink.click();
-        waitUtils.waitForUrlToContains("/bestill/customize-order");
+        waitUtils.waitForUrlToContain("/bestill/customize-order");
     }
 }

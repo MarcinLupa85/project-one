@@ -16,11 +16,11 @@ public class WaitUtils {
         this.driver = driver;
     }
 
-    public void waitForUrlToContains(String url) {
-        waitForUrlToContains(url, defaultMaxTimeoutForAllWaits);
+    public void waitForUrlToContain(String url) {
+        waitForUrlToContain(url, defaultMaxTimeoutForAllWaits);
     }
 
-    public void waitForUrlToContains(String url, int timeoutInSeconds) {
+    public void waitForUrlToContain(String url, int timeoutInSeconds) {
         new WebDriverWait(driver, timeoutInSeconds)
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(WebDriverException.class)
@@ -69,13 +69,13 @@ public class WaitUtils {
                 .until(urlContains(url));
     }
 
-    public void waitForPresentOf(By locator, int maxTimeInSeconds) {
+    public void waitForPresenceOf(By locator, int maxTimeInSeconds) {
         new WebDriverWait(driver, maxTimeInSeconds)
                 .until(presenceOfElementLocated(locator));
     }
 
-    public void waitForPresentOf(By locator) {
-        this.waitForPresentOf(locator, defaultMaxTimeoutForAllWaits);
+    public void waitForPresenceOf(By locator) {
+        this.waitForPresenceOf(locator, defaultMaxTimeoutForAllWaits);
     }
 
 

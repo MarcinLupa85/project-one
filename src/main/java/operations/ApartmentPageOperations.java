@@ -46,7 +46,7 @@ public class ApartmentPageOperations {
         waitUtils.waitForVisiblityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContains("ladetjenester/faq",2);
+        waitUtils.waitForUrlToContain("ladetjenester/faq",2);
         assertThat(driver.getCurrentUrl()).contains("ladetjenester/faq");
     }
 
