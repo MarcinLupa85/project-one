@@ -9,6 +9,7 @@ import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
 import static org.assertj.core.api.Assertions.assertThat;
+import static testdata.EvRoutes.Navbar.*;
 
 public class NavbarOperations {
     private NavbarObject navbarObject;
@@ -32,19 +33,19 @@ public class NavbarOperations {
     }
 
     public void openCompanyPage() {
-        driver.navigate().to(BASE_URL+"/bedriftslading");
+        driver.navigate().to(BASE_URL + COMPANY_PAGE);
     }
 
     public void openHouseAndCabinPage() {
-        driver.navigate().to(BASE_URL+"/hjemmelading/hus-hytte");
+        driver.navigate().to(BASE_URL + HOUSE_PAGE);
     }
 
     public void openPartnerPage() {
-        driver.navigate().to(BASE_URL+"/ladepartnere/utbygger");
+        driver.navigate().to(BASE_URL + PARTNER_PAGE);
     }
 
     public void openApartmentPage() {
-        driver.navigate().to(BASE_URL+"/hjemmelading/borettslag-sameie");
+        driver.navigate().to(BASE_URL + APARTMENT_PAGE);
     }
 
     public void openAndVerifyArticlesPage() throws TimeoutException {
@@ -55,6 +56,6 @@ public class NavbarOperations {
     }
 
     public void openProductsPage() {
-        driver.navigate().to(BASE_URL+"/nettbutikk");
+        driver.navigate().to(BASE_URL + PRODUCTS_PAGE);
     }
 }

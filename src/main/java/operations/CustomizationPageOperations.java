@@ -10,6 +10,7 @@ import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
 import static org.assertj.core.api.Assertions.assertThat;
+import static testdata.EvRoutes.Partner.CUSTOMIZED_PAGE;
 
 public class CustomizationPageOperations {
 
@@ -49,32 +50,32 @@ public class CustomizationPageOperations {
     }
 
     public void goToNafSDUPartner() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-740505");
+        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "Y21-740505");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToSmbSDUPartner() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-832885");
+        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "Y21-832885");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToIglandSDUPartner() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-950539");
+        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "Y21-950539");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToMDULight() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-580541");
+        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "Y21-580541");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToMDUReady() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-18954");
+        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "Y21-18954");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
     }
 
     public void goToMDULeasing() {
-        driver.navigate().to(BASE_URL + "/bestill/Y21-35010");
+        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "Y21-35010");
         waitUtils.waitForVisiblityOf(customizationPageObject.getSubmitButton());
         driver.findElement(By.xpath("//*[contains(text(),'Leie av ladeboks')]")).click();
     }

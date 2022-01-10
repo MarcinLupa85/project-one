@@ -4,9 +4,12 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.DeveloperPageObject;
 import utils.FormUtils;
 import utils.WaitUtils;
+
 import java.util.List;
 import java.util.concurrent.TimeoutException;
+
 import static config.Constants.BASE_URL;
+import static testdata.EvRoutes.REPORT_PAGE;
 
 public class DeveloperPageOperations {
 
@@ -24,7 +27,7 @@ public class DeveloperPageOperations {
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(developerPageObject, driver);
     }
 
-    public void fillForm(String firstName, String lastName, String email, String mobile, String company, String project, String parkingPlaces, String description){
+    public void fillForm(String firstName, String lastName, String email, String mobile, String company, String project, String parkingPlaces, String description) {
         waitUtils.waitForElement(developerPageObject.getFirstName());
         waitUtils.bringElementToViewport(developerPageObject.getFirstName());
         formUtils.fillField(developerPageObject.getFirstName(), firstName);
@@ -36,6 +39,7 @@ public class DeveloperPageOperations {
         formUtils.fillField(developerPageObject.getParkingUnits(), parkingPlaces);
         formUtils.fillField(developerPageObject.getDescription(), description);
     }
+
     public void clickSendForm() {
         waitUtils.waitForVisiblityOf(developerPageObject.getSubmitButton());
         developerPageObject.getSubmitButton().click();
@@ -47,8 +51,7 @@ public class DeveloperPageOperations {
     }
 
     public void goToDeveloperPage() {
-        String reportPageURL = ("/ladetjenester/utbygger");
-        driver.navigate().to(BASE_URL + reportPageURL);
+        driver.navigate().to(BASE_URL + REPORT_PAGE);
     }
 
 }

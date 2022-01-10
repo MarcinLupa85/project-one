@@ -7,6 +7,7 @@ import utils.WaitUtils;
 import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
+import static testdata.EvRoutes.Partner.CUSTOMIZED_PAGE;
 
 public class SalesRepOperations {
     private WaitUtils waitUtils;
@@ -23,7 +24,7 @@ public class SalesRepOperations {
     }
 
     public void goToSalesRepPage() throws TimeoutException {
-        driver.navigate().to(BASE_URL + "/bestill/forhandler/Y21-429364");
+        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "forhandler/Y21-429364");
         waitUtils.waitForDocumentReadyState();
     }
 
@@ -68,7 +69,7 @@ public class SalesRepOperations {
 
     public void completeOrder() {
         salesRepPageObject.getCompleteOrderButton().click();
-        waitUtils.waitForUrlToContain("/bestill/forhandler/summary");
+        waitUtils.waitForUrlToContain(CUSTOMIZED_PAGE + "forhandler/summary");
     }
 }
 

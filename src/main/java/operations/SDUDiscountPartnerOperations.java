@@ -10,6 +10,7 @@ import java.util.concurrent.TimeoutException;
 import static config.Constants.BASE_URL;
 import static config.Constants.SMS_CODE;
 import static org.assertj.core.api.Assertions.assertThat;
+import static testdata.EvRoutes.Partner.*;
 
 public class SDUDiscountPartnerOperations {
     private WaitUtils waitUtils;
@@ -25,15 +26,15 @@ public class SDUDiscountPartnerOperations {
     }
 
     public void goToObosDiscountPage() {
-        driver.navigate().to(BASE_URL + "/partnere/obos");
+        driver.navigate().to(BASE_URL + OBOS_DISCOUNT_PAGE);
     }
 
     public void goToCoopDiscountPage() {
-        driver.navigate().to(BASE_URL + "/partnere/coop");
+        driver.navigate().to(BASE_URL + COOP_DISCOUNT_PAGE);
     }
 
     public void goToNafDiscountPage() {
-        driver.navigate().to(BASE_URL + "/partnere/naf");
+        driver.navigate().to(BASE_URL + NAF_DISCOUNT_PAGE);
     }
 
     public void clickLoginButton() {
@@ -65,7 +66,7 @@ public class SDUDiscountPartnerOperations {
         formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         sduDiscountPartnerPageObject.getExtraCheckbox().click();
         sduDiscountPartnerPageObject.getRegisterButton().click();
-        waitUtils.waitForUrlToContain("/confirmation");
+        waitUtils.waitForUrlToContain(CONFIRMATION_PAGE);
     }
 
     public void sendNoExtraForm(String phone, String firstName, String lastName, String mail, String membershipNumber) {
@@ -76,7 +77,7 @@ public class SDUDiscountPartnerOperations {
         formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getSendButton());
         sduDiscountPartnerPageObject.getSendButton().click();
-        waitUtils.waitForUrlToContain("/confirmation");
+        waitUtils.waitForUrlToContain(CONFIRMATION_PAGE);
     }
 
     public void sendWithMembershipNumber(String membershipNumber) throws TimeoutException {
@@ -86,11 +87,11 @@ public class SDUDiscountPartnerOperations {
         formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getSendButton());
         sduDiscountPartnerPageObject.getSendButton().click();
-        waitUtils.waitForUrlToContain("/confirmation");
+        waitUtils.waitForUrlToContain(CONFIRMATION_PAGE);
     }
 
     public void assertThankYouPage() {
-        assertThat(driver.getCurrentUrl()).contains("/confirmation");
+        assertThat(driver.getCurrentUrl()).contains(CONFIRMATION_PAGE);
     }
 
 }
