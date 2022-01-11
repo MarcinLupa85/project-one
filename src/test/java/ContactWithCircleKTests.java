@@ -14,6 +14,7 @@ public class ContactWithCircleKTests extends TestsBase {
     private DeveloperPageOperations developerPageOperations;
     private ReportProblemPageOperations reportProblemPageOperations;
     private HomePageOperations homePageOperations;
+    private BecomeChargingPartnerPageOperations becomeChargingPartnerPageOperations;
 
 
     @BeforeMethod
@@ -24,6 +25,7 @@ public class ContactWithCircleKTests extends TestsBase {
         developerPageOperations = new DeveloperPageOperations(driver);
         reportProblemPageOperations = new ReportProblemPageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
+        becomeChargingPartnerPageOperations = new BecomeChargingPartnerPageOperations(driver);
     }
 
     @AfterMethod
@@ -63,5 +65,14 @@ public class ContactWithCircleKTests extends TestsBase {
         reportProblemPageOperations.fillReportForm("Test Automation", "testSendReportProblemForm@mailinator.com", "123873456", "123", "Test model", "Test description");
         reportProblemPageOperations.chooseCarMake();
         reportProblemPageOperations.clickSend();
+    }
+
+    @TestCaseId(testRailCaseId = 5499)
+    @Test
+    public void testBecomePartnerForm() {
+        navbarOperations.openBecomeChargingPartnerPage();
+        becomeChargingPartnerPageOperations.openForm();
+        becomeChargingPartnerPageOperations.fillForm("Test", "Test", "testBecomePartnerForm@mailinator.com", "123873456", "Test Company", "Test Organisation", "123");
+        becomeChargingPartnerPageOperations.sendForm();
     }
 }
