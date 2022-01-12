@@ -4,8 +4,6 @@ import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeoutException;
-
 public class FaqTests extends TestsBase {
     private HomePageOperations homePageOperations;
     private OnTheGoPageOperations onTheGoPageOperations;
@@ -46,7 +44,7 @@ public class FaqTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 1209)
     @Test
-    public void apartmentPageGoToFaqTest() throws TimeoutException {
+    public void apartmentPageGoToFaqTest() {
         navbarOperations.openApartmentPage();
         apartmentPageOperations.goToFaq();
     }

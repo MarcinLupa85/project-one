@@ -1,10 +1,12 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class NavbarObject {
 
     public NavbarObject(WebDriver driver) {
@@ -29,27 +31,4 @@ public class NavbarObject {
     @FindBy(css = "a[href='/elbillading/nettbutikk'].nav-link")
     private WebElement productsLink;
 
-    public WebElement getOnTheGoLink() {
-        return onTheGoLink;
-    }
-
-    public WebElement getHouseLink() {
-        return houseLink;
-    }
-
-    public WebElement getNavbarDropdown() {
-        return navbarDropdown;
-    }
-
-    public WebElement getDeveloperLink() {
-        return developerLink;
-    }
-
-    public WebElement getArticlesLink() {
-        return articlesLink;
-    }
-
-    public WebElement getProductsLink() {
-        return productsLink;
-    }
 }

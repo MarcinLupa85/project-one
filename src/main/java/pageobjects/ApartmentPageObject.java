@@ -1,5 +1,6 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,8 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class ApartmentPageObject implements WithNewestArticlePageObject{
-    private ApartmentPageObject apartmentPageObject;
+@Getter
+public class ApartmentPageObject implements WithNewestArticlePageObject {
 
     public ApartmentPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -38,24 +39,6 @@ public class ApartmentPageObject implements WithNewestArticlePageObject{
     @FindBy(css = "[class='heading-4']")
     private WebElement thankYouText;
 
-    @FindBy(xpath ="//*[contains(text(),'til borettslag og sameie')]" )
+    @FindBy(xpath = "//*[contains(text(),'til borettslag og sameie')]")
     private WebElement redirectToFormButton;
-
-    public WebElement getName() { return name; }
-
-    public WebElement getPhone() { return phone; }
-
-    public WebElement getCompanyNameInput() { return company; }
-
-    public WebElement getMail() { return mail; }
-
-    public WebElement getContactSubmitButton() { return contactSubmitButton; }
-
-    public WebElement getReadMoreFaqButton() { return readMoreFaqButton; }
-
-    public List<WebElement> getArticleBody() { return articleBody; }
-
-    public WebElement getThankYouText() {return thankYouText;}
-
-    public WebElement getRedirectToFormButton() { return redirectToFormButton; }
 }

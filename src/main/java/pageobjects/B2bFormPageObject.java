@@ -1,10 +1,12 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class B2bFormPageObject {
     public B2bFormPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -85,103 +87,4 @@ public class B2bFormPageObject {
     @FindBy(css = "button[type='submit']")
     private WebElement submitButton;
 
-    public WebElement getChargerAmountDropdown() {
-        return chargerAmountDropdown;
-    }
-
-    public WebElement getReimbursementAgreementRadioButton() {
-        return reimbursementAgreementRadioButton;
-    }
-
-    public WebElement getCompanyName() {
-        return companyName;
-    }
-
-    public WebElement getOrganisationNumber() {
-        return organisationNumber;
-    }
-
-    public WebElement getCompanyAddress() {
-        return companyAddress;
-    }
-
-    public WebElement getCompanyZipCode() {
-        return companyZipCode;
-    }
-
-    public WebElement getCompanyCity() {
-        return companyCity;
-    }
-
-    public WebElement getInvoiceAddress() {
-        return invoiceAddress;
-    }
-
-    public WebElement getInvoiceZipCode() {
-        return invoiceZipCode;
-    }
-
-    public WebElement getInvoiceCity() {
-        return invoiceCity;
-    }
-
-    public WebElement getBuyerName() {
-        return buyerName;
-    }
-
-    public WebElement getBuyerEmail() {
-        return buyerEmail;
-    }
-
-    public WebElement getBuyerPhone() {
-        return buyerPhone;
-    }
-
-    public WebElement getBuyerInvoiceEmail() {
-        return buyerInvoiceEmail;
-    }
-
-    public WebElement getReferenceNumber() {
-        return referenceNumber;
-    }
-
-    public WebElement getPdfRadio() {
-        return pdfRadio;
-    }
-
-    public WebElement getChargerColorDropdown() {
-        return chargerColorDropdown;
-    }
-
-    public WebElement getInstallationNoRadio() {
-        return installationNoRadio;
-    }
-
-    public WebElement getName() {
-        return name;
-    }
-
-    public WebElement getAddress() {
-        return address;
-    }
-
-    public WebElement getZipCode() {
-        return zipCode;
-    }
-
-    public WebElement getCity() {
-        return city;
-    }
-
-    public WebElement getEmail() {
-        return email;
-    }
-
-    public WebElement getPhone() {
-        return phone;
-    }
-
-    public WebElement getSubmitButton() {
-        return submitButton;
-    }
 }

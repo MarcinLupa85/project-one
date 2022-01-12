@@ -1,10 +1,12 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class ProductsPageObject {
     public ProductsPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -22,8 +24,4 @@ public class ProductsPageObject {
     @FindBy(css = "button.btn-primary")
     private WebElement purchaseInstallationButton;
 
-    public WebElement getPurchaseFlowEaseeLink() { return purchaseFlowEaseeLink; }
-    public WebElement getPurchaseFlowEqualizerLink() { return purchaseFlowEqualizerLink; }
-    public WebElement getPurchaseFlowCableLink() { return purchaseFlowCableLink; }
-    public WebElement getPurchaseInstallationButton() { return purchaseInstallationButton; }
 }

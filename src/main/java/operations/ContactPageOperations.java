@@ -14,10 +14,10 @@ public class ContactPageOperations {
     public ContactPageOperations(WebDriver driver) {
         contactPageObject = new ContactPageObject(driver);
         waitUtils = new WaitUtils(driver);
-        formUtils =  new FormUtils(driver);
+        formUtils = new FormUtils(driver);
     }
 
-    public void fillForm (String name, String email, String number, String company, String comment) {
+    public void fillForm(String name, String email, String number, String company, String comment) {
         waitUtils.waitForElement(contactPageObject.getFullNameInput());
         waitUtils.bringElementToViewport(contactPageObject.getFullNameInput());
         formUtils.fillField(contactPageObject.getFullNameInput(), name);
@@ -28,7 +28,7 @@ public class ContactPageOperations {
     }
 
     public void clickSend() {
-        contactPageObject.submitButton().click();
+        contactPageObject.getSubmitButton().click();
     }
 
 }

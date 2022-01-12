@@ -1,16 +1,15 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class HomePageObject {
 
-    private NavbarObject navbarObject;
-
     public HomePageObject(WebDriver driver) {
-        navbarObject = new NavbarObject(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -20,11 +19,4 @@ public class HomePageObject {
     @FindBy(css = "a[href='/elbillading/kontakt-oss'].btn")
     private WebElement contactButton;
 
-    public WebElement getReadMoreFaqButton() {
-        return readMoreFaqButton;
-    }
-
-    public WebElement getContactButton() {
-        return contactButton;
-    }
 }

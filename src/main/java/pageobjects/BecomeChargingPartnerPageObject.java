@@ -1,10 +1,12 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class BecomeChargingPartnerPageObject {
     public BecomeChargingPartnerPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -37,39 +39,4 @@ public class BecomeChargingPartnerPageObject {
     @FindBy(css = "button[data-action='Send']")
     private WebElement sendButton;
 
-    public WebElement getContactUsButton() {
-        return contactUsButton;
-    }
-
-    public WebElement getFirstName() {
-        return firstName;
-    }
-
-    public WebElement getLastName() {
-        return lastName;
-    }
-
-    public WebElement getEmail() {
-        return email;
-    }
-
-    public WebElement getPhone() {
-        return phone;
-    }
-
-    public WebElement getCompany() {
-        return company;
-    }
-
-    public WebElement getMembershipOrganization() {
-        return membershipOrganization;
-    }
-
-    public WebElement getParkingUnits() {
-        return parkingUnits;
-    }
-
-    public WebElement getSendButton() {
-        return sendButton;
-    }
 }

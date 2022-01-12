@@ -1,12 +1,16 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class SDUDiscountPartnerPageObject {
-    public SDUDiscountPartnerPageObject(WebDriver driver) { PageFactory.initElements(driver, this); }
+    public SDUDiscountPartnerPageObject(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(css = "button[data-action='Logg inn']")
     private WebElement logInButton;
@@ -53,33 +57,4 @@ public class SDUDiscountPartnerPageObject {
     @FindBy(css = "label[class='custom-control-label']")
     private WebElement extraCheckbox;
 
-    public WebElement getLogInButton() { return logInButton; }
-
-    public WebElement getBecomeMemberButton() { return becomeMemberButton; }
-
-    public WebElement getNoExtraLink() { return noExtraLink; }
-
-    public WebElement getMembershipNumber() { return membershipNumber; }
-
-    public WebElement getSendButton() { return sendButton; }
-
-    public WebElement getPhone() { return phone; }
-
-    public WebElement getSendCode() { return sendCode; }
-
-    public WebElement getSmsCodeInput() { return smsCodeInput; }
-
-    public WebElement getConfirmButton() { return confirmButton; }
-
-    public WebElement getFirstName() { return firstName; }
-
-    public WebElement getLastName() { return lastName; }
-
-    public WebElement getEmail() { return email; }
-
-    public WebElement getPassword() { return password; }
-
-    public WebElement getRegisterButton() { return registerButton; }
-
-    public WebElement getExtraCheckbox() { return extraCheckbox; }
 }
