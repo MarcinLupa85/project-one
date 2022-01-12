@@ -1,5 +1,8 @@
 package models;
 
+import lombok.Getter;
+
+@Getter
 public class User {
 
     private String email, password, phoneNumber;
@@ -8,20 +11,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
     }
 
     @Override

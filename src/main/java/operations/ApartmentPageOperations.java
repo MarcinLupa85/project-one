@@ -31,7 +31,7 @@ public class ApartmentPageOperations {
         formUtils.fillField(apartmentPageObject.getName(), name);
         formUtils.fillField(apartmentPageObject.getMail(), mail);
         formUtils.fillField(apartmentPageObject.getPhone(), phone);
-        formUtils.fillField(apartmentPageObject.getCompanyNameInput(), company);
+        formUtils.fillField(apartmentPageObject.getCompany(), company);
     }
 
     public void clickSendContactForm() {

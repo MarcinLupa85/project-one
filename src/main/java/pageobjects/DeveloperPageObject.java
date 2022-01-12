@@ -1,5 +1,6 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,8 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+@Getter
 public class DeveloperPageObject implements WithNewestArticlePageObject {
-    private DeveloperPageObject developerPageObject;
 
     public DeveloperPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -27,7 +28,7 @@ public class DeveloperPageObject implements WithNewestArticlePageObject {
     private WebElement phone;
 
     @FindBy(id = "company")
-    private WebElement comapany;
+    private WebElement company;
 
     @FindBy(id = "membershipOrganization")
     private WebElement membershipOrganization;
@@ -44,43 +45,4 @@ public class DeveloperPageObject implements WithNewestArticlePageObject {
     @FindBy(css = "ev-articles-list")
     private List<WebElement> articleBody;
 
-    public WebElement getFirstName() {
-        return firstName;
-    }
-
-    public WebElement getLastName() {
-        return lastName;
-    }
-
-    public WebElement getEmail() {
-        return email;
-    }
-
-    public WebElement getPhone() {
-        return phone;
-    }
-
-    public WebElement getCompanyNameInput() {
-        return comapany;
-    }
-
-    public WebElement getMembershipOrganization() {
-        return membershipOrganization;
-    }
-
-    public WebElement getParkingUnits() {
-        return parkingUnits;
-    }
-
-    public WebElement getDescription() {
-        return description;
-    }
-
-    public WebElement getSubmitButton() {
-        return submitButton;
-    }
-
-    public List<WebElement> getArticleBody() {
-        return articleBody;
-    }
 }

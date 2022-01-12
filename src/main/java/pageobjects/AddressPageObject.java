@@ -1,10 +1,12 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class AddressPageObject {
 
     public AddressPageObject(WebDriver driver) {
@@ -31,18 +33,4 @@ public class AddressPageObject {
 
     @FindBy(xpath = "//label[contains(text(), 'at installasjonen om mulig skal')]")
     private WebElement fourteenDaysCheckbox;
-
-    public WebElement getBillingAddressInput() { return billingAddressInput; }
-
-    public WebElement getBillingZipCodeInput() { return billingZipCodeInput; }
-
-    public WebElement getBillingCityInput() { return billingCityInput; }
-
-    public WebElement getParkingPlaceInput() { return parkingPlaceInput; }
-
-    public WebElement getNextButton() { return nextButton; }
-
-    public WebElement getCommentInput() { return commentInput; }
-
-    public WebElement getFourteenDaysCheckbox() { return fourteenDaysCheckbox; }
 }

@@ -34,7 +34,7 @@ public class DeveloperPageOperations {
         formUtils.fillField(developerPageObject.getLastName(), lastName);
         formUtils.fillField(developerPageObject.getEmail(), email);
         formUtils.fillField(developerPageObject.getPhone(), mobile);
-        formUtils.fillField(developerPageObject.getCompanyNameInput(), company);
+        formUtils.fillField(developerPageObject.getCompany(), company);
         formUtils.fillField(developerPageObject.getMembershipOrganization(), project);
         formUtils.fillField(developerPageObject.getParkingUnits(), parkingPlaces);
         formUtils.fillField(developerPageObject.getDescription(), description);
