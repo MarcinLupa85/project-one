@@ -3,7 +3,9 @@ import config.TestsBase;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.PasswordUtils;
 import utils.WaitUtils;
+
 import java.util.concurrent.TimeoutException;
 
 public class MDUFlowTests extends TestsBase {
@@ -14,20 +16,11 @@ public class MDUFlowTests extends TestsBase {
     private CompletePageOperations completePageOperations;
     private HomePageOperations homePageOperations;
     private WaitUtils waitUtils;
-
-    private void purchaseFlowMDUUser(String username, boolean fourteenDaysInstallation) throws TimeoutException {
-        customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.logInWithCredentials(username, "Emobility1");
-        addressPageOperations.fillParkingPlace("23");
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "3000", fourteenDaysInstallation);
-        addressPageOperations.clickNext();
-        summaryPageOperations.tickTermsAndConditionsCheckbox();
-        summaryPageOperations.clickFinish();
-        completePageOperations.clickBack();
-    }
+    private PasswordUtils passwordUtils;
+    private String decryptedString;
 
     @BeforeMethod
-    private void initOperations() {
+    private void initOperations() throws Exception {
         customizationPageOperations = new CustomizationPageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -36,6 +29,8 @@ public class MDUFlowTests extends TestsBase {
         completePageOperations = new CompletePageOperations(driver);
         homePageOperations = new HomePageOperations(driver);
         waitUtils = new WaitUtils(driver);
+        passwordUtils = new PasswordUtils();
+        decryptedString = passwordUtils.decryptEvPassword();
     }
 
     @TestCaseId(testRailCaseId = 4598)
@@ -53,12 +48,24 @@ public class MDUFlowTests extends TestsBase {
         customizationPageOperations.checkPriceFormat();
         purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
     }
-// No Leasing offer available in SF
-//    @TestCaseId(testRailCaseId = 4600)
-//    @Test
-//    private void MDULeasingFlow() throws TimeoutException {
-//        customizationPageOperations.goToMDULeasing();
-//        customizationPageOperations.checkMDULeasingPriceFormat();
-//        purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
-//    }
+
+    /* No Leasing offer available in SF
+   @TestCaseId(testRailCaseId = 4600)
+   @Test
+   private void MDULeasingFlow() throws TimeoutException {
+       customizationPageOperations.goToMDULeasing();
+       customizationPageOperations.checkMDULeasingPriceFormat();
+       purchaseFlowMDUUser("mdueaseenoextra@mailinator.com", false);
+    }*/
+
+    private void purchaseFlowMDUUser(String username, boolean fourteenDaysInstallation) throws TimeoutException {
+        customizationPageOperations.clickSubmitButton();
+        ckidPageOperations.logInWithCredentials(username, decryptedString);
+        addressPageOperations.fillParkingPlace("23");
+        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "3000", fourteenDaysInstallation);
+        addressPageOperations.clickNext();
+        summaryPageOperations.tickTermsAndConditionsCheckbox();
+        summaryPageOperations.clickFinish();
+        completePageOperations.clickBack();
+    }
 }

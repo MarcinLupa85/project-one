@@ -19,4 +19,5 @@ public class Constants {
     public static final String RESULT_FILE = REPORT_DIR + "result_file";
     public static final String SCREENSHOT_DIR = REPORT_DIR + "screenshots" + separator;
     public static final String SMS_CODE = "000000";
+    public static final String USERS_PASSWORD = "iijG2qHRA+jo60I7Y5wcAg==";
 }

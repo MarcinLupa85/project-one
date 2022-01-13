@@ -1,13 +1,18 @@
 package testdata;
 
 import models.User;
+import utils.PasswordUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Users{
+import static config.Constants.USERS_PASSWORD;
+
+public class Users {
+
     private List<User> usersList;
-    private String password = "Emobility1";
+    private String password = getDecryptedPassword(USERS_PASSWORD);
+
     public Users() {
         usersList = new ArrayList<>();
         usersList.add(new User("newuser.easeewithextra@mailinator.com", password, "575437397"));
@@ -21,6 +26,16 @@ public class Users{
         return usersList;
     }
 
+    private String getDecryptedPassword(String password) {
+        PasswordUtils passwordUtils = null;
+        try {
+            passwordUtils = new PasswordUtils();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return passwordUtils.decrypt(USERS_PASSWORD);
+    }
+
     @Override
     public String toString() {
         return "Users{" +
@@ -28,4 +43,5 @@ public class Users{
                 ", password='" + password + '\'' +
                 '}';
     }
+
 }
