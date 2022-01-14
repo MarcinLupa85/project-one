@@ -1,53 +1,51 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
-import config.Constants;
 import config.DriverFactory;
 import config.TestsBase;
 import enums.PaymentMethod;
-import models.User;
 import operations.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testdata.Users;
-import java.util.List;
+import testdata.ClientInfo;
+
 import java.util.concurrent.TimeoutException;
+
+import static config.Constants.BASE_URL;
 
 public class PurchaseFlowNewUserTest extends TestsBase {
     private HomePageOperations homePageOperations;
     private ProductsPageOperations productsPageOperations;
-    private HousePageOperations housePageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
-    private CompletePageOperations completePageOperations;
     private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
-    private String phoneNumber, userName, paymentMethod;
-    private Boolean extraDiscount, fourteenDaysInstallation;
-    private List<User> testUsers;
-    private Constants constants;
 
 
     @BeforeMethod
     private void initOperations() {
         homePageOperations = new HomePageOperations(driver);
         productsPageOperations = new ProductsPageOperations(driver);
-        housePageOperations = new HousePageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        completePageOperations = new CompletePageOperations(driver);
         sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
-        testUsers = new Users().getUsersList();
-        driver.navigate().to(constants.BASE_URL);
+        driver.navigate().to(BASE_URL);
     }
 
     private void purchaseFlowNewUser(String phoneNumber, String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {
+        ClientInfo clientInfo = new ClientInfo()
+                .withAddress("Test Addresse 582")
+                .withCity("Test Billing City")
+                .withZipcode("3000")
+                .withComment("Test comment")
+                .withFourteenDaysInstallation(fourteenDaysInstallation);
+
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.closeCookieBot();
         ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "3000", fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo(clientInfo);
         summaryPageOperations.pay(paymentMethod);
     }
 
@@ -91,13 +89,11 @@ public class PurchaseFlowNewUserTest extends TestsBase {
 
     @TestCaseId(testRailCaseId = 6114)
     @Test
-    public void DiscountPartnerNewUserTest(){
+    public void DiscountPartnerNewUserTest() {
         sduDiscountPartnerOperations.goToNafDiscountPage();
         sduDiscountPartnerOperations.clickBecomeMemberButton();
         sduDiscountPartnerOperations.sendPhoneNumber();
-        sduDiscountPartnerOperations.sendRegisterForm("Name", "Test", "newuser.easeenoextra2@mailinator.com", "Emobility1","9876543210");
+        sduDiscountPartnerOperations.sendRegisterForm("Name", "Test", "newuser.easeenoextra2@mailinator.com", "Emobility1", "9876543210");
         sduDiscountPartnerOperations.assertThankYouPage();
     }
 }
-
-

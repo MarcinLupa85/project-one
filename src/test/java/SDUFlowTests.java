@@ -7,6 +7,7 @@ import operations.CustomizationPageOperations;
 import operations.SummaryPageOperations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import testdata.ClientInfo;
 import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
@@ -55,12 +56,19 @@ public class SDUFlowTests extends TestsBase {
     }
 
     private void purchaseFlowSDUUser(String username, boolean membershipNumberNecessary, String membershipNumber, PaymentMethod paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
+        ClientInfo clientInfo = new ClientInfo()
+                .withAddress("Test Addresse 582")
+                .withCity("Test Billing City")
+                .withZipcode("9990")
+                .withComment("Test comment")
+                .withFourteenDaysInstallation(fourteenDaysInstallation);
+
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, decryptedString);
         if (membershipNumberNecessary) {
             customizationPageOperations.fillMembershipNumber(membershipNumber);
         }
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "9990", fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo(clientInfo);
         summaryPageOperations.pay(paymentMethod);
     }
 }

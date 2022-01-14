@@ -2,6 +2,7 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.AddressPageObject;
+import testdata.ClientInfo;
 import utils.WaitUtils;
 
 public class AddressPageOperations {
@@ -9,7 +10,7 @@ public class AddressPageOperations {
     private AddressPageObject addressPageObject;
     private WaitUtils waitUtils;
 
-    public AddressPageOperations (WebDriver driver) {
+    public AddressPageOperations(WebDriver driver) {
         addressPageObject = new AddressPageObject(driver);
         waitUtils = new WaitUtils(driver);
     }
@@ -24,16 +25,15 @@ public class AddressPageOperations {
         waitUtils.waitForUrlToContain("/confirm-order");
     }
 
-    public void fillClientInfo(String address, String city, String zipcode, boolean fourteenDaysInstallation) {
+    public void fillClientInfo(ClientInfo clientInfo) {
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingAddressInput());
-        addressPageObject.getBillingAddressInput().sendKeys(address);
+        addressPageObject.getBillingAddressInput().sendKeys(clientInfo.getAddress());
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingCityInput());
-        addressPageObject.getBillingCityInput().sendKeys(city);
+        addressPageObject.getBillingCityInput().sendKeys(clientInfo.getCity());
         waitUtils.waitForVisiblityOf(addressPageObject.getBillingZipCodeInput());
-        addressPageObject.getBillingZipCodeInput().sendKeys(zipcode);
-        addressPageObject.getCommentInput().sendKeys("Test comment");
-        tick14DaysCheckbox(fourteenDaysInstallation);
-
+        addressPageObject.getBillingZipCodeInput().sendKeys(clientInfo.getZipcode());
+        addressPageObject.getCommentInput().sendKeys(clientInfo.getComment());
+        tick14DaysCheckbox(clientInfo.isFourteenDaysInstallation());
     }
 
     public void tick14DaysCheckbox(boolean fourteenDaysInstallation) {

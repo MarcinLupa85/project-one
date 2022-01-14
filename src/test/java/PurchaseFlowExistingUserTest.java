@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import testdata.ClientInfo;
 import utils.PasswordUtils;
 import utils.WaitUtils;
 
@@ -15,14 +16,11 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     private HomePageOperations homePageOperations;
     private ProductsPageOperations productsPageOperations;
-    private HousePageOperations housePageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
-    private CompletePageOperations completePageOperations;
     private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
-    private NavbarOperations navbarOperations;
     private WaitUtils waitUtils;
     private PasswordUtils passwordUtils;
     private String decryptedString;
@@ -31,14 +29,11 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     private void initOperations() throws Exception {
         homePageOperations = new HomePageOperations(driver);
         productsPageOperations = new ProductsPageOperations(driver);
-        housePageOperations = new HousePageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        completePageOperations = new CompletePageOperations(driver);
         sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
-        navbarOperations = new NavbarOperations(driver);
         waitUtils = new WaitUtils(driver);
         passwordUtils = new PasswordUtils();
         decryptedString = passwordUtils.decryptEvPassword();
@@ -160,9 +155,16 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     }
 
     private void purchaseFlowExistingUser(String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {
+        ClientInfo clientInfo = new ClientInfo()
+                .withAddress("Test Addresse 582")
+                .withCity("Test Billing City")
+                .withZipcode("3000")
+                .withComment("Test comment")
+                .withFourteenDaysInstallation(fourteenDaysInstallation);
+
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, decryptedString);
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "3000", fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo(clientInfo);
         summaryPageOperations.pay(paymentMethod);
     }
 }

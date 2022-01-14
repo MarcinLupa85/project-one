@@ -10,7 +10,6 @@ public class FaqTests extends TestsBase {
     private HousePageOperations housePageOperations;
     private ApartmentPageOperations apartmentPageOperations;
     private NavbarOperations navbarOperations;
-    private CookiePanelOperations cookiePanelOperations;
 
     @BeforeMethod
     private void initOperations() {
@@ -19,7 +18,6 @@ public class FaqTests extends TestsBase {
         housePageOperations = new HousePageOperations(driver);
         apartmentPageOperations = new ApartmentPageOperations(driver);
         navbarOperations = new NavbarOperations(driver);
-        cookiePanelOperations = new CookiePanelOperations(driver);
     }
 
     @TestCaseId(testRailCaseId = 1208)

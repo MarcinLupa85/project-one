@@ -3,8 +3,8 @@ import config.TestsBase;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import testdata.ClientInfo;
 import utils.PasswordUtils;
-import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
 
@@ -14,8 +14,6 @@ public class MDUFlowTests extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
-    private HomePageOperations homePageOperations;
-    private WaitUtils waitUtils;
     private PasswordUtils passwordUtils;
     private String decryptedString;
 
@@ -27,8 +25,6 @@ public class MDUFlowTests extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
-        homePageOperations = new HomePageOperations(driver);
-        waitUtils = new WaitUtils(driver);
         passwordUtils = new PasswordUtils();
         decryptedString = passwordUtils.decryptEvPassword();
     }
@@ -59,10 +55,17 @@ public class MDUFlowTests extends TestsBase {
     }*/
 
     private void purchaseFlowMDUUser(String username, boolean fourteenDaysInstallation) throws TimeoutException {
+        ClientInfo clientInfo = new ClientInfo()
+                .withAddress("Test Addresse 582")
+                .withCity("Test Billing City")
+                .withZipcode("3000")
+                .withComment("Test comment")
+                .withFourteenDaysInstallation(fourteenDaysInstallation);
+
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.logInWithCredentials(username, decryptedString);
         addressPageOperations.fillParkingPlace("23");
-        addressPageOperations.fillClientInfo("Test Addresse 582", "Test Billing City", "3000", fourteenDaysInstallation);
+        addressPageOperations.fillClientInfo(clientInfo);
         addressPageOperations.clickNext();
         summaryPageOperations.tickTermsAndConditionsCheckbox();
         summaryPageOperations.clickFinish();
