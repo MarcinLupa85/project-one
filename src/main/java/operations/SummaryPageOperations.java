@@ -5,15 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.SummaryPageObject;
-import utils.DriverUtils;
 import utils.WaitUtils;
-
 
 public class SummaryPageOperations {
 
     private SummaryPageObject summaryPageObject;
     private WaitUtils waitUtils;
-    private DriverUtils driverUtils;
     private CompletePageOperations completePageOperations;
     private WebDriver driver;
     private static final String visaCardNumber = "4988 4388 4388 4305";
@@ -21,10 +18,9 @@ public class SummaryPageOperations {
     private static final String twoFactorCardNumberType1 = "5212 3456 7890 1234";
     public static final String twoFactorCardNumberType2 = "4917 6100 0000 0000";
 
-    public SummaryPageOperations (WebDriver driver) {
+    public SummaryPageOperations(WebDriver driver) {
         summaryPageObject = new SummaryPageObject(driver);
         waitUtils = new WaitUtils(driver);
-        driverUtils = new DriverUtils(driver);
         completePageOperations = new CompletePageOperations(driver);
         this.driver = driver;
     }
@@ -87,7 +83,7 @@ public class SummaryPageOperations {
         summaryPageObject.getKlarnaPaymentOption().click();
     }
 
-    public void payWithKlarna(){
+    public void payWithKlarna() {
         summaryPageObject.getKlarnaPayButton().click();
         waitUtils.waitForUrlToContain("klarna.com");
     }
@@ -107,7 +103,7 @@ public class SummaryPageOperations {
         driver.switchTo().defaultContent();
     }
 
-    public void pay(PaymentMethod paymentMethod){
+    public void pay(PaymentMethod paymentMethod) {
         switch (paymentMethod) {
             case INVOICE:
                 chooseInvoiceOption();

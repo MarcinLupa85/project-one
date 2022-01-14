@@ -4,6 +4,7 @@ import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 import pageobjects.CkidPageObject;
 import testdata.Users;
 import utils.WaitUtils;
@@ -41,6 +42,8 @@ public class CkidPageOperations {
     }
 
     public void registerNewUser(String phoneNumber, String username, String password) {
+        Select countrySelect = new Select(ckidPageObject.getCountryDropdown());
+
         ckidPageObject.getRegisterSwitchButton().click();
         waitUtils.waitForPresenceOf(By.cssSelector("input#edit-phone-number"));
         ckidPageObject.getCountryCodeInput().sendKeys("48");
@@ -55,7 +58,7 @@ public class CkidPageOperations {
         ckidPageObject.getPasswordInput().sendKeys(password);
         ckidPageObject.getFirstNameInput().sendKeys("Tester");
         ckidPageObject.getLastNameInput().sendKeys("Kowalski");
-        ckidPageObject.getCountrySelect().selectByValue("string:NORWAY");
+        countrySelect.selectByValue("string:NORWAY");
         waitUtils.waitForPresenceOf(By.cssSelector("[class = 'icon-container']"));
         ckidPageObject.getCkidTcCheckbox().click();
 //        skipped due to Stable environment bein repurposed

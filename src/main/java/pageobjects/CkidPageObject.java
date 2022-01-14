@@ -1,11 +1,12 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
+@Getter
 public class CkidPageObject {
 
     public CkidPageObject(WebDriver driver) {
@@ -77,97 +78,5 @@ public class CkidPageObject {
 
     @FindBy(id = "mfa-submit-btn")
     private WebElement secondStepVerificationButton;
-
-    public WebElement getEditAccountButton() {
-        return editAccountButton;
-    }
-
-    public WebElement getDeleteAccountButton() {
-        return deleteAccountButton;
-    }
-
-    public WebElement getValidationPhraseInput() {
-        return validationPhraseInput;
-    }
-
-    public WebElement getDeleteAccountConfirmationButton() {
-        return deleteAccountConfirmationButton;
-    }
-
-    public WebElement getLoginLink() {
-        return loginLink;
-    }
-
-    public WebElement getEmailInput() {
-        return emailInput;
-    }
-
-    public WebElement getPasswordInput() {
-        return passwordInput;
-    }
-
-    public WebElement getLoginButton() {
-        return loginButton;
-    }
-
-    public WebElement getCountryCodeInput() {
-        return countryCodeInput;
-    }
-
-    public WebElement getPhoneNumberInput() {
-        return phoneNumberInput;
-    }
-
-    public WebElement getSendCodeButton() {
-        return sendCodeButton;
-    }
-
-    public WebElement getSmsCodeInput() {
-        return smsCodeInput;
-    }
-
-    public WebElement getVerifyCodeButton() {
-        return verifyCodeButton;
-    }
-
-    public WebElement getFirstNameInput() {
-        return firstNameInput;
-    }
-
-    public WebElement getLastNameInput() {
-        return lastNameInput;
-    }
-
-    public WebElement getCountryDropdown() {
-        return countryDropdown;
-    }
-
-    public Select getCountrySelect() {
-        return new Select(countryDropdown);
-    }
-
-    public WebElement getCkidTcCheckbox() {
-        return CkidTcCheckbox;
-    }
-
-    public WebElement getEvTcCheckbox() {
-        return EvTcCheckbox;
-    }
-
-    public WebElement getRegisterButton() {
-        return registerButton;
-    }
-
-    public WebElement getRegisterSwitchButton() {
-        return registerSwitchButton;
-    }
-
-    public WebElement getSecondStepVerificationInput() {
-        return secondStepVerificationInput;
-    }
-
-    public WebElement getSecondStepVerificationButton() {
-        return secondStepVerificationButton;
-    }
 
 }

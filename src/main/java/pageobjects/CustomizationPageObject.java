@@ -1,24 +1,22 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.WaitUtils;
 
+@Getter
 public class CustomizationPageObject {
-    private WaitUtils waitUtils;
-
     public CustomizationPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        waitUtils = new WaitUtils(driver);
     }
 
     @FindBy(css = "li#id1 app-number-selector")
     private WebElement easeeNumberSelector;
 
     @FindBy(css = "[for=withInstallation]")
-    private WebElement installlationCheckbox;
+    private WebElement installationCheckbox;
 
     @FindBy(css = "[for=withExtra]")
     private WebElement extraCheckbox;
@@ -40,37 +38,5 @@ public class CustomizationPageObject {
 
     @FindBy(id = "membershipNumber")
     private WebElement membershipNumber;
-
-    public WebElement getEaseeNumberSelector() {
-        return easeeNumberSelector;
-    }
-
-    public WebElement getInstallationCheckbox() {
-        return waitUtils.waitForElementToBeClickable(installlationCheckbox);
-    }
-
-    public WebElement getExtraCheckbox() {
-        return extraCheckbox;
-    }
-
-    public WebElement getAddEqualizer() {
-        return waitUtils.waitForElementToBeClickable(addEqualizer);
-    }
-
-    public WebElement getSubmitButton() {
-        return submitButton;
-    }
-
-    public WebElement getTotalPrice() {
-        return totalPrice;
-    }
-
-    public WebElement getSubscriptionPrice() {
-        return subscriptionPrice;
-    }
-
-    public WebElement getMembershipNumber() {
-        return membershipNumber;
-    }
 
 }

@@ -30,12 +30,12 @@ public class SalesRepOperations {
 
     public void chooseRepName() {
         waitUtils.bringElementToViewport(salesRepPageObject.getEmail());
-        salesRepPageObject.getDealerName().sendKeys(repName);
-        salesRepPageObject.getDropdownFirstOption().click();
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getDealerName()).sendKeys(repName);
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getDropdownFirstOption()).click();
     }
 
     public void sendRepMail() {
-        salesRepPageObject.getEmail().sendKeys(repMail);
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getEmail()).sendKeys(repMail);
     }
 
     public void verifyRep() {
@@ -43,7 +43,7 @@ public class SalesRepOperations {
     }
 
     public void goToForm() {
-        salesRepPageObject.getGoToFormButton().click();
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getGoToFormButton()).click();
         waitUtils.waitForUrlToContain("/forhandler/customize-order");
     }
 
@@ -56,8 +56,8 @@ public class SalesRepOperations {
     }
 
     public void fillForm() {
-        salesRepPageObject.getName().sendKeys("Test Kowalski");
-        salesRepPageObject.getEmail().sendKeys("easeenoextra@mailinator.com");
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getName()).sendKeys("Test Kowalski");
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getEmail()).sendKeys("easeenoextra@mailinator.com");
         salesRepPageObject.getAddress().sendKeys("Test Address");
         salesRepPageObject.getZipCode().sendKeys("3000");
         salesRepPageObject.getCity().sendKeys("City");
@@ -68,7 +68,7 @@ public class SalesRepOperations {
     }
 
     public void completeOrder() {
-        salesRepPageObject.getCompleteOrderButton().click();
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getCompleteOrderButton()).click();
         waitUtils.waitForUrlToContain(CUSTOMIZED_PAGE + "forhandler/summary");
     }
 }

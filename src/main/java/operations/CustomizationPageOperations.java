@@ -33,16 +33,16 @@ public class CustomizationPageOperations {
     }
 
     public void tickExtraCheckbox() {
-        customizationPageObject.getInstallationCheckbox().click();
+        waitUtils.waitForElementToBeClickable(customizationPageObject.getInstallationCheckbox()).click();
         customizationPageObject.getExtraCheckbox().click();
     }
 
     public void tickInstallationCheckbox() {
-        customizationPageObject.getInstallationCheckbox().click();
+        waitUtils.waitForElementToBeClickable(customizationPageObject.getInstallationCheckbox()).click();
     }
 
     public void addEqualizer() {
-        customizationPageObject.getAddEqualizer().click();
+        waitUtils.waitForElementToBeClickable(customizationPageObject.getAddEqualizer()).click();
     }
 
     public void addCharger() {

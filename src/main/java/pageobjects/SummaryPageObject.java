@@ -1,17 +1,15 @@
 package pageobjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.WaitUtils;
 
+@Getter
 public class SummaryPageObject {
-    private WaitUtils waitUtils;
-
     public SummaryPageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        waitUtils = new WaitUtils(driver);
     }
 
     @FindBy(css = "div.custom-radio")
@@ -53,55 +51,4 @@ public class SummaryPageObject {
     @FindBy(css = "button[class='adyen-checkout__button adyen-checkout__button--standalone adyen-checkout__button--pay']")
     private WebElement klarnaPayButton;
 
-    public WebElement getFinishOrderButton() {
-        return finishOrderButton;
-    }
-
-    public WebElement getTcCheckbox() {
-        return tcCheckbox;
-    }
-
-    public WebElement getCardIFrame() {
-        return cardIFrame;
-    }
-
-    public WebElement getExpiryDateIFrame() {
-        return expiryDateIFrame;
-    }
-
-    public WebElement getSecurityCodeIFrame() {
-        return securityCodeIFrame;
-    }
-
-    public WebElement getCreditCardOption() {
-        return creditCardOption;
-    }
-
-    public WebElement getInvoiceOption() {
-        return invoiceOption;
-    }
-
-    public WebElement getCreditCardNumber() {
-        return creditCardNumber;
-    }
-
-    public WebElement getExpiryDate() {
-        return expiryDate;
-    }
-
-    public WebElement getSecurityCode() {
-        return securityCode;
-    }
-
-    public WebElement getCreditCardPayButton() {
-        return creditCardPayButton;
-    }
-
-    public WebElement getKlarnaPayButton() {
-        return klarnaPayButton;
-    }
-
-    public WebElement getKlarnaPaymentOption() {
-        return klarnaPaymentOption;
-    }
 }
