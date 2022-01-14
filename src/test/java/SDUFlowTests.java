@@ -1,6 +1,5 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
-import enums.PaymentMethod;
 import operations.AddressPageOperations;
 import operations.CkidPageOperations;
 import operations.CustomizationPageOperations;
@@ -8,9 +7,12 @@ import operations.SummaryPageOperations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.ClientInfo;
+import testdata.SduPurchaseData;
 import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
+
+import static enums.PaymentMethod.*;
 
 public class SDUFlowTests extends TestsBase {
     private CustomizationPageOperations customizationPageOperations;
@@ -34,41 +36,59 @@ public class SDUFlowTests extends TestsBase {
     @TestCaseId(testRailCaseId = 4601)
     @Test
     public void NafSDUPartnerFlow() throws TimeoutException {
+        SduPurchaseData sduPurchaseData = new SduPurchaseData()
+                .withEmail("sdueaseenoextra@mailinator.com")
+                .withMembershipNumberNecessary(false)
+                .withPaymentMethod(KLARNA)
+                .withFourteenDaysInstallation(false);
+
         customizationPageOperations.goToNafSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PaymentMethod.KLARNA, false);
+        purchaseFlowSDUUser(sduPurchaseData);
     }
 
     @TestCaseId(testRailCaseId = 4597)
     @Test
     public void SmbSDUPartnerFlow() throws TimeoutException {
+        SduPurchaseData sduPurchaseData = new SduPurchaseData()
+                .withEmail("sdueaseenoextra@mailinator.com")
+                .withMembershipNumberNecessary(false)
+                .withPaymentMethod(MASTERCARD)
+                .withFourteenDaysInstallation(false);
+
         customizationPageOperations.goToSmbSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser("sdueaseenoextra@mailinator.com", false, null, PaymentMethod.MASTERCARD, false);
+        purchaseFlowSDUUser(sduPurchaseData);
     }
 
     @TestCaseId(testRailCaseId = 4595)
     @Test
     public void IglandSDUPartnerFlow() throws TimeoutException {
+        SduPurchaseData sduPurchaseData = new SduPurchaseData()
+                .withEmail("easeeinstallation@mailinator.com")
+                .withMembershipNumberNecessary(false)
+                .withPaymentMethod(INVOICE)
+                .withFourteenDaysInstallation(false);
+
         customizationPageOperations.goToIglandSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser("easeeinstallation@mailinator.com", false, null, PaymentMethod.INVOICE, false);
+        purchaseFlowSDUUser(sduPurchaseData);
     }
 
-    private void purchaseFlowSDUUser(String username, boolean membershipNumberNecessary, String membershipNumber, PaymentMethod paymentMethod, boolean fourteenDaysInstallation) throws TimeoutException {
+    private void purchaseFlowSDUUser(SduPurchaseData sduPurchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress("Test Addresse 582")
                 .withCity("Test Billing City")
                 .withZipcode("9990")
                 .withComment("Test comment")
-                .withFourteenDaysInstallation(fourteenDaysInstallation);
+                .withFourteenDaysInstallation(sduPurchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.logInWithCredentials(username, decryptedString);
-        if (membershipNumberNecessary) {
-            customizationPageOperations.fillMembershipNumber(membershipNumber);
+        ckidPageOperations.logInWithCredentials(sduPurchaseData.getEmail(), decryptedString);
+        if (sduPurchaseData.isMembershipNumberNecessary()) {
+            customizationPageOperations.fillMembershipNumber(sduPurchaseData.getMembershipNumber());
         }
         addressPageOperations.fillClientInfo(clientInfo);
-        summaryPageOperations.pay(paymentMethod);
+        summaryPageOperations.pay(sduPurchaseData.getPaymentMethod());
     }
 }
