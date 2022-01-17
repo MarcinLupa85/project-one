@@ -4,10 +4,17 @@ import operations.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.FakerUtils;
 
 import static config.Constants.BASE_URL;
 
 public class ContactWithCircleKTests extends TestsBase {
+    public static final String SEND_GENERAL_CONTACT_FORM_MAILINATOR_COM = "testSendGeneralContactForm@mailinator.com";
+    public static final String TESTAPARTMENTFROM_MAILINATOR_COM = "testapartmentfrom@mailinator.com";
+    public static final String TEST_SEND_DEVELOPER_CONTACT_FORM_MAILINATOR_COM = "testSendDeveloperContactForm@mailinator.com";
+    public static final String TEST_SEND_REPORT_PROBLEM_FORM_MAILINATOR_COM = "testSendReportProblemForm@mailinator.com";
+    public static final String TEST_BECOME_PARTNER_FORM_MAILINATOR_COM = "testBecomePartnerForm@mailinator.com";
+
     private NavbarOperations navbarOperations;
     private ContactPageOperations contactPageOperations;
     private ApartmentPageOperations apartmentPageOperations;
@@ -38,7 +45,13 @@ public class ContactWithCircleKTests extends TestsBase {
     @Test
     public void testSendGeneralContactForm() {
         homePageOperations.goToContactPage();
-        contactPageOperations.fillForm("Test Automation", "testSendGeneralContactForm@mailinator.com", "123873456", "Company name", "Test comment");
+        contactPageOperations.fillForm(
+                FakerUtils.getFakerFullName(),
+                SEND_GENERAL_CONTACT_FORM_MAILINATOR_COM,
+                FakerUtils.getFakerPhone(),
+                FakerUtils.getFakerCompany(),
+                FakerUtils.getFakerDescription(2)
+        );
         contactPageOperations.clickSend();
     }
 
@@ -46,7 +59,11 @@ public class ContactWithCircleKTests extends TestsBase {
     @Test
     public void testSendApartmentContactForm() {
         navbarOperations.openApartmentPage();
-        apartmentPageOperations.fillContactForm("Test", "123873456", "Company name", "testapartmentfrom@mailinator.com");
+        apartmentPageOperations.fillContactForm(
+                FakerUtils.getFakerLastName(),
+                FakerUtils.getFakerPhone(),
+                FakerUtils.getFakerCompany(),
+                TESTAPARTMENTFROM_MAILINATOR_COM);
         apartmentPageOperations.clickSendContactForm();
     }
 
@@ -54,7 +71,15 @@ public class ContactWithCircleKTests extends TestsBase {
     @Test
     public void testSendDeveloperContactForm() {
         developerPageOperations.goToDeveloperPage();
-        developerPageOperations.fillForm("Test", "Automation", "testSendDeveloperContactForm@mailinator.com", "123873456", "Company name", "Test Project", "123", "Test description");
+        developerPageOperations.fillForm(
+                FakerUtils.getFakerFirstName(),
+                FakerUtils.getFakerLastName(),
+                TEST_SEND_DEVELOPER_CONTACT_FORM_MAILINATOR_COM,
+                FakerUtils.getFakerPhone(),
+                FakerUtils.getFakerCompany(),
+                FakerUtils.getFakerProject(),
+                FakerUtils.getFakerNumber(100, 199),
+                FakerUtils.getFakerDescription(3));
         developerPageOperations.clickSendForm();
     }
 
@@ -62,7 +87,14 @@ public class ContactWithCircleKTests extends TestsBase {
     @Test
     public void testSendReportProblemForm() {
         reportProblemPageOperations.goToReportProblemPage();
-        reportProblemPageOperations.fillReportForm("Test Automation", "testSendReportProblemForm@mailinator.com", "123873456", "123", "Test model", "Test description");
+        reportProblemPageOperations.fillReportForm(
+                FakerUtils.getFakerFullName(),
+                TEST_SEND_REPORT_PROBLEM_FORM_MAILINATOR_COM,
+                FakerUtils.getFakerPhone(),
+                FakerUtils.getFakerNumber(100, 199),
+                FakerUtils.getFakerDescription(2),
+                FakerUtils.getFakerDescription(3)
+        );
         reportProblemPageOperations.chooseCarMake();
         reportProblemPageOperations.clickSend();
     }
@@ -72,7 +104,14 @@ public class ContactWithCircleKTests extends TestsBase {
     public void testBecomePartnerForm() {
         navbarOperations.openBecomeChargingPartnerPage();
         becomeChargingPartnerPageOperations.openForm();
-        becomeChargingPartnerPageOperations.fillForm("Test", "Test", "testBecomePartnerForm@mailinator.com", "123873456", "Test Company", "Test Organisation", "123");
+        becomeChargingPartnerPageOperations.fillForm(
+                FakerUtils.getFakerFirstName(),
+                FakerUtils.getFakerLastName(),
+                TEST_BECOME_PARTNER_FORM_MAILINATOR_COM,
+                FakerUtils.getFakerPhone(),
+                FakerUtils.getFakerCompany(),
+                FakerUtils.getFakerOrganization(),
+                FakerUtils.getFakerNumber(100, 199));
         becomeChargingPartnerPageOperations.sendForm();
     }
 }
