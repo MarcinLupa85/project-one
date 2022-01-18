@@ -22,8 +22,6 @@ ext {
 }
 
 test {
-    /*example usage:
-    gradle clean test -Pgroups=csr -Pdriver_type=remote_firefox -i*/
     environment 'test_env', 'prep'
     environment 'driver_type', project.hasProperty('driver_type') ? project.driver_type : 'chrome'
 }

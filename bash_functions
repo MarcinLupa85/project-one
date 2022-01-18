@@ -11,9 +11,7 @@ function run_environment {
 }
 
 function browser_set {
-    if [[ "$1" == "firefox" ]];then
-        echo "firefox"
-    elif [[ "$1" == "chrome" ]];then
+    if [[ "$1" == "chrome" ]];then
         echo "chrome"
     else
         echo "Bad browser name or browser not supported yet"
@@ -22,7 +20,7 @@ function browser_set {
 }
 
 function build_tag_set {
-    if [[ "$1" == "firefox" ]] || [[ "$1" == "chrome" ]] || [[ -z "$1" ]];then
+    if [[ "$1" == "chrome" ]] || [[ -z "$1" ]];then
         echo $(date +%d%m%y%H%M)
     else
         echo $1

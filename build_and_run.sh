@@ -13,7 +13,7 @@ debug=false
 
 if [[ "$1" == "--help" ]]; then
     echo "
-    [-b <browser> Browser name: firefox, chrome]
+    [-b <browser> Browser name: chrome]
     [-t <tag> Tag name]
     [-r <runtime environment> Runtime environment name: local, remote]
     [-d Debug mode. Disabled by default]
@@ -53,10 +53,6 @@ fi
 
 if [[ "$browser" == "chrome" ]] && [[ "$runtime_environment" == "remote" ]]; then
     browser="remote_chrome"
-fi
-
-if [[ "$browser" == "firefox" ]] && [[ "$runtime_environment" == "remote" ]]; then
-    browser="remote_firefox"
 fi
 
 rm -rf report

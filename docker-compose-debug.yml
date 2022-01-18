@@ -7,7 +7,6 @@ services:
       - GRID_BROWSER_TIMEOUT=100000
       - GRID_TIMEOUT=900000
   test_chrome:
-#    image: selenium/node-firefox-debug:3.141.59
     image: selenium/node-chrome-debug:3.141.59
     shm_size: 1024M
     environment:
