@@ -7,6 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.ClientInfo;
+import utils.FakerUtils;
 
 import java.util.concurrent.TimeoutException;
 
@@ -36,10 +37,10 @@ public class PurchaseFlowNewUserTest extends TestsBase {
 
     private void purchaseFlowNewUser(String phoneNumber, String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
-                .withAddress("Test Addresse 582")
-                .withCity("Test Billing City")
-                .withZipcode("3000")
-                .withComment("Test comment")
+                .withAddress(FakerUtils.getFakerStreetAddress())
+                .withCity(FakerUtils.getFakerCity(false))
+                .withZipcode(FakerUtils.getFakerZipCode())
+                .withComment(FakerUtils.getFakerDescription(3))
                 .withFourteenDaysInstallation(fourteenDaysInstallation);
 
         customizationPageOperations.clickSubmitButton();

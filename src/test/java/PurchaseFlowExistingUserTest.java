@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.ClientInfo;
+import utils.FakerUtils;
 import utils.PasswordUtils;
 import utils.WaitUtils;
 
@@ -156,10 +157,10 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     private void purchaseFlowExistingUser(String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
-                .withAddress("Test Addresse 582")
-                .withCity("Test Billing City")
-                .withZipcode("3000")
-                .withComment("Test comment")
+                .withAddress(FakerUtils.getFakerStreetAddress())
+                .withCity(FakerUtils.getFakerCity(false))
+                .withZipcode(FakerUtils.getFakerZipCode())
+                .withComment(FakerUtils.getFakerDescription(3))
                 .withFourteenDaysInstallation(fourteenDaysInstallation);
 
         customizationPageOperations.clickSubmitButton();

@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.ClientInfo;
 import testdata.SduPurchaseData;
+import utils.FakerUtils;
 import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
@@ -77,10 +78,10 @@ public class SDUFlowTests extends TestsBase {
 
     private void purchaseFlowSDUUser(SduPurchaseData sduPurchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
-                .withAddress("Test Addresse 582")
-                .withCity("Test Billing City")
-                .withZipcode("9990")
-                .withComment("Test comment")
+                .withAddress(FakerUtils.getFakerStreetAddress())
+                .withCity(FakerUtils.getFakerCity(false))
+                .withZipcode(FakerUtils.getFakerZipCode())
+                .withComment(FakerUtils.getFakerDescription(2))
                 .withFourteenDaysInstallation(sduPurchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();

@@ -43,8 +43,8 @@ public class FakerUtils {
         return getEvFaker().phoneNumber().cellPhone();
     }
 
-    public static String getFakerCity() {
-        return getEvFaker().address().cityName();
+    public static String getFakerCity(boolean invoice) {
+        return invoice ? getDefaultFaker().address().cityName() : getEvFaker().address().cityName();
     }
 
     public static String getFakerZipCode() {

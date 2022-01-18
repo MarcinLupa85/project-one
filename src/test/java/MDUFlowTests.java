@@ -60,7 +60,7 @@ public class MDUFlowTests extends TestsBase {
     private void purchaseFlowMDUUser(String username, boolean fourteenDaysInstallation) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress(FakerUtils.getFakerStreetAddress())
-                .withCity(FakerUtils.getFakerCity())
+                .withCity(FakerUtils.getFakerCity(false))
                 .withZipcode(FakerUtils.getFakerZipCode())
                 .withComment(FakerUtils.getFakerDescription(2))
                 .withFourteenDaysInstallation(fourteenDaysInstallation);
