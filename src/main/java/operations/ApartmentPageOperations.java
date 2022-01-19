@@ -35,15 +35,15 @@ public class ApartmentPageOperations {
     }
 
     public void clickSendContactForm() {
-        waitUtils.waitForVisiblityOf(apartmentPageObject.getContactSubmitButton());
+        waitUtils.waitForVisibilityOf(apartmentPageObject.getContactSubmitButton());
         apartmentPageObject.getContactSubmitButton().click();
-        waitUtils.waitForVisiblityOf(apartmentPageObject.getThankYouText());
+        waitUtils.waitForVisibilityOf(apartmentPageObject.getThankYouText());
         assertThat(apartmentPageObject.getThankYouText().getText().contains("Takk for din henvendelse"));
     }
 
     public void goToFaq() {
         WebElement readMoreFaqButton = apartmentPageObject.getReadMoreFaqButton();
-        waitUtils.waitForVisiblityOf(readMoreFaqButton);
+        waitUtils.waitForVisibilityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
         waitUtils.waitForUrlToContain("ladetjenester/faq",2);

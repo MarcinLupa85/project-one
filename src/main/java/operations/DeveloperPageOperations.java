@@ -41,7 +41,7 @@ public class DeveloperPageOperations {
     }
 
     public void clickSendForm() {
-        waitUtils.waitForVisiblityOf(developerPageObject.getSubmitButton());
+        waitUtils.waitForVisibilityOf(developerPageObject.getSubmitButton());
         developerPageObject.getSubmitButton().click();
     }
 

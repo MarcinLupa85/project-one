@@ -22,13 +22,13 @@ public class FormUtils {
     private WebElement sentMessage;
 
     public void fillField(WebElement element, String text){
-        waitUtils.waitForVisiblityOf(element);
+        waitUtils.waitForVisibilityOf(element);
         element.sendKeys(text);
     }
 
     public void clickSend() {
         submitButton.click();
-        waitUtils.waitForVisiblityOf(sentMessage);
+        waitUtils.waitForVisibilityOf(sentMessage);
     }
 
 }

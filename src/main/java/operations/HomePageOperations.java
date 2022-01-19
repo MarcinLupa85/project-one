@@ -39,7 +39,7 @@ public class HomePageOperations {
 
     public void goToFaq() {
         WebElement readMoreFaqButton = homePageObject.getReadMoreFaqButton();
-        waitUtils.waitForVisiblityOf(readMoreFaqButton);
+        waitUtils.waitForVisibilityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
         waitUtils.waitForUrlToContain("/elbillading/ladestasjoner/faq",2);
@@ -47,7 +47,7 @@ public class HomePageOperations {
     }
 
     public void goToContactPage() {
-        waitUtils.waitForVisiblityOf(homePageObject.getContactButton());
+        waitUtils.waitForVisibilityOf(homePageObject.getContactButton());
         waitUtils.bringElementToViewport(homePageObject.getContactButton());
         homePageObject.getContactButton().click();
         waitUtils.waitForUrlToContain("/kontakt-oss",2);

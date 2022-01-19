@@ -88,7 +88,7 @@ public class CkidPageOperations {
             driver.navigate().to(CKID_URL);
             waitUtils.waitForDocumentReadyState();
             userName = testUser.getEmail();
-            waitUtils.waitForVisiblityOf(ckidPageObject.getEmailInput());
+            waitUtils.waitForVisibilityOf(ckidPageObject.getEmailInput());
             ckidPageObject.getEmailInput().clear();
             ckidPageObject.getEmailInput().sendKeys(userName);
             password = testUser.getPassword();

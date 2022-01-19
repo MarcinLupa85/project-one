@@ -25,7 +25,7 @@ public class OnTheGoPageOperations {
 
     public void goToFaq() {
         WebElement readMoreFaqButton = onTheGoPageObject.getReadMoreFaqButton();
-        waitUtils.waitForVisiblityOf(readMoreFaqButton);
+        waitUtils.waitForVisibilityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
         waitUtils.waitForUrlToContain("/ladestasjoner/faq",2);

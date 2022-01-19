@@ -30,7 +30,7 @@ public class ProductsPageOperations {
         navbarOperations.openProductsPage();
         waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = productsPageObject.getPurchaseFlowEaseeLink();
-        waitUtils.waitForVisiblityOf(easeeLink);
+        waitUtils.waitForVisibilityOf(easeeLink);
         waitUtils.bringElementToViewport(easeeLink);
         easeeLink.click();
         waitUtils.waitForUrlToContain(BESTILL_CUSTOMIZE_ORDER_URL);
@@ -49,7 +49,7 @@ public class ProductsPageOperations {
         navbarOperations.openProductsPage();
         waitUtils.waitForDocumentReadyState();
         WebElement cableLink = productsPageObject.getPurchaseFlowCableLink();
-        waitUtils.waitForVisiblityOf(cableLink);
+        waitUtils.waitForVisibilityOf(cableLink);
         cableLink.click();
         waitUtils.waitForUrlToContain(BESTILL_CUSTOMIZE_ORDER_URL);
     }
@@ -58,7 +58,7 @@ public class ProductsPageOperations {
         driver.navigate().to(BASE_URL + PRODUCTS_INSTALLATION_PAGE);
         waitUtils.waitForDocumentReadyState();
         WebElement installationLink = productsPageObject.getPurchaseInstallationButton();
-        waitUtils.waitForVisiblityOf(installationLink);
+        waitUtils.waitForVisibilityOf(installationLink);
         installationLink.click();
         waitUtils.waitForUrlToContain(BESTILL_CUSTOMIZE_ORDER_URL);
     }

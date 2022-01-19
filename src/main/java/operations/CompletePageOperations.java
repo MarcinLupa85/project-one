@@ -15,7 +15,7 @@ public class CompletePageOperations {
     }
 
     public void clickBack() {
-        waitUtils.waitForVisiblityOf(completePageObject.getBackButton());
+        waitUtils.waitForVisibilityOf(completePageObject.getBackButton());
         waitUtils.waitForElementToBeClickable(completePageObject.getBackButton());
         completePageObject.getBackButton().click();
         waitUtils.waitForUrlToContain("/elbillading");

@@ -1,10 +1,10 @@
 package utils;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.sql.Timestamp;
 import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -47,21 +47,10 @@ public class WaitUtils {
     }
 
     public void waitForDocumentReadyState() throws java.util.concurrent.TimeoutException {
-        Timestamp timestampWithTimeoutAdded = new Timestamp(System.currentTimeMillis() + 30000);
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        while (new Timestamp(System.currentTimeMillis()).before(timestampWithTimeoutAdded)) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            String documentState = (String) jse.executeScript("return document.readyState");
-            if (documentState.equals("complete")) {
-                return;
-            }
-        }
-        throw new java.util.concurrent.TimeoutException();
+        ExpectedCondition<Boolean> pageLoaderCondition =
+                driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+        WebDriverWait wait = new WebDriverWait(driver, defaultMaxTimeoutForAllWaits);
+        wait.until(pageLoaderCondition);
     }
 
     public void waitUntilOnUrl(int timeoutInSeconds, String url) {
@@ -81,11 +70,11 @@ public class WaitUtils {
     }
 
 
-    public void waitForVisiblityOf(WebElement element) {
-        this.waitForVisiblityOf(element, defaultMaxTimeoutForAllWaits);
+    public void waitForVisibilityOf(WebElement element) {
+        this.waitForVisibilityOf(element, defaultMaxTimeoutForAllWaits);
     }
 
-    public void waitForVisiblityOf(WebElement element, int maxTimeInSeconds) {
+    public void waitForVisibilityOf(WebElement element, int maxTimeInSeconds) {
         new WebDriverWait(driver, maxTimeInSeconds)
                 .until(visibilityOf(element));
     }
@@ -122,7 +111,7 @@ public class WaitUtils {
         jsExecutor.executeScript("window.scrollBy(0, -123);");
     }
 
-    //currently unused but highly likely it will be useful in the future
+    // currently, unused but highly likely it will be useful in the future
     public void waitForInvisibility(WebElement element) {
         new WebDriverWait(driver, defaultMaxTimeoutForAllWaits)
                 .pollingEvery(Duration.ofMillis(2))

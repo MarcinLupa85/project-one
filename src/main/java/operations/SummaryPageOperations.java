@@ -57,9 +57,9 @@ public class SummaryPageOperations {
 
     public void fillCreditCardNumber(String creditCardNumber) {
         WebElement inputFrameField = summaryPageObject.getCardIFrame();
-        waitUtils.waitForVisiblityOf(inputFrameField);
+        waitUtils.waitForVisibilityOf(inputFrameField);
         driver.switchTo().frame(inputFrameField);
-        waitUtils.waitForVisiblityOf(summaryPageObject.getCreditCardNumber());
+        waitUtils.waitForVisibilityOf(summaryPageObject.getCreditCardNumber());
         summaryPageObject.getCreditCardNumber().sendKeys(creditCardNumber);
         driver.switchTo().defaultContent();
     }
@@ -79,7 +79,7 @@ public class SummaryPageOperations {
     }
 
     public void chooseKlarnaOption() {
-        waitUtils.waitForVisiblityOf(summaryPageObject.getKlarnaPaymentOption());
+        waitUtils.waitForVisibilityOf(summaryPageObject.getKlarnaPaymentOption());
         summaryPageObject.getKlarnaPaymentOption().click();
     }
 

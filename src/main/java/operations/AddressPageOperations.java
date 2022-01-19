@@ -16,7 +16,7 @@ public class AddressPageOperations {
     }
 
     public void fillParkingPlace(String parkingPlace) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getParkingPlaceInput());
+        waitUtils.waitForVisibilityOf(addressPageObject.getParkingPlaceInput());
         addressPageObject.getParkingPlaceInput().sendKeys(parkingPlace);
     }
 
@@ -26,11 +26,11 @@ public class AddressPageOperations {
     }
 
     public void fillClientInfo(ClientInfo clientInfo) {
-        waitUtils.waitForVisiblityOf(addressPageObject.getBillingAddressInput());
+        waitUtils.waitForVisibilityOf(addressPageObject.getBillingAddressInput());
         addressPageObject.getBillingAddressInput().sendKeys(clientInfo.getAddress());
-        waitUtils.waitForVisiblityOf(addressPageObject.getBillingCityInput());
+        waitUtils.waitForVisibilityOf(addressPageObject.getBillingCityInput());
         addressPageObject.getBillingCityInput().sendKeys(clientInfo.getCity());
-        waitUtils.waitForVisiblityOf(addressPageObject.getBillingZipCodeInput());
+        waitUtils.waitForVisibilityOf(addressPageObject.getBillingZipCodeInput());
         addressPageObject.getBillingZipCodeInput().sendKeys(clientInfo.getZipcode());
         addressPageObject.getCommentInput().sendKeys(clientInfo.getComment());
         tick14DaysCheckbox(clientInfo.isFourteenDaysInstallation());
