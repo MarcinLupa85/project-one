@@ -7,9 +7,13 @@ plugins {
 group 'com.circlek'
 version '1.0-SNAPSHOT'
 
+if(JavaVersion.current().isJava7() || JavaVersion.current().isJava8() || JavaVersion.current().isJava10()) {
+    throw new GradleException("This build must be run with java major version starting from java11")
+}
+
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(16))
+        languageVersion.set(JavaLanguageVersion.of(JavaVersion.current().toString()))
     }
 }
 
