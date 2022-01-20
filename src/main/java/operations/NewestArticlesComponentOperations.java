@@ -1,5 +1,7 @@
 package operations;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NewestArticlesComponentOperations {
+    private static final Logger LOGGER = LogManager.getLogger(NewestArticlesComponentOperations.class);
     private final WithNewestArticlePageObject page;
     private WaitUtils waitUtils;
 
@@ -26,7 +29,7 @@ public class NewestArticlesComponentOperations {
         List<String> compareTitles = page.getArticleBody().get(0).findElements(By.className("article-tile__title"))
                 .stream()
                 .map(WebElement::getText).collect(Collectors.toList());
-        System.out.println(compareTitles);
+        compareTitles.forEach(LOGGER::info);
         assertThat(apartmentTitles).hasSameSizeAs(compareTitles);
         apartmentTitles.forEach(title -> assertThat(compareTitles).contains(title));
     }

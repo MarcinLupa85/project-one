@@ -1,5 +1,7 @@
 package operations;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
 public class ArticlesPageOperations {
+    private static final Logger LOGGER = LogManager.getLogger(ArticlesPageOperations.class);
     private ArticlesPageObject articlesPageObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
@@ -37,7 +40,7 @@ public class ArticlesPageOperations {
             try {
                 articlesPageObject.getNextButton().click();
             } catch (NoSuchElementException e2) {
-                System.out.println("No more pages to load");
+                LOGGER.error("No more pages to load", e2);
                 break;
             }
         }

@@ -1,6 +1,8 @@
 package operations;
 
 import models.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +18,7 @@ import static config.Constants.CKID_URL;
 import static config.Constants.SMS_CODE;
 
 public class CkidPageOperations {
-
+    private static final Logger LOGGER = LogManager.getLogger(CkidPageOperations.class);
     private CkidPageObject ckidPageObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
@@ -110,7 +112,7 @@ public class CkidPageOperations {
             waitUtils.waitForPresenceOf(By.id("login-submit-button"));
             driver.navigate().to(CKID_URL);
         } catch (org.openqa.selenium.TimeoutException | TimeoutException exception) {
-            System.out.printf("Cannot delete user %s due to exception %s %n", testUser.getEmail(), exception.getMessage());
+            LOGGER.error("Cannot delete user {} due to exception", testUser.getEmail(), exception.getMessage());
             exception.printStackTrace();
         }
     }

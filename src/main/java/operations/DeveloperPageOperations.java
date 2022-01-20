@@ -1,5 +1,7 @@
 package operations;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import pageobjects.DeveloperPageObject;
 import utils.FormUtils;
@@ -12,7 +14,7 @@ import static config.Constants.BASE_URL;
 import static testdata.EvRoutes.REPORT_PAGE;
 
 public class DeveloperPageOperations {
-
+    private static final Logger LOGGER = LogManager.getLogger(DeveloperPageOperations.class);
     private DeveloperPageObject developerPageObject;
     private WaitUtils waitUtils;
     private FormUtils formUtils;
@@ -47,7 +49,7 @@ public class DeveloperPageOperations {
 
     public void compareTitles(List<String> developerTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(developerTitles);
-        System.out.println(developerTitles);
+        developerTitles.forEach(LOGGER::info);
     }
 
     public void goToDeveloperPage() {

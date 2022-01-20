@@ -1,6 +1,8 @@
 package testdata;
 
 import models.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import utils.PasswordUtils;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.List;
 import static config.Constants.USERS_PASSWORD;
 
 public class Users {
-
+    private static final Logger LOGGER = LogManager.getLogger(Users.class);
     private List<User> usersList;
     private String password = getDecryptedPassword(USERS_PASSWORD);
 
@@ -31,7 +33,7 @@ public class Users {
         try {
             passwordUtils = new PasswordUtils();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("Cannot decrypt password ", e.getMessage());
         }
         return passwordUtils.decrypt(USERS_PASSWORD);
     }

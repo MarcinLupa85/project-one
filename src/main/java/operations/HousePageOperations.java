@@ -1,5 +1,7 @@
 package operations;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import pageobjects.HousePageObject;
 import utils.WaitUtils;
@@ -10,6 +12,7 @@ import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HousePageOperations {
+    private static final Logger LOGGER = LogManager.getLogger(HousePageOperations.class);
     private HousePageObject housePageObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
@@ -26,13 +29,13 @@ public class HousePageOperations {
 
     public void goToFaq() {
         housePageObject.getHouseFAQ().click();
-        waitUtils.waitForUrlToContain("/hjemmelading/faq",2);
+        waitUtils.waitForUrlToContain("/hjemmelading/faq", 2);
         assertThat(driver.getCurrentUrl()).contains("/hjemmelading/faq");
     }
 
     public void compareTitles(List<String> houseTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(houseTitles);
-        System.out.println(houseTitles);
+        houseTitles.forEach(LOGGER::info);
     }
 
 }

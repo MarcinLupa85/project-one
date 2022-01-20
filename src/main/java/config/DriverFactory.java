@@ -1,5 +1,7 @@
 package config;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -11,7 +13,7 @@ import static config.Constants.DRIVER_TYPE;
 import static config.DriverTypes.*;
 
 public class DriverFactory {
-
+    private static final Logger LOGGER = LogManager.getLogger(DriverFactory.class);
     public WebDriver webDriver;
 
     public WebDriver startBrowser() {
@@ -27,7 +29,7 @@ public class DriverFactory {
                             CapabilitiesProvider.getChromeCapabilities()
                     );
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+                    LOGGER.error("Cannot initialize remote driver ", e.getMessage());
                 }
                 webDriver.manage().window().maximize();
                 break;
@@ -38,7 +40,7 @@ public class DriverFactory {
                             CapabilitiesProvider.getChromeCapabilities()
                     );
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+                    LOGGER.error("Cannot initialize remote driver ", e.getMessage());
                 }
                 break;
         }

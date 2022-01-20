@@ -1,6 +1,8 @@
 package utils;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -11,7 +13,7 @@ import java.security.spec.KeySpec;
 import static config.Constants.USERS_PASSWORD;
 
 public class PasswordUtils {
-
+    private static final Logger LOGGER = LogManager.getLogger(PasswordUtils.class);
     private static final String UNICODE_FORMAT = "UTF8";
     public static final String DESEDE_ENCRYPTION_SCHEME = "DESede";
     private KeySpec ks;
@@ -41,7 +43,7 @@ public class PasswordUtils {
             byte[] encryptedText = cipher.doFinal(plainText);
             encryptedString = new String(Base64.encodeBase64(encryptedText));
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("{}", e.getMessage());
         }
         return encryptedString;
     }
@@ -55,7 +57,7 @@ public class PasswordUtils {
             byte[] plainText = cipher.doFinal(encryptedText);
             decryptedText = new String(plainText);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("{}", e.getMessage());
         }
         return decryptedText;
     }

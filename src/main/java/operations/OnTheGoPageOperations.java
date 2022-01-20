@@ -1,5 +1,7 @@
 package operations;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.OnTheGoPageObject;
@@ -11,6 +13,7 @@ import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnTheGoPageOperations {
+    private static final Logger LOGGER = LogManager.getLogger(OnTheGoPageOperations.class);
     private OnTheGoPageObject onTheGoPageObject;
     private WaitUtils waitUtils;
     private WebDriver driver;
@@ -28,12 +31,12 @@ public class OnTheGoPageOperations {
         waitUtils.waitForVisibilityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContain("/ladestasjoner/faq",2);
+        waitUtils.waitForUrlToContain("/ladestasjoner/faq", 2);
         assertThat(driver.getCurrentUrl()).contains("/ladestasjoner/faq");
     }
 
     public void compareTitles(List<String> OTGTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(OTGTitles);
-        System.out.println(OTGTitles);
+        OTGTitles.forEach(LOGGER::info);
     }
 }
