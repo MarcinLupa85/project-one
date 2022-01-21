@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Local suite" parallel="false">
+    <listeners>
+        <listener class-name="listeners.SuiteListener"/>
+        <listener class-name="listeners.TestListener"/>
+        <listener class-name="org.testng.reporters.XMLReporter"/>
+    </listeners>
+
+    <test name="regression">
+        <classes>
+              <class name="SampleTest"/>
+        </classes>
+    </test>
+</suite>

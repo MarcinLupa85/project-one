@@ -26,7 +26,6 @@ ext {
 }
 
 test {
-    environment 'test_env', 'prep'
     environment 'driver_type', project.hasProperty('driver_type') ? project.driver_type : 'chrome'
 }
 
@@ -34,10 +33,17 @@ tasks.withType(Test) {
     outputs.upToDateWhen { false }
     systemProperty 'build_tag', project.hasProperty('\"build_tag\"') ? project.build_tag : null
 
-    useTestNG() {
-        suites 'src/test/resources/testng.xml'
-        excludeGroups project.hasProperty('excluded_groups') ? project.excluded_groups : ''
-        outputDirectory = file("./report")
+    if (project.hasProperty('driver_type') && project.driver_type != 'chrome') {
+        useTestNG() {
+            suites 'src/test/resources/testng.xml'
+            excludeGroups project.hasProperty('excluded_groups') ? project.excluded_groups : ''
+            outputDirectory = file("./report")
+        }
+    } else {
+        useTestNG() {
+            suites 'src/test/resources/testng_local.xml'
+            outputDirectory = file("./report")
+        }
     }
 }
 
