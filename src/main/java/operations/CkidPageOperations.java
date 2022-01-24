@@ -44,8 +44,7 @@ public class CkidPageOperations {
     }
 
     public void registerNewUser(String phoneNumber, String username, String password) {
-        Select countrySelect = new Select(ckidPageObject.getCountryDropdown());
-
+        waitUtils.waitForElementToBeClickable(ckidPageObject.getRegisterSwitchButton());
         ckidPageObject.getRegisterSwitchButton().click();
         waitUtils.waitForPresenceOf(By.cssSelector("input#edit-phone-number"));
         ckidPageObject.getCountryCodeInput().sendKeys("48");
@@ -60,6 +59,7 @@ public class CkidPageOperations {
         ckidPageObject.getPasswordInput().sendKeys(password);
         ckidPageObject.getFirstNameInput().sendKeys("Tester");
         ckidPageObject.getLastNameInput().sendKeys("Kowalski");
+        Select countrySelect = new Select(ckidPageObject.getCountryDropdown());
         countrySelect.selectByValue("string:NORWAY");
         waitUtils.waitForPresenceOf(By.cssSelector("[class = 'icon-container']"));
         ckidPageObject.getCkidTcCheckbox().click();

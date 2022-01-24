@@ -33,7 +33,7 @@ public class SalesRepPageObject extends EvPage {
     @FindBy(xpath = "//*[contains(text(),' videre')]")
     private WebElement nextButton;
 
-    @FindBy(id = "full-name")
+    @FindBy(id = "first-name")
     private WebElement name;
 
     @FindBy(id = "billing-address")

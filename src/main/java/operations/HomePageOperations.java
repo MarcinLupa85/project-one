@@ -25,18 +25,6 @@ public class HomePageOperations {
         navbarOperations = new NavbarOperations(driver);
     }
 
-    public void flowWithExtra() {
-        customizationPageOperations.tickExtraCheckbox();
-    }
-
-    public void flowWithInstallationOnly() {
-        customizationPageOperations.tickInstallationCheckbox();
-    }
-
-    public void flowWithEqualizer() {
-        customizationPageOperations.addEqualizer();
-    }
-
     public void goToFaq() {
         WebElement readMoreFaqButton = homePageObject.getReadMoreFaqButton();
         waitUtils.waitForVisibilityOf(readMoreFaqButton);

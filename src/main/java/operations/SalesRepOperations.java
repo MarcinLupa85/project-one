@@ -14,8 +14,8 @@ public class SalesRepOperations {
     private WebDriver driver;
     private SalesRepPageObject salesRepPageObject;
 
-    private static final String repName = "Volvo Bergen";
-    private static final String repMail = "salesrepone@volvo.bergen.no";
+    private static final String repName = "Bilbutikk 1 Fredrikstad";
+    private static final String repMail = "krystian.kowalski@circlekeurope.com";
 
     public SalesRepOperations(WebDriver driver) {
         waitUtils = new WaitUtils(driver);
@@ -24,11 +24,12 @@ public class SalesRepOperations {
     }
 
     public void goToSalesRepPage() throws TimeoutException {
-        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "forhandler/Y21-429364");
+        driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "forhandler/Y21-277411");
         waitUtils.waitForDocumentReadyState();
     }
 
     public void chooseRepName() {
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getDealerName());
         waitUtils.bringElementToViewport(salesRepPageObject.getEmail());
         waitUtils.waitForElementToBeClickable(salesRepPageObject.getDealerName()).sendKeys(repName);
         waitUtils.waitForElementToBeClickable(salesRepPageObject.getDropdownFirstOption()).click();

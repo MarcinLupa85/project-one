@@ -8,24 +8,25 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.ClientInfo;
 import utils.FakerUtils;
+import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
 
 public class PurchaseFlowNewUserTest extends TestsBase {
-    private HomePageOperations homePageOperations;
     private ProductsPageOperations productsPageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
+    private PasswordUtils passwordUtils;
+    private String decryptedString;
 
 
     @BeforeMethod
-    private void initOperations() {
-        homePageOperations = new HomePageOperations(driver);
+    private void initOperations() throws Exception {
         productsPageOperations = new ProductsPageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -33,6 +34,8 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
         sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
         driver.navigate().to(BASE_URL);
+        passwordUtils = new PasswordUtils();
+        decryptedString = passwordUtils.decryptEvPassword();
     }
 
     private void purchaseFlowNewUser(String phoneNumber, String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {
@@ -45,7 +48,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
 
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.closeCookieBot();
-        ckidPageOperations.registerNewUser(phoneNumber, username, "Emobility1");
+        ckidPageOperations.registerNewUser(phoneNumber, username, decryptedString);
         addressPageOperations.fillClientInfo(clientInfo);
         summaryPageOperations.pay(paymentMethod);
     }
@@ -62,7 +65,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        homePageOperations.flowWithExtra();
+        customizationPageOperations.tickExtraCheckbox();
         purchaseFlowNewUser("575437397", "newuser.easeewithextra@mailinator.com", false, PaymentMethod.MASTERCARD);
     }
 
@@ -84,7 +87,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        homePageOperations.flowWithInstallationOnly();
+        customizationPageOperations.tickInstallationCheckbox();
         purchaseFlowNewUser("575437307", "newuser.easeeinstallation@mailinator.com", false, PaymentMethod.KLARNA);
     }
 
@@ -94,7 +97,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         sduDiscountPartnerOperations.goToNafDiscountPage();
         sduDiscountPartnerOperations.clickBecomeMemberButton();
         sduDiscountPartnerOperations.sendPhoneNumber();
-        sduDiscountPartnerOperations.sendRegisterForm("Name", "Test", "newuser.easeenoextra2@mailinator.com", "Emobility1", "9876543210");
+        sduDiscountPartnerOperations.sendRegisterForm("Name", "Test", "newuser.easeenoextra2@mailinator.com", decryptedString, "987654321");
         sduDiscountPartnerOperations.assertThankYouPage();
     }
 }

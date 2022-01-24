@@ -15,7 +15,6 @@ import java.util.concurrent.TimeoutException;
 
 public class PurchaseFlowExistingUserTest extends TestsBase {
 
-    private HomePageOperations homePageOperations;
     private ProductsPageOperations productsPageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
@@ -28,7 +27,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     @BeforeMethod(alwaysRun = true)
     private void initOperations() throws Exception {
-        homePageOperations = new HomePageOperations(driver);
         productsPageOperations = new ProductsPageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -44,8 +42,9 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        homePageOperations.flowWithExtra();
+        customizationPageOperations.tickExtraCheckbox();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.VISA);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 1225)
@@ -53,6 +52,7 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
         purchaseFlowExistingUser("easeenoextra@mailinator.com", false, PaymentMethod.MASTERCARD);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 4775)
@@ -60,13 +60,14 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
         productsPageOperations.openCablePurchaseFlow();
         purchaseFlowExistingUser("cablenoextra@mailinator.com", false, PaymentMethod.VISA);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 2514)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        homePageOperations.flowWithInstallationOnly();
+        customizationPageOperations.tickInstallationCheckbox();
         purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, PaymentMethod.KLARNA);
     }
 
@@ -75,21 +76,23 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void testEaseePurchaseFlowWithInstallationAsProduct() throws TimeoutException {
         productsPageOperations.openInstallationPurchaseFlow();
         purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, PaymentMethod.INVOICE);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 5052)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlow14DaysInstallation() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        homePageOperations.flowWithInstallationOnly();
+        customizationPageOperations.tickInstallationCheckbox();
         purchaseFlowExistingUser("easee14daysinstallation@mailinator.com", true, PaymentMethod.MASTERCARD);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 6099)
     @Test(alwaysRun = true)
     public void testEqualizerNoExtra() throws TimeoutException {
         productsPageOperations.openEqualizerPurchaseFlow();
-        homePageOperations.flowWithEqualizer();
+        customizationPageOperations.addEqualizer();
         purchaseFlowExistingUser("easeenoextra@mailinator.com", false, PaymentMethod.KLARNA);
     }
 
@@ -97,39 +100,43 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     @Test(alwaysRun = true)
     public void testEqualizerWithExtra() throws TimeoutException {
         productsPageOperations.openEqualizerPurchaseFlow();
-        homePageOperations.flowWithEqualizer();
+        customizationPageOperations.addEqualizer();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.INVOICE);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 6098)
     @Test(alwaysRun = true)
     public void testEqualizerWithoutExtra() throws TimeoutException {
         productsPageOperations.openEqualizerPurchaseFlow();
-        homePageOperations.flowWithEqualizer();
+        customizationPageOperations.addEqualizer();
         purchaseFlowExistingUser("easeeinstallation@mailinator.com", false, PaymentMethod.VISA);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 5556)
     @Test(alwaysRun = true)
     public void test2FactorAuthentication3DS1() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        homePageOperations.flowWithExtra();
+        customizationPageOperations.tickExtraCheckbox();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.TWOFACTORTYPE1);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 5557)
     @Test
     public void test2FactorAuthentication3DS2() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        homePageOperations.flowWithExtra();
+        customizationPageOperations.tickExtraCheckbox();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.TWOFACTORTYPE2);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 5565)
     @Test
     public void testCanceledPaymentStatus() throws TimeoutException {
         productsPageOperations.openEaseePurchaseFlow();
-        homePageOperations.flowWithExtra();
+        customizationPageOperations.tickExtraCheckbox();
         purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.KLARNA);
         waitUtils.waitForElementToBeClickable(By.xpath("//*[contains(text(),'Tilbake')]"));
         ((JavascriptExecutor) driver).executeScript("document.getElementById('back-button__text').click();");

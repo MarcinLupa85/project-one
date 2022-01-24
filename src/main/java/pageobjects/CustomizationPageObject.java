@@ -20,10 +20,13 @@ public class CustomizationPageObject extends EvPage {
     @FindBy(css = "[for=withExtra]")
     private WebElement extraCheckbox;
 
+    @FindBy(css = "[for=withProductUtility]")
+    private WebElement utilityCheckbox;
+
     @FindBy(xpath = "(.//button[@data-type='plus'])[last()]")
     private WebElement addEqualizer;
 
-    @FindBy(css = "a[href=/hjemmelading]")
+    @FindBy(css = "a[href='/hjemmelading']")
     private WebElement backButton;
 
     @FindBy(css = "button[type='submit']")
