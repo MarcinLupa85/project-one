@@ -3,23 +3,21 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import pageobjects.ReportProblemPageObject;
-import utils.FormUtils;
 import utils.WaitUtils;
 
 import static config.Constants.BASE_URL;
 import static testdata.EvRoutes.MOBILE_REPORT_PAGE;
 
-public class ReportProblemPageOperations {
+public class ReportProblemPageOperations extends BaseOperations {
 
     private ReportProblemPageObject reportProblemPageObject;
     private WaitUtils waitUtils;
-    private FormUtils formUtils;
     private WebDriver driver;
 
     public ReportProblemPageOperations(WebDriver driver) {
+        super(driver);
         reportProblemPageObject = new ReportProblemPageObject(driver);
         waitUtils = new WaitUtils(driver);
-        formUtils = new FormUtils(driver);
         this.driver = driver;
     }
 
@@ -30,12 +28,12 @@ public class ReportProblemPageOperations {
     public void fillReportForm(String fullNameInput, String emailInput, String telephoneNumberInput, String chargersNumber, String carModel, String description) {
         waitUtils.waitForElement(reportProblemPageObject.getFullNameInput());
         waitUtils.bringElementToViewport(reportProblemPageObject.getFullNameInput());
-        formUtils.fillField(reportProblemPageObject.getFullNameInput(), fullNameInput);
-        formUtils.fillField(reportProblemPageObject.getEmailInput(), emailInput);
-        formUtils.fillField(reportProblemPageObject.getTelephoneNumberInput(), telephoneNumberInput);
-        formUtils.fillField(reportProblemPageObject.getChargersNumber(), chargersNumber);
-        formUtils.fillField(reportProblemPageObject.getCarModel(), carModel);
-        formUtils.fillField(reportProblemPageObject.getDescription(), description);
+        fillField(reportProblemPageObject.getFullNameInput(), fullNameInput);
+        fillField(reportProblemPageObject.getEmailInput(), emailInput);
+        fillField(reportProblemPageObject.getTelephoneNumberInput(), telephoneNumberInput);
+        fillField(reportProblemPageObject.getChargersNumber(), chargersNumber);
+        fillField(reportProblemPageObject.getCarModel(), carModel);
+        fillField(reportProblemPageObject.getDescription(), description);
     }
 
     public void chooseCarMake() {

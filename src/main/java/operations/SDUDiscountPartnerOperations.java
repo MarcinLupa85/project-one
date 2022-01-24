@@ -2,7 +2,6 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.SDUDiscountPartnerPageObject;
-import utils.FormUtils;
 import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
@@ -12,17 +11,16 @@ import static config.Constants.SMS_CODE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static testdata.EvRoutes.Partner.*;
 
-public class SDUDiscountPartnerOperations {
+public class SDUDiscountPartnerOperations extends BaseOperations {
     private WaitUtils waitUtils;
     private WebDriver driver;
     private SDUDiscountPartnerPageObject sduDiscountPartnerPageObject;
-    private FormUtils formUtils;
 
     public SDUDiscountPartnerOperations(WebDriver driver) {
+        super(driver);
         waitUtils = new WaitUtils(driver);
         this.driver = driver;
         sduDiscountPartnerPageObject = new SDUDiscountPartnerPageObject(driver);
-        formUtils = new FormUtils(driver);
     }
 
     public void goToObosDiscountPage() {
@@ -59,22 +57,22 @@ public class SDUDiscountPartnerOperations {
     }
 
     public void sendRegisterForm(String firstName, String lastName, String mail, String password, String membershipNumber) {
-        formUtils.fillField(sduDiscountPartnerPageObject.getFirstName(), firstName);
-        formUtils.fillField(sduDiscountPartnerPageObject.getLastName(), lastName);
-        formUtils.fillField(sduDiscountPartnerPageObject.getEmail(), mail);
-        formUtils.fillField(sduDiscountPartnerPageObject.getPassword(), password);
-        formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
+        fillField(sduDiscountPartnerPageObject.getFirstName(), firstName);
+        fillField(sduDiscountPartnerPageObject.getLastName(), lastName);
+        fillField(sduDiscountPartnerPageObject.getEmail(), mail);
+        fillField(sduDiscountPartnerPageObject.getPassword(), password);
+        fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         sduDiscountPartnerPageObject.getExtraCheckbox().click();
         sduDiscountPartnerPageObject.getRegisterButton().click();
         waitUtils.waitForUrlToContain(CONFIRMATION_PAGE);
     }
 
     public void sendNoExtraForm(String phone, String firstName, String lastName, String mail, String membershipNumber) {
-        formUtils.fillField(sduDiscountPartnerPageObject.getPhone(), phone);
-        formUtils.fillField(sduDiscountPartnerPageObject.getFirstName(), firstName);
-        formUtils.fillField(sduDiscountPartnerPageObject.getLastName(), lastName);
-        formUtils.fillField(sduDiscountPartnerPageObject.getEmail(), mail);
-        formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
+        fillField(sduDiscountPartnerPageObject.getPhone(), phone);
+        fillField(sduDiscountPartnerPageObject.getFirstName(), firstName);
+        fillField(sduDiscountPartnerPageObject.getLastName(), lastName);
+        fillField(sduDiscountPartnerPageObject.getEmail(), mail);
+        fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getSendButton());
         sduDiscountPartnerPageObject.getSendButton().click();
         waitUtils.waitForUrlToContain(CONFIRMATION_PAGE);
@@ -84,7 +82,7 @@ public class SDUDiscountPartnerOperations {
         waitUtils.waitForUrlToContain("/details");
         waitUtils.waitForDocumentReadyState();
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getMembershipNumber());
-        formUtils.fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
+        fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getSendButton());
         sduDiscountPartnerPageObject.getSendButton().click();
         waitUtils.waitForUrlToContain(CONFIRMATION_PAGE);

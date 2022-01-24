@@ -3,35 +3,32 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.ApartmentPageObject;
-import utils.FormUtils;
 import utils.WaitUtils;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class ApartmentPageOperations {
+public class ApartmentPageOperations extends BaseOperations {
 
     private ApartmentPageObject apartmentPageObject;
     private WaitUtils waitUtils;
-    private FormUtils formUtils;
     private WebDriver driver;
     private NewestArticlesComponentOperations newestArticlesComponentOperations;
 
     public ApartmentPageOperations(WebDriver driver) {
+        super(driver);
         apartmentPageObject = new ApartmentPageObject(driver);
         waitUtils = new WaitUtils(driver);
-        formUtils = new FormUtils(driver);
-        this.driver = driver;
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(apartmentPageObject, driver);
     }
 
     public void fillContactForm(String name, String phone, String company, String mail){
         waitUtils.bringElementToViewport(apartmentPageObject.getName());
-        formUtils.fillField(apartmentPageObject.getName(), name);
-        formUtils.fillField(apartmentPageObject.getMail(), mail);
-        formUtils.fillField(apartmentPageObject.getPhone(), phone);
-        formUtils.fillField(apartmentPageObject.getCompany(), company);
+        fillField(apartmentPageObject.getName(), name);
+        fillField(apartmentPageObject.getMail(), mail);
+        fillField(apartmentPageObject.getPhone(), phone);
+        fillField(apartmentPageObject.getCompany(), company);
     }
 
     public void clickSendContactForm() {

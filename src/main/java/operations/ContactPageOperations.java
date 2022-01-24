@@ -2,29 +2,27 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.ContactPageObject;
-import utils.FormUtils;
 import utils.WaitUtils;
 
-public class ContactPageOperations {
+public class ContactPageOperations extends BaseOperations {
 
     private ContactPageObject contactPageObject;
     private WaitUtils waitUtils;
-    private FormUtils formUtils;
 
     public ContactPageOperations(WebDriver driver) {
+        super(driver);
         contactPageObject = new ContactPageObject(driver);
         waitUtils = new WaitUtils(driver);
-        formUtils = new FormUtils(driver);
     }
 
     public void fillForm(String name, String email, String number, String company, String comment) {
         waitUtils.waitForElement(contactPageObject.getFullNameInput());
         waitUtils.bringElementToViewport(contactPageObject.getFullNameInput());
-        formUtils.fillField(contactPageObject.getFullNameInput(), name);
-        formUtils.fillField(contactPageObject.getEmailInput(), email);
-        formUtils.fillField(contactPageObject.getTelephoneNumberInput(), number);
-        formUtils.fillField(contactPageObject.getCompanyNameInput(), company);
-        formUtils.fillField(contactPageObject.getCommentInput(), comment);
+        fillField(contactPageObject.getFullNameInput(), name);
+        fillField(contactPageObject.getEmailInput(), email);
+        fillField(contactPageObject.getTelephoneNumberInput(), number);
+        fillField(contactPageObject.getCompanyNameInput(), company);
+        fillField(contactPageObject.getCommentInput(), comment);
     }
 
     public void clickSend() {
