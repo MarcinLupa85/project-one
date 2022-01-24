@@ -26,10 +26,10 @@ public class SummaryPageObject extends EvPage {
     @FindBy(css = "button[type=submit]")
     private WebElement finishOrderButton;
 
-    @FindBy(css = "div.list-group.list-group-sm.list-group-pills > button:nth-child(1)")
+    @FindBy(xpath = "//button[contains(text(),'Betal med Klarna eller bankkort')]")
     private WebElement creditCardOption;
 
-    @FindBy(xpath = "//button[contains(text(),' Betal med faktura ')]")
+    @FindBy(xpath = "//button[contains(text(),'Betal med faktura')]")
     private WebElement invoiceOption;
 
     @FindBy(id = "encryptedCardNumber")
@@ -41,13 +41,19 @@ public class SummaryPageObject extends EvPage {
     @FindBy(id = "encryptedSecurityCode")
     private WebElement securityCode;
 
-    @FindBy(css = "button[class='adyen-checkout__button adyen-checkout__button--pay']")
+    @FindBy(xpath = "//*[contains(text(),'Kredittkort')]")
+    private WebElement creditCardPaymentOption;
+
+    @FindBy(xpath = "//*[contains(text(),'Betal kr')]")
     private WebElement creditCardPayButton;
 
-    @FindBy(css = "[class='adyen-checkout__payment-method__name']")
+    @FindBy(xpath = "//*[contains(text(),'Del opp. Klarna.')]")
     private WebElement klarnaPaymentOption;
 
-    @FindBy(css = "button[class='adyen-checkout__button adyen-checkout__button--standalone adyen-checkout__button--pay']")
+    @FindBy(xpath = "//*[contains(text(),'Fortsett til Del opp. Klarna.')]")
     private WebElement klarnaPayButton;
+
+    @FindBy(css = "h3[class='heading-3 text-center']")
+    private WebElement completeOrderPageText;
 
 }

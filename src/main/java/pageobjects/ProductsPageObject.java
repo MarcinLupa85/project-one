@@ -20,7 +20,7 @@ public class ProductsPageObject extends EvPage {
     @FindBy(css = "a[href='/elbillading/bestill?with=1140449']")
     private WebElement purchaseFlowCableLink;
 
-    @FindBy(css = "button.btn-primary")
+    @FindBy(xpath = "//*[contains(text(),'bestilling')]")
     private WebElement purchaseInstallationButton;
 
 }

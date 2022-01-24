@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import pageobjects.SummaryPageObject;
 import utils.WaitUtils;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SummaryPageOperations {
 
     private SummaryPageObject summaryPageObject;
@@ -39,6 +41,8 @@ public class SummaryPageOperations {
     }
 
     public void payWithCreditCard(String cardNumber) {
+        waitUtils.waitForElementToBeClickable(summaryPageObject.getCreditCardPaymentOption());
+        summaryPageObject.getCreditCardPaymentOption().click();
         fillCreditCardNumber(cardNumber);
         fillExpiryDate("0330");
         fillSecurityCode("737");
@@ -98,9 +102,19 @@ public class SummaryPageOperations {
     public void twoFactorAuthentication3DS2() {
         waitUtils.waitForUrlToContain("/identifyShopper");
         driver.switchTo().frame("threeDSIframe");
-        driver.findElement(By.cssSelector("input[type='text']")).sendKeys("password");
-        driver.findElement(By.cssSelector("input[type='submit']")).click();
+        driver.findElement(By.cssSelector("input[type='password']")).sendKeys("password");
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
         driver.switchTo().defaultContent();
+    }
+
+    public void assertThankYouPage() {
+        waitUtils.waitForElement(summaryPageObject.getCompleteOrderPageText());
+        assertThat(summaryPageObject.getCompleteOrderPageText().getText().contains("Gratulerer"));
+    }
+
+    public void assertNextStepPage() {
+        waitUtils.waitForElement(summaryPageObject.getCompleteOrderPageText());
+        assertThat(summaryPageObject.getCompleteOrderPageText().getText().contains("Nesten ferdig..."));
     }
 
     public void pay(PaymentMethod paymentMethod) {
@@ -109,19 +123,16 @@ public class SummaryPageOperations {
                 chooseInvoiceOption();
                 tickTermsAndConditionsCheckbox();
                 clickFinish();
-                completePageOperations.clickBack();
                 break;
             case VISA:
                 chooseCreditCardOption();
                 tickTermsAndConditionsCheckbox();
                 payWithCreditCard(visaCardNumber);
-                completePageOperations.clickBack();
                 break;
             case MASTERCARD:
                 chooseCreditCardOption();
                 tickTermsAndConditionsCheckbox();
                 payWithCreditCard(mastercardCardNumber);
-                completePageOperations.clickBack();
                 break;
             case KLARNA:
                 chooseCreditCardOption();
@@ -134,14 +145,12 @@ public class SummaryPageOperations {
                 tickTermsAndConditionsCheckbox();
                 payWithCreditCard(twoFactorCardNumberType1);
                 twoFactorAuthentication3DS1();
-                completePageOperations.clickBack();
                 break;
             case TWOFACTORTYPE2:
                 chooseCreditCardOption();
                 tickTermsAndConditionsCheckbox();
                 payWithCreditCard(twoFactorCardNumberType2);
                 twoFactorAuthentication3DS2();
-                completePageOperations.clickBack();
         }
     }
 

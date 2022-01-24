@@ -65,7 +65,7 @@ public class ArticlesTest extends TestsBase {
     public void checkDeveloperArticlesPage() throws TimeoutException {
         navbarOperations.openAndVerifyArticlesPage();
         List<String> developerTitles = articlesPageOperations.addToList("Ladepartnere");
-        navbarOperations.openPartnerPage();
+        navbarOperations.openDeveloperPage();
         developerPageOperations.compareTitles(developerTitles);
     }
 

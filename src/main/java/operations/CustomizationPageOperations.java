@@ -41,6 +41,10 @@ public class CustomizationPageOperations {
         waitUtils.waitForElementToBeClickable(customizationPageObject.getInstallationCheckbox()).click();
     }
 
+    public void tickUtilityCheckbox() {
+        waitUtils.waitForElementToBeClickable(customizationPageObject.getUtilityCheckbox()).click();
+    }
+
     public void addEqualizer() {
         waitUtils.waitForElementToBeClickable(customizationPageObject.getAddEqualizer()).click();
     }

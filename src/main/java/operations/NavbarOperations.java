@@ -44,6 +44,10 @@ public class NavbarOperations {
         driver.navigate().to(BASE_URL + PARTNER_PAGE);
     }
 
+    public void openDeveloperPage() {
+        driver.navigate().to(BASE_URL + DEVELOPER_PAGE);
+    }
+
     public void openApartmentPage() {
         driver.navigate().to(BASE_URL + APARTMENT_PAGE);
     }
@@ -62,4 +66,5 @@ public class NavbarOperations {
     public void openProductsPage() {
         driver.navigate().to(BASE_URL + PRODUCTS_PAGE);
     }
+
 }

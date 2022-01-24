@@ -60,6 +60,7 @@ public class SDUFlowTests extends TestsBase {
         customizationPageOperations.goToSmbSDUPartner();
         customizationPageOperations.checkPriceFormat();
         purchaseFlowSDUUser(sduPurchaseData);
+        summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 4595)
@@ -74,6 +75,7 @@ public class SDUFlowTests extends TestsBase {
         customizationPageOperations.goToIglandSDUPartner();
         customizationPageOperations.checkPriceFormat();
         purchaseFlowSDUUser(sduPurchaseData);
+        summaryPageOperations.assertThankYouPage();
     }
 
     private void purchaseFlowSDUUser(SduPurchaseData sduPurchaseData) throws TimeoutException {
