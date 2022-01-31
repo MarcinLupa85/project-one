@@ -23,12 +23,13 @@ public class ApartmentPageOperations extends BaseOperations {
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(apartmentPageObject, driver);
     }
 
-    public void fillContactForm(String name, String phone, String company, String mail){
+    public void fillContactForm(String name, String phone, String company, String mail, String zipcode){
         waitUtils.bringElementToViewport(apartmentPageObject.getName());
         fillField(apartmentPageObject.getName(), name);
         fillField(apartmentPageObject.getMail(), mail);
         fillField(apartmentPageObject.getPhone(), phone);
         fillField(apartmentPageObject.getCompany(), company);
+        fillField(apartmentPageObject.getZipCode(), zipcode);
     }
 
     public void clickSendContactForm() {

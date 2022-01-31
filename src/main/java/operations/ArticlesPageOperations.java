@@ -30,6 +30,7 @@ public class ArticlesPageOperations {
         List<String> subListOfArticles;
         while (listOfArticles.size() < 3) {
             waitUtils.waitForDocumentReadyState();
+            waitUtils.waitForElementToBeClickable(By.cssSelector("a[class='btn btn-secondary']"));
             subListOfArticles = articlesPageObject.getArticleTitleCategoryList()
                     .stream()
                     .filter(webElement -> webElement.findElement(By.className("article-tile__category")).getText().contains(category))
@@ -37,7 +38,9 @@ public class ArticlesPageOperations {
                     .limit(3)
                     .collect(Collectors.toList());
             listOfArticles.addAll(subListOfArticles);
+            System.out.println(subListOfArticles);
             try {
+                waitUtils.waitForElementToBePresent(articlesPageObject.getNextButton());
                 articlesPageObject.getNextButton().click();
             } catch (NoSuchElementException e2) {
                 LOGGER.error("No more pages to load", e2);

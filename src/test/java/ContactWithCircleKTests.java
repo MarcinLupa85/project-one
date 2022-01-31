@@ -63,7 +63,8 @@ public class ContactWithCircleKTests extends TestsBase {
                 FakerUtils.getFakerLastName(),
                 FakerUtils.getFakerPhone(),
                 FakerUtils.getFakerCompany(),
-                TESTAPARTMENTFROM_MAILINATOR_COM);
+                TESTAPARTMENTFROM_MAILINATOR_COM,
+                FakerUtils.getFakerZipCode());
         apartmentPageOperations.clickSendContactForm();
     }
 

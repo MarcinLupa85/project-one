@@ -26,7 +26,8 @@ public class NewestArticlesComponentOperations {
 
     public void compareTitles(List<String> apartmentTitles) throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
-        List<String> compareTitles = page.getArticleBody().get(0).findElements(By.className("article-tile__title"))
+        waitUtils.waitForElementToBeClickable(By.cssSelector("h4[class='heading-4 article-tile__title']"));
+        List<String> compareTitles = page.getArticleBody().get(0).findElements(By.cssSelector("h4[class='heading-4 article-tile__title']"))
                 .stream()
                 .map(WebElement::getText).collect(Collectors.toList());
         compareTitles.forEach(LOGGER::info);

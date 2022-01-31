@@ -26,6 +26,9 @@ public class ApartmentPageObject extends EvPage implements WithNewestArticlePage
     @FindBy(id = "email")
     private WebElement mail;
 
+    @FindBy(id = "zipCode")
+    private WebElement zipCode;
+
     @FindBy(xpath = "//*[contains(text(),'Send')]")
     private WebElement contactSubmitButton;
 
@@ -40,4 +43,5 @@ public class ApartmentPageObject extends EvPage implements WithNewestArticlePage
 
     @FindBy(xpath = "//*[contains(text(),'til borettslag og sameie')]")
     private WebElement redirectToFormButton;
+
 }

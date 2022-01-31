@@ -1,6 +1,5 @@
 package operations;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.ProductsPageObject;
@@ -30,8 +29,7 @@ public class ProductsPageOperations {
         navbarOperations.openProductsPage();
         waitUtils.waitForDocumentReadyState();
         WebElement easeeLink = productsPageObject.getPurchaseFlowEaseeLink();
-        waitUtils.waitForVisibilityOf(easeeLink);
-        waitUtils.bringElementToViewport(easeeLink);
+        waitUtils.waitForElementToBeClickable(easeeLink);
         easeeLink.click();
         waitUtils.waitForUrlToContain(BESTILL_CUSTOMIZE_ORDER_URL);
     }
@@ -39,8 +37,8 @@ public class ProductsPageOperations {
     public void openEqualizerPurchaseFlow() throws TimeoutException {
         navbarOperations.openProductsPage();
         waitUtils.waitForDocumentReadyState();
-        WebElement equalizerName = driver.findElement(By.cssSelector("img[src='assets/images/products/cards/equalizer/equalizer-1.jpg']"));
-        waitUtils.bringElementToViewport(equalizerName);
+        waitUtils.waitForElementToBeClickable(productsPageObject.getPurchaseFlowEqualizerLink());
+        waitUtils.bringElementToViewport(productsPageObject.getPurchaseFlowEqualizerLink());
         productsPageObject.getPurchaseFlowEqualizerLink().click();
         waitUtils.waitForUrlToContain(BESTILL_CUSTOMIZE_ORDER_URL);
     }
@@ -49,7 +47,7 @@ public class ProductsPageOperations {
         navbarOperations.openProductsPage();
         waitUtils.waitForDocumentReadyState();
         WebElement cableLink = productsPageObject.getPurchaseFlowCableLink();
-        waitUtils.waitForVisibilityOf(cableLink);
+        waitUtils.waitForElementToBeClickable(cableLink);
         cableLink.click();
         waitUtils.waitForUrlToContain(BESTILL_CUSTOMIZE_ORDER_URL);
     }
@@ -58,7 +56,7 @@ public class ProductsPageOperations {
         driver.navigate().to(BASE_URL + PRODUCTS_INSTALLATION_PAGE);
         waitUtils.waitForDocumentReadyState();
         WebElement installationLink = productsPageObject.getPurchaseInstallationButton();
-        waitUtils.waitForVisibilityOf(installationLink);
+        waitUtils.waitForElementToBeClickable(installationLink);
         installationLink.click();
         waitUtils.waitForUrlToContain(BESTILL_CUSTOMIZE_ORDER_URL);
     }
