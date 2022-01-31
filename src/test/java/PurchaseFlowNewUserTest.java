@@ -3,6 +3,7 @@ import config.DriverFactory;
 import config.TestsBase;
 import enums.PaymentMethod;
 import operations.*;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.ClientInfo;
@@ -52,7 +53,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         summaryPageOperations.pay(paymentMethod);
     }
 
-    @Test(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     private void cleanUp() throws TimeoutException {
         driver = new DriverFactory().startBrowser();
         ckidPageOperations = new CkidPageOperations(driver);
