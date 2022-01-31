@@ -9,7 +9,7 @@ import java.util.concurrent.TimeoutException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class ApartmentPageOperations extends BaseOperations {
+public class ApartmentPageOperations extends BaseOperations{
 
     private ApartmentPageObject apartmentPageObject;
     private WaitUtils waitUtils;
@@ -18,6 +18,7 @@ public class ApartmentPageOperations extends BaseOperations {
 
     public ApartmentPageOperations(WebDriver driver) {
         super(driver);
+        this.driver = driver;
         apartmentPageObject = new ApartmentPageObject(driver);
         waitUtils = new WaitUtils(driver);
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(apartmentPageObject, driver);
@@ -50,9 +51,5 @@ public class ApartmentPageOperations extends BaseOperations {
 
     public void compareTitles(List<String> apartmentTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(apartmentTitles);
-    }
-
-    public void clickRedirectToForm() {
-        apartmentPageObject.getRedirectToFormButton().click();
     }
 }
