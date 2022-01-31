@@ -31,7 +31,7 @@ public class NewestArticlesComponentOperations {
                 .stream()
                 .map(WebElement::getText).collect(Collectors.toList());
         compareTitles.forEach(LOGGER::info);
-        System.out.println(compareTitles);
+        assertThat(apartmentTitles).hasSameSizeAs(compareTitles);
         apartmentTitles.forEach(title -> assertThat(compareTitles).contains(title));
     }
 }
