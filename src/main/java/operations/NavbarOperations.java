@@ -23,6 +23,7 @@ public class NavbarOperations {
     }
 
     public void openOnTheGoPage() {
+        waitUtils.waitForElementToBeClickable(navbarObject.getOnTheGoLink());
         navbarObject.getOnTheGoLink().click();
         waitUtils.waitForUrlToContain("ladestasjoner");
     }

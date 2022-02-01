@@ -82,6 +82,7 @@ public class SDUDiscountPartnerOperations extends BaseOperations {
         waitUtils.waitForUrlToContain("/details");
         waitUtils.waitForDocumentReadyState();
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getMembershipNumber());
+        waitUtils.waitForElementToBeClickable(sduDiscountPartnerPageObject.getMembershipNumber());
         fillField(sduDiscountPartnerPageObject.getMembershipNumber(), membershipNumber);
         waitUtils.bringElementToViewport(sduDiscountPartnerPageObject.getSendButton());
         sduDiscountPartnerPageObject.getSendButton().click();

@@ -1,11 +1,12 @@
 package utils;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.sql.Timestamp;
 import java.time.Duration;
+import java.util.Optional;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
@@ -46,11 +47,36 @@ public class WaitUtils {
                 .until(ExpectedConditions.elementToBeClickable(by));
     }
 
+
+    public Optional<WebElement> waitForElementToBePresent(WebElement element) {
+        try {
+            return Optional.ofNullable(
+                    new WebDriverWait(driver, 3)
+                            .withTimeout(Duration.ofSeconds(30))
+                            .pollingEvery(Duration.ofMillis(500))
+                            .ignoring(IndexOutOfBoundsException.class)
+                            .until(ExpectedConditions.elementToBeClickable(element)));
+        } catch (IndexOutOfBoundsException e) {
+            return Optional.empty();
+        }
+    }
+
     public void waitForDocumentReadyState() throws java.util.concurrent.TimeoutException {
-        ExpectedCondition<Boolean> pageLoaderCondition =
-                driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-        WebDriverWait wait = new WebDriverWait(driver, defaultMaxTimeoutForAllWaits);
-        wait.until(pageLoaderCondition);
+        Timestamp timestampWithTimeoutAdded = new Timestamp(System.currentTimeMillis() + 30000);
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        while (new Timestamp(System.currentTimeMillis()).before(timestampWithTimeoutAdded)) {
+            //This portion of the code is added back until a working solution is found. Task ECA-2351
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            String documentState = (String) jse.executeScript("return document.readyState");
+            if (documentState.equals("complete")) {
+                return;
+            }
+        }
+        throw new java.util.concurrent.TimeoutException();
     }
 
     public void waitUntilOnUrl(int timeoutInSeconds, String url) {
