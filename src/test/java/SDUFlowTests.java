@@ -87,7 +87,8 @@ public class SDUFlowTests extends TestsBase {
                 .withFourteenDaysInstallation(sduPurchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.logInWithCredentials(sduPurchaseData.getEmail(), decryptedString);
+        ckidPageOperations.provideLoginCredentials(sduPurchaseData.getEmail(), decryptedString);
+        ckidPageOperations.clickLogInButton();
         if (sduPurchaseData.isMembershipNumberNecessary()) {
             customizationPageOperations.fillMembershipNumber(sduPurchaseData.getMembershipNumber());
         }

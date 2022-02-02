@@ -148,7 +148,8 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     public void DiscountPartnerLogInTest() throws TimeoutException {
         sduDiscountPartnerOperations.goToCoopDiscountPage();
         sduDiscountPartnerOperations.clickLoginButton();
-        ckidPageOperations.logInWithCredentials("easeewithextra@mailinator.com", decryptedString);
+        ckidPageOperations.provideLoginCredentials("easeewithextra@mailinator.com", decryptedString);
+        ckidPageOperations.clickLogInButton();
         sduDiscountPartnerOperations.sendWithMembershipNumber("9876543210");
         sduDiscountPartnerOperations.assertThankYouPage();
     }
@@ -171,7 +172,8 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
                 .withFourteenDaysInstallation(fourteenDaysInstallation);
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.logInWithCredentials(username, decryptedString);
+        ckidPageOperations.provideLoginCredentials(username, decryptedString);
+        ckidPageOperations.clickLogInButton();
         addressPageOperations.fillClientInfo(clientInfo);
         summaryPageOperations.pay(paymentMethod);
     }

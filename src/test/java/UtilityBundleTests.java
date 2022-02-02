@@ -54,7 +54,8 @@ public class UtilityBundleTests extends TestsBase {
 //                .withFourteenDaysInstallation(fourteenDaysInstallation);
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.logInWithCredentials(username, decryptedString);
+        ckidPageOperations.provideLoginCredentials(username, decryptedString);
+        ckidPageOperations.clickLogInButton();
         addressPageOperations.fillClientInfo(clientInfo);
         addressPageOperations.clickNext();
         summaryPageOperations.tickTermsAndConditionsCheckbox();

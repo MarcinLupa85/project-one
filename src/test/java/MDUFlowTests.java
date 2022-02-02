@@ -66,7 +66,8 @@ public class MDUFlowTests extends TestsBase {
                 .withFourteenDaysInstallation(fourteenDaysInstallation);
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.logInWithCredentials(username, decryptedString);
+        ckidPageOperations.provideLoginCredentials(username, decryptedString);
+        ckidPageOperations.clickLogInButton();
         addressPageOperations.fillParkingPlace(FakerUtils.getFakerNumber(11, 99));
         addressPageOperations.fillClientInfo(clientInfo);
         addressPageOperations.clickNext();

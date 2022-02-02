@@ -4,6 +4,7 @@ import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -34,13 +35,21 @@ public class CkidPageOperations {
         cookiePanelOperations = new CookiePanelOperations(driver);
     }
 
-    public void logInWithCredentials(String username, String password) throws TimeoutException {
+    public void clickLogInButton() {
+        try {
+            ckidPageObject.getLoginButton().click();
+        } catch (ElementClickInterceptedException e) {
+            LOGGER.error("Cookie bot did not close properly", e);
+            driver.navigate().refresh();
+            ckidPageObject.getLoginButton().click();
+        }
+    }
+
+    public void provideLoginCredentials(String username, String password) throws TimeoutException {
         waitUtils.waitForPresenceOf(By.cssSelector("input[type=email]"));
         closeCookieBot();
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);
-        waitUtils.waitForElementToBeClickable(ckidPageObject.getLoginButton());
-        ckidPageObject.getLoginButton().click();
     }
 
     public void registerNewUser(String phoneNumber, String username, String password) {
@@ -63,7 +72,7 @@ public class CkidPageOperations {
         countrySelect.selectByValue("string:NORWAY");
         waitUtils.waitForPresenceOf(By.cssSelector("[class = 'icon-container']"));
         ckidPageObject.getCkidTcCheckbox().click();
-//        skipped due to Stable environment bein repurposed
+//        skipped due to Stable environment being repurposed
 //        ckidPageObject.getEvTcCheckbox().click();
         //Accepted in review
         waitUtils.waitForElementToBeClickable(ckidPageObject.getRegisterButton());
