@@ -21,6 +21,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
+    private MasterCardPageOperations masterCardPageOperations;
     private PasswordUtils passwordUtils;
     private String decryptedString;
 
@@ -33,6 +34,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
+        masterCardPageOperations = new MasterCardPageOperations(driver);
         driver.navigate().to(BASE_URL);
         passwordUtils = new PasswordUtils();
         decryptedString = passwordUtils.decryptEvPassword();
@@ -99,5 +101,15 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         sduDiscountPartnerOperations.sendPhoneNumber();
         sduDiscountPartnerOperations.sendRegisterForm("Name", "Test", "newuser.easeenoextra2@mailinator.com", decryptedString, "987654321");
         sduDiscountPartnerOperations.assertThankYouPage();
+    }
+
+    @TestCaseId(testRailCaseId = 6321)
+    @Test
+    public void PartnerMastercardNewUserTest() throws TimeoutException {
+        masterCardPageOperations.goToMastercardPage();
+        masterCardPageOperations.clickLoginButton();
+        ckidPageOperations.closeCookieBot();
+        ckidPageOperations.registerNewUser("575437307", "newuser.easeenoextra3@mailinator.com", decryptedString);
+        masterCardPageOperations.confirmMastercardBanner();
     }
 }

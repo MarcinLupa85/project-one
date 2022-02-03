@@ -18,6 +18,8 @@ public class EvRoutes {
         public static final String NAF_DISCOUNT_PAGE = "/partnere/naf";
         public static final String CONFIRMATION_PAGE = "/confirmation";
         public static final String CUSTOMIZED_PAGE = "/bestill/";
+        public static final String MASTERCARD_PAGE = "/partnere/mastercard";
+        public static final String MASTERCARD_CONFIRMATION = "/confirmation/extra";
     }
 
     public static final String REPORT_PAGE = "/ladetjenester/utbygger";

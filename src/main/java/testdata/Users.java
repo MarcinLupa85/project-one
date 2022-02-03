@@ -22,6 +22,7 @@ public class Users {
         usersList.add(new User("newuser.cablenoextra@mailinator.com", password, "575437306"));
         usersList.add(new User("newuser.easeeinstallation@mailinator.com", password, "575437307"));
         usersList.add(new User("newuser.easeenoextra2@mailinator.com", password, "94564565"));
+        usersList.add(new User("newuser.easeenoextra3@mailinator.com", password, "94564566"));
     }
 
     public List<User> getUsersList() {
