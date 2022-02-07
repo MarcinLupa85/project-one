@@ -10,6 +10,7 @@ import java.util.concurrent.TimeoutException;
 public class B2bFormTest extends TestsBase {
     private static final String B_2_BFORMTEST_MAILINATOR_COM = "b2bformtest@mailinator.com";
     private static final String B_2_BFORMTESTRECEIPIENT_MAILINATOR_COM = "b2bformtestreceipient@mailinator.com";
+    private static final String norwegianNumber = "+47 98563321";
     private B2bFormOperations b2bFormOperations;
 
     @BeforeMethod(alwaysRun = true)
@@ -34,7 +35,7 @@ public class B2bFormTest extends TestsBase {
                 FakerUtils.getFakerCity(true),
                 FakerUtils.getFakerFullName(),
                 B_2_BFORMTEST_MAILINATOR_COM,
-                FakerUtils.getFakerPhone(),
+                norwegianNumber,
                 B_2_BFORMTEST_MAILINATOR_COM,
                 FakerUtils.getFakerNumber(1200, 1299));
         b2bFormOperations.chooseColorOfCharger();
@@ -46,7 +47,7 @@ public class B2bFormTest extends TestsBase {
                 FakerUtils.getFakerZipCode(),
                 FakerUtils.getFakerCity(false),
                 B_2_BFORMTESTRECEIPIENT_MAILINATOR_COM,
-                FakerUtils.getFakerProject());
+                norwegianNumber);
         b2bFormOperations.sendForm();
     }
 }
