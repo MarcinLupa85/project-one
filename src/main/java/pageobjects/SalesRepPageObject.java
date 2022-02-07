@@ -34,7 +34,10 @@ public class SalesRepPageObject extends EvPage {
     private WebElement nextButton;
 
     @FindBy(id = "first-name")
-    private WebElement name;
+    private WebElement firstName;
+
+    @FindBy(id = "last-name")
+    private WebElement lastName;
 
     @FindBy(id = "billing-address")
     private WebElement address;
