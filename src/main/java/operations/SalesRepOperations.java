@@ -57,8 +57,9 @@ public class SalesRepOperations {
     }
 
     public void fillForm() {
-        waitUtils.waitForElementToBeClickable(salesRepPageObject.getName()).sendKeys("Test Kowalski");
-        waitUtils.waitForElementToBeClickable(salesRepPageObject.getEmail()).sendKeys("easeenoextra@mailinator.com");
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getFirstName()).sendKeys("Test");
+        salesRepPageObject.getLastName().sendKeys("Automation");
+        salesRepPageObject.getEmail().sendKeys("easeenoextra@mailinator.com");
         salesRepPageObject.getAddress().sendKeys("Test Address");
         salesRepPageObject.getZipCode().sendKeys("3000");
         salesRepPageObject.getCity().sendKeys("City");
