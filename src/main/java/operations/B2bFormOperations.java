@@ -55,6 +55,7 @@ public class B2bFormOperations extends BaseOperations {
 
     public void chooseColorOfCharger() {
         Select dropdown = new Select(b2bFormPageObject.getChargerColorDropdown());
+        waitUtils.waitForElementToBeClickable(b2bFormPageObject.getChargerColorDropdown());
         dropdown.selectByIndex(2);
     }
 
