@@ -56,4 +56,7 @@ public class SDUDiscountPartnerPageObject extends EvPage {
     @FindBy(css = "label[class='custom-control-label']")
     private WebElement extraCheckbox;
 
+    @FindBy(css = "img[alt='Circle K EXTRA Mastercard']")
+    private WebElement mastercardBanner;
+
 }
