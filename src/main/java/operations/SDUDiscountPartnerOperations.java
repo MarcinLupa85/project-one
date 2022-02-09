@@ -35,6 +35,10 @@ public class SDUDiscountPartnerOperations extends BaseOperations {
         driver.navigate().to(BASE_URL + NAF_DISCOUNT_PAGE);
     }
 
+    public void goToMastercardDiscountPage() {
+        driver.navigate().to(BASE_URL + MASTERCARD_PAGE);
+    }
+
     public void clickLoginButton() {
         sduDiscountPartnerPageObject.getLogInButton().click();
     }
@@ -91,6 +95,11 @@ public class SDUDiscountPartnerOperations extends BaseOperations {
 
     public void assertThankYouPage() {
         assertThat(driver.getCurrentUrl()).contains(CONFIRMATION_PAGE);
+    }
+
+    public void confirmMastercardBanner() {
+        waitUtils.waitForUrlToContain(MASTERCARD_CONFIRMATION);
+        assertThat(sduDiscountPartnerPageObject.getMastercardBanner().isDisplayed());
     }
 
 }

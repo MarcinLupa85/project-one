@@ -21,7 +21,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
-    private MasterCardPageOperations masterCardPageOperations;
     private WaitUtils waitUtils;
     private PasswordUtils passwordUtils;
     private String decryptedString;
@@ -34,7 +33,6 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
-        masterCardPageOperations = new MasterCardPageOperations(driver);
         waitUtils = new WaitUtils(driver);
         passwordUtils = new PasswordUtils();
         decryptedString = passwordUtils.decryptEvPassword();
@@ -167,12 +165,12 @@ public class PurchaseFlowExistingUserTest extends TestsBase {
 
     @TestCaseId(testRailCaseId = 6256)
     @Test
-    public void PartnerMastercardExistingUserTest() throws TimeoutException {
-        masterCardPageOperations.goToMastercardPage();
-        masterCardPageOperations.clickLoginButton();
+    public void DiscountPartnerMastercardTest() throws TimeoutException {
+        sduDiscountPartnerOperations.goToMastercardDiscountPage();
+        sduDiscountPartnerOperations.clickLoginButton();
         ckidPageOperations.provideLoginCredentials("easeenoextra@mailinator.com", decryptedString);
         ckidPageOperations.clickLogInButton();
-        masterCardPageOperations.confirmMastercardBanner();
+        sduDiscountPartnerOperations.confirmMastercardBanner();
     }
 
     private void purchaseFlowExistingUser(String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {
