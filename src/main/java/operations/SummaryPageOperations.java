@@ -5,26 +5,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.SummaryPageObject;
-import utils.WaitUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SummaryPageOperations {
+public class SummaryPageOperations extends BaseOperations {
 
     private SummaryPageObject summaryPageObject;
-    private WaitUtils waitUtils;
     private CompletePageOperations completePageOperations;
-    private WebDriver driver;
     private static final String visaCardNumber = "4988 4388 4388 4305";
     private static final String mastercardCardNumber = "5101 1800 0000 0007";
     private static final String twoFactorCardNumberType1 = "5212 3456 7890 1234";
     public static final String twoFactorCardNumberType2 = "4917 6100 0000 0000";
 
     public SummaryPageOperations(WebDriver driver) {
+        super(driver);
         summaryPageObject = new SummaryPageObject(driver);
-        waitUtils = new WaitUtils(driver);
         completePageOperations = new CompletePageOperations(driver);
-        this.driver = driver;
     }
 
     public void tickTermsAndConditionsCheckbox() {

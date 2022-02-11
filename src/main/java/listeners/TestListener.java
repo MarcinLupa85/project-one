@@ -46,7 +46,7 @@ public class TestListener implements ITestListener {
         String screenshotPath = SCREENSHOT_DIR + screenshotName;
         File screenshot = new File(screenshotPath);
         WebDriver driver = ((TestsBase) result.getInstance()).driver;
-        takeScreenshot(screenshot, result.getInstance() + getFormattedNowDate(), driver);
+        takeScreenshot(screenshot, driver);
         LOGGER.debug("Failing the test with name " + result.getName());
     }
 

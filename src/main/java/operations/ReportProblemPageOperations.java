@@ -3,7 +3,6 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import pageobjects.ReportProblemPageObject;
-import utils.WaitUtils;
 
 import static config.Constants.BASE_URL;
 import static testdata.EvRoutes.MOBILE_REPORT_PAGE;
@@ -11,14 +10,10 @@ import static testdata.EvRoutes.MOBILE_REPORT_PAGE;
 public class ReportProblemPageOperations extends BaseOperations {
 
     private ReportProblemPageObject reportProblemPageObject;
-    private WaitUtils waitUtils;
-    private WebDriver driver;
 
     public ReportProblemPageOperations(WebDriver driver) {
         super(driver);
         reportProblemPageObject = new ReportProblemPageObject(driver);
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
     }
 
     public void goToReportProblemPage() {

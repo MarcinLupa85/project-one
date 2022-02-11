@@ -2,20 +2,16 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.BecomeChargingPartnerPageObject;
-import utils.WaitUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BecomeChargingPartnerPageOperations extends BaseOperations {
+
     private BecomeChargingPartnerPageObject becomeChargingPartnerPageObject;
-    private WaitUtils waitUtils;
-    private WebDriver driver;
 
     public BecomeChargingPartnerPageOperations(WebDriver driver) {
         super(driver);
         becomeChargingPartnerPageObject = new BecomeChargingPartnerPageObject(driver);
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
     }
 
     public void openForm() {

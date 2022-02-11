@@ -3,7 +3,6 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import pageobjects.B2bFormPageObject;
-import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
 
@@ -13,14 +12,10 @@ import static testdata.EvRoutes.B2B_FORM_PAGE;
 
 public class B2bFormOperations extends BaseOperations {
     private B2bFormPageObject b2bFormPageObject;
-    private WaitUtils waitUtils;
-    private WebDriver driver;
 
     public B2bFormOperations(WebDriver driver) {
         super(driver);
         b2bFormPageObject = new B2bFormPageObject(driver);
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
     }
 
     public void goToB2bForm() throws TimeoutException {

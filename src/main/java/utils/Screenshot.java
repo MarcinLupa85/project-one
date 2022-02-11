@@ -13,12 +13,12 @@ import java.io.IOException;
 public class Screenshot {
     private static final Logger LOGGER = LogManager.getLogger(Screenshot.class);
 
-    public static void takeScreenshot(File destinationFile, String fileName, WebDriver driver) {
+    public static void takeScreenshot(File destinationFile, WebDriver driver) {
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, destinationFile);
         } catch (IOException e) {
-            LOGGER.error("Cannot take screenshot ", e.getMessage());
+            LOGGER.error("Cannot take screenshot {}", e.getMessage());
         }
     }
 }

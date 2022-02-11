@@ -3,16 +3,14 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import pageobjects.AddressPageObject;
 import testdata.ClientInfo;
-import utils.WaitUtils;
 
-public class AddressPageOperations {
+public class AddressPageOperations extends BaseOperations {
 
     private AddressPageObject addressPageObject;
-    private WaitUtils waitUtils;
 
     public AddressPageOperations(WebDriver driver) {
+        super(driver);
         addressPageObject = new AddressPageObject(driver);
-        waitUtils = new WaitUtils(driver);
     }
 
     public void fillParkingPlace(String parkingPlace) {

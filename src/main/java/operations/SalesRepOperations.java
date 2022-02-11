@@ -2,24 +2,21 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.SalesRepPageObject;
-import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
 import static testdata.EvRoutes.Partner.CUSTOMIZED_PAGE;
 
-public class SalesRepOperations {
-    private WaitUtils waitUtils;
-    private WebDriver driver;
+public class SalesRepOperations extends BaseOperations {
+
     private SalesRepPageObject salesRepPageObject;
 
     private static final String repName = "Bilbutikk 1 Fredrikstad";
     private static final String repMail = "krystian.kowalski@circlekeurope.com";
 
     public SalesRepOperations(WebDriver driver) {
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
+        super(driver);
         salesRepPageObject = new SalesRepPageObject(driver);
     }
 

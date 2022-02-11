@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 import utils.WaitUtils;
 
 public abstract class BaseOperations {
-    private final WaitUtils waitUtils;
-    private final WebDriver driver;
+    protected final WaitUtils waitUtils;
+    protected final WebDriver driver;
 
     public BaseOperations(WebDriver driver) {
-        waitUtils = new WaitUtils(driver);
         this.driver = driver;
+        waitUtils = new WaitUtils(driver);
     }
 
     protected void fillField(WebElement element, String text){

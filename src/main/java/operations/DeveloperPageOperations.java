@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import pageobjects.DeveloperPageObject;
-import utils.WaitUtils;
 
 import java.util.List;
 import java.util.concurrent.TimeoutException;
@@ -15,15 +14,11 @@ import static testdata.EvRoutes.REPORT_PAGE;
 public class DeveloperPageOperations extends BaseOperations {
     private static final Logger LOGGER = LogManager.getLogger(DeveloperPageOperations.class);
     private DeveloperPageObject developerPageObject;
-    private WaitUtils waitUtils;
-    private WebDriver driver;
     private NewestArticlesComponentOperations newestArticlesComponentOperations;
 
     public DeveloperPageOperations(WebDriver driver) {
         super(driver);
         developerPageObject = new DeveloperPageObject(driver);
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(developerPageObject, driver);
     }
 

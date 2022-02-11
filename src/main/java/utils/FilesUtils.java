@@ -2,7 +2,6 @@ package utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import testdata.Users;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,7 +10,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class FilesUtils {
-    private static final Logger LOGGER = LogManager.getLogger(Users.class);
+    private static final Logger LOGGER = LogManager.getLogger(FilesUtils.class);
 
     public static void appendTextToFile(List<String> content, Path path) {
         try {
@@ -20,7 +19,7 @@ public class FilesUtils {
             }
             Files.write(path, content, StandardOpenOption.APPEND);
         } catch (IOException e) {
-            LOGGER.error("Cannot append text to file ", e.getMessage());
+            LOGGER.error("Cannot append text to file {}", e.getMessage());
         }
     }
 }

@@ -3,28 +3,25 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.ApartmentPageObject;
-import utils.WaitUtils;
+
 import java.util.List;
 import java.util.concurrent.TimeoutException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class ApartmentPageOperations extends BaseOperations{
+public class ApartmentPageOperations extends BaseOperations {
 
     private ApartmentPageObject apartmentPageObject;
-    private WaitUtils waitUtils;
-    private WebDriver driver;
     private NewestArticlesComponentOperations newestArticlesComponentOperations;
 
     public ApartmentPageOperations(WebDriver driver) {
         super(driver);
-        this.driver = driver;
         apartmentPageObject = new ApartmentPageObject(driver);
-        waitUtils = new WaitUtils(driver);
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(apartmentPageObject, driver);
     }
 
-    public void fillContactForm(String name, String phone, String company, String mail, String zipcode){
+    public void fillContactForm(String name, String phone, String company, String mail, String zipcode) {
         waitUtils.bringElementToViewport(apartmentPageObject.getName());
         fillField(apartmentPageObject.getName(), name);
         fillField(apartmentPageObject.getMail(), mail);
@@ -45,7 +42,7 @@ public class ApartmentPageOperations extends BaseOperations{
         waitUtils.waitForVisibilityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContain("ladetjenester/faq",2);
+        waitUtils.waitForUrlToContain("ladetjenester/faq", 2);
         assertThat(driver.getCurrentUrl()).contains("ladetjenester/faq");
     }
 

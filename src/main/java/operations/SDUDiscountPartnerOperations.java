@@ -2,7 +2,6 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.SDUDiscountPartnerPageObject;
-import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
 
@@ -12,14 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static testdata.EvRoutes.Partner.*;
 
 public class SDUDiscountPartnerOperations extends BaseOperations {
-    private WaitUtils waitUtils;
-    private WebDriver driver;
+
     private SDUDiscountPartnerPageObject sduDiscountPartnerPageObject;
 
     public SDUDiscountPartnerOperations(WebDriver driver) {
         super(driver);
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
         sduDiscountPartnerPageObject = new SDUDiscountPartnerPageObject(driver);
     }
 
