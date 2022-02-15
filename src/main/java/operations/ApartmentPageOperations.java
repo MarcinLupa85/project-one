@@ -7,7 +7,9 @@ import pageobjects.ApartmentPageObject;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
+import static config.Constants.BASE_URL;
 import static org.assertj.core.api.Assertions.assertThat;
+import static testdata.EvRoutes.Navbar.APARTMENT_PAGE;
 
 
 public class ApartmentPageOperations extends BaseOperations {
@@ -19,6 +21,10 @@ public class ApartmentPageOperations extends BaseOperations {
         super(driver);
         apartmentPageObject = new ApartmentPageObject(driver);
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(apartmentPageObject, driver);
+    }
+
+    public void openApartmentPage() {
+        driver.navigate().to(BASE_URL + APARTMENT_PAGE);
     }
 
     public void fillContactForm(String name, String phone, String company, String mail, String zipcode) {

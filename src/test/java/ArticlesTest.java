@@ -28,13 +28,14 @@ public class ArticlesTest extends TestsBase {
     @TestCaseId(testRailCaseId = 1183)
     @Test
     public void goAndCheckToArticlesTest() throws TimeoutException {
-        navbarOperations.openAndVerifyArticlesPage();
+        navbarOperations.openArticlesPage();
+        articlesPageOperations.assertNewsPageTitle();
     }
 
     @TestCaseId(testRailCaseId = 1186)
     @Test
     public void checkOnTheGoArticlesTest() throws TimeoutException {
-        navbarOperations.openAndVerifyArticlesPage();
+        navbarOperations.openArticlesPage();
         List<String> OTGTitles = articlesPageOperations.addToList("Ladestasjoner");
         navbarOperations.openOnTheGoPage();
         onTheGoPageOperations.compareTitles(OTGTitles);
@@ -43,18 +44,18 @@ public class ArticlesTest extends TestsBase {
     @TestCaseId(testRailCaseId = 1187)
     @Test
     public void checkHouseArticlesPage() throws TimeoutException {
-        navbarOperations.openAndVerifyArticlesPage();
+        navbarOperations.openArticlesPage();
         List<String> houseTitles = articlesPageOperations.addToList("Hjemmelading");
         navbarOperations.openHousePage();
         housePageOperations.compareTitles(houseTitles);
-        navbarOperations.openHouseAndCabinPage();
+        housePageOperations.openHouseAndCabinPage();
         apartmentPageOperations.compareTitles(houseTitles);
     }
 
     @TestCaseId(testRailCaseId = 1189)
     @Test
     public void checkCompanyArticlesPage() throws TimeoutException {
-        navbarOperations.openAndVerifyArticlesPage();
+        navbarOperations.openArticlesPage();
         List<String> companyTitles = articlesPageOperations.addToList("Bedrift");
         navbarOperations.openCompanyPage();
         apartmentPageOperations.compareTitles(companyTitles);
@@ -63,9 +64,9 @@ public class ArticlesTest extends TestsBase {
     @TestCaseId(testRailCaseId = 6097)
     @Test
     public void checkDeveloperArticlesPage() throws TimeoutException {
-        navbarOperations.openAndVerifyArticlesPage();
+        navbarOperations.openArticlesPage();
         List<String> developerTitles = articlesPageOperations.addToList("Ladepartnere");
-        navbarOperations.openDeveloperPage();
+        developerPageOperations.openDeveloperPage();
         developerPageOperations.compareTitles(developerTitles);
     }
 
@@ -73,7 +74,7 @@ public class ArticlesTest extends TestsBase {
     @TestCaseId(testRailCaseId = 5720)
     @Test
     public void checkPartnerArticlesPage() throws TimeoutException {
-        navbarOperations.openAndVerifyArticlesPage();
+        navbarOperations.openArticlesPage();
         List<String> partnerTitles = articlesPageOperations.addToList("Referanser");
         navbarOperations.openPartnerPage();
         developerPageOperations.compareTitles(partnerTitles);

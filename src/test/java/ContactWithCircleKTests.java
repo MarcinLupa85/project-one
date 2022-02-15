@@ -58,7 +58,7 @@ public class ContactWithCircleKTests extends TestsBase {
     @TestCaseId(testRailCaseId = 1162)
     @Test
     public void testSendApartmentContactForm() {
-        navbarOperations.openApartmentPage();
+        apartmentPageOperations.openApartmentPage();
         apartmentPageOperations.fillContactForm(
                 FakerUtils.getFakerLastName(),
                 FakerUtils.getFakerPhone(),
@@ -103,7 +103,7 @@ public class ContactWithCircleKTests extends TestsBase {
     @TestCaseId(testRailCaseId = 5499)
     @Test
     public void testBecomePartnerForm() {
-        navbarOperations.openBecomeChargingPartnerPage();
+        navbarOperations.openPartnerPage();
         becomeChargingPartnerPageOperations.openForm();
         becomeChargingPartnerPageOperations.fillForm(
                 FakerUtils.getFakerFirstName(),
