@@ -43,7 +43,7 @@ public class FaqTests extends TestsBase {
     @TestCaseId(testRailCaseId = 1209)
     @Test
     public void apartmentPageGoToFaqTest() {
-        navbarOperations.openApartmentPage();
+        apartmentPageOperations.openApartmentPage();
         apartmentPageOperations.goToFaq();
     }
 }

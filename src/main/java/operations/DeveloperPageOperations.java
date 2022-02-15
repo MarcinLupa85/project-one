@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
+import static testdata.EvRoutes.Navbar.DEVELOPER_PAGE;
 import static testdata.EvRoutes.REPORT_PAGE;
 
 public class DeveloperPageOperations extends BaseOperations {
@@ -20,6 +21,10 @@ public class DeveloperPageOperations extends BaseOperations {
         super(driver);
         developerPageObject = new DeveloperPageObject(driver);
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(developerPageObject, driver);
+    }
+
+    public void openDeveloperPage() {
+        driver.navigate().to(BASE_URL + DEVELOPER_PAGE);
     }
 
     public void fillForm(String firstName, String lastName, String email, String mobile, String company, String project, String parkingPlaces, String description) {

@@ -9,7 +9,9 @@ import utils.WaitUtils;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
+import static config.Constants.BASE_URL;
 import static org.assertj.core.api.Assertions.assertThat;
+import static testdata.EvRoutes.Navbar.HOUSEANDHUT_PAGE;
 
 public class HousePageOperations {
     private static final Logger LOGGER = LogManager.getLogger(HousePageOperations.class);
@@ -36,6 +38,10 @@ public class HousePageOperations {
     public void compareTitles(List<String> houseTitles) throws TimeoutException {
         newestArticlesComponentOperations.compareTitles(houseTitles);
         houseTitles.forEach(LOGGER::info);
+    }
+
+    public void openHouseAndCabinPage() {
+        driver.navigate().to(BASE_URL + HOUSEANDHUT_PAGE);
     }
 
 }

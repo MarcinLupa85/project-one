@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class ArticlesPageOperations {
     private static final Logger LOGGER = LogManager.getLogger(ArticlesPageOperations.class);
     private ArticlesPageObject articlesPageObject;
@@ -45,5 +47,10 @@ public class ArticlesPageOperations {
             }
         }
         return listOfArticles.stream().limit(3).collect(Collectors.toList());
+    }
+
+    public void assertNewsPageTitle() throws TimeoutException {
+        waitUtils.waitForDocumentReadyState();
+        assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Ladenytt')]")).isDisplayed());
     }
 }

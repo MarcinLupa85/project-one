@@ -30,4 +30,10 @@ public class NavbarObject extends EvPage {
     @FindBy(css = "a[href='/elbillading/nettbutikk'].nav-link")
     private WebElement productsLink;
 
+    @FindBy(css = "a[href='/elbillading/ladepartnere'].nav-link")
+    private WebElement chargingPartnerLink;
+
+    @FindBy(css = "a[href='/elbillading/bedriftslading'].nav-link")
+    private WebElement companyLink;
+
 }
