@@ -3,26 +3,22 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.ProductsPageObject;
-import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
 import static testdata.EvRoutes.Navbar.PRODUCTS_INSTALLATION_PAGE;
 
-public class ProductsPageOperations {
+public class ProductsPageOperations extends BaseOperations {
     private static final String BESTILL_CUSTOMIZE_ORDER_URL = "/bestill/customize-order";
     ProductsPageObject productsPageObject;
     NavbarOperations navbarOperations;
-    private WaitUtils waitUtils;
-    private WebDriver driver;
 
 
     public ProductsPageOperations(WebDriver driver) {
+        super(driver);
         productsPageObject = new ProductsPageObject(driver);
         navbarOperations = new NavbarOperations(driver);
-        this.driver = driver;
-        waitUtils = new WaitUtils(driver);
     }
 
     public void openEaseePurchaseFlow() throws TimeoutException {

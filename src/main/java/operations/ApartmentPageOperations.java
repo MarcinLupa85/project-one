@@ -40,7 +40,7 @@ public class ApartmentPageOperations extends BaseOperations {
         waitUtils.waitForVisibilityOf(apartmentPageObject.getContactSubmitButton());
         apartmentPageObject.getContactSubmitButton().click();
         waitUtils.waitForVisibilityOf(apartmentPageObject.getThankYouText());
-        assertThat(apartmentPageObject.getThankYouText().getText().contains("Takk for din henvendelse"));
+        assertThat(apartmentPageObject.getThankYouText().getText()).contains("Takk for din henvendelse");
     }
 
     public void goToFaq() {

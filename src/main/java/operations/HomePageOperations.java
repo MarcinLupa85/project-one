@@ -3,26 +3,16 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.HomePageObject;
-import utils.WaitUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class HomePageOperations {
+public class HomePageOperations extends BaseOperations {
 
     private HomePageObject homePageObject;
-    private ProductsPageOperations productsPageOperations;
-    private WaitUtils waitUtils;
-    private WebDriver driver;
-    private CustomizationPageOperations customizationPageOperations;
-    private NavbarOperations navbarOperations;
 
     public HomePageOperations(WebDriver driver) {
+        super(driver);
         homePageObject = new HomePageObject(driver);
-        productsPageOperations = new ProductsPageOperations(driver);
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
-        customizationPageOperations = new CustomizationPageOperations(driver);
-        navbarOperations = new NavbarOperations(driver);
     }
 
     public void goToFaq() {
@@ -30,7 +20,7 @@ public class HomePageOperations {
         waitUtils.waitForVisibilityOf(readMoreFaqButton);
         waitUtils.bringElementToViewport(readMoreFaqButton);
         readMoreFaqButton.click();
-        waitUtils.waitForUrlToContain("/elbillading/ladestasjoner/faq",2);
+        waitUtils.waitForUrlToContain("/elbillading/ladestasjoner/faq", 2);
         assertThat(driver.getCurrentUrl()).contains("/ladestasjoner/faq");
     }
 
@@ -38,6 +28,6 @@ public class HomePageOperations {
         waitUtils.waitForVisibilityOf(homePageObject.getContactButton());
         waitUtils.bringElementToViewport(homePageObject.getContactButton());
         homePageObject.getContactButton().click();
-        waitUtils.waitForUrlToContain("/kontakt-oss",2);
+        waitUtils.waitForUrlToContain("/kontakt-oss", 2);
     }
 }

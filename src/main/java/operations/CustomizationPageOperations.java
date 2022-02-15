@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.CustomizationPageObject;
-import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
 
@@ -12,16 +11,13 @@ import static config.Constants.BASE_URL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static testdata.EvRoutes.Partner.CUSTOMIZED_PAGE;
 
-public class CustomizationPageOperations {
+public class CustomizationPageOperations extends BaseOperations {
 
     private CustomizationPageObject customizationPageObject;
-    private WaitUtils waitUtils;
-    WebDriver driver;
 
     public CustomizationPageOperations(WebDriver driver) {
+        super(driver);
         customizationPageObject = new CustomizationPageObject(driver);
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
     }
 
     public void clickSubmitButton() throws TimeoutException {
@@ -49,6 +45,7 @@ public class CustomizationPageOperations {
         waitUtils.waitForElementToBeClickable(customizationPageObject.getAddEqualizer()).click();
     }
 
+    //TODO add usage of that method in tests or remove if not needed
     public void addCharger() {
         customizationPageObject.getEaseeNumberSelector().click();
     }
@@ -78,6 +75,7 @@ public class CustomizationPageOperations {
         waitUtils.waitForVisibilityOf(customizationPageObject.getSubmitButton());
     }
 
+    //TODO add usage of that method in tests or remove if not needed
     public void goToMDULeasing() {
         driver.navigate().to(BASE_URL + CUSTOMIZED_PAGE + "Y21-35010");
         waitUtils.waitForVisibilityOf(customizationPageObject.getSubmitButton());
@@ -88,6 +86,7 @@ public class CustomizationPageOperations {
         assertThat(customizationPageObject.getTotalPrice().getText()).containsPattern("\\s\\d+.\\d{3},-");
     }
 
+    //TODO add usage of that method in tests or remove if not needed
     public void checkMDULeasingPriceFormat() {
         assertThat(customizationPageObject.getSubscriptionPrice().getText()).containsPattern("\\s\\d{3},-");
     }

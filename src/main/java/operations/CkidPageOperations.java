@@ -121,7 +121,7 @@ public class CkidPageOperations {
             waitUtils.waitForPresenceOf(By.id("login-submit-button"));
             driver.navigate().to(CKID_URL);
         } catch (org.openqa.selenium.TimeoutException | TimeoutException exception) {
-            LOGGER.error("Cannot delete user {} due to exception", testUser.getEmail(), exception.getMessage());
+            LOGGER.error("Cannot delete user {} due to exception", testUser.getEmail());
             exception.printStackTrace();
         }
     }

@@ -11,7 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SummaryPageOperations extends BaseOperations {
 
     private SummaryPageObject summaryPageObject;
-    private CompletePageOperations completePageOperations;
     private static final String visaCardNumber = "4988 4388 4388 4305";
     private static final String mastercardCardNumber = "5101 1800 0000 0007";
     private static final String twoFactorCardNumberType1 = "5212 3456 7890 1234";
@@ -20,7 +19,6 @@ public class SummaryPageOperations extends BaseOperations {
     public SummaryPageOperations(WebDriver driver) {
         super(driver);
         summaryPageObject = new SummaryPageObject(driver);
-        completePageOperations = new CompletePageOperations(driver);
     }
 
     public void tickTermsAndConditionsCheckbox() {
@@ -105,12 +103,12 @@ public class SummaryPageOperations extends BaseOperations {
 
     public void assertThankYouPage() {
         waitUtils.waitForElement(summaryPageObject.getCompleteOrderPageText());
-        assertThat(summaryPageObject.getCompleteOrderPageText().getText().contains("Gratulerer"));
+        assertThat(summaryPageObject.getCompleteOrderPageText().getText()).contains("Gratulerer");
     }
 
     public void assertNextStepPage() {
         waitUtils.waitForElement(summaryPageObject.getCompleteOrderPageText());
-        assertThat(summaryPageObject.getCompleteOrderPageText().getText().contains("Nesten ferdig..."));
+        assertThat(summaryPageObject.getCompleteOrderPageText().getText()).contains("Nesten ferdig...");
     }
 
     public void pay(PaymentMethod paymentMethod) {

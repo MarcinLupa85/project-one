@@ -5,24 +5,20 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.OnTheGoPageObject;
-import utils.WaitUtils;
 
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class OnTheGoPageOperations {
+public class OnTheGoPageOperations extends BaseOperations {
     private static final Logger LOGGER = LogManager.getLogger(OnTheGoPageOperations.class);
     private OnTheGoPageObject onTheGoPageObject;
-    private WaitUtils waitUtils;
-    private WebDriver driver;
     private NewestArticlesComponentOperations newestArticlesComponentOperations;
 
     public OnTheGoPageOperations(WebDriver driver) {
+        super(driver);
         onTheGoPageObject = new OnTheGoPageObject(driver);
-        waitUtils = new WaitUtils(driver);
-        this.driver = driver;
         newestArticlesComponentOperations = new NewestArticlesComponentOperations(onTheGoPageObject, driver);
     }
 

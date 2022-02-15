@@ -2,16 +2,14 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.CompletePageObject;
-import utils.WaitUtils;
 
-public class CompletePageOperations {
+public class CompletePageOperations extends BaseOperations {
 
     private CompletePageObject completePageObject;
-    private WaitUtils waitUtils;
 
-    public CompletePageOperations (WebDriver driver) {
+    public CompletePageOperations(WebDriver driver) {
+        super(driver);
         completePageObject = new CompletePageObject(driver);
-        waitUtils = new WaitUtils(driver);
     }
 
     public void clickBack() {

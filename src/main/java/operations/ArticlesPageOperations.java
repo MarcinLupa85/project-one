@@ -51,6 +51,6 @@ public class ArticlesPageOperations {
 
     public void assertNewsPageTitle() throws TimeoutException {
         waitUtils.waitForDocumentReadyState();
-        assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Ladenytt')]")).isDisplayed());
+        assertThat(driver.findElement(By.xpath("//h1[contains(text(), 'Ladenytt')]")).isDisplayed()).isTrue();
     }
 }
