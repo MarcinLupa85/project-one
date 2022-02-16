@@ -2,17 +2,15 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.HousingPageObject;
-import utils.WaitUtils;
 
-public class HousingOperations {
+public class HousingOperations extends BaseOperations{
     private ApartmentPageOperations apartmentPageOperations;
     private HousingPageObject housingPageObject;
-    private WaitUtils waitUtils;
 
     public HousingOperations(WebDriver driver) {
+        super(driver);
         apartmentPageOperations = new ApartmentPageOperations(driver);
         housingPageObject = new HousingPageObject(driver);
-        waitUtils = new WaitUtils(driver);
     }
 
     public void goToHousingCompanyPage() {
