@@ -17,6 +17,7 @@ public class MDUFlowTests extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
+    private HousingOperations housingOperations;
     private PasswordUtils passwordUtils;
     private String decryptedString;
 
@@ -28,6 +29,7 @@ public class MDUFlowTests extends TestsBase {
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
+        housingOperations = new HousingOperations(driver);
         passwordUtils = new PasswordUtils();
         decryptedString = passwordUtils.decryptEvPassword();
     }
@@ -56,6 +58,16 @@ public class MDUFlowTests extends TestsBase {
        customizationPageOperations.checkMDULeasingPriceFormat();
        purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
     }*/
+
+    @TestCaseId(testRailCaseId = 6179)
+    @Test
+    private void HousingCompanyTest() throws TimeoutException {
+        housingOperations.goToHousingCompanyPage();
+        housingOperations.inputHousingCompanyName("osp");
+        housingOperations.clickSearchButton();
+        housingOperations.clickBuyButton();
+        purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
+    }
 
     private void purchaseFlowMDUUser(String username, boolean fourteenDaysInstallation) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
