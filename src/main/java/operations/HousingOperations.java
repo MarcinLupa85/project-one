@@ -3,18 +3,16 @@ package operations;
 import org.openqa.selenium.WebDriver;
 import pageobjects.HousingPageObject;
 
-public class HousingOperations extends BaseOperations{
-    private ApartmentPageOperations apartmentPageOperations;
+public class HousingOperations extends ApartmentPageOperations {
     private HousingPageObject housingPageObject;
 
     public HousingOperations(WebDriver driver) {
         super(driver);
-        apartmentPageOperations = new ApartmentPageOperations(driver);
         housingPageObject = new HousingPageObject(driver);
     }
 
     public void goToHousingCompanyPage() {
-        apartmentPageOperations.openApartmentPage();
+        openApartmentPage();
         housingPageObject.getCheckStatusLink().click();
         waitUtils.waitForVisibilityOf(housingPageObject.getHousingCompanyTitle());
     }
