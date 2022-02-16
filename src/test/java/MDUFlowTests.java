@@ -11,6 +11,7 @@ import java.util.concurrent.TimeoutException;
 
 public class MDUFlowTests extends TestsBase {
     public static final String MDUEASEENOEXTRA_MAILINATOR_COM = "mdueaseenoextra@mailinator.com";
+    public static final String COMPANY_NAME = "osp";
 
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
@@ -63,7 +64,7 @@ public class MDUFlowTests extends TestsBase {
     @Test
     private void HousingCompanyTest() throws TimeoutException {
         housingOperations.goToHousingCompanyPage();
-        housingOperations.inputHousingCompanyName("osp");
+        housingOperations.inputHousingCompanyName(COMPANY_NAME);
         housingOperations.clickSearchButton();
         housingOperations.clickBuyButton();
         purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
