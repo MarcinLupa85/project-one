@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.HousingPageObject;
 import utils.WaitUtils;
 
-import java.util.concurrent.TimeoutException;
-
 public class HousingOperations {
     private ApartmentPageOperations apartmentPageOperations;
     private HousingPageObject housingPageObject;
@@ -30,7 +28,7 @@ public class HousingOperations {
         housingPageObject.getDropdownFirstOption().click();
     }
 
-    public void clickSearchButton() throws TimeoutException {
+    public void clickSearchButton() {
         waitUtils.waitForElementToBeClickable(housingPageObject.getSearchButton());
         housingPageObject.getSearchButton().click();
     }
