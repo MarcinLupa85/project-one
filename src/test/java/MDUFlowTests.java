@@ -19,25 +19,22 @@ public class MDUFlowTests extends TestsBase {
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
     private HousingOperations housingOperations;
-    private PasswordUtils passwordUtils;
     private String decryptedString;
 
     @BeforeMethod
-    private void initOperations() throws Exception {
-        customizationPageOperations = new CustomizationPageOperations(driver);
+    private void initOperations() {
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
         housingOperations = new HousingOperations(driver);
-        passwordUtils = new PasswordUtils();
-        decryptedString = passwordUtils.decryptEvPassword();
+        decryptedString = PasswordUtils.decryptEvPassword();
     }
 
     @TestCaseId(testRailCaseId = 4598)
     @Test
-    private void MDULightFlow() throws TimeoutException {
+    public void MDULightFlow() throws TimeoutException {
         customizationPageOperations.goToMDULight();
         customizationPageOperations.checkPriceFormat();
         purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
@@ -45,14 +42,14 @@ public class MDUFlowTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 4599)
     @Test
-    private void MDUReadyFlow() throws TimeoutException {
+    public void MDUReadyFlow() throws TimeoutException {
         customizationPageOperations.goToMDUReady();
         customizationPageOperations.checkPriceFormat();
         purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
     }
 
-    /* No Leasing offer available in SF
-   @TestCaseId(testRailCaseId = 4600)
+    //TODO No Leasing offer available in SF
+   /*@TestCaseId(testRailCaseId = 4600)
    @Test
    private void MDULeasingFlow() throws TimeoutException {
        customizationPageOperations.goToMDULeasing();
@@ -62,7 +59,7 @@ public class MDUFlowTests extends TestsBase {
 
     @TestCaseId(testRailCaseId = 6179)
     @Test
-    private void HousingCompanyTest() throws TimeoutException {
+    public void HousingCompanyTest() throws TimeoutException {
         housingOperations.goToHousingCompanyPage();
         housingOperations.inputHousingCompanyName(COMPANY_NAME);
         housingOperations.clickSearchButton();
