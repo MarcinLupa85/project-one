@@ -1,19 +1,17 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
-import operations.CustomizationPageOperations;
 import operations.SalesRepOperations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import java.util.concurrent.TimeoutException;
 
 public class SalesRepTests extends TestsBase {
     SalesRepOperations salesRepOperations;
-    CustomizationPageOperations customizationPageOperations;
 
     @BeforeMethod
     private void initOperations() {
         salesRepOperations = new SalesRepOperations(driver);
-        customizationPageOperations = new CustomizationPageOperations(driver);
     }
 
     @TestCaseId(testRailCaseId = 5535)
@@ -27,7 +25,23 @@ public class SalesRepTests extends TestsBase {
         salesRepOperations.addCharger();
         salesRepOperations.clickSubmitButton();
         salesRepOperations.fillForm();
-        salesRepOperations.clickCheckbox();
+        salesRepOperations.clickTCCheckbox();
+        salesRepOperations.completeOrder();
+    }
+
+    @TestCaseId(testRailCaseId = 6482)
+    @Test
+    public void salesRepFlowTestWithInstallation() throws TimeoutException {
+        salesRepOperations.goToSalesRepPage();
+        salesRepOperations.chooseRepName();
+        salesRepOperations.sendRepMail();
+        salesRepOperations.verifyRep();
+        salesRepOperations.goToForm();
+        salesRepOperations.addCharger();
+        salesRepOperations.tickInstallationCheckbox();
+        salesRepOperations.clickSubmitButton();
+        salesRepOperations.fillForm();
+        salesRepOperations.clickTCCheckbox();
         salesRepOperations.completeOrder();
     }
 }

@@ -49,6 +49,11 @@ public class SalesRepOperations extends BaseOperations {
         salesRepPageObject.getAddEaseeCharger().click();
     }
 
+    public void tickInstallationCheckbox() {
+        waitUtils.waitForElementToBeClickable(salesRepPageObject.getInstallationCheckbox());
+        salesRepPageObject.getInstallationCheckbox().click();
+    }
+
     public void clickSubmitButton() {
         salesRepPageObject.getNextButton().click();
     }
@@ -62,7 +67,7 @@ public class SalesRepOperations extends BaseOperations {
         salesRepPageObject.getCity().sendKeys("City");
     }
 
-    public void clickCheckbox() {
+    public void clickTCCheckbox() {
         salesRepPageObject.getConfirmationCheckbox().click();
     }
 

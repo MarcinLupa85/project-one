@@ -30,6 +30,9 @@ public class SalesRepPageObject extends EvPage {
     @FindBy(css = "[class='btn btn-sm btn-secondary']")
     private WebElement addEaseeCharger;
 
+    @FindBy(css = "label[for='withInstallation']")
+    private WebElement installationCheckbox;
+
     @FindBy(xpath = "//*[contains(text(),' videre')]")
     private WebElement nextButton;
 
@@ -48,10 +51,10 @@ public class SalesRepPageObject extends EvPage {
     @FindBy(id = "billing-city")
     private WebElement city;
 
-    @FindBy(css = "div[class='custom-control custom-checkbox']")
+    @FindBy(css = "#payment-method > div > div[class='custom-control custom-checkbox']")
     private WebElement confirmationCheckbox;
 
-    @FindBy(xpath = "//*[contains(text(),'bestilling')]")
+    @FindBy(css = "button[type='submit']")
     private WebElement completeOrderButton;
 
 }
