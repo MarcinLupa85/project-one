@@ -17,21 +17,16 @@ public class UtilityBundleTests extends TestsBase {
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
-    private CompletePageOperations completePageOperations;
-    private PasswordUtils passwordUtils;
     private String decryptedString;
 
     @BeforeMethod
-    private void initOperations() throws Exception {
+    private void initOperations() {
         customizationPageOperations = new CustomizationPageOperations(driver);
         productsPageOperations = new ProductsPageOperations(driver);
-        customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        completePageOperations = new CompletePageOperations(driver);
-        passwordUtils = new PasswordUtils();
-        decryptedString = passwordUtils.decryptEvPassword();
+        decryptedString = PasswordUtils.decryptEvPassword();
     }
 
         @TestCaseId(testRailCaseId = 5864)

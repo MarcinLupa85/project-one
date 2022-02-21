@@ -21,12 +21,11 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
-    private PasswordUtils passwordUtils;
     private String decryptedString;
 
 
     @BeforeMethod
-    private void initOperations() throws Exception {
+    private void initOperations() {
         productsPageOperations = new ProductsPageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
@@ -34,8 +33,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         summaryPageOperations = new SummaryPageOperations(driver);
         sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
         driver.navigate().to(BASE_URL);
-        passwordUtils = new PasswordUtils();
-        decryptedString = passwordUtils.decryptEvPassword();
+        decryptedString = PasswordUtils.decryptEvPassword();
     }
 
     private void purchaseFlowNewUser(String phoneNumber, String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {

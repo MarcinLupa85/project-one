@@ -20,18 +20,15 @@ public class SDUFlowTests extends TestsBase {
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
-    private PasswordUtils passwordUtils;
     private String decryptedString;
 
     @BeforeMethod
-    private void initOperations() throws Exception {
-        customizationPageOperations = new CustomizationPageOperations(driver);
+    private void initOperations() {
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        passwordUtils = new PasswordUtils();
-        decryptedString = passwordUtils.decryptEvPassword();
+        decryptedString = PasswordUtils.decryptEvPassword();
     }
 
     @TestCaseId(testRailCaseId = 4601)
