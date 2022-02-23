@@ -12,10 +12,6 @@ public class MDUFlowTests extends TestsBase {
     public static final String COMPANY_NAME = "osp";
 
     private CustomizationPageOperations customizationPageOperations;
-    private CkidPageOperations ckidPageOperations;
-    private AddressPageOperations addressPageOperations;
-    private SummaryPageOperations summaryPageOperations;
-    private CompletePageOperations completePageOperations;
     private PurchaseFlowsOperations purchaseFlowsOperations;
     private HousingOperations housingOperations;
     private String decryptedString;
@@ -23,10 +19,6 @@ public class MDUFlowTests extends TestsBase {
     @BeforeMethod
     private void initOperations() throws Exception {
         customizationPageOperations = new CustomizationPageOperations(driver);
-        ckidPageOperations = new CkidPageOperations(driver);
-        addressPageOperations = new AddressPageOperations(driver);
-        summaryPageOperations = new SummaryPageOperations(driver);
-        completePageOperations = new CompletePageOperations(driver);
         purchaseFlowsOperations = new PurchaseFlowsOperations(driver);
         housingOperations = new HousingOperations(driver);
         decryptedString = PasswordUtils.decryptEvPassword();

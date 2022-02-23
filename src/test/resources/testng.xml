@@ -16,6 +16,9 @@
             <class name="ContactWithCircleKTests"/>
             <class name="FaqTests"/>
             <class name="MDUFlowTests"/>
+            <class name="PaymentsTests"/>
+            <class name="PurchaseFlowDiscountPartnerExistingUserTest"/>
+            <class name="PurchaseFlowDiscountPartnerNewUserTest"/>
             <class name="PurchaseFlowExistingUserTest"/>
             <class name="PurchaseFlowNewUserTest"/>
             <class name="SalesRepTests"/>

@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
+import static testdata.EvUsers.*;
 
 public class PurchaseFlowDiscountPartnerExistingUserTest extends TestsBase {
 
@@ -14,7 +15,6 @@ public class PurchaseFlowDiscountPartnerExistingUserTest extends TestsBase {
     private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
     private PasswordUtils passwordUtils;
     private String decryptedString;
-
 
     @BeforeMethod(alwaysRun = true)
     private void initOperations() throws Exception {
@@ -24,12 +24,13 @@ public class PurchaseFlowDiscountPartnerExistingUserTest extends TestsBase {
         passwordUtils = new PasswordUtils();
         decryptedString = passwordUtils.decryptEvPassword();
     }
+
     @TestCaseId(testRailCaseId = 6113)
     @Test
     public void DiscountPartnerLogInTest() throws TimeoutException {
         sduDiscountPartnerOperations.goToCoopDiscountPage();
         sduDiscountPartnerOperations.clickLoginButton();
-        ckidPageOperations.provideLoginCredentials("easeewithextra@mailinator.com", decryptedString);
+        ckidPageOperations.provideLoginCredentials(EASEE_WITH_EXTRA, decryptedString);
         ckidPageOperations.clickLogInButton();
         sduDiscountPartnerOperations.sendWithMembershipNumber("9876543210");
         sduDiscountPartnerOperations.assertThankYouPage();
@@ -40,7 +41,7 @@ public class PurchaseFlowDiscountPartnerExistingUserTest extends TestsBase {
     public void DiscountPartnerNoExtraTest() {
         sduDiscountPartnerOperations.goToObosDiscountPage();
         sduDiscountPartnerOperations.clickNoExtraLink();
-        sduDiscountPartnerOperations.sendNoExtraForm("575437005", "Test", "Kowalski", "easeenoextra@mailinator.com", "9876543");
+        sduDiscountPartnerOperations.sendNoExtraForm("575437005", "Test", "Kowalski", EASEE_NO_EXTRA, "9876543");
         sduDiscountPartnerOperations.assertThankYouPage();
     }
 
@@ -49,7 +50,7 @@ public class PurchaseFlowDiscountPartnerExistingUserTest extends TestsBase {
     public void DiscountPartnerMastercardTest() throws TimeoutException {
         sduDiscountPartnerOperations.goToMastercardDiscountPage();
         sduDiscountPartnerOperations.clickLoginButton();
-        ckidPageOperations.provideLoginCredentials("easeenoextra@mailinator.com", decryptedString);
+        ckidPageOperations.provideLoginCredentials(EASEE_NO_EXTRA, decryptedString);
         ckidPageOperations.clickLogInButton();
         sduDiscountPartnerOperations.confirmMastercardBanner();
     }

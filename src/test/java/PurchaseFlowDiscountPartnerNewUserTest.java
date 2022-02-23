@@ -3,17 +3,18 @@ import config.TestsBase;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.FakerUtils;
 import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
 
 import static config.Constants.BASE_URL;
+import static testdata.EvUsers.*;
 
 public class PurchaseFlowDiscountPartnerNewUserTest extends TestsBase {
     private CkidPageOperations ckidPageOperations;
     private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
     private String decryptedString;
-
 
     @BeforeMethod
     private void initOperations() {
@@ -29,7 +30,12 @@ public class PurchaseFlowDiscountPartnerNewUserTest extends TestsBase {
         sduDiscountPartnerOperations.goToNafDiscountPage();
         sduDiscountPartnerOperations.clickBecomeMemberButton();
         sduDiscountPartnerOperations.sendPhoneNumber();
-        sduDiscountPartnerOperations.sendRegisterForm("Name", "Test", "newuser.easeenoextra2@mailinator.com", decryptedString, "987654321");
+        sduDiscountPartnerOperations.sendRegisterForm(
+                FakerUtils.getFakerFirstName(),
+                FakerUtils.getFakerLastName(),
+                NEW_EASEE_NO_EXTRA2,
+                decryptedString,
+                FakerUtils.getFakerNumber(100000000, 999999999));
         sduDiscountPartnerOperations.assertThankYouPage();
     }
 
@@ -39,7 +45,10 @@ public class PurchaseFlowDiscountPartnerNewUserTest extends TestsBase {
         sduDiscountPartnerOperations.goToMastercardDiscountPage();
         sduDiscountPartnerOperations.clickLoginButton();
         ckidPageOperations.closeCookieBot();
-        ckidPageOperations.registerNewUser("575437307", "newuser.easeenoextra3@mailinator.com", decryptedString);
+        ckidPageOperations.registerNewUser(
+                "94564566",
+                NEW_EASEE_NO_EXTRA3,
+                decryptedString);
         sduDiscountPartnerOperations.confirmMastercardBanner();
     }
 }

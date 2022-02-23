@@ -1,15 +1,21 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
-import enums.PaymentMethod;
-import operations.*;
+import operations.CustomizationPageOperations;
+import operations.ProductsPageOperations;
+import operations.PurchaseFlowsOperations;
+import operations.SummaryPageOperations;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import testdata.DefaultPurchaseData;
 import utils.PasswordUtils;
 import utils.WaitUtils;
 
 import java.util.concurrent.TimeoutException;
+
+import static enums.PaymentMethod.*;
+import static testdata.EvUsers.*;
 
 public class PaymentsTests extends TestsBase {
     private ProductsPageOperations productsPageOperations;
@@ -32,29 +38,45 @@ public class PaymentsTests extends TestsBase {
     @TestCaseId(testRailCaseId = 5556)
     @Test(alwaysRun = true)
     public void test2FactorAuthentication3DS1() throws TimeoutException {
+        DefaultPurchaseData defaultPurchaseData = new DefaultPurchaseData()
+                .withEmail(EASEE_NO_EXTRA)
+                .withPaymentMethod(TWOFACTORTYPE1)
+                .withFourteenDaysInstallation(false);
+
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickExtraCheckbox();
-        purchaseFlowsOperations.purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.TWOFACTORTYPE1);
+        purchaseFlowsOperations.purchaseFlowExistingUser(defaultPurchaseData);
         summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 5557)
     @Test
     public void test2FactorAuthentication3DS2() throws TimeoutException {
+        DefaultPurchaseData defaultPurchaseData = new DefaultPurchaseData()
+                .withEmail(EASEE_WITH_EXTRA)
+                .withPaymentMethod(TWOFACTORTYPE2)
+                .withFourteenDaysInstallation(false);
+
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickExtraCheckbox();
-        purchaseFlowsOperations.purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.TWOFACTORTYPE2);
+        purchaseFlowsOperations.purchaseFlowExistingUser(defaultPurchaseData);
         summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 5565)
     @Test
     public void testCanceledPaymentStatus() throws TimeoutException {
+        DefaultPurchaseData defaultPurchaseData = new DefaultPurchaseData()
+                .withEmail(EASEE_WITH_EXTRA)
+                .withPaymentMethod(KLARNA)
+                .withFourteenDaysInstallation(false);
+
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickExtraCheckbox();
-        purchaseFlowsOperations.purchaseFlowExistingUser("easeewithextra@mailinator.com", false, PaymentMethod.KLARNA);
+        purchaseFlowsOperations.purchaseFlowExistingUser(defaultPurchaseData);
         waitUtils.waitForElementToBeClickable(By.xpath("//*[contains(text(),'Tilbake')]"));
         ((JavascriptExecutor) driver).executeScript("document.getElementById('back-button__text').click();");
         waitUtils.waitForUrlToContain("/order/payment-result");
+        summaryPageOperations.assertCancelledOrderPage();
     }
 }

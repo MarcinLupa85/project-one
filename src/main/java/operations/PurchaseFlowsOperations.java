@@ -1,8 +1,9 @@
 package operations;
 
-import enums.PaymentMethod;
 import org.openqa.selenium.WebDriver;
 import testdata.ClientInfo;
+import testdata.DefaultPurchaseData;
+import testdata.NewUserPurchaseData;
 import testdata.SduPurchaseData;
 import utils.FakerUtils;
 import utils.PasswordUtils;
@@ -32,19 +33,19 @@ public class PurchaseFlowsOperations extends BaseOperations{
         decryptedString = passwordUtils.decryptEvPassword();
     }
 
-    public void purchaseFlowExistingUser(String username, boolean fourteenDaysInstallation, PaymentMethod paymentMethod) throws TimeoutException {
+    public void purchaseFlowExistingUser(DefaultPurchaseData defaultPurchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress(FakerUtils.getFakerStreetAddress())
                 .withCity(FakerUtils.getFakerCity(false))
                 .withZipcode(FakerUtils.getFakerZipCode())
                 .withComment(FakerUtils.getFakerDescription(3))
-                .withFourteenDaysInstallation(fourteenDaysInstallation);
+                .withFourteenDaysInstallation(defaultPurchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(username, decryptedString);
+        ckidPageOperations.provideLoginCredentials(defaultPurchaseData.getEmail(), decryptedString);
         ckidPageOperations.clickLogInButton();
         addressPageOperations.fillClientInfo(clientInfo);
-        summaryPageOperations.pay(paymentMethod);
+        summaryPageOperations.pay(defaultPurchaseData.getPaymentMethod());
     }
 
     public void purchaseFlowExistingUtilityUser(String username) throws TimeoutException {
@@ -98,5 +99,20 @@ public class PurchaseFlowsOperations extends BaseOperations{
         summaryPageOperations.tickTermsAndConditionsCheckbox();
         summaryPageOperations.clickFinish();
         completePageOperations.clickBack();
+    }
+
+    public void purchaseFlowNewUser(NewUserPurchaseData newUserPurchaseData) throws TimeoutException {
+        ClientInfo clientInfo = new ClientInfo()
+                .withAddress(FakerUtils.getFakerStreetAddress())
+                .withCity(FakerUtils.getFakerCity(false))
+                .withZipcode(FakerUtils.getFakerZipCode())
+                .withComment(FakerUtils.getFakerDescription(3))
+                .withFourteenDaysInstallation(newUserPurchaseData.isFourteenDaysInstallation());
+
+        customizationPageOperations.clickSubmitButton();
+        ckidPageOperations.closeCookieBot();
+        ckidPageOperations.registerNewUser(newUserPurchaseData.getPhone(), newUserPurchaseData.getEmail(), decryptedString);
+        addressPageOperations.fillClientInfo(clientInfo);
+        summaryPageOperations.pay(newUserPurchaseData.getPaymentMethod());
     }
 }

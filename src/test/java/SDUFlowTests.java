@@ -10,6 +10,7 @@ import testdata.SduPurchaseData;
 import java.util.concurrent.TimeoutException;
 
 import static enums.PaymentMethod.*;
+import static testdata.EvUsers.*;
 
 public class SDUFlowTests extends TestsBase {
     private CustomizationPageOperations customizationPageOperations;
@@ -27,7 +28,7 @@ public class SDUFlowTests extends TestsBase {
     @Test
     public void NafSDUPartnerFlow() throws TimeoutException {
         SduPurchaseData sduPurchaseData = new SduPurchaseData()
-                .withEmail("sdueaseenoextra@mailinator.com")
+                .withEmail(SDU_NO_EXTRA)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(KLARNA)
                 .withFourteenDaysInstallation(false);
@@ -41,7 +42,7 @@ public class SDUFlowTests extends TestsBase {
     @Test
     public void SmbSDUPartnerFlow() throws TimeoutException {
         SduPurchaseData sduPurchaseData = new SduPurchaseData()
-                .withEmail("sdueaseenoextra@mailinator.com")
+                .withEmail(SDU_WITH_EXTRA)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(MASTERCARD)
                 .withFourteenDaysInstallation(false);
@@ -56,7 +57,7 @@ public class SDUFlowTests extends TestsBase {
     @Test
     public void IglandSDUPartnerFlow() throws TimeoutException {
         SduPurchaseData sduPurchaseData = new SduPurchaseData()
-                .withEmail("easeeinstallation@mailinator.com")
+                .withEmail(EASEE_WITH_INSTALLATION)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(INVOICE)
                 .withFourteenDaysInstallation(false);

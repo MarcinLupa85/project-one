@@ -2,9 +2,10 @@ package config;
 
 import operations.CkidPageOperations;
 import operations.CookiePanelOperations;
-import org.openqa.selenium.*;
-import org.testng.annotations.AfterClass;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import utils.WaitUtils;
 
@@ -43,12 +44,11 @@ public abstract class TestsBase {
         driver.quit();
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     private void cleanUp() throws TimeoutException {
         driver = new DriverFactory().startBrowser();
         ckidPageOperations = new CkidPageOperations(driver);
         ckidPageOperations.deleteAccounts();
         tearDown();
     }
-
 }
