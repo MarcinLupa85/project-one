@@ -1,62 +1,55 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
-import operations.AddressPageOperations;
-import operations.CkidPageOperations;
 import operations.CustomizationPageOperations;
+import operations.PurchaseFlowsOperations;
 import operations.SummaryPageOperations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testdata.ClientInfo;
 import testdata.SduPurchaseData;
-import utils.FakerUtils;
-import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
 
 import static enums.PaymentMethod.*;
+import static testdata.EvUsers.*;
 
 public class SDUFlowTests extends TestsBase {
     private CustomizationPageOperations customizationPageOperations;
-    private CkidPageOperations ckidPageOperations;
-    private AddressPageOperations addressPageOperations;
+    private PurchaseFlowsOperations purchaseFlowsOperations;
     private SummaryPageOperations summaryPageOperations;
-    private String decryptedString;
 
     @BeforeMethod
-    private void initOperations() {
+    private void initOperations() throws Exception {
         customizationPageOperations = new CustomizationPageOperations(driver);
-        ckidPageOperations = new CkidPageOperations(driver);
-        addressPageOperations = new AddressPageOperations(driver);
+        purchaseFlowsOperations = new PurchaseFlowsOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        decryptedString = PasswordUtils.decryptEvPassword();
     }
 
     @TestCaseId(testRailCaseId = 4601)
     @Test
     public void NafSDUPartnerFlow() throws TimeoutException {
         SduPurchaseData sduPurchaseData = new SduPurchaseData()
-                .withEmail("sdueaseenoextra@mailinator.com")
+                .withEmail(SDU_NO_EXTRA)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(KLARNA)
                 .withFourteenDaysInstallation(false);
 
         customizationPageOperations.goToNafSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser(sduPurchaseData);
+        purchaseFlowsOperations.purchaseFlowSDUUser(sduPurchaseData);
     }
 
     @TestCaseId(testRailCaseId = 4597)
     @Test
     public void SmbSDUPartnerFlow() throws TimeoutException {
         SduPurchaseData sduPurchaseData = new SduPurchaseData()
-                .withEmail("sdueaseenoextra@mailinator.com")
+                .withEmail(SDU_WITH_EXTRA)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(MASTERCARD)
                 .withFourteenDaysInstallation(false);
 
         customizationPageOperations.goToSmbSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser(sduPurchaseData);
+        purchaseFlowsOperations.purchaseFlowSDUUser(sduPurchaseData);
         summaryPageOperations.assertThankYouPage();
     }
 
@@ -64,32 +57,14 @@ public class SDUFlowTests extends TestsBase {
     @Test
     public void IglandSDUPartnerFlow() throws TimeoutException {
         SduPurchaseData sduPurchaseData = new SduPurchaseData()
-                .withEmail("easeeinstallation@mailinator.com")
+                .withEmail(EASEE_WITH_INSTALLATION)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(INVOICE)
                 .withFourteenDaysInstallation(false);
 
         customizationPageOperations.goToIglandSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser(sduPurchaseData);
+        purchaseFlowsOperations.purchaseFlowSDUUser(sduPurchaseData);
         summaryPageOperations.assertThankYouPage();
-    }
-
-    private void purchaseFlowSDUUser(SduPurchaseData sduPurchaseData) throws TimeoutException {
-        ClientInfo clientInfo = new ClientInfo()
-                .withAddress(FakerUtils.getFakerStreetAddress())
-                .withCity(FakerUtils.getFakerCity(false))
-                .withZipcode(FakerUtils.getFakerZipCode())
-                .withComment(FakerUtils.getFakerDescription(2))
-                .withFourteenDaysInstallation(sduPurchaseData.isFourteenDaysInstallation());
-
-        customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(sduPurchaseData.getEmail(), decryptedString);
-        ckidPageOperations.clickLogInButton();
-        if (sduPurchaseData.isMembershipNumberNecessary()) {
-            customizationPageOperations.fillMembershipNumber(sduPurchaseData.getMembershipNumber());
-        }
-        addressPageOperations.fillClientInfo(clientInfo);
-        summaryPageOperations.pay(sduPurchaseData.getPaymentMethod());
     }
 }

@@ -56,4 +56,7 @@ public class SummaryPageObject extends EvPage {
     @FindBy(css = "h3[class='heading-3 text-center']")
     private WebElement completeOrderPageText;
 
+    @FindBy(css = "i[class='icon-cross mx-auto mb-s']")
+    private WebElement cancelledOrderPageText;
+
 }

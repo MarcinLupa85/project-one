@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static config.Constants.USERS_PASSWORD;
+import static testdata.EvUsers.*;
 
 public class Users {
     private static final Logger LOGGER = LogManager.getLogger(Users.class);
@@ -17,12 +18,12 @@ public class Users {
 
     public Users() {
         usersList = new ArrayList<>();
-        usersList.add(new User("newuser.easeewithextra@mailinator.com", password, "575437397"));
-        usersList.add(new User("newuser.easeenoextra@mailinator.com", password, "575437666"));
-        usersList.add(new User("newuser.cablenoextra@mailinator.com", password, "575437306"));
-        usersList.add(new User("newuser.easeeinstallation@mailinator.com", password, "575437307"));
-        usersList.add(new User("newuser.easeenoextra2@mailinator.com", password, "94564565"));
-        usersList.add(new User("newuser.easeenoextra3@mailinator.com", password, "94564566"));
+        usersList.add(new User(NEW_EASEE_WITH_EXTRA, password, "575437397"));
+        usersList.add(new User(NEW_EASEE_NO_EXTRA, password, "575437666"));
+        usersList.add(new User(NEW_CABLE_NO_EXTRA, password, "575437306"));
+        usersList.add(new User(NEW_EASEE_WITH_INSTALLATION, password, "575437307"));
+        usersList.add(new User(NEW_EASEE_NO_EXTRA2, password, "94564565"));
+        usersList.add(new User(NEW_EASEE_NO_EXTRA3, password, "94564566"));
     }
 
     public List<User> getUsersList() {

@@ -106,6 +106,11 @@ public class SummaryPageOperations extends BaseOperations {
         assertThat(summaryPageObject.getCompleteOrderPageText().getText()).contains("Gratulerer");
     }
 
+    public void assertCancelledOrderPage() {
+        waitUtils.waitForElement(summaryPageObject.getCompleteOrderPageText());
+        assertThat(summaryPageObject.getCancelledOrderPageText().getText()).contains("Orderen din er blitt avbrutt");
+    }
+
     public void assertNextStepPage() {
         waitUtils.waitForElement(summaryPageObject.getCompleteOrderPageText());
         assertThat(summaryPageObject.getCompleteOrderPageText().getText()).contains("Nesten ferdig...");
