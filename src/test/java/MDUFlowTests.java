@@ -3,8 +3,6 @@ import config.TestsBase;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testdata.ClientInfo;
-import utils.FakerUtils;
 import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
@@ -18,16 +16,18 @@ public class MDUFlowTests extends TestsBase {
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
+    private PurchaseFlowsOperations purchaseFlowsOperations;
     private HousingOperations housingOperations;
     private String decryptedString;
 
     @BeforeMethod
-    private void initOperations() {
+    private void initOperations() throws Exception {
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
+        purchaseFlowsOperations = new PurchaseFlowsOperations(driver);
         housingOperations = new HousingOperations(driver);
         decryptedString = PasswordUtils.decryptEvPassword();
     }
@@ -37,7 +37,7 @@ public class MDUFlowTests extends TestsBase {
     public void MDULightFlow() throws TimeoutException {
         customizationPageOperations.goToMDULight();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
+        purchaseFlowsOperations.purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
     }
 
     @TestCaseId(testRailCaseId = 4599)
@@ -45,7 +45,7 @@ public class MDUFlowTests extends TestsBase {
     public void MDUReadyFlow() throws TimeoutException {
         customizationPageOperations.goToMDUReady();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
+        purchaseFlowsOperations.purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
     }
 
     //TODO No Leasing offer available in SF
@@ -64,25 +64,6 @@ public class MDUFlowTests extends TestsBase {
         housingOperations.inputHousingCompanyName(COMPANY_NAME);
         housingOperations.clickSearchButton();
         housingOperations.clickBuyButton();
-        purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
-    }
-
-    private void purchaseFlowMDUUser(String username, boolean fourteenDaysInstallation) throws TimeoutException {
-        ClientInfo clientInfo = new ClientInfo()
-                .withAddress(FakerUtils.getFakerStreetAddress())
-                .withCity(FakerUtils.getFakerCity(false))
-                .withZipcode(FakerUtils.getFakerZipCode())
-                .withComment(FakerUtils.getFakerDescription(2))
-                .withFourteenDaysInstallation(fourteenDaysInstallation);
-
-        customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(username, decryptedString);
-        ckidPageOperations.clickLogInButton();
-        addressPageOperations.fillParkingPlace(FakerUtils.getFakerNumber(11, 99));
-        addressPageOperations.fillClientInfo(clientInfo);
-        addressPageOperations.clickNext();
-        summaryPageOperations.tickTermsAndConditionsCheckbox();
-        summaryPageOperations.clickFinish();
-        completePageOperations.clickBack();
+        purchaseFlowsOperations.purchaseFlowMDUUser(MDUEASEENOEXTRA_MAILINATOR_COM, false);
     }
 }

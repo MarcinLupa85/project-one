@@ -3,8 +3,6 @@ import config.TestsBase;
 import operations.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testdata.ClientInfo;
-import utils.FakerUtils;
 import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
@@ -16,15 +14,17 @@ public class UtilityBundleTests extends TestsBase {
     private ProductsPageOperations productsPageOperations;
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
+    private PurchaseFlowsOperations purchaseFlowsOperations;
     private SummaryPageOperations summaryPageOperations;
     private String decryptedString;
 
     @BeforeMethod
-    private void initOperations() {
+    private void initOperations() throws Exception {
         customizationPageOperations = new CustomizationPageOperations(driver);
         productsPageOperations = new ProductsPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
+        purchaseFlowsOperations = new PurchaseFlowsOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         decryptedString = PasswordUtils.decryptEvPassword();
     }
@@ -34,26 +34,7 @@ public class UtilityBundleTests extends TestsBase {
         public void utilityPurchaseFlow() throws TimeoutException {
             productsPageOperations.openEaseePurchaseFlow();
             customizationPageOperations.tickUtilityCheckbox();
-            purchaseFlowExistingUtilityUser(UTILITYWITHEXTRA_MAILINATOR_COM);
+            purchaseFlowsOperations.purchaseFlowExistingUtilityUser(UTILITYWITHEXTRA_MAILINATOR_COM);
             summaryPageOperations.assertNextStepPage();
         }
-
-
-
-    private void purchaseFlowExistingUtilityUser(String username) throws TimeoutException {
-        ClientInfo clientInfo = new ClientInfo()
-                .withAddress(FakerUtils.getFakerStreetAddress())
-                .withCity(FakerUtils.getFakerCity(false))
-                .withZipcode(FakerUtils.getFakerZipCode())
-                .withComment(FakerUtils.getFakerDescription(2));
-//                .withFourteenDaysInstallation(fourteenDaysInstallation);
-
-        customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(username, decryptedString);
-        ckidPageOperations.clickLogInButton();
-        addressPageOperations.fillClientInfo(clientInfo);
-        addressPageOperations.clickNext();
-        summaryPageOperations.tickTermsAndConditionsCheckbox();
-        summaryPageOperations.clickFinish();
-    }
 }

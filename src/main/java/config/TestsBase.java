@@ -1,7 +1,9 @@
 package config;
 
+import operations.CkidPageOperations;
 import operations.CookiePanelOperations;
 import org.openqa.selenium.*;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utils.WaitUtils;
@@ -16,6 +18,7 @@ public abstract class TestsBase {
     public WebDriver driver;
     private WaitUtils waitUtils;
     private CookiePanelOperations cookiePanelOperations;
+    private CkidPageOperations ckidPageOperations;
 
 
     @BeforeMethod(alwaysRun = true)
@@ -28,16 +31,24 @@ public abstract class TestsBase {
         cookiePanelOperations = new CookiePanelOperations(driver);
         waitUtils.waitForPresenceOf(By.id("cookie-bot"));
         waitUtils.waitForPresenceOf(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));
+        waitUtils.waitForDocumentReadyState();
         cookiePanelOperations.clickCookieOkButton();
         waitUtils.waitForPresenceOf(By.id("header-main"));
 
-        waitUtils.waitForDocumentReadyState();
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.close();
         driver.quit();
+    }
+
+    @AfterClass(alwaysRun = true)
+    private void cleanUp() throws TimeoutException {
+        driver = new DriverFactory().startBrowser();
+        ckidPageOperations = new CkidPageOperations(driver);
+        ckidPageOperations.deleteAccounts();
+        tearDown();
     }
 
 }

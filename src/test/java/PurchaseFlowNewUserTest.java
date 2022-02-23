@@ -1,9 +1,7 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
-import config.DriverFactory;
 import config.TestsBase;
 import enums.PaymentMethod;
 import operations.*;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testdata.ClientInfo;
@@ -20,7 +18,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
-    private SDUDiscountPartnerOperations sduDiscountPartnerOperations;
     private String decryptedString;
 
 
@@ -31,7 +28,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        sduDiscountPartnerOperations = new SDUDiscountPartnerOperations(driver);
         driver.navigate().to(BASE_URL);
         decryptedString = PasswordUtils.decryptEvPassword();
     }
@@ -49,14 +45,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         ckidPageOperations.registerNewUser(phoneNumber, username, decryptedString);
         addressPageOperations.fillClientInfo(clientInfo);
         summaryPageOperations.pay(paymentMethod);
-    }
-
-    @AfterClass(alwaysRun = true)
-    private void cleanUp() throws TimeoutException {
-        driver = new DriverFactory().startBrowser();
-        ckidPageOperations = new CkidPageOperations(driver);
-        ckidPageOperations.deleteAccounts();
-        tearDown();
     }
 
     @TestCaseId(testRailCaseId = 1821)
@@ -87,25 +75,5 @@ public class PurchaseFlowNewUserTest extends TestsBase {
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickInstallationCheckbox();
         purchaseFlowNewUser("575437307", "newuser.easeeinstallation@mailinator.com", false, PaymentMethod.KLARNA);
-    }
-
-    @TestCaseId(testRailCaseId = 6114)
-    @Test
-    public void DiscountPartnerNewUserTest() {
-        sduDiscountPartnerOperations.goToNafDiscountPage();
-        sduDiscountPartnerOperations.clickBecomeMemberButton();
-        sduDiscountPartnerOperations.sendPhoneNumber();
-        sduDiscountPartnerOperations.sendRegisterForm("Name", "Test", "newuser.easeenoextra2@mailinator.com", decryptedString, "987654321");
-        sduDiscountPartnerOperations.assertThankYouPage();
-    }
-
-    @TestCaseId(testRailCaseId = 6321)
-    @Test
-    public void PartnerMastercardNewUserTest() throws TimeoutException {
-        sduDiscountPartnerOperations.goToMastercardDiscountPage();
-        sduDiscountPartnerOperations.clickLoginButton();
-        ckidPageOperations.closeCookieBot();
-        ckidPageOperations.registerNewUser("575437307", "newuser.easeenoextra3@mailinator.com", decryptedString);
-        sduDiscountPartnerOperations.confirmMastercardBanner();
     }
 }

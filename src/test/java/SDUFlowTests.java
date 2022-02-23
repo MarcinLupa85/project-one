@@ -1,15 +1,11 @@
 import com.circlekeurope.testrail.client.annotations.TestCaseId;
 import config.TestsBase;
-import operations.AddressPageOperations;
-import operations.CkidPageOperations;
 import operations.CustomizationPageOperations;
+import operations.PurchaseFlowsOperations;
 import operations.SummaryPageOperations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testdata.ClientInfo;
 import testdata.SduPurchaseData;
-import utils.FakerUtils;
-import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
 
@@ -17,18 +13,14 @@ import static enums.PaymentMethod.*;
 
 public class SDUFlowTests extends TestsBase {
     private CustomizationPageOperations customizationPageOperations;
-    private CkidPageOperations ckidPageOperations;
-    private AddressPageOperations addressPageOperations;
+    private PurchaseFlowsOperations purchaseFlowsOperations;
     private SummaryPageOperations summaryPageOperations;
-    private String decryptedString;
 
     @BeforeMethod
-    private void initOperations() {
+    private void initOperations() throws Exception {
         customizationPageOperations = new CustomizationPageOperations(driver);
-        ckidPageOperations = new CkidPageOperations(driver);
-        addressPageOperations = new AddressPageOperations(driver);
+        purchaseFlowsOperations = new PurchaseFlowsOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
-        decryptedString = PasswordUtils.decryptEvPassword();
     }
 
     @TestCaseId(testRailCaseId = 4601)
@@ -42,7 +34,7 @@ public class SDUFlowTests extends TestsBase {
 
         customizationPageOperations.goToNafSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser(sduPurchaseData);
+        purchaseFlowsOperations.purchaseFlowSDUUser(sduPurchaseData);
     }
 
     @TestCaseId(testRailCaseId = 4597)
@@ -56,7 +48,7 @@ public class SDUFlowTests extends TestsBase {
 
         customizationPageOperations.goToSmbSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser(sduPurchaseData);
+        purchaseFlowsOperations.purchaseFlowSDUUser(sduPurchaseData);
         summaryPageOperations.assertThankYouPage();
     }
 
@@ -71,25 +63,7 @@ public class SDUFlowTests extends TestsBase {
 
         customizationPageOperations.goToIglandSDUPartner();
         customizationPageOperations.checkPriceFormat();
-        purchaseFlowSDUUser(sduPurchaseData);
+        purchaseFlowsOperations.purchaseFlowSDUUser(sduPurchaseData);
         summaryPageOperations.assertThankYouPage();
-    }
-
-    private void purchaseFlowSDUUser(SduPurchaseData sduPurchaseData) throws TimeoutException {
-        ClientInfo clientInfo = new ClientInfo()
-                .withAddress(FakerUtils.getFakerStreetAddress())
-                .withCity(FakerUtils.getFakerCity(false))
-                .withZipcode(FakerUtils.getFakerZipCode())
-                .withComment(FakerUtils.getFakerDescription(2))
-                .withFourteenDaysInstallation(sduPurchaseData.isFourteenDaysInstallation());
-
-        customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(sduPurchaseData.getEmail(), decryptedString);
-        ckidPageOperations.clickLogInButton();
-        if (sduPurchaseData.isMembershipNumberNecessary()) {
-            customizationPageOperations.fillMembershipNumber(sduPurchaseData.getMembershipNumber());
-        }
-        addressPageOperations.fillClientInfo(clientInfo);
-        summaryPageOperations.pay(sduPurchaseData.getPaymentMethod());
     }
 }
