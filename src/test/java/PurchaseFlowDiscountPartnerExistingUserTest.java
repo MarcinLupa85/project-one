@@ -30,7 +30,7 @@ public class PurchaseFlowDiscountPartnerExistingUserTest extends TestsBase {
     public void DiscountPartnerLogInTest() throws TimeoutException {
         sduDiscountPartnerOperations.goToCoopDiscountPage();
         sduDiscountPartnerOperations.clickLoginButton();
-        ckidPageOperations.provideLoginCredentials(EASEE_WITH_EXTRA, decryptedString);
+        ckidPageOperations.closeCookieBot();
         ckidPageOperations.logIn(EASEE_WITH_EXTRA, decryptedString);
         sduDiscountPartnerOperations.sendWithMembershipNumber("9876543210");
         sduDiscountPartnerOperations.assertThankYouPage();
@@ -50,7 +50,7 @@ public class PurchaseFlowDiscountPartnerExistingUserTest extends TestsBase {
     public void DiscountPartnerMastercardTest() throws TimeoutException {
         sduDiscountPartnerOperations.goToMastercardDiscountPage();
         sduDiscountPartnerOperations.clickLoginButton();
-        ckidPageOperations.provideLoginCredentials(EASEE_NO_EXTRA, decryptedString);
+        ckidPageOperations.closeCookieBot();
         ckidPageOperations.logIn(EASEE_NO_EXTRA, decryptedString);
         sduDiscountPartnerOperations.confirmMastercardBanner();
     }

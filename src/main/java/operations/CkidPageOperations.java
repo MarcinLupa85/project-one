@@ -37,6 +37,7 @@ public class CkidPageOperations {
 
     public void logIn(String username, String password) throws TimeoutException {
         try {
+            provideLoginCredentials(username, password);
             ckidPageObject.getLoginButton().click();
         } catch (ElementClickInterceptedException e) {
             LOGGER.error("Cookie bot did not close properly", e);
@@ -48,7 +49,6 @@ public class CkidPageOperations {
 
     public void provideLoginCredentials(String username, String password) throws TimeoutException {
         waitUtils.waitForPresenceOf(By.cssSelector("input[type=email]"));
-        closeCookieBot();
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);
     }

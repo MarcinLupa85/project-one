@@ -36,7 +36,7 @@ public class PurchaseFlowsOperations extends BaseOperations {
                 .withFourteenDaysInstallation(defaultPurchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(defaultPurchaseData.getEmail(), decryptedString);
+        ckidPageOperations.closeCookieBot();
         ckidPageOperations.logIn(defaultPurchaseData.getEmail(), decryptedString);
         addressPageOperations.fillClientInfo(clientInfo);
         summaryPageOperations.pay(defaultPurchaseData.getPaymentMethod());
@@ -50,7 +50,7 @@ public class PurchaseFlowsOperations extends BaseOperations {
                 .withComment(FakerUtils.getFakerDescription(2));
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(username, decryptedString);
+        ckidPageOperations.closeCookieBot();
         ckidPageOperations.logIn(username, decryptedString);
         addressPageOperations.fillClientInfo(clientInfo);
         addressPageOperations.clickNext();
@@ -67,7 +67,7 @@ public class PurchaseFlowsOperations extends BaseOperations {
                 .withFourteenDaysInstallation(sduPurchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(sduPurchaseData.getEmail(), decryptedString);
+        ckidPageOperations.closeCookieBot();
         ckidPageOperations.logIn(sduPurchaseData.getEmail(), decryptedString);
         if (sduPurchaseData.isMembershipNumberNecessary()) {
             customizationPageOperations.fillMembershipNumber(sduPurchaseData.getMembershipNumber());
@@ -85,7 +85,7 @@ public class PurchaseFlowsOperations extends BaseOperations {
                 .withFourteenDaysInstallation(fourteenDaysInstallation);
 
         customizationPageOperations.clickSubmitButton();
-        ckidPageOperations.provideLoginCredentials(username, decryptedString);
+        ckidPageOperations.closeCookieBot();
         ckidPageOperations.logIn(username, decryptedString);
         addressPageOperations.fillParkingPlace(FakerUtils.getFakerNumber(11, 99));
         addressPageOperations.fillClientInfo(clientInfo);
