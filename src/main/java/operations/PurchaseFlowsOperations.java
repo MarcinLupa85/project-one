@@ -2,38 +2,32 @@ package operations;
 
 import org.openqa.selenium.WebDriver;
 import testdata.ClientInfo;
-import testdata.DefaultPurchaseData;
-import testdata.NewUserPurchaseData;
-import testdata.SduPurchaseData;
+import testdata.PurchaseData;
 import utils.FakerUtils;
 import utils.PasswordUtils;
 
 import java.util.concurrent.TimeoutException;
 
-public class PurchaseFlowsOperations extends BaseOperations{
+public class PurchaseFlowsOperations extends BaseOperations {
 
-    private ProductsPageOperations productsPageOperations;
     private CustomizationPageOperations customizationPageOperations;
     private CkidPageOperations ckidPageOperations;
     private AddressPageOperations addressPageOperations;
     private SummaryPageOperations summaryPageOperations;
     private CompletePageOperations completePageOperations;
-    private PasswordUtils passwordUtils;
     private String decryptedString;
 
-    public PurchaseFlowsOperations(WebDriver driver) throws Exception {
+    public PurchaseFlowsOperations(WebDriver driver) {
         super(driver);
-        productsPageOperations = new ProductsPageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
         ckidPageOperations = new CkidPageOperations(driver);
         addressPageOperations = new AddressPageOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
         completePageOperations = new CompletePageOperations(driver);
-        passwordUtils = new PasswordUtils();
-        decryptedString = passwordUtils.decryptEvPassword();
+        decryptedString = PasswordUtils.decryptEvPassword();
     }
 
-    public void purchaseFlowExistingUser(DefaultPurchaseData defaultPurchaseData) throws TimeoutException {
+    public void purchaseFlowExistingUser(PurchaseData defaultPurchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress(FakerUtils.getFakerStreetAddress())
                 .withCity(FakerUtils.getFakerCity(false))
@@ -64,7 +58,7 @@ public class PurchaseFlowsOperations extends BaseOperations{
         summaryPageOperations.clickFinish();
     }
 
-    public void purchaseFlowSDUUser(SduPurchaseData sduPurchaseData) throws TimeoutException {
+    public void purchaseFlowSDUUser(PurchaseData sduPurchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress(FakerUtils.getFakerStreetAddress())
                 .withCity(FakerUtils.getFakerCity(false))
@@ -101,7 +95,7 @@ public class PurchaseFlowsOperations extends BaseOperations{
         completePageOperations.clickBack();
     }
 
-    public void purchaseFlowNewUser(NewUserPurchaseData newUserPurchaseData) throws TimeoutException {
+    public void purchaseFlowNewUser(PurchaseData newUserPurchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress(FakerUtils.getFakerStreetAddress())
                 .withCity(FakerUtils.getFakerCity(false))

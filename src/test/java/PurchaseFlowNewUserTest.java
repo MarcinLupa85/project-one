@@ -5,7 +5,7 @@ import operations.ProductsPageOperations;
 import operations.PurchaseFlowsOperations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testdata.NewUserPurchaseData;
+import testdata.PurchaseData;
 
 import java.util.concurrent.TimeoutException;
 
@@ -21,14 +21,15 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     private void initOperations() {
         productsPageOperations = new ProductsPageOperations(driver);
         customizationPageOperations = new CustomizationPageOperations(driver);
+        purchaseFlowsOperations = new PurchaseFlowsOperations(driver);
     }
 
     @TestCaseId(testRailCaseId = 1821)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
-        NewUserPurchaseData newUserPurchaseData = new NewUserPurchaseData()
-                .withPhone("575437397")
+        PurchaseData newUserPurchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_WITH_EXTRA)
+                .withPhone("575437397")
                 .withFourteenDaysInstallation(false)
                 .withPaymentMethod(MASTERCARD);
 
@@ -40,11 +41,11 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2507)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
-        NewUserPurchaseData newUserPurchaseData = new NewUserPurchaseData()
-                .withPhone("575437666")
+        PurchaseData newUserPurchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_NO_EXTRA)
-                .withFourteenDaysInstallation(false)
-                .withPaymentMethod(KLARNA);
+                .withPaymentMethod(KLARNA)
+                .withPhone("575437666")
+                .withFourteenDaysInstallation(false);
 
         productsPageOperations.openEaseePurchaseFlow();
         purchaseFlowsOperations.purchaseFlowNewUser(newUserPurchaseData);
@@ -53,9 +54,9 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 5049)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
-        NewUserPurchaseData newUserPurchaseData = new NewUserPurchaseData()
-                .withPhone("575437306")
+        PurchaseData newUserPurchaseData = new PurchaseData()
                 .withEmail(NEW_CABLE_NO_EXTRA)
+                .withPhone("575437306")
                 .withFourteenDaysInstallation(false)
                 .withPaymentMethod(INVOICE);
 
@@ -66,9 +67,9 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2512)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
-        NewUserPurchaseData newUserPurchaseData = new NewUserPurchaseData()
-                .withPhone("575437307")
+        PurchaseData newUserPurchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_WITH_INSTALLATION)
+                .withPhone("575437307")
                 .withFourteenDaysInstallation(false)
                 .withPaymentMethod(KLARNA);
 

@@ -1,10 +1,7 @@
 package testdata;
 
 import enums.PaymentMethod;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.With;
+import lombok.*;
 
 import java.util.Optional;
 
@@ -14,15 +11,23 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class SduPurchaseData {
+public class PurchaseData {
+    @NonNull
     String email;
-    boolean membershipNumberNecessary;
-    String membershipNumber;
+
     PaymentMethod paymentMethod;
     boolean fourteenDaysInstallation;
+    boolean membershipNumberNecessary;
+    String membershipNumber;
+    String phone;
 
     public String getMembershipNumber() {
         Optional<String> number = Optional.ofNullable(membershipNumber);
-        return number.isPresent() ? number.get() : EMPTY;
+        return number.orElse(EMPTY);
+    }
+
+    public String getPhone() {
+        Optional<String> number = Optional.ofNullable(phone);
+        return number.orElse(EMPTY);
     }
 }

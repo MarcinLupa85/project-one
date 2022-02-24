@@ -5,7 +5,7 @@ import operations.PurchaseFlowsOperations;
 import operations.SummaryPageOperations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testdata.SduPurchaseData;
+import testdata.PurchaseData;
 
 import java.util.concurrent.TimeoutException;
 
@@ -18,7 +18,7 @@ public class SDUFlowTests extends TestsBase {
     private SummaryPageOperations summaryPageOperations;
 
     @BeforeMethod
-    private void initOperations() throws Exception {
+    private void initOperations() {
         customizationPageOperations = new CustomizationPageOperations(driver);
         purchaseFlowsOperations = new PurchaseFlowsOperations(driver);
         summaryPageOperations = new SummaryPageOperations(driver);
@@ -27,7 +27,7 @@ public class SDUFlowTests extends TestsBase {
     @TestCaseId(testRailCaseId = 4601)
     @Test
     public void NafSDUPartnerFlow() throws TimeoutException {
-        SduPurchaseData sduPurchaseData = new SduPurchaseData()
+        PurchaseData sduPurchaseData = new PurchaseData()
                 .withEmail(SDU_NO_EXTRA)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(KLARNA)
@@ -41,7 +41,7 @@ public class SDUFlowTests extends TestsBase {
     @TestCaseId(testRailCaseId = 4597)
     @Test
     public void SmbSDUPartnerFlow() throws TimeoutException {
-        SduPurchaseData sduPurchaseData = new SduPurchaseData()
+        PurchaseData sduPurchaseData = new PurchaseData()
                 .withEmail(SDU_WITH_EXTRA)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(MASTERCARD)
@@ -56,7 +56,7 @@ public class SDUFlowTests extends TestsBase {
     @TestCaseId(testRailCaseId = 4595)
     @Test
     public void IglandSDUPartnerFlow() throws TimeoutException {
-        SduPurchaseData sduPurchaseData = new SduPurchaseData()
+        PurchaseData sduPurchaseData = new PurchaseData()
                 .withEmail(EASEE_WITH_INSTALLATION)
                 .withMembershipNumberNecessary(false)
                 .withPaymentMethod(INVOICE)
