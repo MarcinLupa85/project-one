@@ -27,6 +27,7 @@ public class SDUFlowTests extends TestsBase {
     @TestCaseId(testRailCaseId = 4601)
     @Test
     public void NafSDUPartnerFlow() throws TimeoutException {
+
         PurchaseData purchaseData = new PurchaseData()
                 .withEmail(SDU_NO_EXTRA)
                 .withMembershipNumberNecessary(false)
@@ -41,6 +42,7 @@ public class SDUFlowTests extends TestsBase {
     @TestCaseId(testRailCaseId = 4597)
     @Test
     public void SmbSDUPartnerFlow() throws TimeoutException {
+
         PurchaseData purchaseData = new PurchaseData()
                 .withEmail(SDU_WITH_EXTRA)
                 .withMembershipNumberNecessary(false)
@@ -56,6 +58,7 @@ public class SDUFlowTests extends TestsBase {
     @TestCaseId(testRailCaseId = 4595)
     @Test
     public void IglandSDUPartnerFlow() throws TimeoutException {
+
         PurchaseData purchaseData = new PurchaseData()
                 .withEmail(EASEE_WITH_INSTALLATION)
                 .withMembershipNumberNecessary(false)

@@ -27,6 +27,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 1821)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
+
         PurchaseData purchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_WITH_EXTRA)
                 .withPhone("575437397")
@@ -41,6 +42,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2507)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
+
         PurchaseData purchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_NO_EXTRA)
                 .withPaymentMethod(KLARNA)
@@ -54,6 +56,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 5049)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
+
         PurchaseData purchaseData = new PurchaseData()
                 .withEmail(NEW_CABLE_NO_EXTRA)
                 .withPhone("575437306")
@@ -67,6 +70,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 2512)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
+
         PurchaseData purchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_WITH_INSTALLATION)
                 .withPhone("575437307")
