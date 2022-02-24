@@ -12,7 +12,7 @@ public class SalesRepPageObject extends EvPage {
         super(driver);
     }
 
-    @FindBy(id = "dealerName")
+    @FindBy(css = "input[placeholder='Velg bilforhandler']")
     private WebElement dealerName;
 
     @FindBy(id = "email")
