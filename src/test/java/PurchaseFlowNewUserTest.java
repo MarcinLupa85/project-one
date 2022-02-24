@@ -27,7 +27,7 @@ public class PurchaseFlowNewUserTest extends TestsBase {
     @TestCaseId(testRailCaseId = 1821)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithExtra() throws TimeoutException {
-        PurchaseData newUserPurchaseData = new PurchaseData()
+        PurchaseData purchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_WITH_EXTRA)
                 .withPhone("575437397")
                 .withFourteenDaysInstallation(false)
@@ -35,39 +35,39 @@ public class PurchaseFlowNewUserTest extends TestsBase {
 
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickExtraCheckbox();
-        purchaseFlowsOperations.purchaseFlowNewUser(newUserPurchaseData);
+        purchaseFlowsOperations.purchaseFlowNewUser(purchaseData);
     }
 
     @TestCaseId(testRailCaseId = 2507)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithNoExtra() throws TimeoutException {
-        PurchaseData newUserPurchaseData = new PurchaseData()
+        PurchaseData purchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_NO_EXTRA)
                 .withPaymentMethod(KLARNA)
                 .withPhone("575437666")
                 .withFourteenDaysInstallation(false);
 
         productsPageOperations.openEaseePurchaseFlow();
-        purchaseFlowsOperations.purchaseFlowNewUser(newUserPurchaseData);
+        purchaseFlowsOperations.purchaseFlowNewUser(purchaseData);
     }
 
     @TestCaseId(testRailCaseId = 5049)
     @Test(alwaysRun = true)
     public void testCablePurchaseFlowWithNoExtra() throws TimeoutException {
-        PurchaseData newUserPurchaseData = new PurchaseData()
+        PurchaseData purchaseData = new PurchaseData()
                 .withEmail(NEW_CABLE_NO_EXTRA)
                 .withPhone("575437306")
                 .withFourteenDaysInstallation(false)
                 .withPaymentMethod(INVOICE);
 
         productsPageOperations.openCablePurchaseFlow();
-        purchaseFlowsOperations.purchaseFlowNewUser(newUserPurchaseData);
+        purchaseFlowsOperations.purchaseFlowNewUser(purchaseData);
     }
 
     @TestCaseId(testRailCaseId = 2512)
     @Test(alwaysRun = true)
     public void testEaseePurchaseFlowWithInstallationOnly() throws TimeoutException {
-        PurchaseData newUserPurchaseData = new PurchaseData()
+        PurchaseData purchaseData = new PurchaseData()
                 .withEmail(NEW_EASEE_WITH_INSTALLATION)
                 .withPhone("575437307")
                 .withFourteenDaysInstallation(false)
@@ -75,6 +75,6 @@ public class PurchaseFlowNewUserTest extends TestsBase {
 
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickInstallationCheckbox();
-        purchaseFlowsOperations.purchaseFlowNewUser(newUserPurchaseData);
+        purchaseFlowsOperations.purchaseFlowNewUser(purchaseData);
     }
 }

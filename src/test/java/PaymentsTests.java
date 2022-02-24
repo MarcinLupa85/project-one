@@ -38,42 +38,42 @@ public class PaymentsTests extends TestsBase {
     @TestCaseId(testRailCaseId = 5556)
     @Test(alwaysRun = true)
     public void test2FactorAuthentication3DS1() throws TimeoutException {
-        PurchaseData defaultPurchaseData = new PurchaseData()
+        PurchaseData purchaseData = new PurchaseData()
                 .withEmail(EASEE_NO_EXTRA)
                 .withPaymentMethod(TWOFACTORTYPE1)
                 .withFourteenDaysInstallation(false);
 
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickExtraCheckbox();
-        purchaseFlowsOperations.purchaseFlowExistingUser(defaultPurchaseData);
+        purchaseFlowsOperations.purchaseFlowExistingUser(purchaseData);
         summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 5557)
     @Test
     public void test2FactorAuthentication3DS2() throws TimeoutException {
-        PurchaseData defaultPurchaseData = new PurchaseData()
+        PurchaseData purchaseData = new PurchaseData()
                 .withEmail(EASEE_WITH_EXTRA)
                 .withPaymentMethod(TWOFACTORTYPE2)
                 .withFourteenDaysInstallation(false);
 
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickExtraCheckbox();
-        purchaseFlowsOperations.purchaseFlowExistingUser(defaultPurchaseData);
+        purchaseFlowsOperations.purchaseFlowExistingUser(purchaseData);
         summaryPageOperations.assertThankYouPage();
     }
 
     @TestCaseId(testRailCaseId = 5565)
     @Test
     public void testCanceledPaymentStatus() throws TimeoutException {
-        PurchaseData defaultPurchaseData = new PurchaseData()
+        PurchaseData purchaseData = new PurchaseData()
                 .withEmail(EASEE_WITH_EXTRA)
                 .withPaymentMethod(KLARNA)
                 .withFourteenDaysInstallation(false);
 
         productsPageOperations.openEaseePurchaseFlow();
         customizationPageOperations.tickExtraCheckbox();
-        purchaseFlowsOperations.purchaseFlowExistingUser(defaultPurchaseData);
+        purchaseFlowsOperations.purchaseFlowExistingUser(purchaseData);
         waitUtils.waitForElementToBeClickable(By.xpath("//*[contains(text(),'Tilbake')]"));
         ((JavascriptExecutor) driver).executeScript("document.getElementById('back-button__text').click();");
         waitUtils.waitForUrlToContain("/order/payment-result");

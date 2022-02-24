@@ -27,19 +27,19 @@ public class PurchaseFlowsOperations extends BaseOperations {
         decryptedString = PasswordUtils.decryptEvPassword();
     }
 
-    public void purchaseFlowExistingUser(PurchaseData defaultPurchaseData) throws TimeoutException {
+    public void purchaseFlowExistingUser(PurchaseData purchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress(FakerUtils.getFakerStreetAddress())
                 .withCity(FakerUtils.getFakerCity(false))
                 .withZipcode(FakerUtils.getFakerZipCode())
                 .withComment(FakerUtils.getFakerDescription(3))
-                .withFourteenDaysInstallation(defaultPurchaseData.isFourteenDaysInstallation());
+                .withFourteenDaysInstallation(purchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.closeCookieBot();
-        ckidPageOperations.logIn(defaultPurchaseData.getEmail(), decryptedString);
+        ckidPageOperations.logIn(purchaseData.getEmail(), decryptedString);
         addressPageOperations.fillClientInfo(clientInfo);
-        summaryPageOperations.pay(defaultPurchaseData.getPaymentMethod());
+        summaryPageOperations.pay(purchaseData.getPaymentMethod());
     }
 
     public void purchaseFlowExistingUtilityUser(String username) throws TimeoutException {
@@ -58,22 +58,22 @@ public class PurchaseFlowsOperations extends BaseOperations {
         summaryPageOperations.clickFinish();
     }
 
-    public void purchaseFlowSDUUser(PurchaseData sduPurchaseData) throws TimeoutException {
+    public void purchaseFlowSDUUser(PurchaseData purchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress(FakerUtils.getFakerStreetAddress())
                 .withCity(FakerUtils.getFakerCity(false))
                 .withZipcode(FakerUtils.getFakerZipCode())
                 .withComment(FakerUtils.getFakerDescription(2))
-                .withFourteenDaysInstallation(sduPurchaseData.isFourteenDaysInstallation());
+                .withFourteenDaysInstallation(purchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.closeCookieBot();
-        ckidPageOperations.logIn(sduPurchaseData.getEmail(), decryptedString);
-        if (sduPurchaseData.isMembershipNumberNecessary()) {
-            customizationPageOperations.fillMembershipNumber(sduPurchaseData.getMembershipNumber());
+        ckidPageOperations.logIn(purchaseData.getEmail(), decryptedString);
+        if (purchaseData.isMembershipNumberNecessary()) {
+            customizationPageOperations.fillMembershipNumber(purchaseData.getMembershipNumber());
         }
         addressPageOperations.fillClientInfo(clientInfo);
-        summaryPageOperations.pay(sduPurchaseData.getPaymentMethod());
+        summaryPageOperations.pay(purchaseData.getPaymentMethod());
     }
 
     public void purchaseFlowMDUUser(String username, boolean fourteenDaysInstallation) throws TimeoutException {
@@ -95,18 +95,18 @@ public class PurchaseFlowsOperations extends BaseOperations {
         completePageOperations.clickBack();
     }
 
-    public void purchaseFlowNewUser(PurchaseData newUserPurchaseData) throws TimeoutException {
+    public void purchaseFlowNewUser(PurchaseData purchaseData) throws TimeoutException {
         ClientInfo clientInfo = new ClientInfo()
                 .withAddress(FakerUtils.getFakerStreetAddress())
                 .withCity(FakerUtils.getFakerCity(false))
                 .withZipcode(FakerUtils.getFakerZipCode())
                 .withComment(FakerUtils.getFakerDescription(3))
-                .withFourteenDaysInstallation(newUserPurchaseData.isFourteenDaysInstallation());
+                .withFourteenDaysInstallation(purchaseData.isFourteenDaysInstallation());
 
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.closeCookieBot();
-        ckidPageOperations.registerNewUser(newUserPurchaseData.getPhone(), newUserPurchaseData.getEmail(), decryptedString);
+        ckidPageOperations.registerNewUser(purchaseData.getPhone(), purchaseData.getEmail(), decryptedString);
         addressPageOperations.fillClientInfo(clientInfo);
-        summaryPageOperations.pay(newUserPurchaseData.getPaymentMethod());
+        summaryPageOperations.pay(purchaseData.getPaymentMethod());
     }
 }
