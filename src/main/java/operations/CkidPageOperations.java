@@ -35,19 +35,20 @@ public class CkidPageOperations {
         cookiePanelOperations = new CookiePanelOperations(driver);
     }
 
-    public void clickLogInButton() {
+    public void logIn(String username, String password) throws TimeoutException {
         try {
+            provideLoginCredentials(username, password);
             ckidPageObject.getLoginButton().click();
         } catch (ElementClickInterceptedException e) {
             LOGGER.error("Cookie bot did not close properly", e);
             driver.navigate().refresh();
+            provideLoginCredentials(username, password);
             ckidPageObject.getLoginButton().click();
         }
     }
 
     public void provideLoginCredentials(String username, String password) throws TimeoutException {
         waitUtils.waitForPresenceOf(By.cssSelector("input[type=email]"));
-        closeCookieBot();
         ckidPageObject.getEmailInput().sendKeys(username);
         ckidPageObject.getPasswordInput().sendKeys(password);
     }
