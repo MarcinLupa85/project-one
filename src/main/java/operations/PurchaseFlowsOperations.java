@@ -43,7 +43,7 @@ public class PurchaseFlowsOperations extends BaseOperations{
 
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.provideLoginCredentials(defaultPurchaseData.getEmail(), decryptedString);
-        ckidPageOperations.clickLogInButton();
+        ckidPageOperations.logIn(defaultPurchaseData.getEmail(), decryptedString);
         addressPageOperations.fillClientInfo(clientInfo);
         summaryPageOperations.pay(defaultPurchaseData.getPaymentMethod());
     }
@@ -57,7 +57,7 @@ public class PurchaseFlowsOperations extends BaseOperations{
 
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.provideLoginCredentials(username, decryptedString);
-        ckidPageOperations.clickLogInButton();
+        ckidPageOperations.logIn(username, decryptedString);
         addressPageOperations.fillClientInfo(clientInfo);
         addressPageOperations.clickNext();
         summaryPageOperations.tickTermsAndConditionsCheckbox();
@@ -74,7 +74,7 @@ public class PurchaseFlowsOperations extends BaseOperations{
 
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.provideLoginCredentials(sduPurchaseData.getEmail(), decryptedString);
-        ckidPageOperations.clickLogInButton();
+        ckidPageOperations.logIn(sduPurchaseData.getEmail(), decryptedString);
         if (sduPurchaseData.isMembershipNumberNecessary()) {
             customizationPageOperations.fillMembershipNumber(sduPurchaseData.getMembershipNumber());
         }
@@ -92,7 +92,7 @@ public class PurchaseFlowsOperations extends BaseOperations{
 
         customizationPageOperations.clickSubmitButton();
         ckidPageOperations.provideLoginCredentials(username, decryptedString);
-        ckidPageOperations.clickLogInButton();
+        ckidPageOperations.logIn(username, decryptedString);
         addressPageOperations.fillParkingPlace(FakerUtils.getFakerNumber(11, 99));
         addressPageOperations.fillClientInfo(clientInfo);
         addressPageOperations.clickNext();

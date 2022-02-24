@@ -35,12 +35,13 @@ public class CkidPageOperations {
         cookiePanelOperations = new CookiePanelOperations(driver);
     }
 
-    public void clickLogInButton() {
+    public void logIn(String username, String password) throws TimeoutException {
         try {
             ckidPageObject.getLoginButton().click();
         } catch (ElementClickInterceptedException e) {
             LOGGER.error("Cookie bot did not close properly", e);
             driver.navigate().refresh();
+            provideLoginCredentials(username, password);
             ckidPageObject.getLoginButton().click();
         }
     }
