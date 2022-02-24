@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import testdata.DefaultPurchaseData;
+import testdata.PurchaseData;
 import utils.PasswordUtils;
 import utils.WaitUtils;
 
@@ -38,7 +38,7 @@ public class PaymentsTests extends TestsBase {
     @TestCaseId(testRailCaseId = 5556)
     @Test(alwaysRun = true)
     public void test2FactorAuthentication3DS1() throws TimeoutException {
-        DefaultPurchaseData defaultPurchaseData = new DefaultPurchaseData()
+        PurchaseData defaultPurchaseData = new PurchaseData()
                 .withEmail(EASEE_NO_EXTRA)
                 .withPaymentMethod(TWOFACTORTYPE1)
                 .withFourteenDaysInstallation(false);
@@ -52,7 +52,7 @@ public class PaymentsTests extends TestsBase {
     @TestCaseId(testRailCaseId = 5557)
     @Test
     public void test2FactorAuthentication3DS2() throws TimeoutException {
-        DefaultPurchaseData defaultPurchaseData = new DefaultPurchaseData()
+        PurchaseData defaultPurchaseData = new PurchaseData()
                 .withEmail(EASEE_WITH_EXTRA)
                 .withPaymentMethod(TWOFACTORTYPE2)
                 .withFourteenDaysInstallation(false);
@@ -66,7 +66,7 @@ public class PaymentsTests extends TestsBase {
     @TestCaseId(testRailCaseId = 5565)
     @Test
     public void testCanceledPaymentStatus() throws TimeoutException {
-        DefaultPurchaseData defaultPurchaseData = new DefaultPurchaseData()
+        PurchaseData defaultPurchaseData = new PurchaseData()
                 .withEmail(EASEE_WITH_EXTRA)
                 .withPaymentMethod(KLARNA)
                 .withFourteenDaysInstallation(false);
