@@ -17,7 +17,7 @@ public class HousingPageObject extends EvPage {
     @FindBy(css = "h2[class='heading-2 heading-dash']")
     private WebElement housingCompanyTitle;
 
-    @FindBy(id = "housing-company")
+    @FindBy(css = "input[class='form-control']")
     private WebElement housingCompanyInput;
 
     @FindBy(id = "ngb-typeahead-0-0")

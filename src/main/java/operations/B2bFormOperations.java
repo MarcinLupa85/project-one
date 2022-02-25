@@ -48,8 +48,9 @@ public class B2bFormOperations extends BaseOperations {
         fillField(b2bFormPageObject.getReferenceNumber(), referenceNumber);
     }
 
-    public void chooseColorOfCharger() {
+    public void chooseColorOfCharger() throws TimeoutException {
         Select dropdown = new Select(b2bFormPageObject.getChargerColorDropdown());
+        waitUtils.waitForDocumentReadyState();
         waitUtils.waitForElementToBeClickable(b2bFormPageObject.getChargerColorDropdown());
         dropdown.selectByIndex(2);
     }

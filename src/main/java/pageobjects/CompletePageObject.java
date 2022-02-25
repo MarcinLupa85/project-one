@@ -12,7 +12,7 @@ public class CompletePageObject extends EvPage {
         super(driver);
     }
 
-    @FindBy(css = "a[href=\"/elbillading\"]")
+    @FindBy(xpath = "//*[contains(text(),'Tilbake til forsiden')]")
     private WebElement backButton;
 
 }
